@@ -26,13 +26,6 @@
         /* ============================================
            CUSTOM FONTS
            ============================================ */
-        @font-face {
-            font-family: 'SecondMoment';
-            src: url('SecondMoment.otf') format('opentype');
-            font-weight: normal;
-            font-style: normal;
-            font-display: swap;
-        }
 
         /* ============================================
            CSS CUSTOM PROPERTIES
@@ -88,7 +81,7 @@
         /* ============================================
            TYPOGRAPHY
            ============================================ */
-        .font-brand { font-family: 'SecondMoment', 'Comfortaa', cursive; }
+        .font-brand { font-family: 'Comfortaa', cursive; }
         .font-display { font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif; }
         .font-body { font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif; }
 
@@ -1369,8 +1362,8 @@
     <nav class="nav" id="nav">
         <div class="nav-inner">
             <a href="/" class="nav-logo">
-                <img src="logo-dark.svg" alt="showup" class="logo-dark">
-                <img src="logo-light.svg" alt="showup" class="logo-light">
+                <img src="assets/images/logo-dark.svg" alt="showup" class="logo-dark">
+                <img src="assets/images/logo-light.svg" alt="showup" class="logo-light">
             </a>
             <div class="nav-links">
             </div>
@@ -1682,8 +1675,8 @@
             <div class="footer-top">
                 <div class="footer-brand">
                     <a href="/" class="footer-logo">
-                        <img src="logo-dark.svg" alt="showup" class="logo-dark">
-                        <img src="logo-light.svg" alt="showup" class="logo-light">
+                        <img src="assets/images/logo-dark.svg" alt="showup" class="logo-dark">
+                        <img src="assets/images/logo-light.svg" alt="showup" class="logo-light">
                     </a>
                     <p data-i18n="footer.desc">Build your fitness community. Connect. Train. Grow together.</p>
                 </div>
@@ -1694,8 +1687,8 @@
                     </div>
                     <div class="footer-col">
                         <h4 data-i18n="footer.legal">Legal</h4>
-                        <a href="privacy.html" id="footer-privacy-link" data-i18n="nav.privacy">Privacy Policy</a>
-                        <a href="terms.html" id="footer-terms-link" data-i18n="footer.terms">Terms of Service</a>
+                        <a href="legal/privacy.html" id="footer-privacy-link" data-i18n="nav.privacy">Privacy Policy</a>
+                        <a href="legal/terms.html" id="footer-terms-link" data-i18n="footer.terms">Terms of Service</a>
                     </div>
                     <div class="footer-col">
                         <h4 data-i18n="footer.connect">Connect</h4>
@@ -2079,8 +2072,8 @@
             // Update footer legal links based on language
             var privacyLink = document.getElementById('footer-privacy-link');
             var termsLink = document.getElementById('footer-terms-link');
-            if (privacyLink) privacyLink.href = lang === 'en' ? 'privacy.html' : 'privacy-' + lang + '.html';
-            if (termsLink) termsLink.href = lang === 'en' ? 'terms.html' : 'terms-' + lang + '.html';
+            if (privacyLink) privacyLink.href = lang === 'en' ? 'legal/privacy.html' : 'legal/privacy-' + lang + '.html';
+            if (termsLink) termsLink.href = lang === 'en' ? 'legal/terms.html' : 'legal/terms-' + lang + '.html';
 
             // Update dropdown label and active state
             langCurrent.querySelector('span').textContent = lang.toUpperCase();
