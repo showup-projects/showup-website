@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이용약관 — showup</title>
+    <meta name="description" content="showup 이용약관. showup 사용 약관 및 조건을 확인하세요.">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%234F8EF7'/%3E%3Ctext x='16' y='23' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='bold' font-size='18'%3Es%3C/text%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet">
+    <script>
+        (function() {
+            var theme = localStorage.getItem('theme');
+            if (theme) document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
+
+    <style>
+        @font-face {
+            font-family: 'SecondMoment';
+            src: url('SecondMoment.otf') format('opentype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        :root {
+            --bg-primary: #0A0A0A;
+            --bg-secondary: #111111;
+            --text-primary: #FFFFFF;
+            --text-secondary: rgba(255, 255, 255, 0.6);
+            --text-tertiary: rgba(255, 255, 255, 0.35);
+            --accent-blue: #FFFFFF;
+            --border: rgba(255, 255, 255, 0.2);
+            --glass: #0A0A0A;
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --nav-height: 72px;
+        }
+
+        [data-theme="light"] {
+            --bg-primary: #F4F4F4;
+            --bg-secondary: #F4F4F4;
+            --text-primary: #1A1A1A;
+            --text-secondary: rgba(26, 26, 26, 0.55);
+            --text-tertiary: rgba(26, 26, 26, 0.3);
+            --accent-blue: #1A1A1A;
+            --border: rgba(0, 0, 0, 0.15);
+            --glass: #F4F4F4;
+            --glass-border: rgba(0, 0, 0, 0.15);
+        }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+        body {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            color: var(--text-primary);
+            background: var(--bg-primary);
+            line-height: 1.6;
+        }
+        a { color: inherit; text-decoration: none; }
+
+        /* Film grain — disabled */
+        body::after { display: none; }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            height: var(--nav-height);
+            background: var(--glass);
+            border-bottom: 1px solid var(--border);
+        }
+        .nav-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 32px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .nav-logo {
+            display: flex;
+            align-items: center;
+        }
+        .nav-logo img {
+            height: 44px;
+            width: auto;
+            display: block;
+        }
+        img.logo-dark { display: block; }
+        img.logo-light { display: none; }
+        [data-theme="light"] img.logo-dark { display: none; }
+        [data-theme="light"] img.logo-light { display: block; }
+        .theme-toggle {
+            width: 38px;
+            height: 38px;
+            border: none;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            color: var(--text-secondary);
+            margin-left: auto;
+        }
+        .theme-toggle:hover { color: var(--text-primary); }
+        .theme-toggle svg { width: 18px; height: 18px; transition: transform 0.2s ease; }
+        .theme-toggle:hover svg { transform: rotate(15deg); }
+        .icon-sun { display: block; }
+        .icon-moon { display: none; }
+        [data-theme="light"] .icon-sun { display: none; }
+        [data-theme="light"] .icon-moon { display: block; }
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 36px;
+        }
+        .nav-links a {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-weight: 400;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            transition: color 0.25s ease;
+        }
+        .nav-links a:hover { color: var(--text-primary); }
+        .nav-links a.active { color: var(--text-primary); }
+        .nav-cta {
+            display: inline-flex;
+            align-items: center;
+            padding: 10px 24px;
+            border-radius: 0;
+            background: #FFFFFF;
+            color: #0A0A0A;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-weight: 600;
+            font-size: 0.88rem;
+            border: 2px solid var(--text-primary);
+            transition: opacity 0.2s ease;
+        }
+        .nav-cta:hover {
+            opacity: 0.85;
+        }
+        .nav-hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            padding: 8px;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        .nav-hamburger span {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: var(--text-primary);
+            transition: all 0.3s ease;
+        }
+        .nav-hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .nav-hamburger.active span:nth-child(2) { opacity: 0; }
+        .nav-hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+        .mobile-menu {
+            position: fixed;
+            inset: 0;
+            z-index: 999;
+            background: var(--bg-primary);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 32px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.35s ease;
+        }
+        .mobile-menu.open { opacity: 1; pointer-events: auto; }
+        .mobile-menu a {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-weight: 400;
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            transition: color 0.2s ease;
+        }
+        .mobile-menu a:hover { color: var(--text-primary); }
+
+        /* Content */
+        .terms-content {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: calc(var(--nav-height) + 80px) 24px 100px;
+        }
+        .terms-content h1 {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-weight: 900;
+            font-size: clamp(2rem, 4vw, 3rem);
+            line-height: 1.1;
+            letter-spacing: -0.04em;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+        .terms-updated {
+            color: var(--text-tertiary);
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-weight: 400;
+            font-size: 0.9rem;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+        }
+        .terms-content h2 {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-weight: 900;
+            font-size: 1.5rem;
+            line-height: 1.2;
+            letter-spacing: -0.03em;
+            text-transform: uppercase;
+            margin-top: 48px;
+            margin-bottom: 16px;
+        }
+        .terms-content h3 {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-weight: 900;
+            font-size: 1.15rem;
+            margin-top: 32px;
+            margin-bottom: 12px;
+        }
+        .terms-content p {
+            color: var(--text-secondary);
+            font-size: 0.98rem;
+            line-height: 1.8;
+            margin-bottom: 16px;
+        }
+        .terms-content ul, .terms-content ol {
+            list-style: none;
+            margin-bottom: 16px;
+            padding-left: 0;
+        }
+        .terms-content ul li, .terms-content ol li {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.8;
+            padding-left: 20px;
+            position: relative;
+        }
+        .terms-content ul li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 11px;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--text-primary);
+            opacity: 0.4;
+        }
+        .terms-content ol {
+            counter-reset: ol-counter;
+        }
+        .terms-content ol li {
+            counter-increment: ol-counter;
+        }
+        .terms-content ol li::before {
+            content: counter(ol-counter) '.';
+            position: absolute;
+            left: 0;
+            color: var(--text-primary);
+            opacity: 0.5;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        .terms-content a {
+            color: var(--text-primary);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+        .terms-content a:hover { opacity: 0.7; }
+
+        /* Language nav */
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .lang-dropdown {
+            position: relative;
+            flex-shrink: 0;
+        }
+        .lang-current {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            padding: 6px 10px;
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-weight: 600;
+            font-size: 0.75rem;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: color 0.2s ease, border-color 0.2s ease;
+        }
+        .lang-current:hover {
+            color: var(--text-primary);
+            border-color: var(--text-primary);
+        }
+        .lang-current svg {
+            width: 10px;
+            height: 10px;
+            transition: transform 0.2s ease;
+        }
+        .lang-dropdown.open .lang-current svg {
+            transform: rotate(180deg);
+        }
+        .lang-menu {
+            position: absolute;
+            top: calc(100% + 6px);
+            right: 0;
+            background: var(--bg-primary);
+            border: 1px solid var(--border);
+            min-width: 100%;
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(-4px);
+            transition: opacity 0.15s ease, transform 0.15s ease;
+            z-index: 100;
+        }
+        .lang-dropdown.open .lang-menu {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0);
+        }
+        .lang-menu a {
+            display: block;
+            width: 100%;
+            padding: 8px 12px;
+            color: var(--text-secondary);
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-weight: 600;
+            font-size: 0.75rem;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: color 0.15s ease, background 0.15s ease;
+        }
+        .lang-menu a:hover {
+            color: var(--text-primary);
+            background: rgba(255,255,255,0.06);
+        }
+        [data-theme="light"] .lang-menu a:hover {
+            background: rgba(0,0,0,0.04);
+        }
+        .lang-menu a.active {
+            color: var(--text-primary);
+        }
+
+        /* Footer */
+        .footer {
+            border-top: 1px solid var(--border);
+            padding: 80px 24px 40px;
+            background: var(--bg-primary);
+        }
+        .footer-inner { max-width: 1080px; margin: 0 auto; }
+        .footer-top {
+            display: grid;
+            grid-template-columns: 1.2fr 2fr;
+            gap: 64px;
+            margin-bottom: 64px;
+        }
+        .footer-logo {
+            display: inline-block;
+            margin-bottom: 16px;
+        }
+        .footer-logo img {
+            height: 38px;
+            width: auto;
+        }
+        .footer-brand p {
+            color: var(--text-secondary);
+            font-size: 0.92rem;
+            line-height: 1.6;
+            max-width: 280px;
+        }
+        .footer-links {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+        .footer-col h4 {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-weight: 400;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-tertiary);
+            margin-bottom: 20px;
+        }
+        .footer-col a {
+            display: block;
+            color: var(--text-secondary);
+            font-size: 0.92rem;
+            padding: 6px 0;
+            transition: color 0.2s ease;
+        }
+        .footer-col a:hover { color: var(--text-primary); }
+        .footer-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+        }
+        .footer-bottom p {
+            color: var(--text-tertiary);
+            font-size: 0.85rem;
+        }
+        .app-store-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 20px;
+            border-radius: 0;
+            background: #fff;
+            color: #000;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-weight: 400;
+            font-size: 0.82rem;
+            border: 2px solid var(--text-primary);
+            transition: opacity 0.2s ease;
+        }
+        .app-store-badge:hover { opacity: 0.85; }
+        .app-store-badge svg { width: 18px; height: 18px; }
+
+        /* Light theme overrides */
+        [data-theme="light"] .nav-cta {
+            background: #1A1A1A;
+            color: #F4F4F4;
+        }
+        [data-theme="light"] .app-store-badge {
+            background: #1A1A1A;
+            color: #F4F4F4;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            :root { --nav-height: 64px; }
+            .nav-links, .nav-cta { display: none; }
+            .nav-hamburger { display: flex; }
+            .terms-content { padding-top: calc(var(--nav-height) + 48px); }
+            .footer-top { grid-template-columns: 1fr; gap: 40px; }
+            .footer-links { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+            .footer-bottom { flex-direction: column; gap: 20px; text-align: center; }
+        }
+        @media (max-width: 480px) {
+            .footer-links { grid-template-columns: 1fr 1fr; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            * { transition-duration: 0.01ms !important; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="index.html" class="nav-logo">
+                <img src="logo-dark.svg" alt="showup" class="logo-dark">
+                <img src="logo-light.svg" alt="showup" class="logo-light">
+            </a>
+            <div class="nav-actions">
+                <div class="lang-dropdown" id="langDropdown">
+                    <button class="lang-current" id="langCurrent" aria-label="Change language">
+                        <span>KO</span>
+                        <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg>
+                    </button>
+                    <div class="lang-menu">
+                        <a href="terms.html">EN</a>
+                        <a href="terms-ko.html" class="active">KO</a>
+                        <a href="terms-de.html">DE</a>
+                    </div>
+                </div>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="terms-content">
+        <h1>이용약관</h1>
+        <p class="terms-updated">최종 업데이트: 2026년 2월 18일</p>
+
+        <p>
+            showup에 오신 것을 환영합니다. 본 이용약관("약관")은 showup("당사")이 운영하는 showup 모바일 애플리케이션 및 웹사이트(이하 "서비스")에 대한 귀하의 접근 및 이용을 규율합니다.
+        </p>
+        <p>
+            계정을 생성하거나 서비스를 이용함으로써, 귀하는 본 약관에 구속되는 것에 동의합니다. 동의하지 않으시면 서비스를 이용하지 마시기 바랍니다.
+        </p>
+
+        <h2>1. 이용 자격</h2>
+        <p>
+            서비스를 이용하려면 만 13세 이상(유럽경제지역/영국의 경우 16세, 대한민국의 경우 14세)이어야 합니다. 서비스를 이용함으로써, 귀하는 해당 관할권에서 적용되는 최소 연령 요건을 충족함을 표명합니다.
+        </p>
+        <p>
+            만 18세 미만(또는 해당 관할권의 성년 연령 미만)인 경우, 서비스를 이용하려면 부모 또는 법정 대리인의 동의가 필요합니다.
+        </p>
+
+        <h2>2. 계정</h2>
+
+        <h3>2.1 계정 생성</h3>
+        <p>
+            서비스를 이용하려면 유효한 이메일 주소, Google 로그인 또는 Apple 로그인을 사용하여 계정을 생성해야 합니다. 귀하는 계정 자격 증명의 기밀을 유지하고 계정에서 발생하는 모든 활동에 대해 책임을 집니다.
+        </p>
+
+        <h3>2.2 계정 정보의 정확성</h3>
+        <p>
+            귀하는 등록 시 정확하고 최신이며 완전한 정보를 제공하고, 정확성을 유지하기 위해 필요에 따라 정보를 업데이트하는 데 동의합니다.
+        </p>
+
+        <h3>2.3 계정 보안</h3>
+        <p>
+            귀하의 계정이 무단으로 사용되고 있음을 인지한 경우, 즉시 <a href="mailto:support@showupcounts.com">support@showupcounts.com</a>으로 당사에 통지해야 합니다. 당사는 귀하의 계정에 대한 무단 접근으로 인해 발생하는 손실에 대해 책임을 지지 않습니다.
+        </p>
+
+        <h3>2.4 계정 삭제</h3>
+        <p>
+            귀하는 앱의 계정 설정에서 언제든지 계정을 삭제할 수 있습니다. 삭제 시, 귀하의 개인 데이터, 운동 점수, 게시물, 댓글 및 업로드된 미디어는 당사의 <a href="privacy.html">개인정보처리방침</a>에 따라 영구적으로 삭제됩니다.
+        </p>
+
+        <h2>3. 서비스 이용</h2>
+
+        <h3>3.1 라이선스</h3>
+        <p>
+            당사는 본 약관에 따라 귀하에게 개인적, 비상업적 용도로 서비스를 이용할 수 있는 제한적, 비독점적, 양도 불가능, 취소 가능한 라이선스를 부여합니다.
+        </p>
+
+        <h3>3.2 허용되는 이용</h3>
+        <p>귀하는 다음 행위를 하지 않을 것에 동의합니다:</p>
+        <ul>
+            <li>불법적인 목적으로 또는 관련 법률을 위반하여 서비스를 이용하는 행위</li>
+            <li>타인 또는 단체를 사칭하거나 신원 또는 소속을 허위로 표시하는 행위</li>
+            <li>서비스 또는 그 인프라를 방해, 교란하거나 무단으로 접근을 시도하는 행위</li>
+            <li>자동화된 수단(봇, 스크래퍼, 크롤러)을 사용하여 서비스에 접근하거나 데이터를 수집하는 행위</li>
+            <li>서비스의 일부를 역설계, 디컴파일 또는 역어셈블하는 행위</li>
+            <li>서비스를 이용하여 스팸 또는 원치 않는 통신을 발송하는 행위</li>
+            <li>바이러스, 맬웨어 또는 기타 유해한 코드를 업로드하거나 전송하는 행위</li>
+            <li>접근 통제 또는 보안 조치를 우회하는 행위</li>
+        </ul>
+
+        <h2>4. 커뮤니티 (스페이스)</h2>
+
+        <h3>4.1 스페이스 생성 및 관리</h3>
+        <p>
+            사용자는 운동을 조직하고 다른 사람들과 교류하기 위한 커뮤니티("스페이스")를 생성할 수 있습니다. 스페이스 관리자는 콘텐츠 및 회원 관리를 포함하여 자신의 스페이스를 관리할 책임이 있습니다.
+        </p>
+
+        <h3>4.2 스페이스 참여</h3>
+        <p>
+            스페이스는 자유롭게 참여할 수 있거나 관리자의 승인이 필요할 수 있습니다. 관리자는 자신의 재량에 따라 참여 요청을 수락하거나 거절할 수 있습니다.
+        </p>
+
+        <h3>4.3 스페이스 관리자의 책임</h3>
+        <p>스페이스 관리자는 다음 사항에 동의합니다:</p>
+        <ul>
+            <li>자신의 스페이스 내에서 콘텐츠와 회원 행동을 관리합니다</li>
+            <li>본 약관 또는 해당 커뮤니티 가이드라인을 위반하는 콘텐츠를 삭제합니다</li>
+            <li>자신의 스페이스를 불법 활동에 이용하지 않습니다</li>
+        </ul>
+
+        <h2>5. 사용자 생성 콘텐츠</h2>
+
+        <h3>5.1 귀하의 콘텐츠</h3>
+        <p>
+            서비스를 통해 운동 점수, 게시물, 댓글, 사진 등의 콘텐츠("사용자 콘텐츠")를 게시할 수 있습니다. 귀하는 사용자 콘텐츠의 소유권을 보유합니다. 사용자 콘텐츠를 게시함으로써, 귀하는 서비스의 운영 및 제공 목적에 한하여 사용자 콘텐츠를 사용, 표시, 복제 및 배포할 수 있는 전 세계적, 비독점적, 로열티 프리 라이선스를 당사에 부여합니다.
+        </p>
+
+        <h3>5.2 콘텐츠 기준</h3>
+        <p>귀하는 사용자 콘텐츠에 다음 내용이 포함되지 않을 것에 동의합니다:</p>
+        <ul>
+            <li>혐오 발언, 위협, 괴롭힘 또는 따돌림</li>
+            <li>성적으로 노골적이거나 음란한 자료</li>
+            <li>폭력, 자해 또는 불법 활동을 조장하는 내용</li>
+            <li>타인의 지적 재산권을 침해하는 내용</li>
+            <li>기만할 의도가 있는 허위 또는 오해를 불러일으키는 정보</li>
+            <li>동의 없이 타인의 개인정보 또는 사적인 정보를 포함하는 내용</li>
+            <li>스팸, 광고 또는 무단 홍보</li>
+        </ul>
+
+        <h3>5.3 콘텐츠 관리</h3>
+        <p>
+            당사는 본 약관을 위반한다고 단독 재량으로 판단하는 모든 사용자 콘텐츠에 대해 검토, 삭제 또는 접근을 비활성화할 권리를 보유합니다. 당사는 모든 사용자 콘텐츠를 모니터링할 의무가 없으나, 재량에 따라 모니터링할 수 있습니다.
+        </p>
+
+        <h3>5.4 신고</h3>
+        <p>
+            본 약관을 위반하는 콘텐츠를 발견한 경우, 앱 내 신고 기능을 사용하여 신고할 수 있습니다. 당사는 신고를 검토하고 적절한 조치를 취합니다.
+        </p>
+
+        <h2>6. 커뮤니티 가이드라인</h2>
+        <p>
+            모든 사용자는 타인을 존중하며 대할 것으로 기대됩니다. 모든 스페이스에서 다음 행위는 금지됩니다:
+        </p>
+        <ol>
+            <li>모든 형태의 괴롭힘, 따돌림 또는 위협</li>
+            <li>인종, 민족, 성별, 성적 지향, 종교, 장애 또는 기타 보호 대상 특성에 기반한 혐오 발언</li>
+            <li>타인의 개인정보 또는 사적인 정보를 공유하거나 공유하겠다고 위협하는 행위(신상 털기)</li>
+            <li>스팸, 사기 또는 오해를 불러일으키는 콘텐츠 게시</li>
+            <li>점수, 리더보드 또는 기타 경쟁 기능을 조작하려는 시도</li>
+            <li>제재 또는 제한을 회피하기 위해 복수의 계정을 생성하는 행위</li>
+        </ol>
+        <p>
+            위반 시 당사의 재량에 따라 콘텐츠 삭제, 임시 정지 또는 영구적 계정 해지 조치가 취해질 수 있습니다.
+        </p>
+
+        <h2>7. 지적 재산권</h2>
+
+        <h3>7.1 당사의 재산</h3>
+        <p>
+            서비스의 디자인, 기능, 코드, 상표, 로고 및 모든 관련 지적 재산을 포함한 서비스는 showup이 소유하며, 관련 지적 재산권법에 의해 보호됩니다. 당사의 사전 서면 동의 없이 서비스를 복사, 수정, 배포하거나 이를 기반으로 2차적 저작물을 작성할 수 없습니다.
+        </p>
+
+        <h3>7.2 피드백</h3>
+        <p>
+            귀하가 서비스에 대한 피드백, 제안 또는 아이디어를 제공하는 경우, 당사는 귀하에게 보상할 의무 없이 이를 사용할 수 있음에 동의합니다.
+        </p>
+
+        <h2>8. 제3자 서비스</h2>
+        <p>
+            서비스는 인프라를 위한 Firebase(Google Cloud) 및 인증을 위한 Apple/Google을 포함한 제3자 서비스를 사용합니다. 이러한 서비스의 이용에는 해당 서비스의 약관 및 개인정보처리방침이 적용됩니다. 당사는 제3자 서비스의 관행에 대해 책임을 지지 않습니다.
+        </p>
+
+        <h2>9. 보증의 부인</h2>
+        <p>
+            서비스는 상품성, 특정 목적에의 적합성 및 비침해에 대한 묵시적 보증을 포함하되 이에 한정되지 않는 명시적 또는 묵시적 어떠한 종류의 보증 없이 "있는 그대로" 및 "이용 가능한 상태로" 제공됩니다.
+        </p>
+        <p>
+            당사는 서비스가 중단되지 않거나, 오류가 없거나, 안전하거나, 바이러스 또는 기타 유해한 구성 요소가 없을 것을 보증하지 않습니다. 당사는 사용자 콘텐츠 또는 서비스를 통해 얻은 정보의 정확성이나 신뢰성에 대해 어떠한 보증도 하지 않습니다.
+        </p>
+        <p>
+            <strong>피트니스 면책조항:</strong> 서비스는 피트니스 추적 및 커뮤니티 플랫폼입니다. 의학적 조언을 제공하지 않습니다. 운동 프로그램을 시작하기 전에 항상 자격을 갖춘 의료 전문가와 상담하십시오. 귀하는 자신의 책임하에 서비스를 이용하고 운동을 수행합니다.
+        </p>
+
+        <h2>10. 책임의 제한</h2>
+        <p>
+            관련 법률이 허용하는 최대 범위 내에서, showup 및 그 임원, 이사, 직원, 대리인은 서비스 이용과 관련하여 또는 이에 기인하는 간접적, 부수적, 특별, 결과적 또는 징벌적 손해배상이나 이익, 수익, 데이터 또는 영업권의 손실에 대해 책임을 지지 않습니다.
+        </p>
+        <p>
+            서비스 이용으로 인해 발생하는 모든 청구에 대한 당사의 총 책임은 청구 전 12개월간 귀하가 당사에 지불한 금액 또는 미화 50달러(USD $50) 중 큰 금액을 초과하지 않습니다.
+        </p>
+        <p>
+            일부 관할권에서는 특정 손해의 배제 또는 제한을 허용하지 않습니다. 해당 관할권에서 당사의 책임은 법률이 허용하는 최대 범위로 제한됩니다. 본 약관의 어떠한 내용도 과실로 인한 사망이나 신체 상해, 사기 또는 관련 법률에 의해 배제할 수 없는 책임을 배제하거나 제한하지 않습니다.
+        </p>
+
+        <h2>11. 면책</h2>
+        <p>
+            귀하는 서비스 이용, 사용자 콘텐츠 또는 본 약관 위반으로 인해 또는 이와 관련하여 발생하는 모든 청구, 손해, 손실, 책임 및 비용(합리적인 변호사 수임료 포함)으로부터 showup 및 그 임원, 이사, 직원, 대리인을 면책하고 피해가 발생하지 않도록 보호하는 데 동의합니다.
+        </p>
+
+        <h2>12. 해지</h2>
+
+        <h3>12.1 귀하에 의한 해지</h3>
+        <p>
+            귀하는 언제든지 서비스 이용을 중단하고 계정을 삭제할 수 있습니다.
+        </p>
+
+        <h3>12.2 당사에 의한 해지</h3>
+        <p>
+            당사는 본 약관 위반을 포함하되 이에 한정되지 않는 모든 이유로 사전 통지 여부와 관계없이 언제든지 귀하의 계정 및 서비스 접근을 정지하거나 해지할 수 있습니다. 해지 시, 귀하의 서비스 이용 권리는 즉시 소멸됩니다.
+        </p>
+
+        <h3>12.3 해지의 효력</h3>
+        <p>
+            그 성격상 해지 후에도 존속해야 하는 조항은 존속하며, 이에는 지적 재산권, 보증의 부인, 책임의 제한, 면책 및 준거법 조항이 포함되되 이에 한정되지 않습니다.
+        </p>
+
+        <h2>13. 약관의 변경</h2>
+        <p>
+            당사는 수시로 본 약관을 업데이트할 수 있습니다. 중요한 변경 사항이 있는 경우, 이 페이지에 업데이트된 약관을 게시하고 "최종 업데이트" 날짜를 변경하여 통지합니다. 변경 후에도 서비스를 계속 이용하는 것은 업데이트된 약관에 대한 동의를 구성합니다.
+        </p>
+        <p>
+            개정된 약관에 동의하지 않는 경우, 서비스 이용을 중단하고 계정을 삭제해야 합니다.
+        </p>
+
+        <h2>14. 준거법 및 분쟁 해결</h2>
+        <p>
+            본 약관은 법의 충돌에 관한 규정에 관계없이 대한민국 법률에 따라 규율되고 해석됩니다.
+        </p>
+        <p>
+            본 약관 또는 서비스 이용으로 인해 발생하는 모든 분쟁은 성실한 협상을 통해 해결합니다. 협상이 실패할 경우, 분쟁은 대한민국 법원의 전속 관할에 따릅니다.
+        </p>
+        <p>
+            유럽경제지역 사용자의 경우: 본 약관의 어떠한 내용도 귀하의 거주 국가의 강행적 소비자 보호법에 따른 권리에 영향을 미치지 않습니다. 귀하는 또한 거주 국가의 법원에 소송을 제기하고, 유럽위원회의 온라인 분쟁 해결 플랫폼(<a href="https://ec.europa.eu/consumers/odr">https://ec.europa.eu/consumers/odr</a>)에 분쟁을 회부할 권리가 있을 수 있습니다.
+        </p>
+
+        <h2>15. 일반 조항</h2>
+        <ul>
+            <li><strong>완전 합의:</strong> 본 약관은 당사의 개인정보처리방침과 함께 서비스에 관한 귀하와 showup 간의 완전한 합의를 구성합니다.</li>
+            <li><strong>가분성:</strong> 본 약관의 어떤 조항이 집행 불가능한 것으로 판명된 경우, 나머지 조항은 완전한 효력을 유지합니다.</li>
+            <li><strong>권리 포기:</strong> 당사가 본 약관의 권리 또는 조항을 행사하지 않더라도 해당 권리 또는 조항의 포기를 구성하지 않습니다.</li>
+            <li><strong>양도:</strong> 귀하는 당사의 동의 없이 본 약관에 따른 권리를 양도하거나 이전할 수 없습니다. 당사는 제한 없이 권리를 양도할 수 있습니다.</li>
+            <li><strong>언어:</strong> 본 약관은 영어로 작성되었습니다. 다른 언어로 번역된 경우, 충돌이 있을 때 영어 버전이 우선합니다.</li>
+        </ul>
+
+        <h2>16. 문의하기</h2>
+        <p>본 약관에 대해 문의 사항이 있으시면 다음으로 연락해 주십시오:</p>
+        <p>
+            <a href="mailto:support@showupcounts.com">support@showupcounts.com</a>
+        </p>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <a href="index.html" class="footer-logo">
+                        <img src="logo-dark.svg" alt="showup" class="logo-dark">
+                        <img src="logo-light.svg" alt="showup" class="logo-light">
+                    </a>
+                    <p>Build your fitness community. Connect. Train. Grow together.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-col">
+                        <h4>Product</h4>
+                        <a href="index.html#features">Features</a>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Legal</h4>
+                        <a href="privacy.html">Privacy Policy</a>
+                        <a href="terms.html">Terms of Service</a>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Connect</h4>
+                        <a href="https://instagram.com/showupcounts" target="_blank">Instagram</a>
+                        <a href="contact.html">Contact</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Showup. All rights reserved.</p>
+                <a href="#" class="app-store-badge">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                    Download on the App Store
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const themeToggle = document.getElementById('themeToggle');
+        function toggleTheme() {
+            const current = document.documentElement.getAttribute('data-theme');
+            const next = current === 'light' ? 'dark' : 'light';
+            document.documentElement.setAttribute('data-theme', next);
+            localStorage.setItem('theme', next);
+        }
+        themeToggle.addEventListener('click', toggleTheme);
+
+        const langDropdown = document.getElementById('langDropdown');
+        const langCurrent = document.getElementById('langCurrent');
+        langCurrent.addEventListener('click', function(e) {
+            e.stopPropagation();
+            langDropdown.classList.toggle('open');
+        });
+        document.addEventListener('click', function() {
+            langDropdown.classList.remove('open');
+        });
+    </script>
+</body>
+</html>

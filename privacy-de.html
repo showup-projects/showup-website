@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datenschutzerklärung — showup</title>
+    <meta name="description" content="showup Datenschutzerklärung. Erfahren Sie, wie wir Ihre Daten erfassen, verwenden und schützen.">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%234F8EF7'/%3E%3Ctext x='16' y='23' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='bold' font-size='18'%3Es%3C/text%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet">
+    <script>
+        (function() {
+            var theme = localStorage.getItem('theme');
+            if (theme) document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
+
+    <style>
+        @font-face {
+            font-family: 'SecondMoment';
+            src: url('SecondMoment.otf') format('opentype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        :root {
+            --bg-primary: #0A0A0A;
+            --bg-secondary: #111111;
+            --text-primary: #FFFFFF;
+            --text-secondary: rgba(255, 255, 255, 0.6);
+            --text-tertiary: rgba(255, 255, 255, 0.35);
+            --accent-blue: #FFFFFF;
+            --border: rgba(255, 255, 255, 0.2);
+            --glass: #0A0A0A;
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --nav-height: 72px;
+        }
+
+        [data-theme="light"] {
+            --bg-primary: #F4F4F4;
+            --bg-secondary: #F4F4F4;
+            --text-primary: #1A1A1A;
+            --text-secondary: rgba(26, 26, 26, 0.55);
+            --text-tertiary: rgba(26, 26, 26, 0.3);
+            --accent-blue: #1A1A1A;
+            --border: rgba(0, 0, 0, 0.15);
+            --glass: #F4F4F4;
+            --glass-border: rgba(0, 0, 0, 0.15);
+        }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+        body {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            color: var(--text-primary);
+            background: var(--bg-primary);
+            line-height: 1.6;
+        }
+        a { color: inherit; text-decoration: none; }
+
+        /* Film grain — disabled */
+        body::after { display: none; }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            height: var(--nav-height);
+            background: var(--glass);
+            border-bottom: 1px solid var(--border);
+        }
+        .nav-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 32px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .nav-logo {
+            display: flex;
+            align-items: center;
+        }
+        .nav-logo img {
+            height: 44px;
+            width: auto;
+            display: block;
+        }
+        img.logo-dark { display: block; }
+        img.logo-light { display: none; }
+        [data-theme="light"] img.logo-dark { display: none; }
+        [data-theme="light"] img.logo-light { display: block; }
+        .theme-toggle {
+            width: 38px;
+            height: 38px;
+            border: none;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            color: var(--text-secondary);
+            margin-left: auto;
+        }
+        .theme-toggle:hover { color: var(--text-primary); }
+        .theme-toggle svg { width: 18px; height: 18px; transition: transform 0.2s ease; }
+        .theme-toggle:hover svg { transform: rotate(15deg); }
+        .icon-sun { display: block; }
+        .icon-moon { display: none; }
+        [data-theme="light"] .icon-sun { display: none; }
+        [data-theme="light"] .icon-moon { display: block; }
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 36px;
+        }
+        .nav-links a {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-weight: 400;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            transition: color 0.25s ease;
+        }
+        .nav-links a:hover { color: var(--text-primary); }
+        .nav-links a.active { color: var(--text-primary); }
+        .nav-cta {
+            display: inline-flex;
+            align-items: center;
+            padding: 10px 24px;
+            border-radius: 0;
+            background: #FFFFFF;
+            color: #0A0A0A;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-weight: 600;
+            font-size: 0.88rem;
+            border: 2px solid var(--text-primary);
+            transition: opacity 0.2s ease;
+        }
+        .nav-cta:hover {
+            opacity: 0.85;
+        }
+        .nav-hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            padding: 8px;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        .nav-hamburger span {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: var(--text-primary);
+            transition: all 0.3s ease;
+        }
+        .nav-hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .nav-hamburger.active span:nth-child(2) { opacity: 0; }
+        .nav-hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+        .mobile-menu {
+            position: fixed;
+            inset: 0;
+            z-index: 999;
+            background: var(--bg-primary);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 32px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.35s ease;
+        }
+        .mobile-menu.open { opacity: 1; pointer-events: auto; }
+        .mobile-menu a {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-weight: 400;
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            transition: color 0.2s ease;
+        }
+        .mobile-menu a:hover { color: var(--text-primary); }
+
+        /* Content */
+        .privacy-content {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: calc(var(--nav-height) + 80px) 24px 100px;
+        }
+        .privacy-content h1 {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-weight: 900;
+            font-size: clamp(2rem, 4vw, 3rem);
+            line-height: 1.1;
+            letter-spacing: -0.04em;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+        .privacy-updated {
+            color: var(--text-tertiary);
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-weight: 400;
+            font-size: 0.9rem;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+        }
+        .privacy-content h2 {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-weight: 900;
+            font-size: 1.5rem;
+            line-height: 1.2;
+            letter-spacing: -0.03em;
+            text-transform: uppercase;
+            margin-top: 48px;
+            margin-bottom: 16px;
+        }
+        .privacy-content h3 {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-weight: 900;
+            font-size: 1.15rem;
+            margin-top: 32px;
+            margin-bottom: 12px;
+        }
+        .privacy-content p {
+            color: var(--text-secondary);
+            font-size: 0.98rem;
+            line-height: 1.8;
+            margin-bottom: 16px;
+        }
+        .privacy-content ul {
+            list-style: none;
+            margin-bottom: 16px;
+            padding-left: 0;
+        }
+        .privacy-content ul li {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.8;
+            padding-left: 20px;
+            position: relative;
+        }
+        .privacy-content ul li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 11px;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--text-primary);
+            opacity: 0.4;
+        }
+        .privacy-content a {
+            color: var(--text-primary);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+        .privacy-content a:hover { opacity: 0.7; }
+
+        /* Language nav */
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .lang-dropdown {
+            position: relative;
+            flex-shrink: 0;
+        }
+        .lang-current {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            padding: 6px 10px;
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-weight: 600;
+            font-size: 0.75rem;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: color 0.2s ease, border-color 0.2s ease;
+        }
+        .lang-current:hover {
+            color: var(--text-primary);
+            border-color: var(--text-primary);
+        }
+        .lang-current svg {
+            width: 10px;
+            height: 10px;
+            transition: transform 0.2s ease;
+        }
+        .lang-dropdown.open .lang-current svg {
+            transform: rotate(180deg);
+        }
+        .lang-menu {
+            position: absolute;
+            top: calc(100% + 6px);
+            right: 0;
+            background: var(--bg-primary);
+            border: 1px solid var(--border);
+            min-width: 100%;
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(-4px);
+            transition: opacity 0.15s ease, transform 0.15s ease;
+            z-index: 100;
+        }
+        .lang-dropdown.open .lang-menu {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0);
+        }
+        .lang-menu a {
+            display: block;
+            width: 100%;
+            padding: 8px 12px;
+            color: var(--text-secondary);
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-weight: 600;
+            font-size: 0.75rem;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: color 0.15s ease, background 0.15s ease;
+        }
+        .lang-menu a:hover {
+            color: var(--text-primary);
+            background: rgba(255,255,255,0.06);
+        }
+        [data-theme="light"] .lang-menu a:hover {
+            background: rgba(0,0,0,0.04);
+        }
+        .lang-menu a.active {
+            color: var(--text-primary);
+        }
+
+        /* Footer */
+        .footer {
+            border-top: 1px solid var(--border);
+            padding: 80px 24px 40px;
+            background: var(--bg-primary);
+        }
+        .footer-inner { max-width: 1080px; margin: 0 auto; }
+        .footer-top {
+            display: grid;
+            grid-template-columns: 1.2fr 2fr;
+            gap: 64px;
+            margin-bottom: 64px;
+        }
+        .footer-logo {
+            display: inline-block;
+            margin-bottom: 16px;
+        }
+        .footer-logo img {
+            height: 38px;
+            width: auto;
+        }
+        .footer-brand p {
+            color: var(--text-secondary);
+            font-size: 0.92rem;
+            line-height: 1.6;
+            max-width: 280px;
+        }
+        .footer-links {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+        .footer-col h4 {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-weight: 400;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-tertiary);
+            margin-bottom: 20px;
+        }
+        .footer-col a {
+            display: block;
+            color: var(--text-secondary);
+            font-size: 0.92rem;
+            padding: 6px 0;
+            transition: color 0.2s ease;
+        }
+        .footer-col a:hover { color: var(--text-primary); }
+        .footer-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+        }
+        .footer-bottom p {
+            color: var(--text-tertiary);
+            font-size: 0.85rem;
+        }
+        .app-store-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 20px;
+            border-radius: 0;
+            background: #fff;
+            color: #000;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-weight: 400;
+            font-size: 0.82rem;
+            border: 2px solid var(--text-primary);
+            transition: opacity 0.2s ease;
+        }
+        .app-store-badge:hover { opacity: 0.85; }
+        .app-store-badge svg { width: 18px; height: 18px; }
+
+        /* Light theme overrides */
+        [data-theme="light"] .nav-cta {
+            background: #1A1A1A;
+            color: #F4F4F4;
+        }
+        [data-theme="light"] .app-store-badge {
+            background: #1A1A1A;
+            color: #F4F4F4;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            :root { --nav-height: 64px; }
+            .nav-links, .nav-cta { display: none; }
+            .nav-hamburger { display: flex; }
+            .privacy-content { padding-top: calc(var(--nav-height) + 48px); }
+            .footer-top { grid-template-columns: 1fr; gap: 40px; }
+            .footer-links { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+            .footer-bottom { flex-direction: column; gap: 20px; text-align: center; }
+        }
+        @media (max-width: 480px) {
+            .footer-links { grid-template-columns: 1fr 1fr; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            * { transition-duration: 0.01ms !important; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="index.html" class="nav-logo">
+                <img src="logo-dark.svg" alt="showup" class="logo-dark">
+                <img src="logo-light.svg" alt="showup" class="logo-light">
+            </a>
+            <div class="nav-actions">
+                <div class="lang-dropdown" id="langDropdown">
+                    <button class="lang-current" id="langCurrent" aria-label="Change language">
+                        <span>DE</span>
+                        <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg>
+                    </button>
+                    <div class="lang-menu">
+                        <a href="privacy.html">EN</a>
+                        <a href="privacy-ko.html">KO</a>
+                        <a href="privacy-de.html" class="active">DE</a>
+                    </div>
+                </div>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="privacy-content">
+        <h1>Datenschutzerklärung</h1>
+        <p class="privacy-updated">Zuletzt aktualisiert: 18. Februar 2026</p>
+
+        <p>
+            showup („wir", „unser" oder „uns") betreibt die mobile Anwendung und Website von showup (zusammen der „Dienst"). Diese Datenschutzerklärung erläutert, wie wir Ihre Informationen erfassen, verwenden, offenlegen und schützen, wenn Sie den Dienst nutzen.
+        </p>
+        <p>
+            Durch die Nutzung des Dienstes stimmen Sie der Erfassung und Verwendung von Informationen gemäß dieser Datenschutzerklärung zu. Wenn Sie den Bedingungen dieser Richtlinie nicht zustimmen, nutzen Sie den Dienst bitte nicht.
+        </p>
+
+        <h2>1. Informationen, die wir erfassen</h2>
+
+        <h3>1.1 Von Ihnen bereitgestellte Informationen</h3>
+        <p>Wir erfassen Informationen, die Sie freiwillig bereitstellen, wenn Sie:</p>
+        <ul>
+            <li>Ein Konto registrieren</li>
+            <li>Eine Community (Space) erstellen oder einer beitreten</li>
+            <li>An Workouts teilnehmen und Ergebnisse eintragen</li>
+            <li>Inhalte oder Kommentare veröffentlichen</li>
+            <li>Fotos oder Medien hochladen</li>
+            <li>Uns für Support kontaktieren</li>
+        </ul>
+        <p>Diese Informationen können Folgendes umfassen:</p>
+        <ul>
+            <li>Name und E-Mail-Adresse</li>
+            <li>Geburtsdatum und Geschlecht</li>
+            <li>Profilfoto</li>
+            <li>Fitnessdaten, einschließlich Workout-Ergebnisse, persönliche Bestleistungen und Benchmarks</li>
+            <li>Nutzergenerierte Inhalte wie Beiträge, Kommentare und Medien</li>
+            <li>Community-Mitgliedschaft und Rolleninformationen</li>
+            <li>Einheitenpräferenzen (Gewicht, Entfernung)</li>
+        </ul>
+
+        <h3>1.2 Automatisch erfasste Informationen</h3>
+        <p>Wenn Sie den Dienst nutzen, erfassen wir möglicherweise automatisch:</p>
+        <ul>
+            <li>Gerätetyp und Betriebssystemversion</li>
+            <li>Eindeutige Gerätekennungen</li>
+            <li>App-Nutzungsdaten</li>
+            <li>Absturzberichte und Leistungsdiagnosen</li>
+        </ul>
+
+        <h2>2. Wie wir Ihre Informationen verwenden</h2>
+        <p>Wir verwenden die erfassten Informationen, um:</p>
+        <ul>
+            <li>Den Dienst bereitzustellen, zu betreiben und zu warten</li>
+            <li>Ihr Konto zu erstellen und zu verwalten</li>
+            <li>Community-Funktionen, Bestenlisten und soziale Interaktionen zu ermöglichen</li>
+            <li>Workout-Ergebnisse, persönliche Bestleistungen und Benchmarks zu verfolgen und anzuzeigen</li>
+            <li>Push-Benachrichtigungen über Workouts, Community-Aktivitäten und Updates zu senden</li>
+            <li>Auf Support-Anfragen zu reagieren und mit Ihnen zu kommunizieren</li>
+            <li>Den Dienst zu überwachen und zu verbessern</li>
+            <li>Missbrauch, Betrug oder technische Probleme zu erkennen, zu verhindern und zu beheben</li>
+            <li>Unsere Nutzungsbedingungen und Community-Richtlinien durchzusetzen</li>
+        </ul>
+
+        <h2>3. Wie wir Ihre Informationen teilen</h2>
+
+        <h3>3.1 Innerhalb des Dienstes</h3>
+        <p>
+            Ihr Profilname, Profilfoto, Workout-Ergebnisse, Beiträge und Kommentare sind für Mitglieder der Communities sichtbar, denen Sie beitreten. Bestenlisten-Rankings sind für andere Community-Mitglieder sichtbar.
+        </p>
+
+        <h3>3.2 Dienstleister</h3>
+        <p>
+            Wir verwenden die folgenden Drittanbieter-Dienstleister für den Betrieb des Dienstes:
+        </p>
+        <ul>
+            <li><strong>Firebase (Google Cloud):</strong> Authentifizierung, Datenbankspeicherung, Dateispeicherung, Cloud-Funktionen und Push-Benachrichtigungen</li>
+            <li><strong>Apple Sign-In und Google Sign-In:</strong> Kontoauthentifizierung</li>
+        </ul>
+        <p>
+            Diese Anbieter verarbeiten Ihre Daten in unserem Auftrag und unterliegen ihren eigenen Datenschutzrichtlinien und Datenschutzverpflichtungen.
+        </p>
+
+        <h3>3.3 Gesetzliche Anforderungen</h3>
+        <p>Wir können Ihre Informationen offenlegen, wenn dies gesetzlich vorgeschrieben ist oder als Reaktion auf rechtmäßige Anfragen öffentlicher Behörden.</p>
+
+        <h3>3.4 Unternehmensübertragungen</h3>
+        <p>Im Falle einer Fusion, Übernahme oder eines Verkaufs von Vermögenswerten können Ihre Informationen als Teil dieser Transaktion übertragen werden. Wir werden Sie benachrichtigen, bevor Ihre Informationen einer anderen Datenschutzrichtlinie unterliegen.</p>
+
+        <h3>3.5 Kein Verkauf von Daten</h3>
+        <p>Wir verkaufen, vermieten oder handeln Ihre personenbezogenen Daten nicht an Dritte zu deren Marketingzwecken.</p>
+
+        <h2>4. Werbung und Tracking</h2>
+        <p>
+            Der Dienst enthält keine Werbung von Drittanbietern. Wir verwenden keine Werbe-SDKs oder Tracking-Frameworks. Wir verfolgen Sie nicht über andere Apps oder Websites hinweg.
+        </p>
+
+        <h2>5. Datenspeicherung und Sicherheit</h2>
+        <p>
+            Ihre Daten werden mithilfe der Firebase (Google Cloud)-Infrastruktur gespeichert. Alle Daten werden bei der Übertragung mittels HTTPS/TLS verschlüsselt und auf den Servern von Google im Ruhezustand verschlüsselt.
+        </p>
+        <p>
+            Obwohl wir branchenübliche Sicherheitsmaßnahmen zum Schutz Ihrer Informationen einsetzen, ist keine Methode der elektronischen Speicherung oder Übertragung zu 100 % sicher. Wir können keine absolute Sicherheit garantieren.
+        </p>
+
+        <h2>6. Datenaufbewahrung</h2>
+        <p>
+            Wir bewahren Ihre personenbezogenen Daten so lange auf, wie Ihr Konto aktiv ist oder wie es für die Bereitstellung des Dienstes erforderlich ist. Wenn Sie Ihr Konto löschen, werden wir Ihre personenbezogenen Daten löschen, einschließlich:
+        </p>
+        <ul>
+            <li>Ihr Benutzerprofil und Ihre Kontoanmeldedaten</li>
+            <li>Ihre Workout-Ergebnisse und persönlichen Bestleistungen</li>
+            <li>Ihre Beiträge und Kommentare</li>
+            <li>Ihre hochgeladenen Mediendateien</li>
+            <li>Ihre Community-Mitgliedschaften</li>
+        </ul>
+        <p>
+            Einige Informationen können für einen begrenzten Zeitraum in unseren Backups aufbewahrt werden oder soweit gesetzlich vorgeschrieben. Anonymisierte oder aggregierte Daten, die Sie nicht identifizieren können, können auf unbestimmte Zeit aufbewahrt werden.
+        </p>
+
+        <h2>7. Rechtsgrundlage der Verarbeitung (EWR/UK-Nutzer)</h2>
+        <p>
+            Wenn Sie sich im Europäischen Wirtschaftsraum (EWR) oder im Vereinigten Königreich befinden, verarbeiten wir Ihre personenbezogenen Daten auf den folgenden Rechtsgrundlagen gemäß der Datenschutz-Grundverordnung (DSGVO):
+        </p>
+        <ul>
+            <li><strong>Vertrag:</strong> Verarbeitung, die zur Bereitstellung des Dienstes erforderlich ist, für den Sie sich angemeldet haben (Kontoerstellung, Workout-Tracking, Community-Funktionen)</li>
+            <li><strong>Berechtigte Interessen:</strong> Verarbeitung, die für unsere berechtigten Interessen erforderlich ist, wie die Verbesserung des Dienstes, die Verhinderung von Missbrauch und die Gewährleistung der Sicherheit, sofern diese Interessen nicht durch Ihre Rechte überwiegen</li>
+            <li><strong>Einwilligung:</strong> Wenn Sie eine ausdrückliche Einwilligung erteilt haben, z. B. für den Empfang von Push-Benachrichtigungen</li>
+            <li><strong>Rechtliche Verpflichtung:</strong> Verarbeitung, die zur Erfüllung gesetzlicher Anforderungen erforderlich ist</li>
+        </ul>
+
+        <h2>8. Ihre Rechte und Wahlmöglichkeiten</h2>
+        <p>Abhängig von Ihrem Standort haben Sie möglicherweise die folgenden Rechte in Bezug auf Ihre personenbezogenen Daten:</p>
+
+        <h3>8.1 Rechte für alle Nutzer</h3>
+        <ul>
+            <li><strong>Auskunft:</strong> Fordern Sie eine Kopie der personenbezogenen Daten an, die wir über Sie gespeichert haben</li>
+            <li><strong>Berichtigung:</strong> Aktualisieren oder korrigieren Sie Ihre personenbezogenen Daten über die App</li>
+            <li><strong>Löschung:</strong> Löschen Sie Ihr Konto und alle zugehörigen Daten über die Kontoeinstellungen in der App</li>
+            <li><strong>Benachrichtigungen:</strong> Deaktivieren Sie Push-Benachrichtigungen über Ihre Geräteeinstellungen</li>
+            <li><strong>Widerruf der Einwilligung:</strong> Beenden Sie die Nutzung des Dienstes jederzeit</li>
+        </ul>
+
+        <h3>8.2 Zusätzliche Rechte für EWR/UK-Nutzer (DSGVO)</h3>
+        <p>Wenn Sie sich im EWR oder im Vereinigten Königreich befinden, haben Sie zusätzlich das Recht auf:</p>
+        <ul>
+            <li><strong>Datenübertragbarkeit:</strong> Erhalten Sie Ihre personenbezogenen Daten in einem strukturierten, gängigen und maschinenlesbaren Format</li>
+            <li><strong>Einschränkung der Verarbeitung:</strong> Verlangen Sie unter bestimmten Umständen die Einschränkung der Verarbeitung Ihrer personenbezogenen Daten</li>
+            <li><strong>Widerspruch gegen die Verarbeitung:</strong> Widersprechen Sie der Verarbeitung auf Grundlage berechtigter Interessen</li>
+            <li><strong>Beschwerde einlegen:</strong> Reichen Sie eine Beschwerde bei Ihrer zuständigen Datenschutzaufsichtsbehörde ein, wenn Sie der Meinung sind, dass Ihre Rechte verletzt wurden</li>
+        </ul>
+
+        <h3>8.3 Rechte für US-Nutzer (Kalifornien / CCPA)</h3>
+        <p>Wenn Sie in Kalifornien ansässig sind, haben Sie gemäß dem California Consumer Privacy Act (CCPA) das Recht:</p>
+        <ul>
+            <li>Zu erfahren, welche personenbezogenen Daten wir erfassen, verwenden und offenlegen</li>
+            <li>Die Löschung Ihrer personenbezogenen Daten zu verlangen</li>
+            <li>Dem Verkauf personenbezogener Daten zu widersprechen (wir verkaufen Ihre Daten nicht)</li>
+            <li>Nicht diskriminiert zu werden, weil Sie Ihre Datenschutzrechte ausüben</li>
+        </ul>
+
+        <h3>8.4 Rechte für südkoreanische Nutzer (PIPA)</h3>
+        <p>Wenn Sie sich in Südkorea befinden, haben Sie gemäß dem Personal Information Protection Act (PIPA) das Recht:</p>
+        <ul>
+            <li>Auf Auskunft, Berichtigung, Löschung oder Aussetzung der Verarbeitung Ihrer personenbezogenen Daten</li>
+            <li>Über die Erfassung und Verwendung Ihrer personenbezogenen Daten informiert zu werden</li>
+            <li>Die Einwilligung zur Verarbeitung Ihrer personenbezogenen Daten zu widerrufen</li>
+        </ul>
+
+        <p>
+            Um eines dieser Rechte auszuüben, können Sie die In-App-Einstellungen verwenden oder uns unter der unten angegebenen E-Mail-Adresse kontaktieren. Wir werden auf Ihre Anfrage innerhalb der gesetzlich vorgeschriebenen Frist antworten (in der Regel innerhalb von 30 Tagen).
+        </p>
+
+        <h2>9. Datenschutz von Kindern</h2>
+        <p>
+            Der Dienst ist nicht für Kinder unter 13 Jahren (oder 16 Jahren im EWR/UK oder 14 Jahren in Südkorea) bestimmt. Wir erfassen wissentlich keine personenbezogenen Daten von Kindern unter diesen Altersgrenzen. Wenn Sie ein Elternteil oder Erziehungsberechtigter sind und glauben, dass Ihr Kind uns personenbezogene Daten bereitgestellt hat, kontaktieren Sie uns bitte, und wir werden Maßnahmen ergreifen, um diese Informationen zu löschen.
+        </p>
+
+        <h2>10. Internationale Datenübermittlungen</h2>
+        <p>
+            showup ist in Südkorea, den Vereinigten Staaten und dem Europäischen Wirtschaftsraum (EWR) tätig. Ihre personenbezogenen Daten können in jede dieser Regionen sowie in Länder übertragen und dort verarbeitet werden, in denen unsere Dienstleister (wie Google Cloud/Firebase) Einrichtungen unterhalten.
+        </p>
+        <p>
+            Für die Übermittlung personenbezogener Daten aus dem EWR/UK in Länder außerhalb des EWR/UK, die kein angemessenes Datenschutzniveau bieten, stützen wir uns auf geeignete Garantien, einschließlich der von der Europäischen Kommission verabschiedeten Standardvertragsklauseln (SCCs), um sicherzustellen, dass Ihre Daten gemäß den Anforderungen der DSGVO geschützt sind.
+        </p>
+        <p>
+            Durch die Nutzung des Dienstes erkennen Sie an, dass Ihre Informationen in diesen Regionen verarbeitet werden können. Wir ergreifen Maßnahmen, um sicherzustellen, dass Ihre Daten unabhängig vom Verarbeitungsort das gleiche Schutzniveau erhalten.
+        </p>
+
+        <h2>11. Änderungen dieser Richtlinie</h2>
+        <p>
+            Wir können diese Datenschutzerklärung von Zeit zu Zeit aktualisieren. Wir werden Sie über wesentliche Änderungen informieren, indem wir die aktualisierte Richtlinie auf dieser Seite veröffentlichen und das Datum „Zuletzt aktualisiert" anpassen. Ihre fortgesetzte Nutzung des Dienstes nach Änderungen gilt als Zustimmung zur aktualisierten Richtlinie.
+        </p>
+
+        <h2>12. Kontakt</h2>
+        <p>Wenn Sie Fragen zu dieser Datenschutzerklärung haben, Ihre Datenschutzrechte ausüben möchten oder Bedenken bezüglich unserer Datenpraktiken haben, kontaktieren Sie uns bitte unter:</p>
+        <p>
+            <a href="mailto:support@showupcounts.com">support@showupcounts.com</a>
+        </p>
+        <p>
+            Für EWR/UK-Nutzer: Wenn Sie mit unserer Antwort nicht zufrieden sind, haben Sie das Recht, eine Beschwerde bei Ihrer zuständigen Datenschutzaufsichtsbehörde einzureichen.
+        </p>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <a href="index.html" class="footer-logo">
+                        <img src="logo-dark.svg" alt="showup" class="logo-dark">
+                        <img src="logo-light.svg" alt="showup" class="logo-light">
+                    </a>
+                    <p>Build your fitness community. Connect. Train. Grow together.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-col">
+                        <h4>Product</h4>
+                        <a href="index.html#features">Features</a>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Legal</h4>
+                        <a href="privacy.html">Privacy Policy</a>
+                        <a href="terms.html">Terms of Service</a>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Connect</h4>
+                        <a href="https://instagram.com/showupcounts" target="_blank">Instagram</a>
+                        <a href="contact.html">Contact</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Showup. All rights reserved.</p>
+                <a href="#" class="app-store-badge">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                    Download on the App Store
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const themeToggle = document.getElementById('themeToggle');
+        function toggleTheme() {
+            const current = document.documentElement.getAttribute('data-theme');
+            const next = current === 'light' ? 'dark' : 'light';
+            document.documentElement.setAttribute('data-theme', next);
+            localStorage.setItem('theme', next);
+        }
+        themeToggle.addEventListener('click', toggleTheme);
+
+        const langDropdown = document.getElementById('langDropdown');
+        const langCurrent = document.getElementById('langCurrent');
+        langCurrent.addEventListener('click', function(e) {
+            e.stopPropagation();
+            langDropdown.classList.toggle('open');
+        });
+        document.addEventListener('click', function() {
+            langDropdown.classList.remove('open');
+        });
+    </script>
+</body>
+</html>

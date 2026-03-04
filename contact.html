@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact — showup</title>
+    <meta name="description" content="Get in touch with the showup team. We'd love to hear from you.">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%234F8EF7'/%3E%3Ctext x='16' y='23' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='bold' font-size='18'%3Es%3C/text%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet">
+    <script>
+        (function() {
+            var theme = localStorage.getItem('theme');
+            if (theme) document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
+
+    <style>
+        @font-face {
+            font-family: 'SecondMoment';
+            src: url('SecondMoment.otf') format('opentype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        :root {
+            --bg-primary: #0A0A0A;
+            --bg-secondary: #111111;
+            --text-primary: #FFFFFF;
+            --text-secondary: rgba(255, 255, 255, 0.6);
+            --text-tertiary: rgba(255, 255, 255, 0.35);
+            --accent-blue: #FFFFFF;
+            --border: rgba(255, 255, 255, 0.2);
+            --glass: #0A0A0A;
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --nav-height: 72px;
+        }
+
+        [data-theme="light"] {
+            --bg-primary: #F4F4F4;
+            --bg-secondary: #F4F4F4;
+            --text-primary: #1A1A1A;
+            --text-secondary: rgba(26, 26, 26, 0.55);
+            --text-tertiary: rgba(26, 26, 26, 0.3);
+            --accent-blue: #1A1A1A;
+            --border: rgba(0, 0, 0, 0.15);
+            --glass: #F4F4F4;
+            --glass-border: rgba(0, 0, 0, 0.15);
+        }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+        body {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            color: var(--text-primary);
+            background: var(--bg-primary);
+            line-height: 1.6;
+        }
+        a { color: inherit; text-decoration: none; }
+
+        /* Film grain — disabled */
+        body::after { display: none; }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            height: var(--nav-height);
+            background: var(--glass);
+            border-bottom: 1px solid var(--border);
+        }
+        .nav-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 32px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .nav-logo {
+            display: flex;
+            align-items: center;
+        }
+        .nav-logo img {
+            height: 44px;
+            width: auto;
+            display: block;
+        }
+        img.logo-dark { display: block; }
+        img.logo-light { display: none; }
+        [data-theme="light"] img.logo-dark { display: none; }
+        [data-theme="light"] img.logo-light { display: block; }
+        .theme-toggle {
+            width: 38px;
+            height: 38px;
+            border: none;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            color: var(--text-secondary);
+            margin-left: auto;
+        }
+        .theme-toggle:hover { color: var(--text-primary); }
+        .theme-toggle svg { width: 18px; height: 18px; transition: transform 0.2s ease; }
+        .theme-toggle:hover svg { transform: rotate(15deg); }
+        .icon-sun { display: block; }
+        .icon-moon { display: none; }
+        [data-theme="light"] .icon-sun { display: none; }
+        [data-theme="light"] .icon-moon { display: block; }
+
+        /* Content */
+        .contact-content {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: calc(var(--nav-height) + 80px) 24px 100px;
+        }
+        .contact-content h1 {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-weight: 900;
+            font-size: clamp(2rem, 4vw, 3rem);
+            line-height: 1.1;
+            letter-spacing: -0.04em;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+        .contact-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            line-height: 1.7;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+        }
+        .contact-content h2 {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-weight: 900;
+            font-size: 1.3rem;
+            line-height: 1.2;
+            letter-spacing: -0.03em;
+            text-transform: uppercase;
+            margin-top: 40px;
+            margin-bottom: 12px;
+        }
+        .contact-content p {
+            color: var(--text-secondary);
+            font-size: 0.98rem;
+            line-height: 1.8;
+            margin-bottom: 16px;
+        }
+        .contact-content a {
+            color: var(--text-primary);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+        .contact-content a:hover { opacity: 0.7; }
+        .contact-email {
+            display: inline-block;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-top: 4px;
+        }
+
+        /* Footer */
+        .footer {
+            border-top: 1px solid var(--border);
+            padding: 80px 24px 40px;
+            background: var(--bg-primary);
+        }
+        .footer-inner { max-width: 1080px; margin: 0 auto; }
+        .footer-top {
+            display: grid;
+            grid-template-columns: 1.2fr 2fr;
+            gap: 64px;
+            margin-bottom: 64px;
+        }
+        .footer-logo {
+            display: inline-block;
+            margin-bottom: 16px;
+        }
+        .footer-logo img {
+            height: 38px;
+            width: auto;
+        }
+        .footer-brand p {
+            color: var(--text-secondary);
+            font-size: 0.92rem;
+            line-height: 1.6;
+            max-width: 280px;
+        }
+        .footer-links {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+        .footer-col h4 {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-weight: 400;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-tertiary);
+            margin-bottom: 20px;
+        }
+        .footer-col a {
+            display: block;
+            color: var(--text-secondary);
+            font-size: 0.92rem;
+            padding: 6px 0;
+            transition: color 0.2s ease;
+        }
+        .footer-col a:hover { color: var(--text-primary); }
+        .footer-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+        }
+        .footer-bottom p {
+            color: var(--text-tertiary);
+            font-size: 0.85rem;
+        }
+        .app-store-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 20px;
+            border-radius: 0;
+            background: #fff;
+            color: #000;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-weight: 400;
+            font-size: 0.82rem;
+            border: 2px solid var(--text-primary);
+            transition: opacity 0.2s ease;
+        }
+        .app-store-badge:hover { opacity: 0.85; }
+        .app-store-badge svg { width: 18px; height: 18px; }
+
+        /* Light theme overrides */
+        [data-theme="light"] .app-store-badge {
+            background: #1A1A1A;
+            color: #F4F4F4;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            :root { --nav-height: 64px; }
+            .contact-content { padding-top: calc(var(--nav-height) + 48px); }
+            .footer-top { grid-template-columns: 1fr; gap: 40px; }
+            .footer-links { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+            .footer-bottom { flex-direction: column; gap: 20px; text-align: center; }
+        }
+        @media (max-width: 480px) {
+            .footer-links { grid-template-columns: 1fr 1fr; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            * { transition-duration: 0.01ms !important; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="index.html" class="nav-logo">
+                <img src="logo-dark.svg" alt="showup" class="logo-dark">
+                <img src="logo-light.svg" alt="showup" class="logo-light">
+            </a>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+            </button>
+        </div>
+    </nav>
+
+    <main class="contact-content">
+        <h1>Contact</h1>
+        <p class="contact-subtitle">
+            Have a question, feedback, or want to learn more about Showup? We'd love to hear from you.
+        </p>
+
+        <h2>Email</h2>
+        <p>
+            Reach us at<br>
+            <a href="mailto:support@showupcounts.com" class="contact-email">support@showupcounts.com</a>
+        </p>
+
+        <h2>Follow Us</h2>
+        <p>
+            <a href="https://instagram.com/showupcounts" target="_blank">@showupcounts on Instagram</a>
+        </p>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <a href="index.html" class="footer-logo">
+                        <img src="logo-dark.svg" alt="showup" class="logo-dark">
+                        <img src="logo-light.svg" alt="showup" class="logo-light">
+                    </a>
+                    <p>Build your fitness community. Connect. Train. Grow together.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-col">
+                        <h4>Product</h4>
+                        <a href="index.html#features">Features</a>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Legal</h4>
+                        <a href="privacy.html">Privacy Policy</a>
+                        <a href="terms.html">Terms of Service</a>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Connect</h4>
+                        <a href="https://instagram.com/showupcounts" target="_blank">Instagram</a>
+                        <a href="contact.html">Contact</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Showup. All rights reserved.</p>
+                <a href="#" class="app-store-badge">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                    Download on the App Store
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const themeToggle = document.getElementById('themeToggle');
+        function toggleTheme() {
+            const current = document.documentElement.getAttribute('data-theme');
+            const next = current === 'light' ? 'dark' : 'light';
+            document.documentElement.setAttribute('data-theme', next);
+            localStorage.setItem('theme', next);
+        }
+        themeToggle.addEventListener('click', toggleTheme);
+    </script>
+</body>
+</html>

@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy — showup</title>
+    <meta name="description" content="showup Privacy Policy. Learn how we collect, use, and protect your data.">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%234F8EF7'/%3E%3Ctext x='16' y='23' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='bold' font-size='18'%3Es%3C/text%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet">
+    <script>
+        (function() {
+            var theme = localStorage.getItem('theme');
+            if (theme) document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
+
+    <style>
+        @font-face {
+            font-family: 'SecondMoment';
+            src: url('SecondMoment.otf') format('opentype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        :root {
+            --bg-primary: #0A0A0A;
+            --bg-secondary: #111111;
+            --text-primary: #FFFFFF;
+            --text-secondary: rgba(255, 255, 255, 0.6);
+            --text-tertiary: rgba(255, 255, 255, 0.35);
+            --accent-blue: #FFFFFF;
+            --border: rgba(255, 255, 255, 0.2);
+            --glass: #0A0A0A;
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --nav-height: 72px;
+        }
+
+        [data-theme="light"] {
+            --bg-primary: #F4F4F4;
+            --bg-secondary: #F4F4F4;
+            --text-primary: #1A1A1A;
+            --text-secondary: rgba(26, 26, 26, 0.55);
+            --text-tertiary: rgba(26, 26, 26, 0.3);
+            --accent-blue: #1A1A1A;
+            --border: rgba(0, 0, 0, 0.15);
+            --glass: #F4F4F4;
+            --glass-border: rgba(0, 0, 0, 0.15);
+        }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+        body {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            color: var(--text-primary);
+            background: var(--bg-primary);
+            line-height: 1.6;
+        }
+        a { color: inherit; text-decoration: none; }
+
+        /* Film grain — disabled */
+        body::after { display: none; }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            height: var(--nav-height);
+            background: var(--glass);
+            border-bottom: 1px solid var(--border);
+        }
+        .nav-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 32px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .nav-logo {
+            display: flex;
+            align-items: center;
+        }
+        .nav-logo img {
+            height: 44px;
+            width: auto;
+            display: block;
+        }
+        img.logo-dark { display: block; }
+        img.logo-light { display: none; }
+        [data-theme="light"] img.logo-dark { display: none; }
+        [data-theme="light"] img.logo-light { display: block; }
+        .theme-toggle {
+            width: 38px;
+            height: 38px;
+            border: none;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            color: var(--text-secondary);
+            margin-left: auto;
+        }
+        .theme-toggle:hover { color: var(--text-primary); }
+        .theme-toggle svg { width: 18px; height: 18px; transition: transform 0.2s ease; }
+        .theme-toggle:hover svg { transform: rotate(15deg); }
+        .icon-sun { display: block; }
+        .icon-moon { display: none; }
+        [data-theme="light"] .icon-sun { display: none; }
+        [data-theme="light"] .icon-moon { display: block; }
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 36px;
+        }
+        .nav-links a {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-weight: 400;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            transition: color 0.25s ease;
+        }
+        .nav-links a:hover { color: var(--text-primary); }
+        .nav-links a.active { color: var(--text-primary); }
+        .nav-cta {
+            display: inline-flex;
+            align-items: center;
+            padding: 10px 24px;
+            border-radius: 0;
+            background: #FFFFFF;
+            color: #0A0A0A;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-weight: 600;
+            font-size: 0.88rem;
+            border: 2px solid var(--text-primary);
+            transition: opacity 0.2s ease;
+        }
+        .nav-cta:hover {
+            opacity: 0.85;
+        }
+        .nav-hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            padding: 8px;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        .nav-hamburger span {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: var(--text-primary);
+            transition: all 0.3s ease;
+        }
+        .nav-hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .nav-hamburger.active span:nth-child(2) { opacity: 0; }
+        .nav-hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+        .mobile-menu {
+            position: fixed;
+            inset: 0;
+            z-index: 999;
+            background: var(--bg-primary);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 32px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.35s ease;
+        }
+        .mobile-menu.open { opacity: 1; pointer-events: auto; }
+        .mobile-menu a {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-weight: 400;
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            transition: color 0.2s ease;
+        }
+        .mobile-menu a:hover { color: var(--text-primary); }
+
+        /* Content */
+        .privacy-content {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: calc(var(--nav-height) + 80px) 24px 100px;
+        }
+        .privacy-content h1 {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-weight: 900;
+            font-size: clamp(2rem, 4vw, 3rem);
+            line-height: 1.1;
+            letter-spacing: -0.04em;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+        .privacy-updated {
+            color: var(--text-tertiary);
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-weight: 400;
+            font-size: 0.9rem;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+        }
+        .privacy-content h2 {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-weight: 900;
+            font-size: 1.5rem;
+            line-height: 1.2;
+            letter-spacing: -0.03em;
+            text-transform: uppercase;
+            margin-top: 48px;
+            margin-bottom: 16px;
+        }
+        .privacy-content h3 {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-weight: 900;
+            font-size: 1.15rem;
+            margin-top: 32px;
+            margin-bottom: 12px;
+        }
+        .privacy-content p {
+            color: var(--text-secondary);
+            font-size: 0.98rem;
+            line-height: 1.8;
+            margin-bottom: 16px;
+        }
+        .privacy-content ul {
+            list-style: none;
+            margin-bottom: 16px;
+            padding-left: 0;
+        }
+        .privacy-content ul li {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.8;
+            padding-left: 20px;
+            position: relative;
+        }
+        .privacy-content ul li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 11px;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--text-primary);
+            opacity: 0.4;
+        }
+        .privacy-content a {
+            color: var(--text-primary);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+        .privacy-content a:hover { opacity: 0.7; }
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .lang-dropdown {
+            position: relative;
+            flex-shrink: 0;
+        }
+        .lang-current {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            padding: 6px 10px;
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-weight: 600;
+            font-size: 0.75rem;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: color 0.2s ease, border-color 0.2s ease;
+        }
+        .lang-current:hover {
+            color: var(--text-primary);
+            border-color: var(--text-primary);
+        }
+        .lang-current svg {
+            width: 10px;
+            height: 10px;
+            transition: transform 0.2s ease;
+        }
+        .lang-dropdown.open .lang-current svg {
+            transform: rotate(180deg);
+        }
+        .lang-menu {
+            position: absolute;
+            top: calc(100% + 6px);
+            right: 0;
+            background: var(--bg-primary);
+            border: 1px solid var(--border);
+            min-width: 100%;
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(-4px);
+            transition: opacity 0.15s ease, transform 0.15s ease;
+            z-index: 100;
+        }
+        .lang-dropdown.open .lang-menu {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0);
+        }
+        .lang-menu a {
+            display: block;
+            width: 100%;
+            padding: 8px 12px;
+            color: var(--text-secondary);
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-weight: 600;
+            font-size: 0.75rem;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: color 0.15s ease, background 0.15s ease;
+        }
+        .lang-menu a:hover {
+            color: var(--text-primary);
+            background: rgba(255,255,255,0.06);
+        }
+        [data-theme="light"] .lang-menu a:hover {
+            background: rgba(0,0,0,0.04);
+        }
+        .lang-menu a.active {
+            color: var(--text-primary);
+        }
+
+        /* Footer */
+        .footer {
+            border-top: 1px solid var(--border);
+            padding: 80px 24px 40px;
+            background: var(--bg-primary);
+        }
+        .footer-inner { max-width: 1080px; margin: 0 auto; }
+        .footer-top {
+            display: grid;
+            grid-template-columns: 1.2fr 2fr;
+            gap: 64px;
+            margin-bottom: 64px;
+        }
+        .footer-logo {
+            display: inline-block;
+            margin-bottom: 16px;
+        }
+        .footer-logo img {
+            height: 38px;
+            width: auto;
+        }
+        .footer-brand p {
+            color: var(--text-secondary);
+            font-size: 0.92rem;
+            line-height: 1.6;
+            max-width: 280px;
+        }
+        .footer-links {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+        .footer-col h4 {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-weight: 400;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-tertiary);
+            margin-bottom: 20px;
+        }
+        .footer-col a {
+            display: block;
+            color: var(--text-secondary);
+            font-size: 0.92rem;
+            padding: 6px 0;
+            transition: color 0.2s ease;
+        }
+        .footer-col a:hover { color: var(--text-primary); }
+        .footer-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+        }
+        .footer-bottom p {
+            color: var(--text-tertiary);
+            font-size: 0.85rem;
+        }
+        .app-store-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 20px;
+            border-radius: 0;
+            background: #fff;
+            color: #000;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-weight: 400;
+            font-size: 0.82rem;
+            border: 2px solid var(--text-primary);
+            transition: opacity 0.2s ease;
+        }
+        .app-store-badge:hover { opacity: 0.85; }
+        .app-store-badge svg { width: 18px; height: 18px; }
+
+        /* Light theme overrides */
+        [data-theme="light"] .nav-cta {
+            background: #1A1A1A;
+            color: #F4F4F4;
+        }
+        [data-theme="light"] .app-store-badge {
+            background: #1A1A1A;
+            color: #F4F4F4;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            :root { --nav-height: 64px; }
+            .nav-links, .nav-cta { display: none; }
+            .nav-hamburger { display: flex; }
+            .privacy-content { padding-top: calc(var(--nav-height) + 48px); }
+            .footer-top { grid-template-columns: 1fr; gap: 40px; }
+            .footer-links { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+            .footer-bottom { flex-direction: column; gap: 20px; text-align: center; }
+        }
+        @media (max-width: 480px) {
+            .footer-links { grid-template-columns: 1fr 1fr; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            * { transition-duration: 0.01ms !important; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="index.html" class="nav-logo">
+                <img src="logo-dark.svg" alt="showup" class="logo-dark">
+                <img src="logo-light.svg" alt="showup" class="logo-light">
+            </a>
+            <div class="nav-actions">
+                <div class="lang-dropdown" id="langDropdown">
+                    <button class="lang-current" id="langCurrent" aria-label="Change language">
+                        <span>EN</span>
+                        <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg>
+                    </button>
+                    <div class="lang-menu">
+                        <a href="privacy.html" class="active">EN</a>
+                        <a href="privacy-ko.html">KO</a>
+                        <a href="privacy-de.html">DE</a>
+                    </div>
+                </div>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="privacy-content">
+        <h1>Privacy Policy</h1>
+        <p class="privacy-updated">Last updated: February 18, 2026</p>
+
+        <p>
+            showup ("we," "our," or "us") operates the showup mobile application and website (collectively, the "Service"). This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use the Service.
+        </p>
+        <p>
+            By using the Service, you agree to the collection and use of information in accordance with this Privacy Policy. If you do not agree with the terms of this policy, please do not use the Service.
+        </p>
+
+        <h2>1. Information We Collect</h2>
+
+        <h3>1.1 Information You Provide</h3>
+        <p>We collect information that you voluntarily provide when you:</p>
+        <ul>
+            <li>Register for an account</li>
+            <li>Create or join a community (space)</li>
+            <li>Participate in workouts and record scores</li>
+            <li>Post content or comments</li>
+            <li>Upload photos or media</li>
+            <li>Contact us for support</li>
+        </ul>
+        <p>This information may include:</p>
+        <ul>
+            <li>Name and email address</li>
+            <li>Date of birth and gender</li>
+            <li>Profile photo</li>
+            <li>Fitness data, including workout scores, personal records, and benchmarks</li>
+            <li>User-generated content such as posts, comments, and media</li>
+            <li>Community membership and role information</li>
+            <li>Unit preferences (weight, distance)</li>
+        </ul>
+
+        <h3>1.2 Information Collected Automatically</h3>
+        <p>When you use the Service, we may automatically collect:</p>
+        <ul>
+            <li>Device type and operating system version</li>
+            <li>Unique device identifiers</li>
+            <li>App usage data</li>
+            <li>Crash reports and performance diagnostics</li>
+        </ul>
+
+        <h2>2. How We Use Your Information</h2>
+        <p>We use the information we collect to:</p>
+        <ul>
+            <li>Provide, operate, and maintain the Service</li>
+            <li>Create and manage your account</li>
+            <li>Enable community features, leaderboards, and social interactions</li>
+            <li>Track and display workout scores, personal records, and benchmarks</li>
+            <li>Send push notifications about workouts, community activity, and updates</li>
+            <li>Respond to support requests and communicate with you</li>
+            <li>Monitor and improve the Service</li>
+            <li>Detect, prevent, and address abuse, fraud, or technical issues</li>
+            <li>Enforce our terms and community guidelines</li>
+        </ul>
+
+        <h2>3. How We Share Your Information</h2>
+
+        <h3>3.1 Within the Service</h3>
+        <p>
+            Your profile name, profile photo, workout scores, posts, and comments are visible to members of communities you join. Leaderboard rankings are visible to other community members.
+        </p>
+
+        <h3>3.2 Service Providers</h3>
+        <p>
+            We use the following third-party service providers to operate the Service:
+        </p>
+        <ul>
+            <li><strong>Firebase (Google Cloud):</strong> Authentication, database storage, file storage, cloud functions, and push notifications</li>
+            <li><strong>Apple Sign-In and Google Sign-In:</strong> Account authentication</li>
+        </ul>
+        <p>
+            These providers process your data on our behalf and are bound by their own privacy policies and data protection obligations.
+        </p>
+
+        <h3>3.3 Legal Requirements</h3>
+        <p>We may disclose your information if required to do so by law, or in response to valid legal requests by public authorities.</p>
+
+        <h3>3.4 Business Transfers</h3>
+        <p>In the event of a merger, acquisition, or sale of assets, your information may be transferred as part of that transaction. We will notify you before your information becomes subject to a different privacy policy.</p>
+
+        <h3>3.5 No Sale of Data</h3>
+        <p>We do not sell, rent, or trade your personal information to third parties for their marketing purposes.</p>
+
+        <h2>4. Advertising and Tracking</h2>
+        <p>
+            The Service does not contain third-party advertising. We do not use advertising SDKs or tracking frameworks. We do not track you across other apps or websites.
+        </p>
+
+        <h2>5. Data Storage and Security</h2>
+        <p>
+            Your data is stored using Firebase (Google Cloud) infrastructure. All data is encrypted in transit using HTTPS/TLS and encrypted at rest on Google's servers.
+        </p>
+        <p>
+            While we use industry-standard security measures to protect your information, no method of electronic storage or transmission is 100% secure. We cannot guarantee absolute security.
+        </p>
+
+        <h2>6. Data Retention</h2>
+        <p>
+            We retain your personal information for as long as your account is active or as needed to provide the Service. When you delete your account, we will delete your personal information, including:
+        </p>
+        <ul>
+            <li>Your user profile and account credentials</li>
+            <li>Your workout scores and personal records</li>
+            <li>Your posts and comments</li>
+            <li>Your uploaded media files</li>
+            <li>Your community memberships</li>
+        </ul>
+        <p>
+            Some information may be retained in our backups for a limited period or as required by law. Anonymized or aggregated data that cannot identify you may be retained indefinitely.
+        </p>
+
+        <h2>7. Legal Basis for Processing (EEA/UK Users)</h2>
+        <p>
+            If you are located in the European Economic Area (EEA) or the United Kingdom, we process your personal data under the following legal bases as defined by the General Data Protection Regulation (GDPR):
+        </p>
+        <ul>
+            <li><strong>Contract:</strong> Processing necessary to provide the Service you have signed up for (account creation, workout tracking, community features)</li>
+            <li><strong>Legitimate Interests:</strong> Processing necessary for our legitimate interests, such as improving the Service, preventing abuse, and ensuring security, where these interests are not overridden by your rights</li>
+            <li><strong>Consent:</strong> Where you have given explicit consent, such as opting in to push notifications</li>
+            <li><strong>Legal Obligation:</strong> Processing necessary to comply with legal requirements</li>
+        </ul>
+
+        <h2>8. Your Rights and Choices</h2>
+        <p>Depending on your location, you may have the following rights regarding your personal information:</p>
+
+        <h3>8.1 Rights for All Users</h3>
+        <ul>
+            <li><strong>Access:</strong> Request a copy of the personal information we hold about you</li>
+            <li><strong>Correction:</strong> Update or correct your personal information through the app</li>
+            <li><strong>Deletion:</strong> Delete your account and all associated data from the Account settings in the app</li>
+            <li><strong>Notifications:</strong> Opt out of push notifications through your device settings</li>
+            <li><strong>Withdraw Consent:</strong> Stop using the Service at any time</li>
+        </ul>
+
+        <h3>8.2 Additional Rights for EEA/UK Users (GDPR)</h3>
+        <p>If you are located in the EEA or the United Kingdom, you also have the right to:</p>
+        <ul>
+            <li><strong>Data Portability:</strong> Receive your personal data in a structured, commonly used, and machine-readable format</li>
+            <li><strong>Restrict Processing:</strong> Request that we limit the processing of your personal data under certain circumstances</li>
+            <li><strong>Object to Processing:</strong> Object to processing based on legitimate interests</li>
+            <li><strong>Lodge a Complaint:</strong> File a complaint with your local data protection supervisory authority if you believe your rights have been violated</li>
+        </ul>
+
+        <h3>8.3 Rights for US Users (California / CCPA)</h3>
+        <p>If you are a California resident, under the California Consumer Privacy Act (CCPA) you have the right to:</p>
+        <ul>
+            <li>Know what personal information we collect, use, and disclose</li>
+            <li>Request deletion of your personal information</li>
+            <li>Opt out of the sale of personal information (we do not sell your data)</li>
+            <li>Non-discrimination for exercising your privacy rights</li>
+        </ul>
+
+        <h3>8.4 Rights for South Korean Users (PIPA)</h3>
+        <p>If you are located in South Korea, under the Personal Information Protection Act (PIPA) you have the right to:</p>
+        <ul>
+            <li>Access, correct, delete, or suspend processing of your personal information</li>
+            <li>Be notified of the collection and use of your personal information</li>
+            <li>Withdraw consent to the processing of your personal information</li>
+        </ul>
+
+        <p>
+            To exercise any of these rights, you may use the in-app settings or contact us at the email address below. We will respond to your request within the timeframe required by applicable law (generally within 30 days).
+        </p>
+
+        <h2>9. Children's Privacy</h2>
+        <p>
+            The Service is not intended for children under the age of 13 (or 16 in the EEA/UK, or 14 in South Korea). We do not knowingly collect personal information from children under these ages. If you are a parent or guardian and believe your child has provided us with personal information, please contact us and we will take steps to delete such information.
+        </p>
+
+        <h2>10. International Data Transfers</h2>
+        <p>
+            showup operates in South Korea, the United States, and the European Economic Area (EEA). Your personal data may be transferred to and processed in any of these regions, as well as in countries where our service providers (such as Google Cloud/Firebase) maintain facilities.
+        </p>
+        <p>
+            For transfers of personal data from the EEA/UK to countries outside the EEA/UK that have not been deemed to provide an adequate level of data protection, we rely on appropriate safeguards, including Standard Contractual Clauses (SCCs) adopted by the European Commission, to ensure your data is protected in accordance with GDPR requirements.
+        </p>
+        <p>
+            By using the Service, you acknowledge that your information may be processed in these regions. We take steps to ensure your data receives the same level of protection regardless of where it is processed.
+        </p>
+
+        <h2>11. Changes to This Policy</h2>
+        <p>
+            We may update this Privacy Policy from time to time. We will notify you of material changes by posting the updated policy on this page and updating the "Last updated" date. Your continued use of the Service after any changes constitutes acceptance of the updated policy.
+        </p>
+
+        <h2>12. Contact Us</h2>
+        <p>If you have questions about this Privacy Policy, wish to exercise your data protection rights, or have concerns about our data practices, please contact us at:</p>
+        <p>
+            <a href="mailto:support@showupcounts.com">support@showupcounts.com</a>
+        </p>
+        <p>
+            For EEA/UK users: If you are not satisfied with our response, you have the right to lodge a complaint with your local data protection supervisory authority.
+        </p>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <a href="index.html" class="footer-logo">
+                        <img src="logo-dark.svg" alt="showup" class="logo-dark">
+                        <img src="logo-light.svg" alt="showup" class="logo-light">
+                    </a>
+                    <p>Build your fitness community. Connect. Train. Grow together.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-col">
+                        <h4>Product</h4>
+                        <a href="index.html#features">Features</a>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Legal</h4>
+                        <a href="privacy.html">Privacy Policy</a>
+                        <a href="terms.html">Terms of Service</a>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Connect</h4>
+                        <a href="https://instagram.com/showupcounts" target="_blank">Instagram</a>
+                        <a href="contact.html">Contact</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Showup. All rights reserved.</p>
+                <a href="#" class="app-store-badge">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                    Download on the App Store
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const themeToggle = document.getElementById('themeToggle');
+        function toggleTheme() {
+            const current = document.documentElement.getAttribute('data-theme');
+            const next = current === 'light' ? 'dark' : 'light';
+            document.documentElement.setAttribute('data-theme', next);
+            localStorage.setItem('theme', next);
+        }
+        themeToggle.addEventListener('click', toggleTheme);
+
+        const langDropdown = document.getElementById('langDropdown');
+        const langCurrent = document.getElementById('langCurrent');
+        langCurrent.addEventListener('click', function(e) {
+            e.stopPropagation();
+            langDropdown.classList.toggle('open');
+        });
+        document.addEventListener('click', function() {
+            langDropdown.classList.remove('open');
+        });
+    </script>
+</body>
+</html>

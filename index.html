@@ -1,0 +1,2116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>showup — Your Community. Your Workouts. Your Way.</title>
+    <meta name="description" content="Create fitness communities, program workouts, and stay connected. Anyone can build their tribe with showup.">
+    <meta property="og:title" content="showup — Your Community. Your Workouts. Your Way.">
+    <meta property="og:description" content="Create fitness communities, program workouts, and stay connected. Anyone can build their tribe with showup.">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%234F8EF7'/%3E%3Ctext x='16' y='23' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='bold' font-size='18'%3Es%3C/text%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet">
+
+    <!-- Prevent flash of wrong theme -->
+    <script>
+        (function() {
+            var stored = localStorage.getItem('theme');
+            var theme = stored || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
+
+    <style>
+        /* ============================================
+           CUSTOM FONTS
+           ============================================ */
+        @font-face {
+            font-family: 'SecondMoment';
+            src: url('SecondMoment.otf') format('opentype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        /* ============================================
+           CSS CUSTOM PROPERTIES
+           ============================================ */
+        :root {
+            --bg-primary: #0A0A0A;
+            --bg-secondary: #111111;
+            --bg-card: transparent;
+            --text-primary: #FFFFFF;
+            --text-secondary: rgba(255, 255, 255, 0.6);
+            --text-tertiary: rgba(255, 255, 255, 0.35);
+            --accent-blue: #FFFFFF;
+            --accent-blue-dim: rgba(255, 255, 255, 0.06);
+            --accent-orange: #FFFFFF;
+            --accent-orange-dim: rgba(255, 255, 255, 0.06);
+            --border: rgba(255, 255, 255, 0.2);
+            --glass: #0A0A0A;
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --radius-sm: 0px;
+            --radius-md: 0px;
+            --radius-lg: 0px;
+            --radius-xl: 0px;
+            --nav-height: 72px;
+        }
+
+        /* ============================================
+           RESET & BASE
+           ============================================ */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html {
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        body {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-weight: 500;
+            color: var(--text-primary);
+            background: var(--bg-primary);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+        a { color: inherit; text-decoration: none; }
+        ul { list-style: none; }
+        img { max-width: 100%; display: block; }
+        button { background: none; border: none; cursor: pointer; color: inherit; font: inherit; }
+
+        /* Film grain overlay — disabled for 90s bold look */
+        body::after {
+            display: none;
+        }
+
+        /* ============================================
+           TYPOGRAPHY
+           ============================================ */
+        .font-brand { font-family: 'SecondMoment', 'Comfortaa', cursive; }
+        .font-display { font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif; }
+        .font-body { font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif; }
+
+        h1, h2, h3, h4 {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            line-height: 1.0;
+            letter-spacing: -0.05em;
+            font-weight: 900;
+        }
+
+
+        /* ============================================
+           BUTTONS
+           ============================================ */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 28px;
+            border-radius: 0;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-weight: 800;
+            font-size: 0.9rem;
+            transition: opacity 0.15s ease;
+            cursor: pointer;
+            border: 2px solid transparent;
+            white-space: nowrap;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+        .btn-primary {
+            background: #fff;
+            color: #0A0A0A;
+            border-color: #fff;
+        }
+        .btn-primary:hover {
+            opacity: 0.85;
+        }
+        .btn-secondary {
+            background: transparent;
+            color: #fff;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+        .btn-secondary:hover {
+            border-color: #fff;
+        }
+
+        /* ============================================
+           NAVIGATION
+           ============================================ */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            height: var(--nav-height);
+            transition: background 0.15s ease, border-color 0.15s ease;
+            border-bottom: 1px solid transparent;
+        }
+        .nav.scrolled {
+            background: var(--bg-primary);
+            border-bottom-color: var(--border);
+        }
+        .nav-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 32px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .nav-logo {
+            display: flex;
+            align-items: center;
+        }
+        .nav-logo img {
+            height: 44px;
+            width: auto;
+            display: block;
+        }
+        img.logo-dark { display: block; }
+        img.logo-light { display: none; }
+        [data-theme="light"] img.logo-dark { display: none; }
+        [data-theme="light"] img.logo-light { display: block; }
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 36px;
+        }
+        .nav-links a {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-weight: 700;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            transition: color 0.15s ease;
+            position: relative;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--text-primary);
+            transition: width 0.15s ease;
+        }
+        .nav-links a:hover { color: var(--text-primary); }
+        .nav-links a:hover::after { width: 100%; }
+        .nav-cta {
+            display: inline-flex;
+            align-items: center;
+            padding: 10px 24px;
+            border-radius: 0;
+            background: #fff;
+            color: #0A0A0A;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-weight: 800;
+            font-size: 0.82rem;
+            transition: opacity 0.15s ease;
+            border: none;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+        .nav-cta:hover {
+            opacity: 0.85;
+        }
+        .nav-hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            padding: 8px;
+            z-index: 1001;
+        }
+        .nav-hamburger span {
+            display: block;
+            width: 22px;
+            height: 3px;
+            background: #fff;
+            transition: all 0.15s ease;
+        }
+        .nav-hamburger.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+        .nav-hamburger.active span:nth-child(2) { opacity: 0; }
+        .nav-hamburger.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+        /* Mobile menu */
+        .mobile-menu {
+            position: fixed;
+            inset: 0;
+            z-index: 999;
+            background: var(--bg-primary);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 32px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.15s ease;
+        }
+        .mobile-menu.open { opacity: 1; pointer-events: auto; }
+        .mobile-menu a {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-weight: 900;
+            font-size: 2rem;
+            color: var(--text-secondary);
+            transition: color 0.15s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+        .mobile-menu a:hover { color: var(--text-primary); }
+        .mobile-menu .btn { margin-top: 16px; }
+
+        /* ============================================
+           HERO SECTION
+           ============================================ */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: calc(var(--nav-height) + 40px) 24px 80px;
+            overflow: hidden;
+        }
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            overflow: hidden;
+        }
+        .orb {
+            display: none;
+        }
+        .orb-1, .orb-2, .orb-3 {
+            display: none;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+        }
+        .hero-badge {
+            display: inline-block;
+            padding: 6px 0;
+            border-radius: 0;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid var(--text-tertiary);
+            color: var(--text-secondary);
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-weight: 600;
+            font-size: 0.78rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+            opacity: 0;
+            animation: fadeInUp 0.5s ease 0.2s forwards;
+        }
+        .hero-headline {
+            font-size: clamp(3rem, 7.5vw, 5.5rem);
+            font-weight: 900;
+            line-height: 0.95;
+            margin-bottom: 32px;
+            text-transform: uppercase;
+            letter-spacing: -0.05em;
+        }
+        .hero-headline .line {
+            display: block;
+            opacity: 0;
+            animation: fadeInUp 0.5s ease forwards;
+        }
+        .hero-headline .line:nth-child(1) { animation-delay: 0.2s; }
+        .hero-headline .line:nth-child(2) { animation-delay: 0.35s; }
+        .hero-headline .line:nth-child(3) { animation-delay: 0.5s; }
+        .gradient-text {
+            color: var(--text-primary);
+            -webkit-text-fill-color: var(--text-primary);
+        }
+        .hero-subtext {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            color: var(--text-secondary);
+            max-width: 560px;
+            margin: 0 auto 40px;
+            line-height: 1.7;
+            opacity: 0;
+            animation: fadeInUp 0.5s ease 0.65s forwards;
+        }
+        .hero-ctas {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            opacity: 0;
+            animation: fadeInUp 0.5s ease 0.8s forwards;
+        }
+        .hero-ctas .btn svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* ============================================
+           FEATURES INTRO
+           ============================================ */
+        .features-intro {
+            text-align: center;
+            padding: 120px 24px 60px;
+            position: relative;
+        }
+        .features-intro h2 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 900;
+            margin-bottom: 16px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.4s ease;
+            text-transform: uppercase;
+            letter-spacing: -0.04em;
+        }
+        .features-intro p {
+            font-size: clamp(1rem, 2vw, 1.15rem);
+            color: var(--text-secondary);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.4s ease 0.1s;
+        }
+        .features-intro.visible h2,
+        .features-intro.visible p {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ============================================
+           FEATURES SCROLL SECTION
+           ============================================ */
+        .features-scroll-container {
+            height: 520vh;
+            position: relative;
+        }
+        .features-sticky {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        /* iPhone Frame */
+        .iphone-wrapper {
+            position: relative;
+            z-index: 5;
+            flex-shrink: 0;
+        }
+        .iphone {
+            width: 280px;
+            height: 572px;
+            border-radius: 52px;
+            background: #1A1A1A;
+            padding: 6px;
+            position: relative;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+        .iphone-screen {
+            width: 100%;
+            height: 100%;
+            border-radius: 46px;
+            background: #000;
+            overflow: hidden;
+            position: relative;
+        }
+        .iphone-notch {
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 92px;
+            height: 26px;
+            background: #000;
+            border-radius: 20px;
+            z-index: 20;
+        }
+        .iphone-notch::after {
+            content: '';
+            position: absolute;
+            top: 9px;
+            right: 18px;
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #1a1a1a;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Screenshots inside iPhone */
+        .screenshot {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1;
+        }
+        .screenshot.active { opacity: 1; z-index: 2; }
+
+        .mock-screen {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            padding: 48px 18px 24px;
+        }
+        .mock-statusbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 18px;
+            padding: 0 6px;
+        }
+        .mock-time {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-weight: 600;
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.5);
+        }
+        .mock-icons {
+            display: flex;
+            gap: 4px;
+        }
+        .mock-icon-dot {
+            width: 12px;
+            height: 8px;
+            border-radius: 2px;
+            background: rgba(255, 255, 255, 0.3);
+        }
+        .mock-nav-title {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-weight: 700;
+            font-size: 22px;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 20px;
+            padding: 0 4px;
+        }
+        .mock-items {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            flex: 1;
+        }
+        .mock-card-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px;
+            border-radius: 0;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+        .mock-avatar {
+            width: 38px;
+            height: 38px;
+            border-radius: 0;
+            flex-shrink: 0;
+        }
+        .mock-lines {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .mock-line {
+            height: 8px;
+            border-radius: 0;
+            background: rgba(255, 255, 255, 0.06);
+        }
+        .mock-line.w70 { width: 70%; }
+        .mock-line.w50 { width: 50%; }
+        .mock-line.w85 { width: 85%; }
+        .mock-line.w40 { width: 40%; }
+        .mock-line.w60 { width: 60%; }
+
+        /* Mock screen color themes */
+        .screen-community { background: linear-gradient(170deg, #141432, #0D0D28); }
+        .screen-community .mock-avatar { background: linear-gradient(135deg, #4F46E5, #7C3AED); }
+        .screen-workouts { background: linear-gradient(170deg, #0F2922, #0A1F1A); }
+        .screen-workouts .mock-avatar { background: linear-gradient(135deg, #059669, #0D9488); border-radius: 50%; }
+        .screen-collaborate { background: linear-gradient(170deg, #271A10, #1E150D); }
+        .screen-collaborate .mock-avatar { background: linear-gradient(135deg, #EA580C, #D97706); }
+        .screen-posts { background: linear-gradient(170deg, #1E0E20, #170A1E); }
+        .screen-posts .mock-avatar { background: linear-gradient(135deg, #E11D48, #DB2777); border-radius: 50%; }
+        .screen-whiteboard { background: linear-gradient(170deg, #151520, #10101A); }
+        .screen-whiteboard .mock-avatar { background: linear-gradient(135deg, #4F8EF7, #38BDF8); border-radius: 6px; }
+        .screen-media { background: linear-gradient(170deg, #1A0F28, #140A22); }
+        .screen-media .mock-avatar { background: linear-gradient(135deg, #7C3AED, #C026D3); border-radius: 8px; }
+
+        /* Mock grid for media screen */
+        .mock-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 6px;
+            flex: 1;
+        }
+        .mock-grid-item {
+            aspect-ratio: 1;
+            border-radius: 0;
+            background: rgba(255, 255, 255, 0.04);
+        }
+        .mock-grid-item:nth-child(odd) { background: rgba(124, 58, 237, 0.12); }
+        .mock-grid-item:nth-child(even) { background: rgba(192, 38, 211, 0.08); }
+
+        /* Mock workout specific */
+        .mock-timer {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 3px solid rgba(5, 150, 105, 0.3);
+            margin: 8px auto 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-weight: 700;
+            font-size: 18px;
+            color: rgba(5, 150, 105, 0.7);
+        }
+        /* Mock whiteboard specific */
+        .mock-wod-block {
+            padding: 14px;
+            border-radius: 0;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            margin-bottom: 10px;
+        }
+        .mock-wod-title {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-weight: 600;
+            font-size: 11px;
+            color: rgba(79, 142, 247, 0.6);
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+        /* Mock post card */
+        .mock-post-card {
+            padding: 14px;
+            border-radius: 0;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            margin-bottom: 10px;
+        }
+        .mock-post-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+        .mock-post-avatar {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+        }
+        .mock-post-img {
+            width: 100%;
+            height: 80px;
+            border-radius: 0;
+            margin-bottom: 10px;
+        }
+        .mock-reactions {
+            display: flex;
+            gap: 12px;
+        }
+        .mock-reaction {
+            width: 28px;
+            height: 8px;
+            border-radius: 0;
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        /* Feature counter */
+        .feature-counter {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            margin-top: 20px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-weight: 500;
+            font-size: 0.85rem;
+            color: var(--text-tertiary);
+        }
+        .counter-current {
+            color: var(--text-primary);
+            font-weight: 800;
+            min-width: 20px;
+            text-align: right;
+            transition: opacity 0.2s ease;
+        }
+        .counter-bar {
+            width: 40px;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 0;
+            overflow: hidden;
+        }
+        .counter-bar-fill {
+            height: 100%;
+            background: var(--text-primary);
+            border-radius: 0;
+            transition: width 0.25s ease;
+        }
+
+        /* Feature text panels */
+        .feature-panel {
+            position: absolute;
+            top: 50%;
+            max-width: 360px;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s ease;
+        }
+        .feature-panel.side-left {
+            left: 6%;
+            transform: translateY(-50%) translateX(-40px);
+        }
+        .feature-panel.side-right {
+            right: 6%;
+            transform: translateY(-50%) translateX(40px);
+            text-align: right;
+        }
+        .feature-panel.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .feature-panel.active.side-left {
+            transform: translateY(-50%) translateX(0);
+        }
+        .feature-panel.active.side-right {
+            transform: translateY(-50%) translateX(0);
+        }
+        .feature-tag {
+            display: inline-block;
+            padding: 4px 0;
+            border-radius: 0;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-weight: 800;
+            font-size: 0.7rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            border: none;
+            border-bottom: 1px solid var(--text-tertiary);
+            background: transparent;
+            color: var(--text-secondary);
+        }
+        .tag-community, .tag-workouts, .tag-collaborate,
+        .tag-posts, .tag-whiteboard, .tag-media {
+            background: transparent;
+            color: var(--text-secondary);
+            border: none;
+            border-bottom: 1px solid var(--text-tertiary);
+        }
+
+        .feature-panel h3 {
+            font-size: clamp(1.6rem, 3vw, 2.4rem);
+            font-weight: 900;
+            margin-bottom: 14px;
+            line-height: 1.0;
+            text-transform: uppercase;
+            letter-spacing: -0.04em;
+        }
+        .feature-panel p {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* ============================================
+           PRICING SECTION
+           ============================================ */
+        .pricing {
+            position: relative;
+            padding: 120px 24px;
+            overflow: hidden;
+        }
+        .pricing-bg {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+        }
+        .pricing-orb {
+            display: none;
+        }
+        .pricing-header {
+            text-align: center;
+            margin-bottom: 64px;
+            position: relative;
+            z-index: 1;
+        }
+        .pricing-header h2 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 900;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: -0.04em;
+        }
+        .pricing-header p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+        .pricing-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            max-width: 1080px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        .pricing-card {
+            background: transparent;
+            border: 1px solid var(--border);
+            border-radius: 0;
+            padding: 40px 32px;
+            display: flex;
+            flex-direction: column;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.3s ease;
+        }
+        .pricing-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .pricing-card:nth-child(2).visible { transition-delay: 0.1s; }
+        .pricing-card:nth-child(3).visible { transition-delay: 0.2s; }
+        .pricing-card:hover {
+            border-color: var(--text-primary);
+        }
+        .pricing-card.featured {
+            border-color: var(--text-primary);
+            border-width: 2px;
+            background: transparent;
+            position: relative;
+        }
+        .pricing-card.featured:hover {
+            border-color: var(--text-primary);
+        }
+        .pricing-badge {
+            position: absolute;
+            top: -13px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 5px 18px;
+            border-radius: 0;
+            background: var(--text-primary);
+            color: var(--bg-primary);
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-weight: 800;
+            font-size: 0.72rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+        .pricing-tier {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 12px;
+        }
+        .pricing-price {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-weight: 800;
+            font-size: 3rem;
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+        .pricing-price span {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+        .pricing-period {
+            font-size: 0.88rem;
+            color: var(--text-tertiary);
+            margin-bottom: 32px;
+        }
+        .pricing-features {
+            flex: 1;
+            margin-bottom: 32px;
+        }
+        .pricing-features li {
+            padding: 10px 0;
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 1px solid var(--border);
+        }
+        .pricing-features li:last-child { border-bottom: none; }
+        .pricing-features li::before {
+            content: '';
+            width: 16px;
+            height: 16px;
+            border-radius: 0;
+            background: transparent;
+            flex-shrink: 0;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18'%3E%3Cpath d='M7.5 12.3L4.2 9l1.05-1.05L7.5 10.2l5.25-5.25L13.8 6z' fill='%23ffffff'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        .pricing-card .btn {
+            width: 100%;
+            justify-content: center;
+            margin-top: auto;
+        }
+
+        /* ============================================
+           FOOTER
+           ============================================ */
+        .footer {
+            border-top: 1px solid var(--border);
+            padding: 80px 24px 40px;
+            background: var(--bg-primary);
+        }
+        .footer-inner {
+            max-width: 1080px;
+            margin: 0 auto;
+        }
+        .footer-top {
+            display: grid;
+            grid-template-columns: 1.2fr 2fr;
+            gap: 64px;
+            margin-bottom: 64px;
+        }
+        .footer-logo {
+            display: inline-block;
+            margin-bottom: 16px;
+        }
+        .footer-logo img {
+            height: 38px;
+            width: auto;
+        }
+        .footer-brand p {
+            color: var(--text-secondary);
+            font-size: 0.92rem;
+            line-height: 1.6;
+            max-width: 280px;
+        }
+        .footer-links {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+        .footer-col h4 {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-weight: 800;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-tertiary);
+            margin-bottom: 20px;
+        }
+        .footer-col a {
+            display: block;
+            color: var(--text-secondary);
+            font-size: 0.92rem;
+            padding: 6px 0;
+            transition: color 0.2s ease;
+        }
+        .footer-col a:hover { color: #fff; }
+        .footer-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+        }
+        .footer-bottom p {
+            color: var(--text-tertiary);
+            font-size: 0.85rem;
+        }
+        .app-store-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 20px;
+            border-radius: 0;
+            background: #fff;
+            color: #0A0A0A;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-weight: 800;
+            font-size: 0.78rem;
+            transition: opacity 0.15s ease;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+        .app-store-badge:hover {
+            opacity: 0.85;
+        }
+        .app-store-badge svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        /* ============================================
+           SECONDARY TEXT — Gill Sans regular, sentence case
+           ============================================ */
+        .hero-badge,
+        .hero-subtext,
+        .nav-links a,
+        .mobile-menu a,
+        .features-intro p,
+        .feature-tag,
+        .feature-panel p,
+        .feature-counter,
+        .pricing-header p,
+        .pricing-tier,
+        .pricing-period,
+        .pricing-features li,
+        .footer-brand p,
+        .footer-col h4,
+        .footer-col a,
+        .footer-bottom p,
+        .lang-current,
+        .lang-menu button,
+        .app-store-badge,
+        .btn {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-weight: 400;
+            text-transform: none;
+        }
+
+        /* ============================================
+           ANIMATIONS
+           ============================================ */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        /* Scroll progress bar */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 2px;
+            background: var(--text-primary);
+            z-index: 1001;
+            transform-origin: left;
+            transform: scaleX(0);
+            transition: transform 0.1s linear;
+        }
+
+        /* ============================================
+           RESPONSIVE
+           ============================================ */
+        @media (max-width: 1024px) {
+            .feature-panel { max-width: 300px; }
+            .feature-panel.side-left { left: 3%; }
+            .feature-panel.side-right { right: 3%; }
+            .pricing-cards { grid-template-columns: 1fr; max-width: 440px; }
+        }
+        @media (max-width: 768px) {
+            :root { --nav-height: 64px; }
+            .nav-links { display: none; }
+            .nav-cta { display: none; }
+            .nav-hamburger { display: none; }
+            .hero { padding-top: calc(var(--nav-height) + 24px); }
+            .hero-headline { font-size: clamp(2.2rem, 8vw, 3.2rem); }
+
+            /* Features mobile layout */
+            .features-scroll-container { height: 480vh; }
+            .features-sticky {
+                flex-direction: column;
+                padding-top: 14vh;
+                align-items: center;
+                justify-content: flex-start;
+            }
+            .iphone {
+                width: auto;
+                height: min(450px, 44vh);
+                aspect-ratio: 220 / 450;
+                border-radius: 42px;
+                padding: 5px;
+            }
+            .iphone-screen { border-radius: 37px; }
+            .iphone-notch { width: 72px; height: 22px; top: 8px; }
+            .feature-panel {
+                position: absolute;
+                bottom: 12%;
+                top: auto;
+                left: 6% !important;
+                right: 6% !important;
+                max-width: none;
+                text-align: center !important;
+                transform: translateY(20px) !important;
+            }
+            .feature-panel.active {
+                transform: translateY(0) !important;
+            }
+            .feature-panel.side-right { text-align: center !important; }
+            .feature-panel h3 { font-size: 1.4rem; }
+            .feature-panel p { font-size: 0.88rem; line-height: 1.55; }
+            .feature-counter { margin-top: 10px; }
+
+            /* Pricing mobile */
+            .pricing { padding: 80px 24px; }
+            .pricing-cards { grid-template-columns: 1fr; max-width: 400px; }
+
+            /* Footer mobile */
+            .footer-top { grid-template-columns: 1fr; gap: 40px; }
+            .footer-links { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+            .footer-bottom { flex-direction: column; gap: 20px; text-align: center; }
+        }
+        @media (max-width: 480px) {
+            .hero-ctas { flex-direction: column; width: 100%; }
+            .hero-ctas .btn { width: 100%; justify-content: center; }
+            .footer-links { grid-template-columns: 1fr 1fr; }
+            .iphone { height: min(388px, 46vh); aspect-ratio: 190 / 388; border-radius: 36px; }
+            .iphone-screen { border-radius: 31px; }
+            .iphone-notch { width: 62px; height: 19px; top: 7px; }
+            .feature-panel h3 { font-size: 1.25rem; }
+            .feature-panel p { font-size: 0.84rem; }
+            .mock-nav-title { font-size: 17px; }
+            .mock-screen { padding: 40px 14px 18px; }
+        }
+
+        /* Reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+            html { scroll-behavior: auto; }
+        }
+
+        /* ============================================
+           LIGHT THEME
+           ============================================ */
+        [data-theme="light"] {
+            --bg-primary: #F4F4F4;
+            --bg-secondary: #F4F4F4;
+            --bg-card: transparent;
+            --text-primary: #1A1A1A;
+            --text-secondary: rgba(26, 26, 26, 0.55);
+            --text-tertiary: rgba(26, 26, 26, 0.3);
+            --accent-blue: #1A1A1A;
+            --accent-blue-dim: rgba(26, 26, 26, 0.06);
+            --accent-orange: #1A1A1A;
+            --accent-orange-dim: rgba(26, 26, 26, 0.06);
+            --border: rgba(0, 0, 0, 0.15);
+            --glass: #F4F4F4;
+            --glass-border: rgba(0, 0, 0, 0.15);
+        }
+
+        /* Nav */
+        [data-theme="light"] .nav.scrolled { background: var(--bg-primary); }
+        [data-theme="light"] .nav-links a:hover { color: var(--text-primary); }
+        [data-theme="light"] .nav-hamburger span { background: var(--text-primary); }
+        [data-theme="light"] .nav-cta {
+            background: #1A1A1A;
+            color: #F4F4F4;
+        }
+
+        /* Buttons */
+        [data-theme="light"] .btn-primary {
+            background: #1A1A1A;
+            color: #F4F4F4;
+            border-color: #1A1A1A;
+        }
+        [data-theme="light"] .btn-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            border-color: rgba(0, 0, 0, 0.2);
+        }
+        [data-theme="light"] .btn-secondary:hover {
+            border-color: #1A1A1A;
+        }
+
+        /* Mobile menu */
+        [data-theme="light"] .mobile-menu {
+            background: var(--bg-primary);
+        }
+        [data-theme="light"] .mobile-menu a { color: var(--text-secondary); }
+        [data-theme="light"] .mobile-menu a:hover { color: var(--text-primary); }
+
+        /* iPhone frame */
+        [data-theme="light"] .iphone {
+            background: #E0E0E0;
+            border-color: rgba(0, 0, 0, 0.15);
+        }
+        [data-theme="light"] .iphone-screen { background: #F5F5F5; }
+        [data-theme="light"] .iphone-notch {
+            background: #1A1A1A;
+        }
+
+        /* Mock screens - light variants (neutral grey) */
+        [data-theme="light"] .screen-community { background: #E8E8E8; }
+        [data-theme="light"] .screen-workouts { background: #EAEAEA; }
+        [data-theme="light"] .screen-collaborate { background: #E9E9E9; }
+        [data-theme="light"] .screen-posts { background: #E7E7E7; }
+        [data-theme="light"] .screen-whiteboard { background: #EBEBEB; }
+        [data-theme="light"] .screen-media { background: #E8E8E8; }
+
+        /* Mock screen elements */
+        [data-theme="light"] .mock-time { color: rgba(0, 0, 0, 0.4) !important; }
+        [data-theme="light"] .mock-icon-dot { background: rgba(0, 0, 0, 0.15); }
+        [data-theme="light"] .mock-nav-title { color: rgba(0, 0, 0, 0.85); }
+        [data-theme="light"] .mock-card-item {
+            background: rgba(0, 0, 0, 0.03);
+            border-color: rgba(0, 0, 0, 0.06);
+        }
+        [data-theme="light"] .mock-line { background: rgba(0, 0, 0, 0.08); }
+        [data-theme="light"] .mock-timer {
+            border-color: rgba(0, 0, 0, 0.15);
+            color: rgba(0, 0, 0, 0.5);
+        }
+        [data-theme="light"] .mock-wod-block {
+            background: rgba(0, 0, 0, 0.03);
+            border-color: rgba(0, 0, 0, 0.06);
+        }
+        [data-theme="light"] .mock-wod-title { color: rgba(0, 0, 0, 0.5); }
+        [data-theme="light"] .mock-post-card {
+            background: rgba(0, 0, 0, 0.02);
+            border-color: rgba(0, 0, 0, 0.06);
+        }
+        [data-theme="light"] .mock-reaction { background: rgba(0, 0, 0, 0.06); }
+        [data-theme="light"] .mock-grid-item { background: rgba(0, 0, 0, 0.04); }
+        [data-theme="light"] .mock-grid-item:nth-child(odd) { background: rgba(0, 0, 0, 0.06); }
+        [data-theme="light"] .mock-grid-item:nth-child(even) { background: rgba(0, 0, 0, 0.03); }
+
+        /* Feature counter */
+        [data-theme="light"] .counter-bar { background: rgba(0, 0, 0, 0.1); }
+        [data-theme="light"] .counter-bar-fill { background: #1A1A1A; }
+        [data-theme="light"] .counter-current { color: #1A1A1A; }
+
+        /* Pricing */
+        [data-theme="light"] .pricing-card.featured {
+            background: transparent;
+        }
+        [data-theme="light"] .pricing-card:hover {
+            border-color: #1A1A1A;
+        }
+        [data-theme="light"] .pricing-card.featured:hover {
+            border-color: #1A1A1A;
+        }
+        [data-theme="light"] .pricing-features li::before {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18'%3E%3Cpath d='M7.5 12.3L4.2 9l1.05-1.05L7.5 10.2l5.25-5.25L13.8 6z' fill='%231A1A1A'/%3E%3C/svg%3E");
+        }
+
+        /* Footer */
+        [data-theme="light"] .footer { background: var(--bg-primary); }
+        [data-theme="light"] .footer-col a:hover { color: var(--text-primary); }
+        [data-theme="light"] .app-store-badge {
+            background: #1A1A1A;
+            color: #F4F4F4;
+        }
+
+        /* Feature tags - monochrome in light mode too */
+        [data-theme="light"] .tag-community,
+        [data-theme="light"] .tag-workouts,
+        [data-theme="light"] .tag-collaborate,
+        [data-theme="light"] .tag-posts,
+        [data-theme="light"] .tag-whiteboard,
+        [data-theme="light"] .tag-media {
+            background: transparent;
+            color: var(--text-secondary);
+            border: none;
+            border-bottom: 1px solid var(--text-tertiary);
+        }
+
+        /* Gradient text in light mode — disabled, solid color */
+        [data-theme="light"] .gradient-text {
+            color: var(--text-primary);
+            -webkit-text-fill-color: var(--text-primary);
+        }
+
+        /* Light theme footer */
+        [data-theme="light"] .footer { background: var(--bg-primary); }
+
+        /* ============================================
+           THEME TOGGLE
+           ============================================ */
+        .theme-toggle {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+            transition: color 0.3s ease;
+            color: var(--text-secondary);
+            flex-shrink: 0;
+        }
+        .theme-toggle:hover {
+            color: var(--text-primary);
+        }
+        .theme-toggle svg {
+            width: 18px;
+            height: 18px;
+            transition: transform 0.2s ease;
+        }
+        .theme-toggle:hover svg {
+            transform: rotate(15deg);
+        }
+        .icon-sun { display: block; }
+        .icon-moon { display: none; }
+        [data-theme="light"] .icon-sun { display: none; }
+        [data-theme="light"] .icon-moon { display: block; }
+
+        /* Nav actions group */
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* ============================================
+           LANGUAGE TOGGLE
+           ============================================ */
+        .lang-dropdown {
+            position: relative;
+            flex-shrink: 0;
+        }
+        .lang-current {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            padding: 6px 10px;
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-weight: 600;
+            font-size: 0.75rem;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: color 0.2s ease, border-color 0.2s ease;
+        }
+        .lang-current:hover {
+            color: var(--text-primary);
+            border-color: var(--text-primary);
+        }
+        .lang-current svg {
+            width: 10px;
+            height: 10px;
+            transition: transform 0.2s ease;
+        }
+        .lang-dropdown.open .lang-current svg {
+            transform: rotate(180deg);
+        }
+        .lang-menu {
+            position: absolute;
+            top: calc(100% + 6px);
+            right: 0;
+            background: var(--bg-primary);
+            border: 1px solid var(--border);
+            min-width: 100%;
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(-4px);
+            transition: opacity 0.15s ease, transform 0.15s ease;
+            z-index: 100;
+        }
+        .lang-dropdown.open .lang-menu {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0);
+        }
+        .lang-menu button {
+            display: block;
+            width: 100%;
+            padding: 8px 12px;
+            background: transparent;
+            border: none;
+            color: var(--text-secondary);
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-weight: 600;
+            font-size: 0.75rem;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            text-align: left;
+            cursor: pointer;
+            transition: color 0.15s ease, background 0.15s ease;
+        }
+        .lang-menu button:hover {
+            color: var(--text-primary);
+            background: var(--accent-blue-dim, rgba(255,255,255,0.06));
+        }
+        .lang-menu button.active {
+            color: var(--text-primary);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Scroll progress -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <div class="nav-inner">
+            <a href="/" class="nav-logo">
+                <img src="logo-dark.svg" alt="showup" class="logo-dark">
+                <img src="logo-light.svg" alt="showup" class="logo-light">
+            </a>
+            <div class="nav-links">
+            </div>
+            <div class="nav-actions">
+                <div class="lang-dropdown" id="langDropdown">
+                    <button class="lang-current" id="langCurrent" aria-label="Change language">
+                        <span>EN</span>
+                        <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg>
+                    </button>
+                    <div class="lang-menu">
+                        <button data-lang="en" class="active">EN</button>
+                        <button data-lang="ko">KO</button>
+                        <button data-lang="de">DE</button>
+                    </div>
+                </div>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                </button>
+                <button class="nav-hamburger" id="hamburger" aria-label="Toggle menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+    </div>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" id="hero">
+            <div class="hero-bg">
+                <div class="orb orb-1"></div>
+                <div class="orb orb-2"></div>
+                <div class="orb orb-3"></div>
+            </div>
+            <div class="hero-content">
+                <!-- badge removed -->
+                <h1 class="hero-headline">
+                    <span class="line" data-i18n="hero.line1">Your Community.</span>
+                    <span class="line" data-i18n="hero.line2">Your Workouts.</span>
+                    <span class="line gradient-text" data-i18n="hero.line3">Your Way.</span>
+                </h1>
+                <p class="hero-subtext" data-i18n="hero.subtext">
+                    Anyone can create a fitness community. You don't need to be a coach
+                    or gym owner &mdash; just someone who wants to move together.
+                </p>
+                <div class="hero-ctas">
+                    <a href="#" class="btn btn-primary">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                        <span data-i18n="hero.download">Download on App Store</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Section -->
+        <section class="pricing" id="pricing">
+            <div class="pricing-bg"><div class="pricing-orb"></div></div>
+            <div class="pricing-header">
+                <h2 data-i18n="pricing.title">Free for everyone</h2>
+                <p data-i18n="pricing.subtitle">Just download and start building your community and start showing up from today.</p>
+            </div>
+        </section>
+
+        <!-- Features Intro -->
+        <div class="features-intro" id="features">
+            <h2 data-i18n-html="features.title">Everything you need to build<br>your fitness community</h2>
+            <p data-i18n="features.subtitle">Six powerful features. One seamless experience.</p>
+        </div>
+
+        <!-- Features Scroll Section -->
+        <div class="features-scroll-container" id="featuresScroll">
+            <div class="features-sticky">
+                <!-- iPhone Frame -->
+                <div class="iphone-wrapper">
+                    <div class="iphone">
+                        <div class="iphone-screen">
+                            <div class="iphone-notch"></div>
+
+                            <!-- Screenshot 1: Community -->
+                            <div class="screenshot active" data-index="0">
+                                <div class="mock-screen screen-community">
+                                    <div class="mock-statusbar">
+                                        <span class="mock-time">9:41</span>
+                                        <div class="mock-icons"><div class="mock-icon-dot"></div><div class="mock-icon-dot"></div><div class="mock-icon-dot"></div></div>
+                                    </div>
+                                    <div class="mock-nav-title" data-i18n="mock.communities">Communities</div>
+                                    <div class="mock-items">
+                                        <div class="mock-card-item"><div class="mock-avatar"></div><div class="mock-lines"><div class="mock-line w70"></div><div class="mock-line w50"></div></div></div>
+                                        <div class="mock-card-item"><div class="mock-avatar"></div><div class="mock-lines"><div class="mock-line w85"></div><div class="mock-line w40"></div></div></div>
+                                        <div class="mock-card-item"><div class="mock-avatar"></div><div class="mock-lines"><div class="mock-line w60"></div><div class="mock-line w50"></div></div></div>
+                                        <div class="mock-card-item"><div class="mock-avatar"></div><div class="mock-lines"><div class="mock-line w70"></div><div class="mock-line w40"></div></div></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Screenshot 2: Workouts -->
+                            <div class="screenshot" data-index="1">
+                                <div class="mock-screen screen-workouts">
+                                    <div class="mock-statusbar">
+                                        <span class="mock-time">9:41</span>
+                                        <div class="mock-icons"><div class="mock-icon-dot"></div><div class="mock-icon-dot"></div><div class="mock-icon-dot"></div></div>
+                                    </div>
+                                    <div class="mock-nav-title" data-i18n="mock.workout">Today's Workout</div>
+                                    <div class="mock-timer">12:00</div>
+                                    <div class="mock-items">
+                                        <div class="mock-card-item"><div class="mock-avatar"></div><div class="mock-lines"><div class="mock-line w85"></div><div class="mock-line w50"></div></div></div>
+                                        <div class="mock-card-item"><div class="mock-avatar"></div><div class="mock-lines"><div class="mock-line w70"></div><div class="mock-line w40"></div></div></div>
+                                        <div class="mock-card-item"><div class="mock-avatar"></div><div class="mock-lines"><div class="mock-line w60"></div><div class="mock-line w50"></div></div></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Screenshot 3: Collaborate -->
+                            <div class="screenshot" data-index="2">
+                                <div class="mock-screen screen-collaborate">
+                                    <div class="mock-statusbar">
+                                        <span class="mock-time">9:41</span>
+                                        <div class="mock-icons"><div class="mock-icon-dot"></div><div class="mock-icon-dot"></div><div class="mock-icon-dot"></div></div>
+                                    </div>
+                                    <div class="mock-nav-title" data-i18n="mock.collaborations">Collaborations</div>
+                                    <div class="mock-items">
+                                        <div class="mock-card-item"><div class="mock-avatar"></div><div class="mock-lines"><div class="mock-line w70"></div><div class="mock-line w40"></div></div></div>
+                                        <div class="mock-card-item"><div class="mock-avatar"></div><div class="mock-lines"><div class="mock-line w85"></div><div class="mock-line w50"></div></div></div>
+                                        <div class="mock-card-item"><div class="mock-avatar"></div><div class="mock-lines"><div class="mock-line w60"></div><div class="mock-line w40"></div></div></div>
+                                        <div class="mock-card-item"><div class="mock-avatar"></div><div class="mock-lines"><div class="mock-line w70"></div><div class="mock-line w50"></div></div></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Screenshot 4: Posts -->
+                            <div class="screenshot" data-index="3">
+                                <div class="mock-screen screen-posts">
+                                    <div class="mock-statusbar">
+                                        <span class="mock-time">9:41</span>
+                                        <div class="mock-icons"><div class="mock-icon-dot"></div><div class="mock-icon-dot"></div><div class="mock-icon-dot"></div></div>
+                                    </div>
+                                    <div class="mock-nav-title" data-i18n="mock.feed">Community Feed</div>
+                                    <div class="mock-items" style="gap:10px">
+                                        <div class="mock-post-card">
+                                            <div class="mock-post-header"><div class="mock-post-avatar" style="background:linear-gradient(135deg,#E11D48,#DB2777)"></div><div class="mock-lines" style="gap:4px"><div class="mock-line w50" style="height:6px"></div></div></div>
+                                            <div class="mock-post-img" style="background:rgba(225,29,72,0.08)"></div>
+                                            <div class="mock-reactions"><div class="mock-reaction"></div><div class="mock-reaction"></div><div class="mock-reaction"></div></div>
+                                        </div>
+                                        <div class="mock-post-card">
+                                            <div class="mock-post-header"><div class="mock-post-avatar" style="background:linear-gradient(135deg,#DB2777,#E11D48)"></div><div class="mock-lines" style="gap:4px"><div class="mock-line w60" style="height:6px"></div></div></div>
+                                            <div class="mock-line w85" style="margin-bottom:6px"></div>
+                                            <div class="mock-line w70"></div>
+                                            <div class="mock-reactions" style="margin-top:10px"><div class="mock-reaction"></div><div class="mock-reaction"></div></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Screenshot 5: Whiteboard -->
+                            <div class="screenshot" data-index="4">
+                                <div class="mock-screen screen-whiteboard">
+                                    <div class="mock-statusbar">
+                                        <span class="mock-time">9:41</span>
+                                        <div class="mock-icons"><div class="mock-icon-dot"></div><div class="mock-icon-dot"></div><div class="mock-icon-dot"></div></div>
+                                    </div>
+                                    <div class="mock-nav-title" data-i18n="mock.whiteboard">Whiteboard</div>
+                                    <div class="mock-items" style="gap:12px">
+                                        <div class="mock-wod-block">
+                                            <div class="mock-wod-title" data-i18n="mock.warmup">Warm-Up</div>
+                                            <div class="mock-line w85" style="margin-bottom:6px"></div>
+                                            <div class="mock-line w60"></div>
+                                        </div>
+                                        <div class="mock-wod-block">
+                                            <div class="mock-wod-title" data-i18n="mock.wod">WOD</div>
+                                            <div class="mock-line w70" style="margin-bottom:6px"></div>
+                                            <div class="mock-line w85" style="margin-bottom:6px"></div>
+                                            <div class="mock-line w50"></div>
+                                        </div>
+                                        <div class="mock-wod-block">
+                                            <div class="mock-wod-title" data-i18n="mock.cooldown">Cool-Down</div>
+                                            <div class="mock-line w60"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Screenshot 6: Media Library -->
+                            <div class="screenshot" data-index="5">
+                                <div class="mock-screen screen-media">
+                                    <div class="mock-statusbar">
+                                        <span class="mock-time">9:41</span>
+                                        <div class="mock-icons"><div class="mock-icon-dot"></div><div class="mock-icon-dot"></div><div class="mock-icon-dot"></div></div>
+                                    </div>
+                                    <div class="mock-nav-title" data-i18n="mock.media">Media Library</div>
+                                    <div class="mock-grid">
+                                        <div class="mock-grid-item"></div>
+                                        <div class="mock-grid-item"></div>
+                                        <div class="mock-grid-item"></div>
+                                        <div class="mock-grid-item"></div>
+                                        <div class="mock-grid-item"></div>
+                                        <div class="mock-grid-item"></div>
+                                        <div class="mock-grid-item"></div>
+                                        <div class="mock-grid-item"></div>
+                                        <div class="mock-grid-item"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="feature-counter">
+                        <span class="counter-current" id="counterCurrent">01</span>
+                        <div class="counter-bar"><div class="counter-bar-fill" id="counterFill" style="width:16.66%"></div></div>
+                        <span class="counter-total">06</span>
+                    </div>
+                </div>
+
+                <!-- Feature Text Panels -->
+                <div class="feature-panel side-left active" data-index="0">
+                    <span class="feature-tag tag-community" data-i18n="feat.community.tag">Community</span>
+                    <h3 data-i18n="feat.community.title">Build Your Tribe</h3>
+                    <p data-i18n="feat.community.desc">Create your own gym, program, or group. Customize it with your brand colors, logo, and invite your people.</p>
+                </div>
+                <div class="feature-panel side-right" data-index="1">
+                    <span class="feature-tag tag-workouts" data-i18n="feat.workouts.tag">Workouts</span>
+                    <h3 data-i18n="feat.workouts.title">Program Like a Pro</h3>
+                    <p data-i18n="feat.workouts.desc">Design workouts with multiple scoring methods &mdash; time, reps, weight, rounds. Add media, instructions, and variations.</p>
+                </div>
+                <div class="feature-panel side-left" data-index="2">
+                    <span class="feature-tag tag-collaborate" data-i18n="feat.collab.tag">Collaborate</span>
+                    <h3 data-i18n="feat.collab.title">Stronger Together</h3>
+                    <p data-i18n="feat.collab.desc">Invite other communities to share workouts. Cross-community collaboration has never been easier.</p>
+                </div>
+                <div class="feature-panel side-right" data-index="3">
+                    <span class="feature-tag tag-posts" data-i18n="feat.posts.tag">Posts</span>
+                    <h3 data-i18n="feat.posts.title">Stay Connected</h3>
+                    <p data-i18n="feat.posts.desc">Share updates, photos, and videos with your community. React, comment, and stay engaged.</p>
+                </div>
+                <div class="feature-panel side-left" data-index="4">
+                    <span class="feature-tag tag-whiteboard" data-i18n="feat.wb.tag">Whiteboard</span>
+                    <h3 data-i18n="feat.wb.title">Today's Game Plan</h3>
+                    <p data-i18n="feat.wb.desc">Display the day's workouts on a clean whiteboard. Your members know exactly what's coming.</p>
+                </div>
+                <div class="feature-panel side-right" data-index="5">
+                    <span class="feature-tag tag-media" data-i18n="feat.media.tag">Media</span>
+                    <h3 data-i18n="feat.media.title">Your Content Hub</h3>
+                    <p data-i18n="feat.media.desc">Upload and organize exercise demos, tutorials, and community media all in one place.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- PRICING TIERS (commented out for later)
+        <section class="pricing" id="pricing-tiers">
+            <div class="pricing-bg"><div class="pricing-orb"></div></div>
+            <div class="pricing-header">
+                <h2>Simple, transparent pricing</h2>
+                <p>Start free. Scale as you grow.</p>
+            </div>
+            <div class="pricing-cards">
+                <div class="pricing-card" id="card1">
+                    <div class="pricing-tier">Starter</div>
+                    <div class="pricing-price">Free</div>
+                    <div class="pricing-period">Forever</div>
+                    <ul class="pricing-features">
+                        <li>1 Community</li>
+                        <li>Up to 25 members</li>
+                        <li>Basic workout creation</li>
+                        <li>Community posts</li>
+                        <li>Score tracking</li>
+                    </ul>
+                    <a href="#" class="btn btn-secondary">Get Started</a>
+                </div>
+                <div class="pricing-card featured" id="card2">
+                    <div class="pricing-badge">Most Popular</div>
+                    <div class="pricing-tier">Pro</div>
+                    <div class="pricing-price">$12<span>/mo</span></div>
+                    <div class="pricing-period">per community</div>
+                    <ul class="pricing-features">
+                        <li>Unlimited communities</li>
+                        <li>Unlimited members</li>
+                        <li>Collaboration features</li>
+                        <li>Whiteboard system</li>
+                        <li>Media library</li>
+                        <li>Priority support</li>
+                    </ul>
+                    <a href="#" class="btn btn-primary">Start Free Trial</a>
+                </div>
+                <div class="pricing-card" id="card3">
+                    <div class="pricing-tier">Enterprise</div>
+                    <div class="pricing-price">Custom</div>
+                    <div class="pricing-period">Tailored for you</div>
+                    <ul class="pricing-features">
+                        <li>Everything in Pro</li>
+                        <li>Custom branding</li>
+                        <li>API access</li>
+                        <li>Dedicated account manager</li>
+                        <li>Custom integrations</li>
+                        <li>SLA guarantee</li>
+                    </ul>
+                    <a href="#pricing" class="btn btn-secondary">Book a Demo</a>
+                </div>
+            </div>
+        </section>
+        -->
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <a href="/" class="footer-logo">
+                        <img src="logo-dark.svg" alt="showup" class="logo-dark">
+                        <img src="logo-light.svg" alt="showup" class="logo-light">
+                    </a>
+                    <p data-i18n="footer.desc">Build your fitness community. Connect. Train. Grow together.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-col">
+                        <h4 data-i18n="footer.product">Product</h4>
+                        <a href="#features" data-i18n="nav.features">Features</a>
+                    </div>
+                    <div class="footer-col">
+                        <h4 data-i18n="footer.legal">Legal</h4>
+                        <a href="privacy.html" id="footer-privacy-link" data-i18n="nav.privacy">Privacy Policy</a>
+                        <a href="terms.html" id="footer-terms-link" data-i18n="footer.terms">Terms of Service</a>
+                    </div>
+                    <div class="footer-col">
+                        <h4 data-i18n="footer.connect">Connect</h4>
+                        <a href="https://instagram.com/showupcounts" target="_blank">Instagram</a>
+                        <a href="contact.html" data-i18n="footer.contact">Contact</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p data-i18n="footer.copyright">&copy; 2025 Showup. All rights reserved.</p>
+                <a href="#" class="app-store-badge">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                    <span data-i18n="footer.appstore">Download on the App Store</span>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        /* ============================================
+           SCROLL PROGRESS BAR
+           ============================================ */
+        const scrollProgressEl = document.getElementById('scrollProgress');
+        function updateScrollProgress() {
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = docHeight > 0 ? scrollTop / docHeight : 0;
+            scrollProgressEl.style.transform = `scaleX(${progress})`;
+        }
+
+        /* ============================================
+           NAVIGATION SCROLL STATE
+           ============================================ */
+        const nav = document.getElementById('nav');
+        function updateNav() {
+            nav.classList.toggle('scrolled', window.scrollY > 40);
+        }
+
+        /* ============================================
+           MOBILE MENU
+           ============================================ */
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('open');
+            document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+        });
+        document.querySelectorAll('[data-close-menu]').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                mobileMenu.classList.remove('open');
+                document.body.style.overflow = '';
+            });
+        });
+
+        /* ============================================
+           FEATURES SCROLL HANDLER
+           ============================================ */
+        const featuresContainer = document.getElementById('featuresScroll');
+        const screenshots = document.querySelectorAll('.screenshot');
+        const featurePanels = document.querySelectorAll('.feature-panel');
+        const counterCurrent = document.getElementById('counterCurrent');
+        const counterFill = document.getElementById('counterFill');
+        const FEATURE_COUNT = 6;
+        let currentFeatureIndex = 0;
+
+        function updateFeatures() {
+            const rect = featuresContainer.getBoundingClientRect();
+            const containerHeight = featuresContainer.offsetHeight;
+            const viewportHeight = window.innerHeight;
+
+            const scrollProgress = Math.max(0, Math.min(1,
+                -rect.top / (containerHeight - viewportHeight)
+            ));
+
+            const rawIndex = scrollProgress * FEATURE_COUNT;
+            const newIndex = Math.max(0, Math.min(Math.floor(rawIndex), FEATURE_COUNT - 1));
+
+            if (newIndex !== currentFeatureIndex) {
+                currentFeatureIndex = newIndex;
+
+                screenshots.forEach((el, i) => {
+                    el.classList.toggle('active', i === currentFeatureIndex);
+                });
+                featurePanels.forEach((el, i) => {
+                    el.classList.toggle('active', i === currentFeatureIndex);
+                });
+
+                counterCurrent.textContent = String(currentFeatureIndex + 1).padStart(2, '0');
+            }
+
+            counterFill.style.width = `${((currentFeatureIndex + 1) / FEATURE_COUNT) * 100}%`;
+        }
+
+        /* ============================================
+           INTERSECTION OBSERVER FOR REVEALS
+           ============================================ */
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('.features-intro, .pricing-card').forEach(el => {
+            revealObserver.observe(el);
+        });
+
+        /* ============================================
+           MAIN SCROLL LOOP
+           ============================================ */
+        let ticking = false;
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                requestAnimationFrame(() => {
+                    updateScrollProgress();
+                    updateNav();
+                    updateFeatures();
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        }, { passive: true });
+
+        // Initial state
+        updateNav();
+        updateScrollProgress();
+        updateFeatures();
+
+        /* ============================================
+           THEME TOGGLE
+           ============================================ */
+        const themeToggle = document.getElementById('themeToggle');
+
+        function getPreferredTheme() {
+            const stored = localStorage.getItem('theme');
+            if (stored) return stored;
+            return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        }
+
+        function setTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+        }
+
+        function toggleTheme() {
+            const current = document.documentElement.getAttribute('data-theme');
+            setTheme(current === 'light' ? 'dark' : 'light');
+        }
+
+        themeToggle.addEventListener('click', toggleTheme);
+
+        // Listen for system preference changes (only if no manual override)
+        window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', (e) => {
+            if (!localStorage.getItem('theme')) {
+                setTheme(e.matches ? 'light' : 'dark');
+            }
+        });
+
+        /* ============================================
+           INTERNATIONALIZATION (i18n)
+           ============================================ */
+        const translations = {
+            en: {
+                // Nav
+                'nav.features': 'Features',
+                'nav.pricing': 'Pricing',
+                'nav.privacy': 'Privacy Policy',
+                // Hero
+                'hero.badge': 'For Communities, By Communities',
+                'hero.line1': 'Your Community.',
+                'hero.line2': 'Your Workouts.',
+                'hero.line3': 'Your Way.',
+                'hero.subtext': 'Anyone can create a fitness community. You don\u2019t need to be a coach or gym owner \u2014 just someone who wants to move together.',
+                'hero.download': 'Download on App Store',
+                'hero.scroll': 'Scroll to explore',
+                // Features intro
+                'features.title': 'Everything you need to build<br>your fitness community',
+                'features.subtitle': 'Six powerful features. One seamless experience.',
+                // Mock screens
+                'mock.communities': 'Communities',
+                'mock.workout': 'Today\u2019s Workout',
+                'mock.collaborations': 'Collaborations',
+                'mock.feed': 'Community Feed',
+                'mock.whiteboard': 'Whiteboard',
+                'mock.warmup': 'Warm-Up',
+                'mock.wod': 'WOD',
+                'mock.cooldown': 'Cool-Down',
+                'mock.media': 'Media Library',
+                // Feature panels
+                'feat.community.tag': 'Community',
+                'feat.community.title': 'Build Your Tribe',
+                'feat.community.desc': 'Create your own gym, program, or group. Customize it with your brand colors, logo, and invite your people.',
+                'feat.workouts.tag': 'Workouts',
+                'feat.workouts.title': 'Program Like a Pro',
+                'feat.workouts.desc': 'Design workouts with multiple scoring methods \u2014 time, reps, weight, rounds. Add media, instructions, and variations.',
+                'feat.collab.tag': 'Collaborate',
+                'feat.collab.title': 'Stronger Together',
+                'feat.collab.desc': 'Invite other communities to share workouts. Cross-community collaboration has never been easier.',
+                'feat.posts.tag': 'Posts',
+                'feat.posts.title': 'Stay Connected',
+                'feat.posts.desc': 'Share updates, photos, and videos with your community. React, comment, and stay engaged.',
+                'feat.wb.tag': 'Whiteboard',
+                'feat.wb.title': 'Today\u2019s Game Plan',
+                'feat.wb.desc': 'Display the day\u2019s workouts on a clean whiteboard. Your members know exactly what\u2019s coming.',
+                'feat.media.tag': 'Media',
+                'feat.media.title': 'Your Content Hub',
+                'feat.media.desc': 'Upload and organize exercise demos, tutorials, and community media all in one place.',
+                // Pricing
+                'pricing.title': 'Free for everyone',
+                'pricing.subtitle': 'Just download and start building your community and start showing up from today.',
+                // Footer
+                'footer.desc': 'Build your fitness community. Connect. Train. Grow together.',
+                'footer.product': 'Product',
+                'footer.legal': 'Legal',
+                'footer.connect': 'Connect',
+                'footer.terms': 'Terms of Service',
+                'footer.contact': 'Contact',
+                'footer.copyright': '\u00a9 2025 Showup. All rights reserved.',
+                'footer.appstore': 'Download on the App Store'
+            },
+            ko: {
+                // Nav
+                'nav.features': '기능',
+                'nav.pricing': '요금제',
+                'nav.privacy': '개인정보처리방침',
+                // Hero
+                'hero.badge': '커뮤니티에 의한, 커뮤니티를 위한',
+                'hero.line1': '당신의 커뮤니티.',
+                'hero.line2': '당신의 운동.',
+                'hero.line3': '당신의 방식.',
+                'hero.subtext': '누구나 피트니스 커뮤니티를 만들 수 있습니다. 코치나 체육관 사장님이 아니어도 됩니다 \u2014 함께 운동하고 싶은 사람이면 충분합니다.',
+                'hero.download': 'App Store에서 다운로드',
+                'hero.scroll': '스크롤하여 둘러보기',
+                // Features intro
+                'features.title': '피트니스 커뮤니티를 만드는 데<br>필요한 모든 것',
+                'features.subtitle': '6가지 강력한 기능. 하나의 매끄러운 경험.',
+                // Mock screens
+                'mock.communities': '커뮤니티',
+                'mock.workout': '오늘의 운동',
+                'mock.collaborations': '협업',
+                'mock.feed': '커뮤니티 피드',
+                'mock.whiteboard': '화이트보드',
+                'mock.warmup': '웜업',
+                'mock.wod': 'WOD',
+                'mock.cooldown': '쿨다운',
+                'mock.media': '미디어 라이브러리',
+                // Feature panels
+                'feat.community.tag': '커뮤니티',
+                'feat.community.title': '나만의 커뮤니티 만들기',
+                'feat.community.desc': '나만의 체육관, 프로그램 또는 그룹을 만드세요. 브랜드 색상, 로고로 꾸미고 사람들을 초대하세요.',
+                'feat.workouts.tag': '운동',
+                'feat.workouts.title': '프로처럼 프로그래밍',
+                'feat.workouts.desc': '다양한 스코어링 방식으로 운동을 설계하세요 \u2014 시간, 반복, 무게, 라운드. 미디어, 설명, 변형 동작을 추가하세요.',
+                'feat.collab.tag': '협업',
+                'feat.collab.title': '함께라서 더 강하게',
+                'feat.collab.desc': '다른 커뮤니티를 초대하여 운동을 공유하세요. 커뮤니티 간 협업이 이토록 쉬웠던 적은 없습니다.',
+                'feat.posts.tag': '게시물',
+                'feat.posts.title': '소통하기',
+                'feat.posts.desc': '커뮤니티와 소식, 사진, 영상을 공유하세요. 반응하고, 댓글 달고, 함께 소통하세요.',
+                'feat.wb.tag': '화이트보드',
+                'feat.wb.title': '오늘의 운동 계획',
+                'feat.wb.desc': '깔끔한 화이트보드에 오늘의 운동을 표시하세요. 회원들이 무엇이 준비되어 있는지 바로 확인할 수 있습니다.',
+                'feat.media.tag': '미디어',
+                'feat.media.title': '콘텐츠 허브',
+                'feat.media.desc': '운동 시범, 튜토리얼, 커뮤니티 미디어를 한 곳에서 업로드하고 정리하세요.',
+                // Pricing
+                'pricing.title': '모두에게 무료',
+                'pricing.subtitle': '지금 다운로드하고 커뮤니티를 만들어 오늘부터 함께 시작하세요.',
+                // Footer
+                'footer.desc': '피트니스 커뮤니티를 만드세요. 연결하고, 훈련하고, 함께 성장하세요.',
+                'footer.product': '제품',
+                'footer.legal': '법적 고지',
+                'footer.connect': '소셜',
+                'footer.terms': '이용약관',
+                'footer.contact': '문의',
+                'footer.copyright': '\u00a9 2025 Showup. 모든 권리 보유.',
+                'footer.appstore': 'App Store에서 다운로드'
+            },
+            de: {
+                // Nav
+                'nav.features': 'Funktionen',
+                'nav.pricing': 'Preise',
+                'nav.privacy': 'Datenschutz',
+                // Hero
+                'hero.badge': 'Von der Community, f\u00fcr die Community',
+                'hero.line1': 'Deine Community.',
+                'hero.line2': 'Dein Training.',
+                'hero.line3': 'Dein Weg.',
+                'hero.subtext': 'Jeder kann eine Fitness-Community gr\u00fcnden. Du musst kein Trainer oder Studiobesitzer sein \u2014 du brauchst nur den Wunsch, gemeinsam zu trainieren.',
+                'hero.download': 'Im App Store laden',
+                'hero.scroll': 'Scrollen zum Entdecken',
+                // Features intro
+                'features.title': 'Alles, was du brauchst, um deine<br>Fitness-Community aufzubauen',
+                'features.subtitle': 'Sechs leistungsstarke Funktionen. Ein nahtloses Erlebnis.',
+                // Mock screens
+                'mock.communities': 'Communities',
+                'mock.workout': 'Heutiges Training',
+                'mock.collaborations': 'Zusammenarbeit',
+                'mock.feed': 'Community-Feed',
+                'mock.whiteboard': 'Whiteboard',
+                'mock.warmup': 'Aufw\u00e4rmen',
+                'mock.wod': 'WOD',
+                'mock.cooldown': 'Cool-Down',
+                'mock.media': 'Mediathek',
+                // Feature panels
+                'feat.community.tag': 'Community',
+                'feat.community.title': 'Baue dein Team auf',
+                'feat.community.desc': 'Erstelle dein eigenes Studio, Programm oder deine Gruppe. Passe es mit deinen Markenfarben und deinem Logo an und lade deine Leute ein.',
+                'feat.workouts.tag': 'Workouts',
+                'feat.workouts.title': 'Programmiere wie ein Profi',
+                'feat.workouts.desc': 'Gestalte Workouts mit verschiedenen Bewertungsmethoden \u2014 Zeit, Wiederholungen, Gewicht, Runden. F\u00fcge Medien, Anleitungen und Variationen hinzu.',
+                'feat.collab.tag': 'Zusammenarbeit',
+                'feat.collab.title': 'Gemeinsam st\u00e4rker',
+                'feat.collab.desc': 'Lade andere Communities ein, Workouts zu teilen. Community-\u00fcbergreifende Zusammenarbeit war noch nie so einfach.',
+                'feat.posts.tag': 'Beitr\u00e4ge',
+                'feat.posts.title': 'Bleib verbunden',
+                'feat.posts.desc': 'Teile Updates, Fotos und Videos mit deiner Community. Reagiere, kommentiere und bleib engagiert.',
+                'feat.wb.tag': 'Whiteboard',
+                'feat.wb.title': 'Der Tagesplan',
+                'feat.wb.desc': 'Zeige die heutigen Workouts auf einem \u00fcbersichtlichen Whiteboard an. Deine Mitglieder wissen genau, was sie erwartet.',
+                'feat.media.tag': 'Medien',
+                'feat.media.title': 'Dein Content-Hub',
+                'feat.media.desc': '\u00dcbungsdemos, Tutorials und Community-Medien an einem Ort hochladen und organisieren.',
+                // Pricing
+                'pricing.title': 'Kostenlos f\u00fcr alle',
+                'pricing.subtitle': 'Einfach herunterladen, deine Community aufbauen und ab heute gemeinsam loslegen.',
+                // Footer
+                'footer.desc': 'Baue deine Fitness-Community auf. Verbinden. Trainieren. Gemeinsam wachsen.',
+                'footer.product': 'Produkt',
+                'footer.legal': 'Rechtliches',
+                'footer.connect': 'Kontakt',
+                'footer.terms': 'Nutzungsbedingungen',
+                'footer.contact': 'Kontakt',
+                'footer.copyright': '\u00a9 2025 Showup. Alle Rechte vorbehalten.',
+                'footer.appstore': 'Im App Store laden'
+            }
+        };
+
+        const langDropdown = document.getElementById('langDropdown');
+        const langCurrent = document.getElementById('langCurrent');
+        const langMenu = langDropdown.querySelector('.lang-menu');
+
+        function detectLang() {
+            var saved = localStorage.getItem('lang');
+            if (saved && translations[saved]) return saved;
+            var nav = navigator.language || '';
+            if (nav.startsWith('ko')) return 'ko';
+            if (nav.startsWith('de')) return 'de';
+            return 'en';
+        }
+
+        let currentLang = detectLang();
+
+        function applyLanguage(lang) {
+            currentLang = lang;
+            document.documentElement.setAttribute('lang', lang);
+            localStorage.setItem('lang', lang);
+
+            const strings = translations[lang];
+            if (!strings) return;
+
+            // Apply textContent translations
+            document.querySelectorAll('[data-i18n]').forEach(function(el) {
+                var key = el.getAttribute('data-i18n');
+                if (strings[key] !== undefined) {
+                    el.textContent = strings[key];
+                }
+            });
+
+            // Apply innerHTML translations (for elements with <br>, <span>, etc.)
+            document.querySelectorAll('[data-i18n-html]').forEach(function(el) {
+                var key = el.getAttribute('data-i18n-html');
+                if (strings[key] !== undefined) {
+                    el.innerHTML = strings[key];
+                }
+            });
+
+            // Update footer legal links based on language
+            var privacyLink = document.getElementById('footer-privacy-link');
+            var termsLink = document.getElementById('footer-terms-link');
+            if (privacyLink) privacyLink.href = lang === 'en' ? 'privacy.html' : 'privacy-' + lang + '.html';
+            if (termsLink) termsLink.href = lang === 'en' ? 'terms.html' : 'terms-' + lang + '.html';
+
+            // Update dropdown label and active state
+            langCurrent.querySelector('span').textContent = lang.toUpperCase();
+            langMenu.querySelectorAll('button').forEach(function(btn) {
+                btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+            });
+        }
+
+        // Toggle dropdown open/close
+        langCurrent.addEventListener('click', function(e) {
+            e.stopPropagation();
+            langDropdown.classList.toggle('open');
+        });
+
+        // Handle language selection
+        langMenu.querySelectorAll('button').forEach(function(btn) {
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                applyLanguage(btn.getAttribute('data-lang'));
+                langDropdown.classList.remove('open');
+            });
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function() {
+            langDropdown.classList.remove('open');
+        });
+
+        // Apply language on load
+        applyLanguage(currentLang);
+    </script>
+</body>
+</html>

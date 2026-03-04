@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nutzungsbedingungen — showup</title>
+    <meta name="description" content="showup Nutzungsbedingungen. Lesen Sie die Bedingungen für die Nutzung von showup.">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%234F8EF7'/%3E%3Ctext x='16' y='23' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='bold' font-size='18'%3Es%3C/text%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet">
+    <script>
+        (function() {
+            var theme = localStorage.getItem('theme');
+            if (theme) document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
+
+    <style>
+        @font-face {
+            font-family: 'SecondMoment';
+            src: url('SecondMoment.otf') format('opentype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        :root {
+            --bg-primary: #0A0A0A;
+            --bg-secondary: #111111;
+            --text-primary: #FFFFFF;
+            --text-secondary: rgba(255, 255, 255, 0.6);
+            --text-tertiary: rgba(255, 255, 255, 0.35);
+            --accent-blue: #FFFFFF;
+            --border: rgba(255, 255, 255, 0.2);
+            --glass: #0A0A0A;
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --nav-height: 72px;
+        }
+
+        [data-theme="light"] {
+            --bg-primary: #F4F4F4;
+            --bg-secondary: #F4F4F4;
+            --text-primary: #1A1A1A;
+            --text-secondary: rgba(26, 26, 26, 0.55);
+            --text-tertiary: rgba(26, 26, 26, 0.3);
+            --accent-blue: #1A1A1A;
+            --border: rgba(0, 0, 0, 0.15);
+            --glass: #F4F4F4;
+            --glass-border: rgba(0, 0, 0, 0.15);
+        }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+        body {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            color: var(--text-primary);
+            background: var(--bg-primary);
+            line-height: 1.6;
+        }
+        a { color: inherit; text-decoration: none; }
+
+        /* Film grain — disabled */
+        body::after { display: none; }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            height: var(--nav-height);
+            background: var(--glass);
+            border-bottom: 1px solid var(--border);
+        }
+        .nav-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 32px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .nav-logo {
+            display: flex;
+            align-items: center;
+        }
+        .nav-logo img {
+            height: 44px;
+            width: auto;
+            display: block;
+        }
+        img.logo-dark { display: block; }
+        img.logo-light { display: none; }
+        [data-theme="light"] img.logo-dark { display: none; }
+        [data-theme="light"] img.logo-light { display: block; }
+        .theme-toggle {
+            width: 38px;
+            height: 38px;
+            border: none;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            color: var(--text-secondary);
+            margin-left: auto;
+        }
+        .theme-toggle:hover { color: var(--text-primary); }
+        .theme-toggle svg { width: 18px; height: 18px; transition: transform 0.2s ease; }
+        .theme-toggle:hover svg { transform: rotate(15deg); }
+        .icon-sun { display: block; }
+        .icon-moon { display: none; }
+        [data-theme="light"] .icon-sun { display: none; }
+        [data-theme="light"] .icon-moon { display: block; }
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 36px;
+        }
+        .nav-links a {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-weight: 400;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            transition: color 0.25s ease;
+        }
+        .nav-links a:hover { color: var(--text-primary); }
+        .nav-links a.active { color: var(--text-primary); }
+        .nav-cta {
+            display: inline-flex;
+            align-items: center;
+            padding: 10px 24px;
+            border-radius: 0;
+            background: #FFFFFF;
+            color: #0A0A0A;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-weight: 600;
+            font-size: 0.88rem;
+            border: 2px solid var(--text-primary);
+            transition: opacity 0.2s ease;
+        }
+        .nav-cta:hover {
+            opacity: 0.85;
+        }
+        .nav-hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            padding: 8px;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        .nav-hamburger span {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: var(--text-primary);
+            transition: all 0.3s ease;
+        }
+        .nav-hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .nav-hamburger.active span:nth-child(2) { opacity: 0; }
+        .nav-hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+        .mobile-menu {
+            position: fixed;
+            inset: 0;
+            z-index: 999;
+            background: var(--bg-primary);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 32px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.35s ease;
+        }
+        .mobile-menu.open { opacity: 1; pointer-events: auto; }
+        .mobile-menu a {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-weight: 400;
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            transition: color 0.2s ease;
+        }
+        .mobile-menu a:hover { color: var(--text-primary); }
+
+        /* Content */
+        .terms-content {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: calc(var(--nav-height) + 80px) 24px 100px;
+        }
+        .terms-content h1 {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-weight: 900;
+            font-size: clamp(2rem, 4vw, 3rem);
+            line-height: 1.1;
+            letter-spacing: -0.04em;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+        .terms-updated {
+            color: var(--text-tertiary);
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-weight: 400;
+            font-size: 0.9rem;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+        }
+        .terms-content h2 {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-weight: 900;
+            font-size: 1.5rem;
+            line-height: 1.2;
+            letter-spacing: -0.03em;
+            text-transform: uppercase;
+            margin-top: 48px;
+            margin-bottom: 16px;
+        }
+        .terms-content h3 {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-weight: 900;
+            font-size: 1.15rem;
+            margin-top: 32px;
+            margin-bottom: 12px;
+        }
+        .terms-content p {
+            color: var(--text-secondary);
+            font-size: 0.98rem;
+            line-height: 1.8;
+            margin-bottom: 16px;
+        }
+        .terms-content ul, .terms-content ol {
+            list-style: none;
+            margin-bottom: 16px;
+            padding-left: 0;
+        }
+        .terms-content ul li, .terms-content ol li {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.8;
+            padding-left: 20px;
+            position: relative;
+        }
+        .terms-content ul li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 11px;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--text-primary);
+            opacity: 0.4;
+        }
+        .terms-content ol {
+            counter-reset: ol-counter;
+        }
+        .terms-content ol li {
+            counter-increment: ol-counter;
+        }
+        .terms-content ol li::before {
+            content: counter(ol-counter) '.';
+            position: absolute;
+            left: 0;
+            color: var(--text-primary);
+            opacity: 0.5;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        .terms-content a {
+            color: var(--text-primary);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+        .terms-content a:hover { opacity: 0.7; }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .lang-dropdown {
+            position: relative;
+            flex-shrink: 0;
+        }
+        .lang-current {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            padding: 6px 10px;
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-weight: 600;
+            font-size: 0.75rem;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: color 0.2s ease, border-color 0.2s ease;
+        }
+        .lang-current:hover {
+            color: var(--text-primary);
+            border-color: var(--text-primary);
+        }
+        .lang-current svg {
+            width: 10px;
+            height: 10px;
+            transition: transform 0.2s ease;
+        }
+        .lang-dropdown.open .lang-current svg {
+            transform: rotate(180deg);
+        }
+        .lang-menu {
+            position: absolute;
+            top: calc(100% + 6px);
+            right: 0;
+            background: var(--bg-primary);
+            border: 1px solid var(--border);
+            min-width: 100%;
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(-4px);
+            transition: opacity 0.15s ease, transform 0.15s ease;
+            z-index: 100;
+        }
+        .lang-dropdown.open .lang-menu {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0);
+        }
+        .lang-menu a {
+            display: block;
+            width: 100%;
+            padding: 8px 12px;
+            color: var(--text-secondary);
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-weight: 600;
+            font-size: 0.75rem;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: color 0.15s ease, background 0.15s ease;
+        }
+        .lang-menu a:hover {
+            color: var(--text-primary);
+            background: rgba(255,255,255,0.06);
+        }
+        [data-theme="light"] .lang-menu a:hover {
+            background: rgba(0,0,0,0.04);
+        }
+        .lang-menu a.active {
+            color: var(--text-primary);
+        }
+
+        /* Footer */
+        .footer {
+            border-top: 1px solid var(--border);
+            padding: 80px 24px 40px;
+            background: var(--bg-primary);
+        }
+        .footer-inner { max-width: 1080px; margin: 0 auto; }
+        .footer-top {
+            display: grid;
+            grid-template-columns: 1.2fr 2fr;
+            gap: 64px;
+            margin-bottom: 64px;
+        }
+        .footer-logo {
+            display: inline-block;
+            margin-bottom: 16px;
+        }
+        .footer-logo img {
+            height: 38px;
+            width: auto;
+        }
+        .footer-brand p {
+            color: var(--text-secondary);
+            font-size: 0.92rem;
+            line-height: 1.6;
+            max-width: 280px;
+        }
+        .footer-links {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+        .footer-col h4 {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-weight: 400;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-tertiary);
+            margin-bottom: 20px;
+        }
+        .footer-col a {
+            display: block;
+            color: var(--text-secondary);
+            font-size: 0.92rem;
+            padding: 6px 0;
+            transition: color 0.2s ease;
+        }
+        .footer-col a:hover { color: var(--text-primary); }
+        .footer-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+        }
+        .footer-bottom p {
+            color: var(--text-tertiary);
+            font-size: 0.85rem;
+        }
+        .app-store-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 20px;
+            border-radius: 0;
+            background: #fff;
+            color: #000;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-weight: 400;
+            font-size: 0.82rem;
+            border: 2px solid var(--text-primary);
+            transition: opacity 0.2s ease;
+        }
+        .app-store-badge:hover { opacity: 0.85; }
+        .app-store-badge svg { width: 18px; height: 18px; }
+
+        /* Light theme overrides */
+        [data-theme="light"] .nav-cta {
+            background: #1A1A1A;
+            color: #F4F4F4;
+        }
+        [data-theme="light"] .app-store-badge {
+            background: #1A1A1A;
+            color: #F4F4F4;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            :root { --nav-height: 64px; }
+            .nav-links, .nav-cta { display: none; }
+            .nav-hamburger { display: flex; }
+            .terms-content { padding-top: calc(var(--nav-height) + 48px); }
+            .footer-top { grid-template-columns: 1fr; gap: 40px; }
+            .footer-links { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+            .footer-bottom { flex-direction: column; gap: 20px; text-align: center; }
+        }
+        @media (max-width: 480px) {
+            .footer-links { grid-template-columns: 1fr 1fr; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            * { transition-duration: 0.01ms !important; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="index.html" class="nav-logo">
+                <img src="logo-dark.svg" alt="showup" class="logo-dark">
+                <img src="logo-light.svg" alt="showup" class="logo-light">
+            </a>
+            <div class="nav-actions">
+                <div class="lang-dropdown" id="langDropdown">
+                    <button class="lang-current" id="langCurrent" aria-label="Change language">
+                        <span>DE</span>
+                        <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg>
+                    </button>
+                    <div class="lang-menu">
+                        <a href="terms.html">EN</a>
+                        <a href="terms-ko.html">KO</a>
+                        <a href="terms-de.html" class="active">DE</a>
+                    </div>
+                </div>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="terms-content">
+        <h1>Nutzungsbedingungen</h1>
+        <p class="terms-updated">Zuletzt aktualisiert: 18. Februar 2026</p>
+
+        <p>
+            Willkommen bei showup. Diese Nutzungsbedingungen ("Bedingungen") regeln Ihren Zugang zu und die Nutzung der mobilen Anwendung und Website von showup (zusammen der "Dienst"), betrieben von showup ("wir", "unser" oder "uns").
+        </p>
+        <p>
+            Durch die Erstellung eines Kontos oder die Nutzung des Dienstes erklären Sie sich mit diesen Bedingungen einverstanden. Wenn Sie nicht zustimmen, nutzen Sie den Dienst nicht.
+        </p>
+
+        <h2>1. Berechtigung</h2>
+        <p>
+            Sie müssen mindestens 13 Jahre alt sein (bzw. 16 im Europäischen Wirtschaftsraum/Vereinigten Königreich oder 14 in Südkorea), um den Dienst zu nutzen. Durch die Nutzung des Dienstes erklären Sie, dass Sie das in Ihrem Rechtsgebiet geltende Mindestalter erfüllen.
+        </p>
+        <p>
+            Wenn Sie unter 18 Jahre alt sind (oder unter dem Volljährigkeitsalter in Ihrem Rechtsgebiet), müssen Sie die Zustimmung eines Elternteils oder Erziehungsberechtigten haben, um den Dienst zu nutzen.
+        </p>
+
+        <h2>2. Konten</h2>
+
+        <h3>2.1 Kontoerstellung</h3>
+        <p>
+            Um den Dienst zu nutzen, müssen Sie ein Konto mit einer gültigen E-Mail-Adresse, Google-Anmeldung oder Apple-Anmeldung erstellen. Sie sind für die Wahrung der Vertraulichkeit Ihrer Kontodaten und für alle Aktivitäten verantwortlich, die unter Ihrem Konto stattfinden.
+        </p>
+
+        <h3>2.2 Richtigkeit der Kontoinformationen</h3>
+        <p>
+            Sie erklären sich damit einverstanden, bei der Registrierung genaue, aktuelle und vollständige Informationen anzugeben und Ihre Informationen bei Bedarf zu aktualisieren, um sie korrekt zu halten.
+        </p>
+
+        <h3>2.3 Kontosicherheit</h3>
+        <p>
+            Sie müssen uns unverzüglich unter <a href="mailto:support@showupcounts.com">support@showupcounts.com</a> benachrichtigen, wenn Sie eine unbefugte Nutzung Ihres Kontos feststellen. Wir haften nicht für Verluste, die durch unbefugten Zugriff auf Ihr Konto entstehen.
+        </p>
+
+        <h3>2.4 Kontolöschung</h3>
+        <p>
+            Sie können Ihr Konto jederzeit über die Kontoeinstellungen in der App löschen. Bei der Löschung werden Ihre personenbezogenen Daten, Trainingsergebnisse, Beiträge, Kommentare und hochgeladene Medien gemäß unserer <a href="privacy.html">Datenschutzrichtlinie</a> dauerhaft entfernt.
+        </p>
+
+        <h2>3. Nutzung des Dienstes</h2>
+
+        <h3>3.1 Lizenz</h3>
+        <p>
+            Wir gewähren Ihnen eine eingeschränkte, nicht-exklusive, nicht übertragbare, widerrufliche Lizenz zur Nutzung des Dienstes für Ihren persönlichen, nicht-kommerziellen Gebrauch, vorbehaltlich dieser Bedingungen.
+        </p>
+
+        <h3>3.2 Zulässige Nutzung</h3>
+        <p>Sie verpflichten sich, Folgendes zu unterlassen:</p>
+        <ul>
+            <li>Den Dienst für rechtswidrige Zwecke oder unter Verletzung geltender Gesetze zu nutzen</li>
+            <li>Sich als eine andere Person oder Organisation auszugeben oder Ihre Identität oder Zugehörigkeit falsch darzustellen</li>
+            <li>Den Dienst oder seine Infrastruktur zu stören, zu beeinträchtigen oder sich unbefugt Zugang dazu zu verschaffen</li>
+            <li>Automatisierte Mittel (Bots, Scraper, Crawler) zu verwenden, um auf den Dienst zuzugreifen oder Daten daraus zu sammeln</li>
+            <li>Teile des Dienstes zurückzuentwickeln, zu dekompilieren oder zu disassemblieren</li>
+            <li>Den Dienst zum Versenden von Spam oder unerwünschten Nachrichten zu verwenden</li>
+            <li>Viren, Malware oder anderen schädlichen Code hochzuladen oder zu übertragen</li>
+            <li>Zugriffskontrollen oder Sicherheitsmaßnahmen zu umgehen</li>
+        </ul>
+
+        <h2>4. Gemeinschaften (Spaces)</h2>
+
+        <h3>4.1 Erstellen und Verwalten von Spaces</h3>
+        <p>
+            Nutzer können Gemeinschaften ("Spaces") erstellen, um Trainings zu organisieren und sich mit anderen zu vernetzen. Space-Administratoren sind für die Verwaltung ihres Spaces verantwortlich, einschließlich der Moderation von Inhalten und Mitgliedern.
+        </p>
+
+        <h3>4.2 Beitritt zu Spaces</h3>
+        <p>
+            Spaces können offen für den Beitritt sein oder die Genehmigung eines Administrators erfordern. Administratoren können Beitrittsanfragen nach eigenem Ermessen annehmen oder ablehnen.
+        </p>
+
+        <h3>4.3 Verantwortlichkeiten der Space-Administratoren</h3>
+        <p>Space-Administratoren verpflichten sich:</p>
+        <ul>
+            <li>Inhalte und das Verhalten der Mitglieder innerhalb ihres Spaces zu moderieren</li>
+            <li>Inhalte zu entfernen, die gegen diese Bedingungen oder geltende Community-Richtlinien verstoßen</li>
+            <li>Ihren Space nicht für illegale Aktivitäten zu nutzen</li>
+        </ul>
+
+        <h2>5. Nutzergenerierte Inhalte</h2>
+
+        <h3>5.1 Ihre Inhalte</h3>
+        <p>
+            Der Dienst ermöglicht es Ihnen, Inhalte zu veröffentlichen, darunter Trainingsergebnisse, Beiträge, Kommentare und Fotos ("Nutzerinhalte"). Sie behalten das Eigentum an Ihren Nutzerinhalten. Durch die Veröffentlichung von Nutzerinhalten gewähren Sie uns eine weltweite, nicht-exklusive, gebührenfreie Lizenz zur Nutzung, Anzeige, Vervielfältigung und Verbreitung Ihrer Nutzerinhalte, ausschließlich zum Zweck des Betriebs und der Bereitstellung des Dienstes.
+        </p>
+
+        <h3>5.2 Inhaltsstandards</h3>
+        <p>Sie erklären sich damit einverstanden, dass Ihre Nutzerinhalte nicht:</p>
+        <ul>
+            <li>Hassrede, Drohungen, Belästigung oder Mobbing enthalten</li>
+            <li>Sexuell explizites oder pornografisches Material beinhalten</li>
+            <li>Gewalt, Selbstverletzung oder illegale Aktivitäten fördern</li>
+            <li>Die geistigen Eigentumsrechte anderer verletzen</li>
+            <li>Falsche oder irreführende Informationen enthalten, die zur Täuschung bestimmt sind</li>
+            <li>Persönliche oder private Informationen anderer ohne deren Einwilligung enthalten</li>
+            <li>Spam, Werbung oder nicht autorisierte Werbeaktionen enthalten</li>
+        </ul>
+
+        <h3>5.3 Inhaltsmoderation</h3>
+        <p>
+            Wir behalten uns das Recht vor, Nutzerinhalte zu überprüfen, zu entfernen oder den Zugang dazu zu sperren, wenn wir nach eigenem Ermessen feststellen, dass sie gegen diese Bedingungen verstoßen. Wir sind nicht verpflichtet, alle Nutzerinhalte zu überwachen, können dies jedoch nach eigenem Ermessen tun.
+        </p>
+
+        <h3>5.4 Meldungen</h3>
+        <p>
+            Wenn Sie auf Inhalte stoßen, die gegen diese Bedingungen verstoßen, können Sie diese über die Meldefunktion in der App melden. Wir werden Meldungen prüfen und geeignete Maßnahmen ergreifen.
+        </p>
+
+        <h2>6. Community-Richtlinien</h2>
+        <p>
+            Von allen Nutzern wird erwartet, dass sie andere mit Respekt behandeln. Die folgenden Verhaltensweisen sind in allen Spaces untersagt:
+        </p>
+        <ol>
+            <li>Belästigung, Mobbing oder Einschüchterung jeglicher Art</li>
+            <li>Hassrede aufgrund von Rasse, Ethnie, Geschlecht, sexueller Orientierung, Religion, Behinderung oder anderen geschützten Merkmalen</li>
+            <li>Das Teilen oder Androhen des Teilens privater oder persönlicher Informationen anderer (Doxxing)</li>
+            <li>Veröffentlichung von Spam, Betrug oder irreführenden Inhalten</li>
+            <li>Versuche, Ergebnisse, Bestenlisten oder andere Wettbewerbsfunktionen zu manipulieren</li>
+            <li>Erstellen mehrerer Konten, um Sperren oder Einschränkungen zu umgehen</li>
+        </ol>
+        <p>
+            Verstöße können nach unserem Ermessen zur Entfernung von Inhalten, vorübergehender Sperrung oder dauerhafter Kontokündigung führen.
+        </p>
+
+        <h2>7. Geistiges Eigentum</h2>
+
+        <h3>7.1 Unser Eigentum</h3>
+        <p>
+            Der Dienst, einschließlich seines Designs, seiner Funktionen, seines Codes, seiner Marken, Logos und aller damit verbundenen geistigen Eigentumsrechte, ist Eigentum von showup und durch geltendes Recht zum Schutz geistigen Eigentums geschützt. Sie dürfen den Dienst ohne unsere vorherige schriftliche Zustimmung nicht kopieren, modifizieren, verbreiten oder abgeleitete Werke davon erstellen.
+        </p>
+
+        <h3>7.2 Feedback</h3>
+        <p>
+            Wenn Sie Feedback, Vorschläge oder Ideen zum Dienst einreichen, erklären Sie sich damit einverstanden, dass wir diese ohne jegliche Verpflichtung zur Vergütung verwenden dürfen.
+        </p>
+
+        <h2>8. Dienste Dritter</h2>
+        <p>
+            Der Dienst nutzt Drittanbieterdienste, darunter Firebase (Google Cloud) für die Infrastruktur und Apple/Google für die Authentifizierung. Ihre Nutzung dieser Dienste unterliegt deren jeweiligen Nutzungsbedingungen und Datenschutzrichtlinien. Wir sind nicht verantwortlich für die Praktiken von Drittanbieterdiensten.
+        </p>
+
+        <h2>9. Gewährleistungsausschluss</h2>
+        <p>
+            Der Dienst wird "wie besehen" und "wie verfügbar" ohne jegliche ausdrückliche oder stillschweigende Gewährleistung bereitgestellt, einschließlich, aber nicht beschränkt auf stillschweigende Gewährleistungen der Marktgängigkeit, der Eignung für einen bestimmten Zweck und der Nichtverletzung von Rechten Dritter.
+        </p>
+        <p>
+            Wir garantieren nicht, dass der Dienst ununterbrochen, fehlerfrei, sicher oder frei von Viren oder anderen schädlichen Komponenten sein wird. Wir geben keine Zusicherungen hinsichtlich der Genauigkeit oder Zuverlässigkeit von Nutzerinhalten oder Informationen, die über den Dienst erhalten werden.
+        </p>
+        <p>
+            <strong>Fitness-Haftungsausschluss:</strong> Der Dienst ist eine Fitness-Tracking- und Community-Plattform. Er stellt keine medizinische Beratung dar. Konsultieren Sie stets einen qualifizierten Gesundheitsfachmann, bevor Sie ein Trainingsprogramm beginnen. Sie nutzen den Dienst und führen alle Übungen auf eigenes Risiko durch.
+        </p>
+
+        <h2>10. Haftungsbeschränkung</h2>
+        <p>
+            Soweit nach geltendem Recht zulässig, haften showup und seine leitenden Angestellten, Direktoren, Mitarbeiter und Vertreter nicht für indirekte, zufällige, besondere, Folge- oder Strafschäden oder für den Verlust von Gewinnen, Einnahmen, Daten oder Geschäftswert, die sich aus oder im Zusammenhang mit Ihrer Nutzung des Dienstes ergeben.
+        </p>
+        <p>
+            Unsere Gesamthaftung für Ansprüche, die sich aus Ihrer Nutzung des Dienstes ergeben, ist auf den Betrag beschränkt, den Sie uns in den zwölf (12) Monaten vor dem Anspruch gezahlt haben, oder fünfzig US-Dollar (USD 50), je nachdem, welcher Betrag höher ist.
+        </p>
+        <p>
+            Einige Rechtsordnungen erlauben den Ausschluss oder die Beschränkung bestimmter Schäden nicht. In solchen Rechtsordnungen ist unsere Haftung auf das gesetzlich zulässige Höchstmaß beschränkt. Nichts in diesen Bedingungen schließt die Haftung für Tod oder Körperverletzung durch Fahrlässigkeit, Betrug oder jegliche Haftung aus oder beschränkt sie, die nach geltendem Recht nicht ausgeschlossen werden kann.
+        </p>
+
+        <h2>11. Freistellung</h2>
+        <p>
+            Sie erklären sich damit einverstanden, showup und seine leitenden Angestellten, Direktoren, Mitarbeiter und Vertreter von allen Ansprüchen, Schäden, Verlusten, Verbindlichkeiten und Kosten (einschließlich angemessener Anwaltsgebühren) freizustellen, die sich aus oder im Zusammenhang mit Ihrer Nutzung des Dienstes, Ihren Nutzerinhalten oder Ihrem Verstoß gegen diese Bedingungen ergeben.
+        </p>
+
+        <h2>12. Kündigung</h2>
+
+        <h3>12.1 Kündigung durch Sie</h3>
+        <p>
+            Sie können die Nutzung des Dienstes jederzeit einstellen und Ihr Konto löschen.
+        </p>
+
+        <h3>12.2 Kündigung durch uns</h3>
+        <p>
+            Wir können Ihr Konto und Ihren Zugang zum Dienst jederzeit, mit oder ohne Vorankündigung, aus beliebigem Grund sperren oder kündigen, einschließlich, aber nicht beschränkt auf Verstöße gegen diese Bedingungen. Mit der Kündigung erlischt Ihr Recht zur Nutzung des Dienstes sofort.
+        </p>
+
+        <h3>12.3 Wirkung der Kündigung</h3>
+        <p>
+            Abschnitte, die ihrer Natur nach die Kündigung überdauern sollten, bleiben bestehen, einschließlich, aber nicht beschränkt auf: Geistiges Eigentum, Gewährleistungsausschluss, Haftungsbeschränkung, Freistellung und Anwendbares Recht.
+        </p>
+
+        <h2>13. Änderungen dieser Bedingungen</h2>
+        <p>
+            Wir können diese Bedingungen von Zeit zu Zeit aktualisieren. Wir werden Sie über wesentliche Änderungen informieren, indem wir die aktualisierten Bedingungen auf dieser Seite veröffentlichen und das Datum "Zuletzt aktualisiert" anpassen. Ihre fortgesetzte Nutzung des Dienstes nach Änderungen gilt als Zustimmung zu den aktualisierten Bedingungen.
+        </p>
+        <p>
+            Wenn Sie den geänderten Bedingungen nicht zustimmen, müssen Sie die Nutzung des Dienstes einstellen und Ihr Konto löschen.
+        </p>
+
+        <h2>14. Anwendbares Recht und Streitigkeiten</h2>
+        <p>
+            Diese Bedingungen unterliegen dem Recht der Republik Korea und werden in Übereinstimmung damit ausgelegt, ohne Berücksichtigung kollisionsrechtlicher Bestimmungen.
+        </p>
+        <p>
+            Alle Streitigkeiten, die sich aus diesen Bedingungen oder Ihrer Nutzung des Dienstes ergeben, sind zunächst durch Verhandlungen in gutem Glauben beizulegen. Scheitern die Verhandlungen, sind die Streitigkeiten der ausschließlichen Zuständigkeit der Gerichte der Republik Korea zu unterwerfen.
+        </p>
+        <p>
+            Für Nutzer im Europäischen Wirtschaftsraum: Nichts in diesen Bedingungen beeinträchtigt Ihre Rechte nach den zwingenden Verbraucherschutzgesetzen Ihres Wohnsitzlandes. Sie haben möglicherweise auch das Recht, Verfahren vor den Gerichten Ihres Wohnsitzlandes einzuleiten, und Streitigkeiten an die Online-Streitbeilegungsplattform der Europäischen Kommission unter <a href="https://ec.europa.eu/consumers/odr">https://ec.europa.eu/consumers/odr</a> zu verweisen.
+        </p>
+
+        <h2>15. Allgemeine Bestimmungen</h2>
+        <ul>
+            <li><strong>Gesamte Vereinbarung:</strong> Diese Bedingungen bilden zusammen mit unserer Datenschutzrichtlinie die gesamte Vereinbarung zwischen Ihnen und showup in Bezug auf den Dienst.</li>
+            <li><strong>Salvatorische Klausel:</strong> Sollte eine Bestimmung dieser Bedingungen als nicht durchsetzbar befunden werden, bleiben die übrigen Bestimmungen in vollem Umfang in Kraft.</li>
+            <li><strong>Verzicht:</strong> Unser Versäumnis, ein Recht oder eine Bestimmung dieser Bedingungen durchzusetzen, stellt keinen Verzicht auf dieses Recht oder diese Bestimmung dar.</li>
+            <li><strong>Abtretung:</strong> Sie dürfen Ihre Rechte aus diesen Bedingungen ohne unsere Zustimmung nicht abtreten oder übertragen. Wir können unsere Rechte ohne Einschränkung abtreten.</li>
+            <li><strong>Sprache:</strong> Diese Bedingungen sind in englischer Sprache verfasst. Im Falle einer Übersetzung in eine andere Sprache hat die englische Fassung bei Widersprüchen Vorrang.</li>
+        </ul>
+
+        <h2>16. Kontakt</h2>
+        <p>Wenn Sie Fragen zu diesen Bedingungen haben, kontaktieren Sie uns bitte unter:</p>
+        <p>
+            <a href="mailto:support@showupcounts.com">support@showupcounts.com</a>
+        </p>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <a href="index.html" class="footer-logo">
+                        <img src="logo-dark.svg" alt="showup" class="logo-dark">
+                        <img src="logo-light.svg" alt="showup" class="logo-light">
+                    </a>
+                    <p>Build your fitness community. Connect. Train. Grow together.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-col">
+                        <h4>Product</h4>
+                        <a href="index.html#features">Features</a>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Legal</h4>
+                        <a href="privacy.html">Privacy Policy</a>
+                        <a href="terms.html">Terms of Service</a>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Connect</h4>
+                        <a href="https://instagram.com/showupcounts" target="_blank">Instagram</a>
+                        <a href="contact.html">Contact</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Showup. All rights reserved.</p>
+                <a href="#" class="app-store-badge">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                    Download on the App Store
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const themeToggle = document.getElementById('themeToggle');
+        function toggleTheme() {
+            const current = document.documentElement.getAttribute('data-theme');
+            const next = current === 'light' ? 'dark' : 'light';
+            document.documentElement.setAttribute('data-theme', next);
+            localStorage.setItem('theme', next);
+        }
+        themeToggle.addEventListener('click', toggleTheme);
+
+        const langDropdown = document.getElementById('langDropdown');
+        const langCurrent = document.getElementById('langCurrent');
+        langCurrent.addEventListener('click', function(e) {
+            e.stopPropagation();
+            langDropdown.classList.toggle('open');
+        });
+        document.addEventListener('click', function() {
+            langDropdown.classList.remove('open');
+        });
+    </script>
+</body>
+</html>
