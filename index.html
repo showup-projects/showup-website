@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>showup — Your Community. Your Workouts. Your Way.</title>
+    <title>Showup</title>
     <meta name="description" content="Create fitness communities, program workouts, and stay connected. Anyone can build their tribe with showup.">
     <meta property="og:title" content="showup — Your Community. Your Workouts. Your Way.">
     <meta property="og:description" content="Create fitness communities, program workouts, and stay connected. Anyone can build their tribe with showup.">
     <meta property="og:type" content="website">
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%234F8EF7'/%3E%3Ctext x='16' y='23' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='bold' font-size='18'%3Es%3C/text%3E%3C/svg%3E">
+    <link rel="icon" id="favicon" type="image/svg+xml" href="assets/favicon-dark.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet">
@@ -19,6 +19,7 @@
             var stored = localStorage.getItem('theme');
             var theme = stored || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
             document.documentElement.setAttribute('data-theme', theme);
+            document.getElementById('favicon').href = theme === 'light' ? 'assets/favicon-light.svg' : 'assets/favicon-dark.svg';
         })();
     </script>
 
@@ -1834,6 +1835,7 @@
         function setTheme(theme) {
             document.documentElement.setAttribute('data-theme', theme);
             localStorage.setItem('theme', theme);
+            document.getElementById('favicon').href = theme === 'light' ? 'assets/favicon-light.svg' : 'assets/favicon-dark.svg';
         }
 
         function toggleTheme() {
