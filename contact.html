@@ -346,6 +346,12 @@
             document.getElementById('favicon').href = next === 'light' ? 'assets/favicon-light.svg' : 'assets/favicon-dark.svg';
         }
         themeToggle.addEventListener('click', toggleTheme);
+        window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', (e) => {
+            localStorage.removeItem('theme');
+            const theme = e.matches ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', theme);
+            document.getElementById('favicon').href = theme === 'light' ? 'assets/favicon-light.svg' : 'assets/favicon-dark.svg';
+        });
     </script>
 </body>
 </html>

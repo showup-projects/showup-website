@@ -1832,24 +1832,23 @@
             return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
         }
 
-        function setTheme(theme) {
+        function setTheme(theme, persist) {
             document.documentElement.setAttribute('data-theme', theme);
-            localStorage.setItem('theme', theme);
+            if (persist) localStorage.setItem('theme', theme);
             document.getElementById('favicon').href = theme === 'light' ? 'assets/favicon-light.svg' : 'assets/favicon-dark.svg';
         }
 
         function toggleTheme() {
             const current = document.documentElement.getAttribute('data-theme');
-            setTheme(current === 'light' ? 'dark' : 'light');
+            setTheme(current === 'light' ? 'dark' : 'light', true);
         }
 
         themeToggle.addEventListener('click', toggleTheme);
 
-        // Listen for system preference changes (only if no manual override)
+        // Listen for system preference changes — always follow device mode
         window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', (e) => {
-            if (!localStorage.getItem('theme')) {
-                setTheme(e.matches ? 'light' : 'dark');
-            }
+            localStorage.removeItem('theme');
+            setTheme(e.matches ? 'light' : 'dark', false);
         });
 
         /* ============================================

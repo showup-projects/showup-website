@@ -11,11 +11,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet">
     <script>
         (function() {
-            var theme = localStorage.getItem('theme');
-            if (theme) {
-                document.documentElement.setAttribute('data-theme', theme);
-                document.getElementById('favicon').href = theme === 'light' ? '../assets/favicon-light.svg' : '../assets/favicon-dark.svg';
-            }
+            var theme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+            document.documentElement.setAttribute('data-theme', theme);
+            document.getElementById('favicon').href = theme === 'light' ? '../assets/favicon-light.svg' : '../assets/favicon-dark.svg';
+            window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', function(e) {
+                localStorage.removeItem('theme');
+                var t = e.matches ? 'light' : 'dark';
+                document.documentElement.setAttribute('data-theme', t);
+                document.getElementById('favicon').href = t === 'light' ? '../assets/favicon-light.svg' : '../assets/favicon-dark.svg';
+            });
         })();
     </script>
 
