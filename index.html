@@ -290,6 +290,7 @@
             position: relative;
             z-index: 1;
             max-width: 800px;
+            will-change: transform;
         }
         .hero-badge {
             display: inline-block;
@@ -1801,6 +1802,21 @@
         });
 
         /* ============================================
+           HERO PARALLAX (slower scroll for hero content)
+           ============================================ */
+        const heroContent = document.querySelector('.hero-content');
+        const heroSection = document.getElementById('hero');
+        function updateHeroParallax() {
+            const scrollY = window.scrollY;
+            const heroHeight = heroSection.offsetHeight;
+            if (scrollY < heroHeight) {
+                // Move hero content at 50% of scroll speed so subtext stays visible longer
+                const offset = scrollY * 0.5;
+                heroContent.style.transform = `translateY(${offset}px)`;
+            }
+        }
+
+        /* ============================================
            MAIN SCROLL LOOP
            ============================================ */
         let ticking = false;
@@ -1810,6 +1826,7 @@
                     updateScrollProgress();
                     updateNav();
                     updateFeatures();
+                    updateHeroParallax();
                     ticking = false;
                 });
                 ticking = true;
