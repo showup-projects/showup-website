@@ -8,7 +8,7 @@
     <link rel="icon" id="favicon" type="image/svg+xml" href="../assets/favicon-dark.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script>
         (function() {
             var theme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
@@ -60,7 +60,7 @@
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
         body {
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-family: 'Inter', sans-serif;
             color: var(--text-primary);
             background: var(--bg-primary);
             line-height: 1.6;
@@ -78,8 +78,17 @@
             right: 0;
             z-index: 1000;
             height: var(--nav-height);
-            background: var(--glass);
-            border-bottom: 1px solid var(--border);
+            background: linear-gradient(to bottom, #0A0A0A 0%, rgba(10, 10, 10, 0) 100%);
+            border: none;
+        }
+        .nav::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background: #0A0A0A;
         }
         .nav-inner {
             max-width: 1280px;
@@ -89,13 +98,17 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+            position: relative;
         }
         .nav-logo {
             display: flex;
             align-items: center;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
         }
         .nav-logo img {
-            height: 44px;
+            height: 34px;
             width: auto;
             display: block;
         }
@@ -130,7 +143,7 @@
             gap: 36px;
         }
         .nav-links a {
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-family: 'Inter', sans-serif;
             font-weight: 400;
             font-size: 0.9rem;
             color: var(--text-secondary);
@@ -145,7 +158,7 @@
             border-radius: 0;
             background: #FFFFFF;
             color: #0A0A0A;
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-family: 'Inter', sans-serif;
             font-weight: 600;
             font-size: 0.88rem;
             border: 2px solid var(--text-primary);
@@ -189,7 +202,7 @@
         }
         .mobile-menu.open { opacity: 1; pointer-events: auto; }
         .mobile-menu a {
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-family: 'Inter', sans-serif;
             font-weight: 400;
             font-size: 1.5rem;
             color: var(--text-secondary);
@@ -204,7 +217,7 @@
             padding: calc(var(--nav-height) + 80px) 24px 100px;
         }
         .terms-content h1 {
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-family: 'Inter', sans-serif;
             font-weight: 900;
             font-size: clamp(2rem, 4vw, 3rem);
             line-height: 1.1;
@@ -214,7 +227,7 @@
         }
         .terms-updated {
             color: var(--text-tertiary);
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-family: 'Inter', sans-serif;
             font-weight: 400;
             font-size: 0.9rem;
             margin-bottom: 48px;
@@ -222,7 +235,7 @@
             border-bottom: 1px solid var(--border);
         }
         .terms-content h2 {
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-family: 'Inter', sans-serif;
             font-weight: 900;
             font-size: 1.5rem;
             line-height: 1.2;
@@ -232,7 +245,7 @@
             margin-bottom: 16px;
         }
         .terms-content h3 {
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-family: 'Inter', sans-serif;
             font-weight: 900;
             font-size: 1.15rem;
             margin-top: 32px;
@@ -293,6 +306,7 @@
             display: flex;
             align-items: center;
             gap: 8px;
+            margin-left: auto;
         }
         .lang-dropdown {
             position: relative;
@@ -302,21 +316,20 @@
             display: flex;
             align-items: center;
             gap: 4px;
-            padding: 6px 10px;
+            padding: 6px 4px;
             background: transparent;
-            border: 1px solid var(--border);
+            border: none;
             color: var(--text-secondary);
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-family: 'Inter', sans-serif;
             font-weight: 600;
             font-size: 0.75rem;
             letter-spacing: 0.04em;
             text-transform: uppercase;
             cursor: pointer;
-            transition: color 0.2s ease, border-color 0.2s ease;
+            transition: color 0.2s ease;
         }
         .lang-current:hover {
             color: var(--text-primary);
-            border-color: var(--text-primary);
         }
         .lang-current svg {
             width: 10px;
@@ -349,7 +362,7 @@
             width: 100%;
             padding: 8px 12px;
             color: var(--text-secondary);
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-family: 'Inter', sans-serif;
             font-weight: 600;
             font-size: 0.75rem;
             letter-spacing: 0.04em;
@@ -386,7 +399,7 @@
             margin-bottom: 16px;
         }
         .footer-logo img {
-            height: 38px;
+            height: 34px;
             width: auto;
         }
         .footer-brand p {
@@ -401,7 +414,7 @@
             gap: 32px;
         }
         .footer-col h4 {
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-family: 'Inter', sans-serif;
             font-weight: 400;
             font-size: 0.85rem;
             text-transform: uppercase;
@@ -436,7 +449,7 @@
             border-radius: 0;
             background: #fff;
             color: #000;
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-family: 'Inter', sans-serif;
             font-weight: 400;
             font-size: 0.82rem;
             border: 2px solid var(--text-primary);
@@ -446,6 +459,12 @@
         .app-store-badge svg { width: 18px; height: 18px; }
 
         /* Light theme overrides */
+        [data-theme="light"] .nav {
+            background: linear-gradient(to bottom, #F5F5F5 0%, rgba(245, 245, 245, 0) 100%);
+        }
+        [data-theme="light"] .nav::before {
+            background: #F5F5F5;
+        }
         [data-theme="light"] .nav-cta {
             background: #1A1A1A;
             color: #F4F4F4;
@@ -504,7 +523,7 @@
 
     <main class="terms-content">
         <h1>Nutzungsbedingungen</h1>
-        <p class="terms-updated">Zuletzt aktualisiert: 18. Februar 2026</p>
+        <p class="terms-updated">Zuletzt aktualisiert: 24. März 2026</p>
 
         <p>
             Willkommen bei showup. Diese Nutzungsbedingungen ("Bedingungen") regeln Ihren Zugang zu und die Nutzung der mobilen Anwendung und Website von showup (zusammen der "Dienst"), betrieben von showup ("wir", "unser" oder "uns").
@@ -562,6 +581,22 @@
             <li>Viren, Malware oder anderen schädlichen Code hochzuladen oder zu übertragen</li>
             <li>Zugriffskontrollen oder Sicherheitsmaßnahmen zu umgehen</li>
         </ul>
+
+        <h3>3.3 In-App-Käufe</h3>
+        <p>
+            Der Dienst kann Produkte und Dienstleistungen zum Kauf innerhalb der App anbieten ("In-App-Käufe"). In-App-Käufe werden über den Apple App Store abgewickelt und unterliegen den Geschäftsbedingungen von Apple.
+        </p>
+        <p>Sie erkennen an und stimmen zu, dass:</p>
+        <ul>
+            <li>Alle In-App-Käufe endgültig und nicht erstattungsfähig sind, es sei denn, geltendes Recht oder die Erstattungsrichtlinien von Apple erfordern dies</li>
+            <li>Preise für In-App-Käufe je nach Region variieren und sich ändern können</li>
+            <li>Sie für alle über Ihr Konto anfallenden Gebühren verantwortlich sind, einschließlich Käufe, die von Minderjährigen über Ihr Gerät getätigt werden</li>
+            <li>Abonnements sich automatisch verlängern, sofern sie nicht mindestens 24 Stunden vor Ablauf des aktuellen Abrechnungszeitraums gekündigt werden</li>
+            <li>Sie Abonnements über Ihre Apple-ID-Kontoeinstellungen verwalten und kündigen können</li>
+        </ul>
+        <p>
+            Erstattungsanfragen für In-App-Käufe müssen an Apple gerichtet werden, da Apple alle Zahlungen verarbeitet und die Erstattungsrichtlinien für über den App Store vertriebene Apps verwaltet.
+        </p>
 
         <h2>4. Gemeinschaften (Spaces)</h2>
 
@@ -642,7 +677,7 @@
 
         <h2>8. Dienste Dritter</h2>
         <p>
-            Der Dienst nutzt Drittanbieterdienste, darunter Firebase (Google Cloud) für die Infrastruktur und Apple/Google für die Authentifizierung. Ihre Nutzung dieser Dienste unterliegt deren jeweiligen Nutzungsbedingungen und Datenschutzrichtlinien. Wir sind nicht verantwortlich für die Praktiken von Drittanbieterdiensten.
+            Der Dienst nutzt Drittanbieterdienste, darunter Firebase (Google Cloud) für die Infrastruktur, Apple/Google für die Authentifizierung und den Apple App Store für die Verarbeitung von In-App-Käufen. Ihre Nutzung dieser Dienste unterliegt deren jeweiligen Nutzungsbedingungen und Datenschutzrichtlinien. Wir sind nicht verantwortlich für die Praktiken von Drittanbieterdiensten.
         </p>
 
         <h2>9. Gewährleistungsausschluss</h2>

@@ -8,7 +8,7 @@
     <link rel="icon" id="favicon" type="image/svg+xml" href="../assets/favicon-dark.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script>
         (function() {
             var theme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
@@ -60,7 +60,7 @@
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
         body {
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-family: 'Inter', sans-serif;
             color: var(--text-primary);
             background: var(--bg-primary);
             line-height: 1.6;
@@ -78,8 +78,17 @@
             right: 0;
             z-index: 1000;
             height: var(--nav-height);
-            background: var(--glass);
-            border-bottom: 1px solid var(--border);
+            background: linear-gradient(to bottom, #0A0A0A 0%, rgba(10, 10, 10, 0) 100%);
+            border: none;
+        }
+        .nav::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background: #0A0A0A;
         }
         .nav-inner {
             max-width: 1280px;
@@ -89,13 +98,17 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+            position: relative;
         }
         .nav-logo {
             display: flex;
             align-items: center;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
         }
         .nav-logo img {
-            height: 44px;
+            height: 34px;
             width: auto;
             display: block;
         }
@@ -130,7 +143,7 @@
             gap: 36px;
         }
         .nav-links a {
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-family: 'Inter', sans-serif;
             font-weight: 400;
             font-size: 0.9rem;
             color: var(--text-secondary);
@@ -145,7 +158,7 @@
             border-radius: 0;
             background: #FFFFFF;
             color: #0A0A0A;
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-family: 'Inter', sans-serif;
             font-weight: 600;
             font-size: 0.88rem;
             border: 2px solid var(--text-primary);
@@ -189,7 +202,7 @@
         }
         .mobile-menu.open { opacity: 1; pointer-events: auto; }
         .mobile-menu a {
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-family: 'Inter', sans-serif;
             font-weight: 400;
             font-size: 1.5rem;
             color: var(--text-secondary);
@@ -204,7 +217,7 @@
             padding: calc(var(--nav-height) + 80px) 24px 100px;
         }
         .terms-content h1 {
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-family: 'Inter', sans-serif;
             font-weight: 900;
             font-size: clamp(2rem, 4vw, 3rem);
             line-height: 1.1;
@@ -214,7 +227,7 @@
         }
         .terms-updated {
             color: var(--text-tertiary);
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-family: 'Inter', sans-serif;
             font-weight: 400;
             font-size: 0.9rem;
             margin-bottom: 48px;
@@ -222,7 +235,7 @@
             border-bottom: 1px solid var(--border);
         }
         .terms-content h2 {
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-family: 'Inter', sans-serif;
             font-weight: 900;
             font-size: 1.5rem;
             line-height: 1.2;
@@ -232,7 +245,7 @@
             margin-bottom: 16px;
         }
         .terms-content h3 {
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-family: 'Inter', sans-serif;
             font-weight: 900;
             font-size: 1.15rem;
             margin-top: 32px;
@@ -292,6 +305,7 @@
             display: flex;
             align-items: center;
             gap: 8px;
+            margin-left: auto;
         }
         .lang-dropdown {
             position: relative;
@@ -301,21 +315,20 @@
             display: flex;
             align-items: center;
             gap: 4px;
-            padding: 6px 10px;
+            padding: 6px 4px;
             background: transparent;
-            border: 1px solid var(--border);
+            border: none;
             color: var(--text-secondary);
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-family: 'Inter', sans-serif;
             font-weight: 600;
             font-size: 0.75rem;
             letter-spacing: 0.04em;
             text-transform: uppercase;
             cursor: pointer;
-            transition: color 0.2s ease, border-color 0.2s ease;
+            transition: color 0.2s ease;
         }
         .lang-current:hover {
             color: var(--text-primary);
-            border-color: var(--text-primary);
         }
         .lang-current svg {
             width: 10px;
@@ -348,7 +361,7 @@
             width: 100%;
             padding: 8px 12px;
             color: var(--text-secondary);
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-family: 'Inter', sans-serif;
             font-weight: 600;
             font-size: 0.75rem;
             letter-spacing: 0.04em;
@@ -385,7 +398,7 @@
             margin-bottom: 16px;
         }
         .footer-logo img {
-            height: 38px;
+            height: 34px;
             width: auto;
         }
         .footer-brand p {
@@ -400,7 +413,7 @@
             gap: 32px;
         }
         .footer-col h4 {
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-family: 'Inter', sans-serif;
             font-weight: 400;
             font-size: 0.85rem;
             text-transform: uppercase;
@@ -435,7 +448,7 @@
             border-radius: 0;
             background: #fff;
             color: #000;
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-family: 'Inter', sans-serif;
             font-weight: 400;
             font-size: 0.82rem;
             border: 2px solid var(--text-primary);
@@ -445,6 +458,12 @@
         .app-store-badge svg { width: 18px; height: 18px; }
 
         /* Light theme overrides */
+        [data-theme="light"] .nav {
+            background: linear-gradient(to bottom, #F5F5F5 0%, rgba(245, 245, 245, 0) 100%);
+        }
+        [data-theme="light"] .nav::before {
+            background: #F5F5F5;
+        }
         [data-theme="light"] .nav-cta {
             background: #1A1A1A;
             color: #F4F4F4;
@@ -503,7 +522,7 @@
 
     <main class="terms-content">
         <h1>Terms of Service</h1>
-        <p class="terms-updated">Last updated: February 18, 2026</p>
+        <p class="terms-updated">Last updated: March 24, 2026</p>
 
         <p>
             Welcome to showup. These Terms of Service ("Terms") govern your access to and use of the showup mobile application and website (collectively, the "Service"), operated by showup ("we," "our," or "us").
@@ -561,6 +580,22 @@
             <li>Upload or transmit viruses, malware, or other harmful code</li>
             <li>Circumvent any access controls or security measures</li>
         </ul>
+
+        <h3>3.3 In-App Purchases</h3>
+        <p>
+            The Service may offer products and services for purchase within the app ("In-App Purchases"). In-App Purchases are processed through the Apple App Store and are subject to Apple's terms and conditions.
+        </p>
+        <p>You acknowledge and agree that:</p>
+        <ul>
+            <li>All In-App Purchases are final and non-refundable, except as required by applicable law or Apple's refund policies</li>
+            <li>Prices for In-App Purchases may vary by region and are subject to change</li>
+            <li>You are responsible for all charges incurred through your account, including any purchases made by minors using your device</li>
+            <li>Subscriptions automatically renew unless canceled at least 24 hours before the end of the current billing period</li>
+            <li>You may manage and cancel subscriptions through your Apple ID account settings</li>
+        </ul>
+        <p>
+            Refund requests for In-App Purchases must be directed to Apple, as Apple processes all payments and manages refund policies for apps distributed through the App Store.
+        </p>
 
         <h2>4. Communities (Spaces)</h2>
 
@@ -641,7 +676,7 @@
 
         <h2>8. Third-Party Services</h2>
         <p>
-            The Service uses third-party services including Firebase (Google Cloud) for infrastructure and Apple/Google for authentication. Your use of these services is subject to their respective terms and privacy policies. We are not responsible for the practices of third-party services.
+            The Service uses third-party services including Firebase (Google Cloud) for infrastructure, Apple/Google for authentication, and the Apple App Store for in-app purchase processing. Your use of these services is subject to their respective terms and privacy policies. We are not responsible for the practices of third-party services.
         </p>
 
         <h2>9. Disclaimer of Warranties</h2>

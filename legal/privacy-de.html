@@ -8,7 +8,7 @@
     <link rel="icon" id="favicon" type="image/svg+xml" href="../assets/favicon-dark.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script>
         (function() {
             var theme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
@@ -60,7 +60,7 @@
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
         body {
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-family: 'Inter', sans-serif;
             color: var(--text-primary);
             background: var(--bg-primary);
             line-height: 1.6;
@@ -78,8 +78,17 @@
             right: 0;
             z-index: 1000;
             height: var(--nav-height);
-            background: var(--glass);
-            border-bottom: 1px solid var(--border);
+            background: linear-gradient(to bottom, #0A0A0A 0%, rgba(10, 10, 10, 0) 100%);
+            border: none;
+        }
+        .nav::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background: #0A0A0A;
         }
         .nav-inner {
             max-width: 1280px;
@@ -89,13 +98,17 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+            position: relative;
         }
         .nav-logo {
             display: flex;
             align-items: center;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
         }
         .nav-logo img {
-            height: 44px;
+            height: 34px;
             width: auto;
             display: block;
         }
@@ -130,7 +143,7 @@
             gap: 36px;
         }
         .nav-links a {
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-family: 'Inter', sans-serif;
             font-weight: 400;
             font-size: 0.9rem;
             color: var(--text-secondary);
@@ -145,7 +158,7 @@
             border-radius: 0;
             background: #FFFFFF;
             color: #0A0A0A;
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-family: 'Inter', sans-serif;
             font-weight: 600;
             font-size: 0.88rem;
             border: 2px solid var(--text-primary);
@@ -189,7 +202,7 @@
         }
         .mobile-menu.open { opacity: 1; pointer-events: auto; }
         .mobile-menu a {
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-family: 'Inter', sans-serif;
             font-weight: 400;
             font-size: 1.5rem;
             color: var(--text-secondary);
@@ -204,7 +217,7 @@
             padding: calc(var(--nav-height) + 80px) 24px 100px;
         }
         .privacy-content h1 {
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-family: 'Inter', sans-serif;
             font-weight: 900;
             font-size: clamp(2rem, 4vw, 3rem);
             line-height: 1.1;
@@ -214,7 +227,7 @@
         }
         .privacy-updated {
             color: var(--text-tertiary);
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-family: 'Inter', sans-serif;
             font-weight: 400;
             font-size: 0.9rem;
             margin-bottom: 48px;
@@ -222,7 +235,7 @@
             border-bottom: 1px solid var(--border);
         }
         .privacy-content h2 {
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-family: 'Inter', sans-serif;
             font-weight: 900;
             font-size: 1.5rem;
             line-height: 1.2;
@@ -232,7 +245,7 @@
             margin-bottom: 16px;
         }
         .privacy-content h3 {
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-family: 'Inter', sans-serif;
             font-weight: 900;
             font-size: 1.15rem;
             margin-top: 32px;
@@ -279,6 +292,7 @@
             display: flex;
             align-items: center;
             gap: 8px;
+            margin-left: auto;
         }
         .lang-dropdown {
             position: relative;
@@ -288,21 +302,20 @@
             display: flex;
             align-items: center;
             gap: 4px;
-            padding: 6px 10px;
+            padding: 6px 4px;
             background: transparent;
-            border: 1px solid var(--border);
+            border: none;
             color: var(--text-secondary);
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-family: 'Inter', sans-serif;
             font-weight: 600;
             font-size: 0.75rem;
             letter-spacing: 0.04em;
             text-transform: uppercase;
             cursor: pointer;
-            transition: color 0.2s ease, border-color 0.2s ease;
+            transition: color 0.2s ease;
         }
         .lang-current:hover {
             color: var(--text-primary);
-            border-color: var(--text-primary);
         }
         .lang-current svg {
             width: 10px;
@@ -335,7 +348,7 @@
             width: 100%;
             padding: 8px 12px;
             color: var(--text-secondary);
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-family: 'Inter', sans-serif;
             font-weight: 600;
             font-size: 0.75rem;
             letter-spacing: 0.04em;
@@ -372,7 +385,7 @@
             margin-bottom: 16px;
         }
         .footer-logo img {
-            height: 38px;
+            height: 34px;
             width: auto;
         }
         .footer-brand p {
@@ -387,7 +400,7 @@
             gap: 32px;
         }
         .footer-col h4 {
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-family: 'Inter', sans-serif;
             font-weight: 400;
             font-size: 0.85rem;
             text-transform: uppercase;
@@ -422,7 +435,7 @@
             border-radius: 0;
             background: #fff;
             color: #000;
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-family: 'Inter', sans-serif;
             font-weight: 400;
             font-size: 0.82rem;
             border: 2px solid var(--text-primary);
@@ -432,6 +445,12 @@
         .app-store-badge svg { width: 18px; height: 18px; }
 
         /* Light theme overrides */
+        [data-theme="light"] .nav {
+            background: linear-gradient(to bottom, #F5F5F5 0%, rgba(245, 245, 245, 0) 100%);
+        }
+        [data-theme="light"] .nav::before {
+            background: #F5F5F5;
+        }
         [data-theme="light"] .nav-cta {
             background: #1A1A1A;
             color: #F4F4F4;
@@ -490,7 +509,7 @@
 
     <main class="privacy-content">
         <h1>Datenschutzerklärung</h1>
-        <p class="privacy-updated">Zuletzt aktualisiert: 18. Februar 2026</p>
+        <p class="privacy-updated">Zuletzt aktualisiert: 24. März 2026</p>
 
         <p>
             showup („wir", „unser" oder „uns") betreibt die mobile Anwendung und Website von showup (zusammen der „Dienst"). Diese Datenschutzerklärung erläutert, wie wir Ihre Informationen erfassen, verwenden, offenlegen und schützen, wenn Sie den Dienst nutzen.
@@ -509,6 +528,7 @@
             <li>An Workouts teilnehmen und Ergebnisse eintragen</li>
             <li>Inhalte oder Kommentare veröffentlichen</li>
             <li>Fotos oder Medien hochladen</li>
+            <li>In-App-Käufe tätigen</li>
             <li>Uns für Support kontaktieren</li>
         </ul>
         <p>Diese Informationen können Folgendes umfassen:</p>
@@ -520,6 +540,7 @@
             <li>Nutzergenerierte Inhalte wie Beiträge, Kommentare und Medien</li>
             <li>Community-Mitgliedschaft und Rolleninformationen</li>
             <li>Einheitenpräferenzen (Gewicht, Entfernung)</li>
+            <li>Kauf- und Transaktionsdaten, einschließlich gekaufter Artikel und Abonnementstatus</li>
         </ul>
 
         <h3>1.2 Automatisch erfasste Informationen</h3>
@@ -540,6 +561,7 @@
             <li>Workout-Ergebnisse, persönliche Bestleistungen und Benchmarks zu verfolgen und anzuzeigen</li>
             <li>Push-Benachrichtigungen über Workouts, Community-Aktivitäten und Updates zu senden</li>
             <li>Auf Support-Anfragen zu reagieren und mit Ihnen zu kommunizieren</li>
+            <li>In-App-Käufe zu verarbeiten und Abonnements zu verwalten</li>
             <li>Den Dienst zu überwachen und zu verbessern</li>
             <li>Missbrauch, Betrug oder technische Probleme zu erkennen, zu verhindern und zu beheben</li>
             <li>Unsere Nutzungsbedingungen und Community-Richtlinien durchzusetzen</li>
@@ -558,6 +580,7 @@
         </p>
         <ul>
             <li><strong>Firebase (Google Cloud):</strong> Authentifizierung, Datenbankspeicherung, Dateispeicherung, Cloud-Funktionen und Push-Benachrichtigungen</li>
+            <li><strong>Apple App Store:</strong> Verarbeitung von In-App-Käufen und Abonnementverwaltung</li>
             <li><strong>Apple Sign-In und Google Sign-In:</strong> Kontoauthentifizierung</li>
         </ul>
         <p>
@@ -596,6 +619,7 @@
             <li>Ihre Beiträge und Kommentare</li>
             <li>Ihre hochgeladenen Mediendateien</li>
             <li>Ihre Community-Mitgliedschaften</li>
+            <li>Ihre Kaufhistorie und Transaktionsaufzeichnungen</li>
         </ul>
         <p>
             Einige Informationen können für einen begrenzten Zeitraum in unseren Backups aufbewahrt werden oder soweit gesetzlich vorgeschrieben. Anonymisierte oder aggregierte Daten, die Sie nicht identifizieren können, können auf unbestimmte Zeit aufbewahrt werden.

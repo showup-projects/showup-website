@@ -8,7 +8,7 @@
     <link rel="icon" id="favicon" type="image/svg+xml" href="assets/favicon-dark.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script>
         (function() {
             var theme = localStorage.getItem('theme');
@@ -48,7 +48,7 @@
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
         body {
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-family: 'Inter', sans-serif;
             color: var(--text-primary);
             background: var(--bg-primary);
             line-height: 1.6;
@@ -66,8 +66,17 @@
             right: 0;
             z-index: 1000;
             height: var(--nav-height);
-            background: var(--glass);
-            border-bottom: 1px solid var(--border);
+            background: linear-gradient(to bottom, #0A0A0A 0%, rgba(10, 10, 10, 0) 100%);
+            border: none;
+        }
+        .nav::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background: #0A0A0A;
         }
         .nav-inner {
             max-width: 1280px;
@@ -77,13 +86,17 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+            position: relative;
         }
         .nav-logo {
             display: flex;
             align-items: center;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
         }
         .nav-logo img {
-            height: 44px;
+            height: 34px;
             width: auto;
             display: block;
         }
@@ -120,7 +133,7 @@
             padding: calc(var(--nav-height) + 80px) 24px 100px;
         }
         .contact-content h1 {
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-family: 'Inter', sans-serif;
             font-weight: 900;
             font-size: clamp(2rem, 4vw, 3rem);
             line-height: 1.1;
@@ -137,7 +150,7 @@
             border-bottom: 1px solid var(--border);
         }
         .contact-content h2 {
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-family: 'Inter', sans-serif;
             font-weight: 900;
             font-size: 1.3rem;
             line-height: 1.2;
@@ -183,7 +196,7 @@
             margin-bottom: 16px;
         }
         .footer-logo img {
-            height: 38px;
+            height: 34px;
             width: auto;
         }
         .footer-brand p {
@@ -198,7 +211,7 @@
             gap: 32px;
         }
         .footer-col h4 {
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-family: 'Inter', sans-serif;
             font-weight: 400;
             font-size: 0.85rem;
             text-transform: uppercase;
@@ -233,7 +246,7 @@
             border-radius: 0;
             background: #fff;
             color: #000;
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+            font-family: 'Inter', sans-serif;
             font-weight: 400;
             font-size: 0.82rem;
             border: 2px solid var(--text-primary);
