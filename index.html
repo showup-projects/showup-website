@@ -129,6 +129,26 @@
         .btn-secondary:hover {
             border-color: #fff;
         }
+        .btn-android {
+            background: transparent;
+            color: rgba(255, 255, 255, 0.5);
+            border: 2px solid rgba(255, 255, 255, 0.18);
+            cursor: default;
+            position: relative;
+        }
+        .btn-android:hover {
+            opacity: 1;
+        }
+        .btn-android .coming-soon-tag {
+            font-size: 0.55rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            background: rgba(255, 255, 255, 0.12);
+            padding: 2px 8px;
+            border-radius: 100px;
+            color: rgba(255, 255, 255, 0.6);
+            white-space: nowrap;
+        }
 
         /* ============================================
            NAVIGATION
@@ -401,7 +421,7 @@
         }
         .hero-ctas.visible {
             opacity: 1;
-            max-height: 100px;
+            max-height: 200px;
             transform: translateY(0);
         }
         .hero-ctas .btn svg {
@@ -1118,6 +1138,14 @@
             background: #1A1A1A;
             color: #F4F4F4;
         }
+        [data-theme="light"] .btn-android {
+            color: rgba(0, 0, 0, 0.35);
+            border-color: rgba(0, 0, 0, 0.12);
+        }
+        [data-theme="light"] .btn-android .coming-soon-tag {
+            background: rgba(0, 0, 0, 0.07);
+            color: rgba(0, 0, 0, 0.4);
+        }
 
         /* Feature tags - monochrome in light mode too */
         [data-theme="light"] .tag-community,
@@ -1457,6 +1485,11 @@
                 <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
                 <span data-i18n="hero.download">Download on App Store</span>
             </a>
+            <span class="btn btn-android">
+                <svg viewBox="0 0 24 24" width="20" height="20"><path d="M1.22 0.345C0.947 0.639 0.787 1.089 0.787 1.674V22.326c0 0.585 0.16 1.035 0.433 1.329l0.07 0.068L13.068 12V11.862L1.29 0.277 1.22 0.345z" fill="#4285F4"/><path d="M17 16.003l-3.932-3.934V11.931L17 7.997l0.088 0.05 4.66 2.647c1.33 0.756 1.33 1.993 0 2.749L17.088 16.09 17 16.003z" fill="#FFBC00"/><path d="M17.088 16.09L13.068 12 1.22 23.655c0.439 0.465 1.162 0.522 1.982 0.058L17.088 16.09z" fill="#EA4335"/><path d="M17.088 7.91L3.202 0.287C2.382-0.177 1.659-0.12 1.22 0.345L13.068 12l4.02-4.09z" fill="#34A853"/></svg>
+                <span data-i18n="hero.android">Google Play</span>
+                <span class="coming-soon-tag" data-i18n="hero.comingSoon">Coming Soon</span>
+            </span>
         </div>
     </section>
 
@@ -1733,6 +1766,8 @@
             'hero.line5': 'Everywhere.',
             'hero.subtext': 'Create a <strong>space</strong>, invite your <strong>squad</strong>, program <strong>workouts</strong>, and track <strong>results</strong> together<br>\u2014 even with <strong>other squads</strong>, from <strong>anywhere</strong>.<br><br>Perfect for <strong>boxes</strong>, <strong>training groups</strong>, <strong>running crews</strong>, <strong>gym buddies</strong>, <strong>personal programming</strong><br>\u2014 or even just <strong>you</strong>.',
             'hero.download': 'Download on App Store',
+            'hero.android': 'Google Play',
+            'hero.comingSoon': 'Coming Soon',
             'hero.scroll': 'Scroll to explore',
             // Features intro
             'features.title': 'Everything your squad needs.<br>All in one place.',
@@ -1785,13 +1820,15 @@
             'nav.privacy': '개인정보처리방침',
             // Hero
             'hero.badge': '커뮤니티에 의한, 커뮤니티를 위한',
-            'hero.line1': '당신의 크루을 만들고.',
+            'hero.line1': '당신의 크루를 만들고.',
             'hero.line2': '운동을 짜고.',
             'hero.line3': '함께 땀 흘리세요.',
             'hero.line4': '누구나. 어디서나.',
             'hero.line5': '',
             'hero.subtext': '<strong>공간</strong>을 만들고, <strong>팀</strong>을 초대하고, <strong>운동</strong>을 프로그래밍하고, <strong>결과</strong>를 함께 기록하세요<br>\u2014 <strong>다른 팀</strong>과도, <strong>어디서든</strong>.<br><br><strong>박스</strong>, <strong>트레이닝 그룹</strong>, <strong>러닝 크루</strong>, <strong>헬스 친구</strong>, <strong>개인 프로그래밍</strong><br>\u2014 혼자서도 <strong>가능합니다</strong>.',
             'hero.download': 'App Store에서 다운로드',
+            'hero.android': 'Google Play',
+            'hero.comingSoon': '출시 예정',
             'hero.scroll': '스크롤하여 둘러보기',
             // Features intro
             'features.title': '팀에 필요한 모든 것.<br>하나의 앱에서.',
@@ -1852,6 +1889,8 @@
             'hero.line5': 'Überall.',
             'hero.subtext': 'Erstelle einen <strong>Raum</strong>, lade dein <strong>Team</strong> ein, plane <strong>Workouts</strong> und tracke <strong>Ergebnisse</strong> gemeinsam<br>\u2014 auch mit <strong>anderen Teams</strong>, von <strong>\u00fcberall</strong>.<br><br>Perfekt f\u00fcr <strong>Boxen</strong>, <strong>Trainingsgruppen</strong>, <strong>Laufcrews</strong>, <strong>Gym-Buddies</strong>, <strong>pers\u00f6nliches Programming</strong><br>\u2014 oder einfach nur f\u00fcr <strong>dich</strong>.',
             'hero.download': 'Im App Store laden',
+            'hero.android': 'Google Play',
+            'hero.comingSoon': 'Kommt bald',
             'hero.scroll': 'Scrollen zum Entdecken',
             // Features intro
             'features.title': 'Alles, was dein Team braucht.<br>In einer App.',
