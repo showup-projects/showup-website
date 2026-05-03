@@ -11,11 +11,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script>
         (function() {
-            var theme = localStorage.getItem('theme');
-            if (theme) {
-                document.documentElement.setAttribute('data-theme', theme);
-                document.getElementById('favicon').href = theme === 'light' ? 'assets/favicon-light.svg' : 'assets/favicon-dark.svg';
-            }
+            var stored = localStorage.getItem('theme');
+            var theme = stored || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+            document.documentElement.setAttribute('data-theme', theme);
+            document.getElementById('favicon').href = theme === 'light' ? 'assets/favicon-light.svg' : 'assets/favicon-dark.svg';
         })();
     </script>
 
@@ -34,14 +33,14 @@
         }
 
         [data-theme="light"] {
-            --bg-primary: #F4F4F4;
-            --bg-secondary: #F4F4F4;
+            --bg-primary: #FFFFFF;
+            --bg-secondary: #FFFFFF;
             --text-primary: #1A1A1A;
             --text-secondary: rgba(26, 26, 26, 0.55);
             --text-tertiary: rgba(26, 26, 26, 0.3);
             --accent-blue: #1A1A1A;
             --border: rgba(0, 0, 0, 0.15);
-            --glass: #F4F4F4;
+            --glass: #FFFFFF;
             --glass-border: rgba(0, 0, 0, 0.15);
         }
 
@@ -241,6 +240,7 @@
             text-decoration: underline;
             text-underline-offset: 3px;
         }
+        .contact-content a.no-underline { text-decoration: none; }
         .contact-content a:hover { opacity: 0.7; }
         .contact-email {
             display: inline-block;
@@ -369,7 +369,7 @@
                     </button>
                     <div class="lang-menu">
                         <a href="contact.html" class="active">EN</a>
-                        <a href="contact-ko.html">KO</a>
+                        <a href="contact-ko.html">KR</a>
                         <a href="contact-de.html">DE</a>
                     </div>
                 </div>
@@ -395,7 +395,7 @@
 
         <h2>Follow Us</h2>
         <p>
-            <a href="https://instagram.com/showupcounts" target="_blank">@showupcounts on Instagram</a>
+            <a href="https://instagram.com/showupcounts" target="_blank" class="no-underline">@showupcounts on Instagram</a>
         </p>
     </main>
 
