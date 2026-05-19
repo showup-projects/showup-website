@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>고객 센터 — Showup</title>
+    <meta name="description" content="Showup 고객 센터. 스페이스, 워크아웃, 역할, 콜라보 등 주요 기능을 단계별로 안내합니다.">
+    <link rel="icon" id="favicon" type="image/svg+xml" href="assets/favicon-dark.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        (function() {
+            var theme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+            document.documentElement.setAttribute('data-theme', theme);
+            document.getElementById('favicon').href = theme === 'light' ? 'assets/favicon-light.svg' : 'assets/favicon-dark.svg';
+            window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', function(e) {
+                localStorage.removeItem('theme');
+                var t = e.matches ? 'light' : 'dark';
+                document.documentElement.setAttribute('data-theme', t);
+                document.getElementById('favicon').href = t === 'light' ? 'assets/favicon-light.svg' : 'assets/favicon-dark.svg';
+            });
+        })();
+    </script>
+
+    <style>
+        :root {
+            --bg-primary: #0A0A0A;
+            --bg-secondary: #111111;
+            --text-primary: #FFFFFF;
+            --text-secondary: rgba(255, 255, 255, 0.6);
+            --text-tertiary: rgba(255, 255, 255, 0.35);
+            --accent-blue: #FFFFFF;
+            --border: rgba(255, 255, 255, 0.2);
+            --glass: #0A0A0A;
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --nav-height: 72px;
+        }
+
+        [data-theme="light"] {
+            --bg-primary: #FFFFFF;
+            --bg-secondary: #FFFFFF;
+            --text-primary: #1A1A1A;
+            --text-secondary: rgba(26, 26, 26, 0.55);
+            --text-tertiary: rgba(26, 26, 26, 0.3);
+            --accent-blue: #1A1A1A;
+            --border: rgba(0, 0, 0, 0.15);
+            --glass: #FFFFFF;
+            --glass-border: rgba(0, 0, 0, 0.15);
+        }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+        body { font-family: 'Inter', sans-serif; color: var(--text-primary); background: var(--bg-primary); line-height: 1.6; }
+        a { color: inherit; text-decoration: none; }
+        body::after { display: none; }
+
+        .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; height: var(--nav-height); background: var(--bg-primary); border-bottom: 1px solid var(--border); }
+        .nav::before { display: none; }
+        .nav-inner { max-width: 1280px; margin: 0 auto; padding: 0 32px; height: 100%; display: flex; align-items: center; justify-content: space-between; position: relative; }
+        .nav-logo { display: flex; align-items: center; position: absolute; left: 50%; transform: translateX(-50%); }
+        .nav-logo img { height: 34px; width: auto; display: block; }
+        img.logo-dark { display: block; }
+        img.logo-light { display: none; }
+        [data-theme="light"] img.logo-dark { display: none; }
+        [data-theme="light"] img.logo-light { display: block; }
+
+        .theme-toggle { width: 38px; height: 38px; border: none; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: transparent; cursor: pointer; transition: color 0.3s ease; color: var(--text-secondary); margin-left: auto; }
+        .theme-toggle:hover { color: var(--text-primary); }
+        .theme-toggle svg { width: 18px; height: 18px; transition: transform 0.2s ease; }
+        .theme-toggle:hover svg { transform: rotate(15deg); }
+        .icon-sun { display: block; }
+        .icon-moon { display: none; }
+        [data-theme="light"] .icon-sun { display: none; }
+        [data-theme="light"] .icon-moon { display: block; }
+
+        .nav-actions { display: flex; align-items: center; gap: 8px; margin-left: auto; }
+        .lang-dropdown { position: relative; flex-shrink: 0; }
+        .lang-current { display: flex; align-items: center; gap: 4px; padding: 6px 4px; background: transparent; border: none; color: var(--text-secondary); font-family: 'Inter', sans-serif; font-weight: 600; font-size: 0.75rem; letter-spacing: 0.04em; text-transform: uppercase; cursor: pointer; transition: color 0.2s ease; }
+        .lang-current:hover { color: var(--text-primary); }
+        .lang-current svg { width: 10px; height: 10px; transition: transform 0.2s ease; }
+        .lang-dropdown.open .lang-current svg { transform: rotate(180deg); }
+        .lang-menu { position: absolute; top: calc(100% + 6px); right: 0; background: var(--bg-primary); border: 1px solid var(--border); min-width: 100%; opacity: 0; pointer-events: none; transform: translateY(-4px); transition: opacity 0.15s ease, transform 0.15s ease; z-index: 100; }
+        .lang-dropdown.open .lang-menu { opacity: 1; pointer-events: auto; transform: translateY(0); }
+        .lang-menu a { display: block; width: 100%; padding: 8px 12px; color: var(--text-secondary); font-family: 'Inter', sans-serif; font-weight: 600; font-size: 0.75rem; letter-spacing: 0.04em; text-transform: uppercase; text-decoration: none; transition: color 0.15s ease, background 0.15s ease; }
+        .lang-menu a:hover { color: var(--text-primary); background: rgba(255,255,255,0.06); }
+        [data-theme="light"] .lang-menu a:hover { background: rgba(0,0,0,0.04); }
+        .lang-menu a.active { color: var(--text-primary); }
+
+        .help-layout { max-width: 1200px; margin: 0 auto; display: flex; align-items: flex-start; gap: 0; padding-top: var(--nav-height); }
+        .help-sidebar { width: 280px; flex-shrink: 0; position: sticky; top: var(--nav-height); height: calc(100vh - var(--nav-height)); overflow-y: auto; border-right: 1px solid var(--border); padding: 40px 28px 48px 32px; }
+        .help-sidebar-title { font-family: 'Inter', sans-serif; font-weight: 900; font-size: 1.1rem; letter-spacing: -0.02em; margin-bottom: 20px; }
+        .help-search-wrap { margin-bottom: 28px; }
+        .help-search { width: 100%; padding: 10px 14px; background: var(--bg-secondary); border: 1px solid var(--border); color: var(--text-primary); font-family: 'Inter', sans-serif; font-size: 0.9rem; outline: none; transition: border-color 0.15s ease; }
+        .help-search::placeholder { color: var(--text-tertiary); }
+        .help-search:focus { border-color: var(--text-secondary); }
+        [data-theme="light"] .help-search { background: #FAFAFA; }
+        .help-search-results { margin-bottom: 28px; }
+        .help-search-empty { color: var(--text-tertiary); font-size: 0.9rem; padding: 8px 12px; }
+        .help-nav-group { margin-bottom: 28px; }
+        .help-nav-group-title { font-family: 'Inter', sans-serif; font-weight: 400; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-tertiary); margin-bottom: 10px; padding-left: 12px; }
+        .help-nav-link { display: block; color: var(--text-secondary); font-size: 0.92rem; line-height: 1.4; padding: 8px 12px; border-left: 2px solid transparent; cursor: pointer; transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease; word-break: keep-all; }
+        .help-nav-link:hover { color: var(--text-primary); }
+        .help-nav-link.active { color: var(--text-primary); font-weight: 600; border-left-color: var(--text-primary); background: rgba(255,255,255,0.05); }
+        [data-theme="light"] .help-nav-link.active { background: rgba(0,0,0,0.04); }
+
+        .help-main { flex: 1; min-width: 0; max-width: 760px; padding: 56px 24px 100px 56px; }
+        .help-article h1 { font-family: 'Inter', sans-serif; font-weight: 900; font-size: clamp(1.7rem, 3.2vw, 2.4rem); line-height: 1.2; letter-spacing: -0.02em; margin-bottom: 24px; word-break: keep-all; }
+        .help-article h2 { font-family: 'Inter', sans-serif; font-weight: 900; font-size: 1.25rem; line-height: 1.3; letter-spacing: -0.01em; margin-top: 40px; margin-bottom: 14px; word-break: keep-all; }
+        .help-article p { color: var(--text-secondary); font-size: 0.98rem; line-height: 1.8; margin-bottom: 16px; word-break: keep-all; }
+        .help-article ul, .help-article ol { list-style: none; margin-bottom: 16px; padding-left: 0; }
+        .help-article ul li, .help-article ol li { color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8; padding-left: 24px; position: relative; margin-bottom: 6px; word-break: keep-all; }
+        .help-article ul li::before { content: ''; position: absolute; left: 0; top: 11px; width: 6px; height: 6px; border-radius: 50%; background: var(--text-primary); opacity: 0.4; }
+        .help-article ol { counter-reset: step; }
+        .help-article ol li { counter-increment: step; }
+        .help-article ol li::before { content: counter(step); position: absolute; left: 0; top: 6px; width: 18px; height: 18px; font-size: 0.75rem; font-weight: 700; color: var(--text-primary); opacity: 0.5; border-radius: 50%; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; }
+        .help-article a { color: var(--text-primary); text-decoration: underline; text-underline-offset: 3px; }
+        .help-article a:hover { opacity: 0.7; }
+        .help-article strong { color: var(--text-primary); font-weight: 600; }
+        .help-callout { background: var(--bg-secondary); border: 1px solid var(--border); padding: 16px 20px; margin: 20px 0; font-size: 0.92rem; color: var(--text-secondary); line-height: 1.7; word-break: keep-all; }
+        .help-callout strong { color: var(--text-primary); }
+        [data-theme="light"] .help-callout { background: #FAFAFA; }
+
+        .help-table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 0.92rem; }
+        .help-table th, .help-table td { text-align: left; vertical-align: top; padding: 14px 16px; border: 1px solid var(--border); word-break: keep-all; }
+        .help-table th { font-weight: 700; color: var(--text-primary); font-size: 0.82rem; letter-spacing: 0.04em; background: var(--bg-secondary); }
+        [data-theme="light"] .help-table th { background: #FAFAFA; }
+        .help-table td { color: var(--text-secondary); }
+        .help-table .role-name { color: var(--text-primary); font-weight: 700; white-space: nowrap; }
+        .help-table .role-inherits { display: block; font-weight: 400; font-size: 0.82rem; color: var(--text-tertiary); margin-top: 4px; }
+        .help-table ul { list-style: none; margin: 0; padding: 0; }
+        .help-table ul li { position: relative; padding-left: 18px; margin-bottom: 4px; line-height: 1.6; }
+        .help-table ul li::before { content: ''; position: absolute; left: 0; top: 10px; width: 5px; height: 5px; border-radius: 50%; background: var(--text-primary); opacity: 0.4; color: transparent; font-size: 0; }
+
+        .help-quicklinks { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 28px 0 8px; }
+        .help-quicklink { display: block; padding: 16px 18px; border: 1px solid var(--border); color: var(--text-primary); font-size: 0.95rem; font-weight: 600; cursor: pointer; transition: background 0.15s ease; word-break: keep-all; }
+        .help-quicklink:hover { background: var(--bg-secondary); }
+        [data-theme="light"] .help-quicklink:hover { background: #FAFAFA; }
+        .help-quicklink span { display: block; font-weight: 400; font-size: 0.85rem; color: var(--text-secondary); margin-top: 4px; }
+
+        .help-contact-box { margin-top: 72px; padding: 28px 32px; border: 1px solid var(--border); text-align: center; }
+        .help-contact-box p { margin: 0; font-size: 0.98rem; color: var(--text-secondary); word-break: keep-all; }
+        .help-contact-box a { color: var(--text-primary); text-decoration: underline; text-underline-offset: 3px; }
+
+        .help-mobile-label { display: none; font-family: 'Inter', sans-serif; font-weight: 400; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-tertiary); margin-bottom: 14px; }
+
+        @media (max-width: 900px) {
+            :root { --nav-height: 64px; }
+            .help-layout { flex-direction: column; padding-top: var(--nav-height); }
+            .help-sidebar { width: 100%; position: static; height: auto; overflow: visible; border-right: none; border-bottom: 1px solid var(--border); padding: 32px 24px; }
+            .help-sidebar-title { display: none; }
+            .help-mobile-label { display: block; }
+            .help-nav-group { margin-bottom: 20px; }
+            .help-main { padding: 40px 24px 80px; max-width: 100%; }
+            .help-quicklinks { grid-template-columns: 1fr; }
+            .help-table th, .help-table td { padding: 10px 12px; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            * { transition-duration: 0.01ms !important; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="index.html" class="nav-logo">
+                <img src="assets/images/logo-dark.svg" alt="Showup" class="logo-dark">
+                <img src="assets/images/logo-light.svg" alt="Showup" class="logo-light">
+            </a>
+            <div class="nav-actions">
+                <div class="lang-dropdown" id="langDropdown">
+                    <button class="lang-current" id="langCurrent" aria-label="언어 변경">
+                        <span>KR</span>
+                        <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg>
+                    </button>
+                    <div class="lang-menu">
+                        <a href="help.html">EN</a>
+                        <a href="help-ko.html" class="active">KR</a>
+                        <a href="help-de.html">DE</a>
+                    </div>
+                </div>
+                <button class="theme-toggle" id="themeToggle" aria-label="테마 전환">
+                    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="help-layout">
+        <aside class="help-sidebar">
+            <div class="help-sidebar-title">고객 센터</div>
+            <div class="help-mobile-label">주제 둘러보기</div>
+            <div class="help-search-wrap">
+                <input type="search" id="helpSearch" class="help-search" placeholder="고객 센터 검색…" autocomplete="off" aria-label="고객 센터 검색">
+            </div>
+            <div id="helpSearchResults" class="help-search-results" hidden></div>
+            <nav id="helpNav">
+                <div class="help-nav-group">
+                    <a class="help-nav-link" data-target="welcome" href="#welcome">시작하기</a>
+                </div>
+                <div class="help-nav-group">
+                    <div class="help-nav-group-title">스페이스</div>
+                    <a class="help-nav-link" data-target="space-what" href="#space-what">스페이스란?</a>
+                    <a class="help-nav-link" data-target="space-create" href="#space-create">스페이스 만들기</a>
+                    <a class="help-nav-link" data-target="space-update" href="#space-update">스페이스 수정하기</a>
+                    <a class="help-nav-link" data-target="space-leave" href="#space-leave">스페이스 나가기</a>
+                    <a class="help-nav-link" data-target="space-archive" href="#space-archive">스페이스 아카이브</a>
+                    <a class="help-nav-link" data-target="roles" href="#roles">역할 및 권한</a>
+                    <a class="help-nav-link" data-target="space-extras" href="#space-extras">관련 개념</a>
+                </div>
+                <div class="help-nav-group">
+                    <div class="help-nav-group-title">워크아웃</div>
+                    <a class="help-nav-link" data-target="workout-what" href="#workout-what">워크아웃이란?</a>
+                    <a class="help-nav-link" data-target="workout-create" href="#workout-create">워크아웃 만들기</a>
+                    <a class="help-nav-link" data-target="workout-edit" href="#workout-edit">워크아웃 편집하기</a>
+                    <a class="help-nav-link" data-target="workout-archive" href="#workout-archive">워크아웃 아카이브·삭제</a>
+                    <a class="help-nav-link" data-target="workout-collab" href="#workout-collab">콜라보 워크아웃</a>
+                    <a class="help-nav-link" data-target="workout-extras" href="#workout-extras">관련 동작</a>
+                </div>
+                <div class="help-nav-group">
+                    <div class="help-nav-group-title">커뮤니티</div>
+                    <a class="help-nav-link" data-target="community-posts" href="#community-posts">커뮤니티 게시물</a>
+                    <a class="help-nav-link" data-target="community-prboard" href="#community-prboard">PR 보드</a>
+                    <a class="help-nav-link" data-target="community-media" href="#community-media">미디어 라이브러리</a>
+                    <a class="help-nav-link" data-target="community-invite" href="#community-invite">멤버 초대</a>
+                    <a class="help-nav-link" data-target="community-manage" href="#community-manage">멤버 관리</a>
+                </div>
+                <div class="help-nav-group">
+                    <div class="help-nav-group-title">계정</div>
+                    <a class="help-nav-link" data-target="account-profile" href="#account-profile">프로필 편집</a>
+                    <a class="help-nav-link" data-target="account-records" href="#account-records">PR</a>
+                    <a class="help-nav-link" data-target="account-benchmarks" href="#account-benchmarks">벤치마크</a>
+                    <a class="help-nav-link" data-target="account-preferences" href="#account-preferences">언어·단위·화면 모드</a>
+                    <a class="help-nav-link" data-target="account-notifications" href="#account-notifications">알림</a>
+                    <a class="help-nav-link" data-target="account-privacy" href="#account-privacy">프로필 공개 범위 및 차단 사용자</a>
+                    <a class="help-nav-link" data-target="account-subscription" href="#account-subscription">구독</a>
+                    <a class="help-nav-link" data-target="account-security" href="#account-security">이메일·비밀번호·로그아웃</a>
+                    <a class="help-nav-link" data-target="account-close" href="#account-close">계정 비활성화 또는 삭제</a>
+                </div>
+            </nav>
+        </aside>
+
+        <main class="help-main">
+            <article class="help-article" id="welcome">
+                <h1>고객 센터에 오신 것을 환영합니다</h1>
+                <p>
+                    Showup을 최대한 활용할 수 있는 단계별 안내입니다 — <strong>스페이스</strong>, <strong>워크아웃</strong>, <strong>커뮤니티</strong> 탭(게시물, PR 보드, 미디어 라이브러리, 멤버), 그리고 <strong>계정</strong>. 위에서 검색하거나 메뉴에서 주제를 선택하거나 아래 인기 가이드부터 시작해 보세요.
+                </p>
+                <div class="help-quicklinks">
+                    <a class="help-quicklink" data-target="space-what" href="#space-what">스페이스란?<span>핵심 구성 요소 이해하기</span></a>
+                    <a class="help-quicklink" data-target="space-create" href="#space-create">스페이스 만들기<span>4단계로 첫 스페이스 설정</span></a>
+                    <a class="help-quicklink" data-target="roles" href="#roles">역할 및 권한<span>역할별로 무엇을 할 수 있는지 보기</span></a>
+                    <a class="help-quicklink" data-target="workout-collab" href="#workout-collab">콜라보 워크아웃<span>스페이스 간 워크아웃 공유</span></a>
+                    <a class="help-quicklink" data-target="community-prboard" href="#community-prboard">PR 보드<span>함께 PR 추적하기</span></a>
+                    <a class="help-quicklink" data-target="account-profile" href="#account-profile">내 계정<span>프로필, PR, 설정 등</span></a>
+                </div>
+            </article>
+
+            <article class="help-article" id="space-what">
+                <h1>스페이스란?</h1>
+                <p>
+                    스페이스는 운동을 기록하는 당신의 공간입니다. 혼자서, 친구들과, 또는 코칭하는 팀과 함께 사용할 수 있습니다. 세션, 워크아웃, 점수, 리더보드가 모두 이곳에 모입니다. 만들 수 있는 스페이스 수는 요금제에 따라 다르며, 각 스페이스마다 별도의 멤버, 세션, 기록이 유지됩니다.
+                </p>
+                <p>스페이스를 만들 때 다음 네 가지 목적 중 하나를 선택합니다.</p>
+                <ul>
+                    <li><strong>나만의 공간</strong> — 자신만의 운동 일지를 위한 비공개 스페이스.</li>
+                    <li><strong>소규모 그룹</strong> — 친구나 운동 파트너 몇 명과 함께하는 워크아웃.</li>
+                    <li><strong>체육관·팀</strong> — 클럽, 박스, 팀을 위한 프로그래밍과 리더보드.</li>
+                    <li><strong>트레이닝 프로그램</strong> — 회원이 따라 할 수 있도록 게시하는 구조화된 프로그램.</li>
+                </ul>
+            </article>
+
+            <article class="help-article" id="space-create">
+                <h1>스페이스 만들기</h1>
+                <p>홈 탭에서 <strong>+</strong> 버튼을 눌러 새 스페이스를 시작하세요. 다음 4단계로 진행됩니다.</p>
+                <ol>
+                    <li><strong>목적</strong> — 네 가지 유형 중 하나를 선택합니다 (나만의 공간, 소규모 그룹, 체육관·팀, 트레이닝 프로그램).</li>
+                    <li><strong>이름</strong> — 스페이스 이름을 입력합니다 (최대 30자).</li>
+                    <li><strong>세션</strong> — 최소 1개의 세션 유형을 추가합니다 (예: "유산소", "근력", "월요일 WOD"). 나중에 더 추가할 수 있습니다.</li>
+                    <li><strong>꾸미기</strong> — 색상과 아이콘을 고르고 로고를 업로드합니다.</li>
+                </ol>
+                <div class="help-callout">
+                    <strong>필수 항목:</strong> 이름, 목적, 그리고 최소 1개의 세션. 로고, 소개, 색상 등 나머지는 모두 선택 사항이며 나중에 변경할 수 있습니다.
+                </div>
+            </article>
+
+            <article class="help-article" id="space-update">
+                <h1>스페이스 수정하기</h1>
+                <p>
+                    스페이스를 열고 설정 아이콘을 눌러 다음 항목을 수정할 수 있습니다.
+                </p>
+                <ul>
+                    <li>이름, 아이콘, 색상, 커스텀 로고</li>
+                    <li>소개 텍스트 (최대 2,000자)</li>
+                    <li>세션 — 새로 추가, 이름 변경, 또는 더 이상 쓰지 않는 세션 아카이브</li>
+                </ul>
+                <p>
+                    스페이스 설정과 세션 편집은 <a data-target="roles" href="#roles">관리자 또는 스태프</a> 역할이 필요합니다. 멤버와 코치는 이를 변경할 수 없으니, 변경이 필요하다면 스페이스의 관리자나 스태프에게 요청하세요.
+                </p>
+                <div class="help-callout">
+                    <strong>참고:</strong> 활성 세션 수가 현재 요금제 한도를 초과하면 세션 편집이 잠깁니다. 몇 개를 아카이브하면 다시 편집할 수 있습니다. 아카이브는 되돌릴 수 있으니 영구적인 조치가 아닙니다.
+                </div>
+            </article>
+
+            <article class="help-article" id="space-leave">
+                <h1>스페이스 나가기</h1>
+                <p>
+                    스페이스를 열고 멤버 또는 설정 영역에서 <strong>스페이스 나가기</strong>를 누르세요. 한 번 나가면 다시 참여하려면 새로 초대받아야 한다는 확인 메시지가 표시됩니다.
+                </p>
+                <p><strong>관리자 1명 규칙:</strong> 모든 활성 스페이스에는 최소 1명의 <a data-target="roles" href="#roles">관리자</a>가 필요합니다. 본인이 유일한 관리자라면 곧바로 나갈 수 없습니다. 스페이스를 먼저 아카이브하거나, 다른 멤버에게 관리자 권한을 넘긴 뒤 나가야 합니다.</p>
+            </article>
+
+            <article class="help-article" id="space-archive">
+                <h1>스페이스 아카이브</h1>
+                <p>
+                    아카이브는 스페이스를 완전히 삭제하지 않고 비활성화하는 기능입니다. 모든 데이터는 복구 가능하며 언제든 아카이브를 해제할 수 있습니다. 아카이브 시 두 가지 옵션이 있습니다.
+                </p>
+                <ul>
+                    <li><strong>아카이브 (미디어 유지)</strong> — 텍스트, 워크아웃, 점수, 사진 모두 읽기 전용 상태로 보존됩니다.</li>
+                    <li><strong>아카이브 후 미디어 삭제</strong> — 사진, 동영상, 미디어 라이브러리는 삭제되지만 텍스트와 점수, 메타데이터는 유지됩니다. 기록은 남기되 저장 공간을 비우고 싶을 때 유용합니다.</li>
+                </ul>
+                <p>아카이브된 스페이스는 멤버십 목록에서 "아카이브됨" 배지로 표시되며 활성 화면에서는 숨겨집니다. 언제든 아카이브를 해제할 수 있습니다.</p>
+                <h2>누가 스페이스를 아카이브할 수 있나요?</h2>
+                <p>스페이스를 아카이브하거나 삭제하는 것은 <a data-target="roles" href="#roles">관리자</a> 전용 동작입니다. 역할과 권한 전체는 다음과 같습니다.</p>
+                <table class="help-table">
+                    <thead><tr><th>역할</th><th>권한</th></tr></thead>
+                    <tbody>
+                        <tr>
+                            <td class="role-name">관리자<span class="role-inherits">모든 스태프 권한 + 다음:</span></td>
+                            <td><ul><li>스페이스 아카이브 또는 삭제</li><li>세션 유형 삭제</li></ul></td>
+                        </tr>
+                        <tr>
+                            <td class="role-name">스태프<span class="role-inherits">모든 코치 권한 + 다음:</span></td>
+                            <td><ul><li>스페이스 설정 및 세션 유형 편집</li><li>멤버 관리 및 역할 지정 (스태프까지)</li><li>가입 요청 수락 또는 거절</li><li>모든 워크아웃 편집 또는 삭제</li><li>모든 점수 또는 댓글 삭제</li><li>게시물 및 미디어 관리</li></ul></td>
+                        </tr>
+                        <tr>
+                            <td class="role-name">코치<span class="role-inherits">모든 멤버 권한 + 다음:</span></td>
+                            <td><ul><li>자신의 워크아웃 생성 및 편집</li><li>신규 멤버 초대</li><li>라이브러리에서 자신의 미디어 추가 및 관리</li></ul></td>
+                        </tr>
+                        <tr>
+                            <td class="role-name">멤버<span class="role-inherits">기본 역할:</span></td>
+                            <td><ul><li>워크아웃에 점수 기록</li><li>댓글 및 반응 추가</li><li>커뮤니티 게시물 작성</li><li>커뮤니티, 멤버, 미디어 라이브러리 보기</li></ul></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </article>
+
+            <article class="help-article" id="roles">
+                <h1>역할 및 권한</h1>
+                <p>
+                    스페이스의 모든 멤버는 무엇을 할 수 있는지 결정하는 역할을 가집니다. 역할은 <strong>누적</strong>됩니다 — 각 역할은 하위 역할의 모든 권한에 자신의 권한을 더해 가집니다.
+                </p>
+                <table class="help-table">
+                    <thead><tr><th>역할</th><th>권한</th></tr></thead>
+                    <tbody>
+                        <tr>
+                            <td class="role-name">관리자<span class="role-inherits">모든 스태프 권한 + 다음:</span></td>
+                            <td><ul><li>스페이스 아카이브 또는 삭제</li><li>세션 유형 삭제</li></ul></td>
+                        </tr>
+                        <tr>
+                            <td class="role-name">스태프<span class="role-inherits">모든 코치 권한 + 다음:</span></td>
+                            <td><ul><li>스페이스 설정 및 세션 유형 편집</li><li>멤버 관리 및 역할 지정 (스태프까지)</li><li>가입 요청 수락 또는 거절</li><li>모든 워크아웃 편집 또는 삭제</li><li>모든 점수 또는 댓글 삭제</li><li>게시물 및 미디어 관리</li></ul></td>
+                        </tr>
+                        <tr>
+                            <td class="role-name">코치<span class="role-inherits">모든 멤버 권한 + 다음:</span></td>
+                            <td><ul><li>자신의 워크아웃 생성 및 편집</li><li>신규 멤버 초대</li><li>라이브러리에서 자신의 미디어 추가 및 관리</li></ul></td>
+                        </tr>
+                        <tr>
+                            <td class="role-name">멤버<span class="role-inherits">기본 역할:</span></td>
+                            <td><ul><li>워크아웃에 점수 기록</li><li>댓글 및 반응 추가</li><li>커뮤니티 게시물 작성</li><li>커뮤니티, 멤버, 미디어 라이브러리 보기</li></ul></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>
+                    관리자는 스페이스를 완전히 제어합니다. 스태프는 멤버를 관리하고 스태프까지 역할을 지정할 수 있습니다(관리자를 추가하거나 제거할 수는 없습니다). 코치는 프로그래밍과 미디어에 집중합니다. 멤버는 점수 기록, 댓글, 게시물로 참여합니다.
+                </p>
+            </article>
+
+            <article class="help-article" id="space-extras">
+                <h1>스페이스: 관련 개념</h1>
+                <h2>세션</h2>
+                <p>각 스페이스는 세션으로 구성됩니다 (예: "월요일 근력", "유산소 클럽"). 세션 이름은 최대 20자이며, 무료 요금제에서는 스페이스당 활성 세션이 최대 10개입니다.</p>
+                <h2>역할</h2>
+                <p>멤버는 관리자, 스태프, 코치, 멤버가 될 수 있습니다. 관리자만 스페이스를 아카이브하거나 삭제할 수 있고, 스태프는 설정 편집과 관리를 할 수 있습니다. 전체 내용은 <a data-target="roles" href="#roles">역할 및 권한</a>을 참고하세요.</p>
+                <h2>멤버십 상태</h2>
+                <p>활성 (전체 접근 가능), 초대됨 / 보류 중 / 요청됨 (승인 대기), 또는 아카이브됨 (나갔거나 제거됨).</p>
+            </article>
+
+            <article class="help-article" id="workout-what">
+                <h1>워크아웃이란?</h1>
+                <p>
+                    워크아웃은 동작, 채점 규칙, 코칭 노트로 구성된 하나의 구조화된 운동 단위입니다. 멤버들은 이 워크아웃에 점수를 기록할 수 있습니다. (세션과는 다릅니다 — 세션은 "월요일 근력"처럼 스페이스 안에서 반복되는 카테고리이며, 시간이 지나며 여러 워크아웃을 담습니다.) 워크아웃은 특정 스페이스와 세션에 속하지만, 콜라보를 통해 다른 스페이스와 공유되어 참여한 모든 멤버를 아우르는 통합 리더보드를 만들 수도 있습니다.
+                </p>
+            </article>
+
+            <article class="help-article" id="workout-create">
+                <h1>워크아웃 만들기</h1>
+                <p>스페이스 안에서 원하는 세션을 열고 <strong>+</strong> 버튼을 눌러 새 워크아웃을 만드세요. 워크아웃 생성·편집은 <a data-target="roles" href="#roles">코치</a> 이상의 역할이 필요합니다. 다음을 입력합니다.</p>
+                <h2>필수 항목</h2>
+                <ul>
+                    <li><strong>내용</strong> — 워크아웃 설명 (동작, 세트, 구성). 최대 1,000자.</li>
+                    <li><strong>날짜</strong> — 워크아웃이 예정된 날짜.</li>
+                    <li><strong>세션</strong> — 스페이스 내 어느 세션에 속하는지.</li>
+                    <li><strong>채점 방식</strong> — 점수 없음, 횟수, 시간, 무게, 거리 중 선택.</li>
+                    <li><strong>순위 방식</strong> — 높을수록 좋음 (예: 더 많은 횟수) 또는 낮을수록 좋음 (예: 더 빠른 시간).</li>
+                </ul>
+                <h2>선택 항목</h2>
+                <ul>
+                    <li>제목 (최대 30자)</li>
+                    <li>코칭 노트 (최대 2,000자)</li>
+                    <li>동작 태그 (예: "풀업", "데드리프트")</li>
+                    <li>라운드당 횟수 (AMRAP·라운드 기반 워크아웃용)</li>
+                    <li>제한 시간 (시간 기반 워크아웃용)</li>
+                    <li>멀티 스코어 (한 멤버가 여러 번 점수를 기록할 수 있게 허용)</li>
+                    <li>변형 옵션 활성화 (Rx / 스케일 옵션)</li>
+                    <li>타이브레이커 (최대 8개, 우선순위 순서로 적용)</li>
+                    <li>미디어 참조 (참고 이미지·영상·YouTube 링크 최대 5개) — 직접 업로드하거나 <strong>미디어 라이브러리</strong>에서 재사용 (아래 설명 참고)</li>
+                    <li>콜라보 스페이스 (다른 스페이스 초대 — <a data-target="workout-collab" href="#workout-collab">콜라보 워크아웃</a> 참고)</li>
+                </ul>
+                <h2>미디어 라이브러리란?</h2>
+                <p>
+                    스페이스에는 <strong>미디어 라이브러리</strong>가 있습니다 — 같은 미디어를 워크아웃마다 다시 업로드하지 않도록 <em>재사용 가능한 참조</em>를 저장해 두는 공간입니다. 각 항목은 사진, 동영상, 또는 YouTube 링크 하나로, 제목(최대 100자)과 선택적 메모(최대 500자)를 가집니다. 동작 시범 영상을 한 번 저장해 두면 원하는 만큼 여러 워크아웃에 붙일 수 있습니다. 코치 이상이 라이브러리의 미디어를 추가·관리할 수 있습니다.
+                </p>
+                <div class="help-callout">
+                    <strong>참고:</strong> 미디어 첨부는 요금제에 따라 다르며(무료 요금제는 워크아웃에 미디어를 첨부할 수 없음), 미디어 라이브러리 항목을 사용하는 워크아웃에는 콜라보 스페이스를 추가할 수 없습니다 — 워크아웃마다 하나의 방식을 선택하세요.
+                </div>
+            </article>
+
+            <article class="help-article" id="workout-edit">
+                <h1>워크아웃 편집하기</h1>
+                <p>
+                    워크아웃을 열고 편집 아이콘을 누르세요. 스페이스 안에서 <a data-target="roles" href="#roles">코치</a>는 자신의 워크아웃을, 스태프는 모든 워크아웃을 편집할 수 있습니다. 콜라보 워크아웃의 경우, 워크아웃을 만든 스페이스만 설정을 변경할 수 있으며 — 콜라보로 참여한 스페이스는 점수 기록과 댓글은 계속 가능합니다.
+                </p>
+                <h2>변경할 수 없는 항목</h2>
+                <p>
+                    일부 항목은 워크아웃이 생성된 후에는 잠깁니다. 변경하면 이미 제출된 점수와 충돌이 생기기 때문입니다.
+                </p>
+                <ul>
+                    <li><strong>채점 방식</strong> (횟수 / 시간 / 무게 / 거리) — 생성 후 고정됩니다.</li>
+                    <li><strong>멀티 스코어</strong> — 나중에 켜거나 끌 수 없습니다.</li>
+                    <li><strong>변형 옵션</strong> (Rx / 스케일) — 생성 후 잠깁니다.</li>
+                </ul>
+                <p>
+                    내용, 제목, 날짜, 코칭 노트, 동작 태그, 순위 방식, 타이브레이커, 미디어 참조는 계속 편집할 수 있습니다.
+                </p>
+            </article>
+
+            <article class="help-article" id="workout-archive">
+                <h1>워크아웃 아카이브 또는 삭제</h1>
+                <p>워크아웃을 제거할 때 Showup이 자동으로 적절한 동작을 선택합니다.</p>
+                <ul>
+                    <li><strong>아카이브 (소프트)</strong> — 누군가 이미 점수를 기록했거나 여러 스페이스가 함께 진행 중이라면, 삭제 대신 아카이브됩니다. 목록에서는 숨겨지지만 점수 기록과 리더보드는 그대로 유지되며, 언제든 아카이브를 해제할 수 있습니다.</li>
+                    <li><strong>삭제 (영구)</strong> — 아직 점수가 없고 참여 스페이스가 하나뿐이라면 영구 삭제할 수 있습니다. 되돌릴 수 없으므로 확인 알림이 표시됩니다.</li>
+                </ul>
+                <p>모든 워크아웃을 편집·삭제하려면 <a data-target="roles" href="#roles">스태프</a> 권한이 필요하며, 코치는 자신의 워크아웃을 제거할 수 있습니다.</p>
+            </article>
+
+            <article class="help-article" id="workout-collab">
+                <h1>콜라보 워크아웃</h1>
+                <p>
+                    콜라보 워크아웃은 두 개 이상의 스페이스가 함께 공유하는 워크아웃입니다. 다른 스페이스를 초대하면 그 멤버들도 같은 워크아웃에 점수를 기록할 수 있고, 모두를 한 줄로 줄세우는 통합 리더보드가 만들어집니다 — 체육관 간 친선 대회, 파트너 프로그램, 도시를 넘나드는 트레이닝 그룹에 잘 맞습니다. 앱에서는 <strong>콜라보</strong> 섹션에서 확인할 수 있습니다.
+                </p>
+                <p>진행 방식:</p>
+                <ol>
+                    <li>워크아웃을 만들거나 편집할 때 <strong>콜라보 스페이스 추가</strong>를 누르고 초대할 스페이스를 선택합니다.</li>
+                    <li>초대받은 스페이스에 보류 중인 초대장이 전달됩니다. 해당 스페이스 관리자는 <strong>수락</strong>하거나 (워크아웃이 어느 세션에 표시될지 선택) <strong>거절</strong>할 수 있습니다.</li>
+                    <li>수락하면 워크아웃이 초대받은 스페이스에 표시되고, 그곳 멤버들이 통합 리더보드에 점수를 기록할 수 있습니다.</li>
+                </ol>
+                <div class="help-callout">
+                    <strong>참고:</strong> 초대할 수 있는 스페이스 수는 요금제에 따라 다릅니다(무료 요금제는 1개). 콜라보 워크아웃에는 미디어 라이브러리 항목을 함께 사용할 수 없습니다 — 워크아웃마다 하나의 방식을 선택하세요.
+                </div>
+                <h2>콜라보 스페이스가 나가면</h2>
+                <p>
+                    콜라보로 참여한 스페이스는 워크아웃 상세 화면에서 나갈 수 있습니다. 워크아웃은 다른 참여자들에게 계속 활성 상태로 유지되며, 그 스페이스 멤버들이 기록한 점수는 리더보드에 남습니다.
+                </p>
+                <h2>모두 나가면</h2>
+                <p>
+                    모든 콜라보 스페이스가 나가고 작성자만 남으면, 워크아웃은 작성자를 위한 일반 단일 스페이스 워크아웃으로 자연스럽게 돌아갑니다 — 잃는 것은 없습니다.
+                </p>
+                <h2>작성자가 제거하면</h2>
+                <p>
+                    작성자는 자신의 콜라보 워크아웃을 "나갈" 수는 없지만, 다른 스페이스가 아직 콜라보 중일 때 작성자가 삭제하면 영구 삭제되지 않고 <em>아카이브</em>됩니다. 다른 콜라보 스페이스에게는 <strong>읽기 전용</strong>이 됩니다 — 워크아웃을 열어 전체 리더보드와 점수 기록은 계속 볼 수 있지만, 누구도 새 점수를 기록하거나 편집·댓글·반응을 추가할 수 없습니다(점수 버튼에 "점수 입력 비활성화"로 표시됨). 원래 작성자 스페이스만 아카이브를 해제해 다시 활성 상태로 되돌릴 수 있습니다.
+                </p>
+            </article>
+
+            <article class="help-article" id="workout-extras">
+                <h1>워크아웃: 관련 동작</h1>
+                <h2>점수 기록하기</h2>
+                <p>워크아웃을 열고 <strong>점수 추가</strong>를 누르세요. 결과와 메모를 입력합니다. 멀티 스코어가 활성화된 워크아웃에서는 여러 시도를 제출하고 합산 방식 (최고, 최저, 합계)을 선택할 수 있습니다.</p>
+                <h2>리더보드</h2>
+                <p>모든 워크아웃에는 리더보드가 있으며, 작성자가 설정한 순위 방식과 타이브레이커에 따라 제출된 점수를 정렬합니다. 콜라보 워크아웃의 리더보드는 참여한 모든 스페이스를 포함합니다.</p>
+                <h2>댓글 &amp; 반응</h2>
+                <p>워크아웃에 댓글을 남기고, 다른 멤버의 점수에 반응을 남겨 응원할 수 있습니다.</p>
+            </article>
+
+            <article class="help-article" id="community-posts">
+                <h1>커뮤니티 게시물</h1>
+                <p>
+                    커뮤니티 탭은 스페이스의 피드입니다. <a data-target="roles" href="#roles">멤버</a> 이상이면 누구나 게시물을 올릴 수 있습니다 — 소식, 사진, 또는 작은 성과를 공유하세요.
+                </p>
+                <ul>
+                    <li>게시물에는 텍스트(최대 2,000자)와 미디어 — 사진, 동영상, YouTube 링크 — 를 담을 수 있습니다(최대 10개, 요금제에 따라 다름. 무료 요금제는 미디어를 첨부할 수 없음).</li>
+                    <li>멤버는 게시물에 댓글을 달고 반응을 남길 수 있습니다.</li>
+                    <li>자신의 게시물은 언제든 편집하거나 삭제할 수 있습니다.</li>
+                    <li><a data-target="roles" href="#roles">스태프</a>와 관리자는 피드 관리를 위해 모든 게시물을 삭제할 수 있고, 게시물을 <strong>고정</strong>해 상단에 유지할 수 있습니다.</li>
+                </ul>
+                <p>게시하려면 커뮤니티 탭을 열고 새 게시물 버튼을 누르세요.</p>
+            </article>
+
+            <article class="help-article" id="community-prboard">
+                <h1>PR 보드</h1>
+                <p>
+                    PR 보드는 스페이스의 PR 리더보드입니다. 커뮤니티 탭의 피드 상단 카드로 표시되며, 사전 정의된 동작들에 대한 각 멤버의 최고 기록을 보여줍니다 — 모두가 자신의 위치를 확인하고 보드 상위권에 도전할 수 있습니다.
+                </p>
+                <ul>
+                    <li><strong>사전 정의된 동작</strong> — 보드는 12개 카테고리의 사전 정의된 운동을 추적합니다: 프레스, 데드리프트, 스쿼트, 스내치, 클린, 저크, 올림픽 리프트, 체조, 맨몸 운동, 지구력, 달리기, 기타. 앱에서는 작은 물결 아이콘(신호 기호처럼 생긴 세 개의 곡선 막대)으로 표시됩니다.</li>
+                    <li><strong>스페이스별</strong> — 가입한 각 스페이스마다 자체 PR 보드가 있습니다. 사전 정의된 동작에 대한 기록은 가입한 모든 스페이스의 PR 보드에 공유됩니다.</li>
+                    <li><strong>공유 vs 비공개</strong> — 사전 정의된 동작 기록만 보드에 표시됩니다. 직접 추가한 커스텀 운동은 본인의 PR(계정 탭)에 비공개로 유지됩니다.</li>
+                </ul>
+                <h2>기록 추가 또는 업데이트</h2>
+                <ul>
+                    <li>PR 보드에서 <strong>+</strong>를 눌러 사전 정의된 기록을 입력합니다. 계정 → PR에서는 커스텀 운동도 추가할 수 있습니다.</li>
+                    <li>기록에는 운동, 단위가 포함된 값, 측정 방식(무게, 시간, 거리, 횟수), 날짜가 들어갑니다. 근력 운동은 RM(1RM, 3RM, 5RM 등, 최대 20RM)을 기록할 수 있습니다.</li>
+                    <li>기록을 누르면 진행 차트로 전체 기록 이력을 볼 수 있으며, 최고 기록이 표시됩니다. 이력은 RM(1RM / 3RM / 5RM …)별로 필터링할 수 있습니다.</li>
+                </ul>
+                <h2>누가 사용할 수 있나요</h2>
+                <p>
+                    스페이스의 <a data-target="roles" href="#roles">멤버</a>는 누구나 기록을 추가하고 PR 보드에 등장할 수 있습니다 — 특별한 역할이나 요금제가 필요하지 않습니다. 값은 선호 단위(kg/lb, km/mi)로 표시되며, 다른 단위로 입력된 기록에는 변환 배지가 표시됩니다. 보드 상세 화면은 카테고리, 성별, 연령대로도 필터링할 수 있습니다.
+                </p>
+            </article>
+
+            <article class="help-article" id="community-media">
+                <h1>미디어 라이브러리</h1>
+                <p>
+                    미디어 라이브러리는 커뮤니티 탭에 있습니다. <em>재사용 가능한 참조</em>를 모아 두는 공용 저장소로, 각 항목은 사진, 동영상, 또는 YouTube 링크 하나와 제목(최대 100자), 선택적 메모(최대 500자)로 구성됩니다. 동작 시범이나 브리핑을 한 번 저장해 두면 다시 업로드하지 않고 원하는 만큼 여러 워크아웃에 붙일 수 있습니다.
+                </p>
+                <ul>
+                    <li><a data-target="roles" href="#roles">코치</a>, 스태프, 관리자는 항목을 추가·편집·아카이브할 수 있습니다. 멤버는 보기 및 사용만 가능합니다.</li>
+                    <li><strong>아카이브 vs 삭제:</strong> 아카이브는 항목을 보존하며 되돌릴 수 있습니다(관리 권한자는 아카이브된 항목도 볼 수 있고, 멤버는 활성 항목만 봅니다). 삭제는 영구적이며 참조된 모든 곳에서 제거됩니다.</li>
+                </ul>
+                <div class="help-callout">
+                    <strong>참고:</strong> 미디어 첨부는 요금제에 따라 다르며(무료 요금제는 미디어를 추가할 수 없음), 미디어 라이브러리 항목을 사용하는 워크아웃에는 콜라보 스페이스를 추가할 수 없습니다. <a data-target="workout-create" href="#workout-create">워크아웃 만들기</a>를 참고하세요.
+                </div>
+            </article>
+
+            <article class="help-article" id="community-invite">
+                <h1>멤버 초대</h1>
+                <p>
+                    커뮤니티 탭에서 <strong>멤버</strong>를 열고 초대(사람 추가) 버튼을 누르세요. 이메일 또는 @사용자명으로 초대할 수 있습니다.
+                </p>
+                <ul>
+                    <li><a data-target="roles" href="#roles">코치</a> 이상이 신규 멤버를 초대할 수 있습니다.</li>
+                    <li>신규 멤버는 기본적으로 <strong>멤버</strong>로 합류합니다. 본인의 역할이 허용하면 초대 시 더 높은 역할을 지정할 수 있습니다.</li>
+                    <li>스페이스는 비공개이며 공개 검색이 없으므로, 초대가 사람들이 합류하는 주된 방법입니다.</li>
+                    <li>스페이스가 가입 요청을 받는 경우, <a data-target="roles" href="#roles">스태프</a>와 관리자는 멤버 화면에서 요청을 수락하거나 거절할 수 있습니다.</li>
+                </ul>
+            </article>
+
+            <article class="help-article" id="community-manage">
+                <h1>멤버 관리</h1>
+                <p>
+                    커뮤니티 탭에서 <strong>멤버</strong>를 열면 스페이스의 모든 사람을 볼 수 있습니다. 누구나 멤버 목록을 보고 검색할 수 있습니다.
+                </p>
+                <p><a data-target="roles" href="#roles">스태프</a>와 관리자는 멤버의 역할을 변경하고 멤버를 제거할 수 있으며, 몇 가지 제한이 있습니다.</p>
+                <ul>
+                    <li>자신의 역할은 변경할 수 없습니다.</li>
+                    <li>스태프는 스태프까지 역할을 지정할 수 있습니다 — 관리자만 다른 사람을 관리자로 승격하거나 관리자를 제거할 수 있습니다.</li>
+                    <li>스태프는 관리자를 변경하거나 제거할 수 없습니다.</li>
+                </ul>
+                <p>스태프와 관리자는 멤버 화면에서 가입 요청을 수락하거나 거절할 수도 있습니다. 각 역할이 할 수 있는 일의 전체 내용은 <a data-target="roles" href="#roles">역할 및 권한</a>을 참고하세요.</p>
+            </article>
+
+            <article class="help-article" id="account-profile">
+                <h1>프로필 편집</h1>
+                <p>
+                    <strong>계정</strong> 탭을 열고 상단의 사용자명을 누르면 프로필을 편집할 수 있습니다. 다음을 변경할 수 있습니다.
+                </p>
+                <ul>
+                    <li><strong>사용자명</strong> — 소문자이며 고유해야 합니다. 입력하는 동안 사용 가능 여부가 확인됩니다. 변경에는 대기 기간이 있어 일정 기간마다 한 번만 바꿀 수 있습니다.</li>
+                    <li><strong>표시 이름</strong> — 필수, 최대 30자.</li>
+                    <li><strong>생년월일</strong>, <strong>국가</strong>, <strong>성별</strong>.</li>
+                </ul>
+                <p>
+                    이메일은 여기에 표시되지만 이 화면에서는 변경할 수 없습니다 — <a data-target="account-security" href="#account-security">이메일·비밀번호·로그아웃</a>을 참고하세요. 변경 사항이 있고 사용자명이 유효하면 저장이 활성화됩니다. <strong>내 프로필 보기</strong>는 다른 멤버에게 보이는 그대로의 공개 프로필을 엽니다.
+                </p>
+            </article>
+
+            <article class="help-article" id="account-records">
+                <h1>PR</h1>
+                <p>
+                    <strong>계정 → PR</strong>으로 이동하세요. 12개 카테고리(프레스, 데드리프트, 스쿼트, 스내치, 클린, 저크, 올림픽 리프트, 체조, 맨몸 운동, 지구력, 달리기, 기타)의 사전 정의된 운동과 직접 만든 커스텀 운동의 최고 기록을 추적합니다. 앱에서는 사전 정의된 동작이 작은 물결 아이콘(신호 기호처럼 생긴 세 개의 곡선 막대)으로 표시되어 한눈에 알아볼 수 있습니다.
+                </p>
+                <h2>기록 추가</h2>
+                <ul>
+                    <li><strong>+</strong>를 누르고 사전 정의된 동작을 선택하거나 커스텀 운동을 만듭니다.</li>
+                    <li>단위가 포함된 값, 측정 방식(무게, 시간, 거리, 횟수), 날짜를 입력합니다. 근력 운동은 RM(1RM, 3RM, 5RM 등, 최대 20RM)을 기록할 수 있습니다.</li>
+                </ul>
+                <h2>기록 편집 또는 삭제</h2>
+                <ul>
+                    <li>기록을 누르면 진행 차트와 전체 시도 이력이 있는 상세 화면이 열립니다(최고 기록이 강조 표시됨).</li>
+                    <li>상세 화면의 연필/메뉴에서 기록을 편집합니다.</li>
+                    <li>단일 기록은 확인 후 삭제하고, 편집 모드에서는 여러 개를 한 번에 삭제할 수 있습니다.</li>
+                </ul>
+                <p>
+                    카테고리로 필터링하거나 이름으로 검색하세요. <strong>사전 정의된</strong> 동작 기록은 가입한 모든 스페이스의 <a data-target="community-prboard" href="#community-prboard">PR 보드</a>에 공유되며, <strong>커스텀</strong> 운동은 본인에게만 비공개로 유지됩니다.
+                </p>
+            </article>
+
+            <article class="help-article" id="account-benchmarks">
+                <h1>벤치마크</h1>
+                <p>
+                    <strong>계정 → 벤치마크</strong>로 이동하세요. 벤치마크는 동작이 고정된 표준화된 이름 있는 워크아웃입니다(예: Hero, Heroine WOD). PR과는 다릅니다 — PR은 하나의 운동에 대한 최고 기록을 추적하지만, 벤치마크는 미리 정해진 워크아웃 전체에 대한 최고 점수를 추적합니다.
+                </p>
+                <ul>
+                    <li><strong>기록 / 업데이트</strong> — 벤치마크를 열고 점수나 시간을 입력합니다. 벤치마크당 최고 기록만 날짜와 함께 보관됩니다.</li>
+                    <li><strong>편집 / 삭제</strong> — 벤치마크를 열어 기록한 결과를 편집하거나 삭제합니다.</li>
+                    <li><strong>찾기</strong> — 이름이나 동작으로 검색하거나(pull-up, pull_up, pullup 모두 일치) 카테고리(Hero, Heroine 등)로 필터링합니다.</li>
+                </ul>
+                <p>
+                    벤치마크는 본인에게만 비공개이며 어떤 PR 보드에도 표시되지 않습니다. 다만 공개 프로필에 표시할지는 선택할 수 있습니다 — <a data-target="account-privacy" href="#account-privacy">프로필 공개 범위</a>를 참고하세요.
+                </p>
+            </article>
+
+            <article class="help-article" id="account-preferences">
+                <h1>언어·단위·화면 모드</h1>
+                <ul>
+                    <li><strong>언어</strong> — 현재 앱 언어를 표시합니다. 버튼을 누르면 iOS 설정 → Showup → 언어로 이동해 변경합니다(Showup은 iOS 앱 언어 설정을 따릅니다).</li>
+                    <li><strong>단위</strong> — 무게 단위(kg 또는 lb)와 거리 단위(km 또는 mi)를 선택합니다. 즉시 저장되며, 값은 선택한 단위로 표시되고 다른 단위로 입력된 기록에는 변환 배지가 표시됩니다.</li>
+                    <li><strong>화면 모드</strong> — 라이트, 다크, 또는 시스템(기기 설정에 맞춤).</li>
+                </ul>
+            </article>
+
+            <article class="help-article" id="account-notifications">
+                <h1>알림</h1>
+                <p>
+                    <strong>계정 → 알림</strong>에는 <strong>전체 알림</strong> 마스터 스위치와 개별로 켜고 끌 수 있는 네 가지 카테고리가 있습니다.
+                </p>
+                <ul>
+                    <li><strong>워크아웃</strong> — 새 워크아웃 및 업데이트.</li>
+                    <li><strong>소셜</strong> — 내 게시물과 점수에 대한 반응 및 댓글.</li>
+                    <li><strong>커뮤니티</strong> — 새 게시물 및 공지.</li>
+                    <li><strong>멤버십</strong> — 초대 및 승인.</li>
+                </ul>
+                <p>
+                    시스템 수준에서 알림이 꺼져 있으면 <strong>알림 활성화</strong> 버튼이 나타나 iOS 권한 대화상자를 엽니다. 시스템 권한과 마스터 스위치가 모두 켜질 때까지 카테고리는 비활성 상태로 유지됩니다.
+                </p>
+            </article>
+
+            <article class="help-article" id="account-privacy">
+                <h1>프로필 공개 범위 및 차단 사용자</h1>
+                <h2>공개 범위</h2>
+                <p>
+                    <strong>계정 → 공개 범위</strong>는 다른 사람이 내 공개 프로필에서 무엇을 볼 수 있는지 제어합니다. 각 항목을 켜거나 끄세요.
+                </p>
+                <ul>
+                    <li><strong>Showup 통계</strong> — 운동 활동과 연속 기록 데이터.</li>
+                    <li><strong>PR</strong> — 운동 PR 및 리프팅 이력.</li>
+                    <li><strong>벤치마크</strong> — 벤치마크 워크아웃 점수.</li>
+                    <li><strong>커뮤니티</strong> — 소속된 체육관과 그룹.</li>
+                </ul>
+                <p>본인 프로필에서는 항상 모든 항목이 표시되며, 변경 사항은 즉시 저장됩니다.</p>
+                <h2>차단 사용자</h2>
+                <p>
+                    <strong>계정 → 차단 사용자</strong>에는 차단한 모든 사람이 날짜와 함께 표시됩니다. 행을 스와이프하면 차단을 해제합니다. 차단된 사람은 자신이 차단됐는지 알 수 없으며, 그들의 게시물·댓글·알림은 내게 표시되지 않습니다.
+                </p>
+            </article>
+
+            <article class="help-article" id="account-subscription">
+                <h1>구독</h1>
+                <p>
+                    <strong>계정 → 구독</strong>에는 현재 요금제와 결제 주기, 상태(활성, 취소됨, 만료됨)와 갱신·만료 날짜, 그리고 본인이 소유한 스페이스가 표시됩니다.
+                </p>
+                <ul>
+                    <li><strong>요금제 변경</strong> — 구독 업그레이드 또는 다운그레이드.</li>
+                    <li><strong>구매 복원</strong> — App Store와 구독을 다시 동기화합니다(예: 새 기기에서).</li>
+                    <li>프로모션 또는 혜택 코드는 가능한 경우 등록할 수 있습니다.</li>
+                </ul>
+                <p>Showup은 앱을 다시 열 때 Apple 구독 상태를 재확인하고 요금제를 자동으로 동기화합니다.</p>
+            </article>
+
+            <article class="help-article" id="account-security">
+                <h1>이메일·비밀번호·로그아웃</h1>
+                <ul>
+                    <li><strong>이메일 주소 업데이트</strong>와 <strong>비밀번호 변경</strong>은 이메일로 가입한 경우에만 표시됩니다(Google 또는 Apple 가입 제외). 이메일을 변경하면 새 주소로 인증 링크가 전송되며, 비밀번호 변경에는 현재 비밀번호가 필요합니다.</li>
+                    <li><strong>로그아웃</strong>은 로그아웃하기 전에 확인을 요청합니다.</li>
+                    <li><strong>고객 지원 문의</strong>는 지원 양식을 엽니다. <strong>개인정보처리방침</strong>과 <strong>이용약관</strong>은 브라우저에서 열립니다.</li>
+                </ul>
+            </article>
+
+            <article class="help-article" id="account-close">
+                <h1>계정 비활성화 또는 삭제</h1>
+                <h2>비활성화</h2>
+                <p>
+                    비활성화는 <strong>일시적이며 되돌릴 수 있습니다</strong>. 계정이 숨겨지고 로그아웃되지만, 다시 로그인하면 언제든 재활성화할 수 있습니다. 단, 이는 구독을 취소하지 <em>않습니다</em> — App Store에서 직접 취소할 때까지 Apple이 계속 청구합니다.
+                </p>
+                <h2>삭제</h2>
+                <p>
+                    삭제는 <strong>영구적이며 되돌릴 수 없습니다</strong>. 활성 Apple 구독이 있으면 삭제할 수 없습니다 — 먼저 App Store에서 취소하세요. 삭제하면:
+                </p>
+                <ul>
+                    <li>본인이 소유한 스페이스는 아카이브됩니다(멤버들의 점수 기록은 보존됨).</li>
+                    <li>게시물, 워크아웃, 기록 등 개인 데이터가 삭제됩니다.</li>
+                    <li>소유한 각 스페이스의 이름을 입력해 확인합니다.</li>
+                </ul>
+            </article>
+
+            <div class="help-contact-box">
+                <p>원하는 내용을 찾지 못하셨나요? <a href="contact-ko.html">문의하기</a>.</p>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        const themeToggle = document.getElementById('themeToggle');
+        themeToggle.addEventListener('click', function() {
+            const current = document.documentElement.getAttribute('data-theme');
+            const next = current === 'light' ? 'dark' : 'light';
+            document.documentElement.setAttribute('data-theme', next);
+            localStorage.setItem('theme', next);
+        });
+
+        const langDropdown = document.getElementById('langDropdown');
+        const langCurrent = document.getElementById('langCurrent');
+        langCurrent.addEventListener('click', function(e) {
+            e.stopPropagation();
+            langDropdown.classList.toggle('open');
+        });
+        document.addEventListener('click', function() {
+            langDropdown.classList.remove('open');
+        });
+
+        const articles = document.querySelectorAll('.help-article');
+        const navLinks = document.querySelectorAll('#helpNav .help-nav-link');
+        function showArticle(id) {
+            if (!document.getElementById(id) || !document.getElementById(id).classList.contains('help-article')) {
+                id = 'welcome';
+            }
+            articles.forEach(function(a) { a.hidden = (a.id !== id); });
+            navLinks.forEach(function(l) { l.classList.toggle('active', l.dataset.target === id); });
+            window.scrollTo({ top: 0 });
+        }
+        document.addEventListener('click', function(e) {
+            const el = e.target.closest('[data-target]');
+            if (!el) return;
+            e.preventDefault();
+            const id = el.dataset.target;
+            history.replaceState(null, '', '#' + id);
+            showArticle(id);
+            if (searchInput.value) { searchInput.value = ''; runSearch(); }
+        });
+        window.addEventListener('hashchange', function() {
+            showArticle((location.hash || '#welcome').slice(1));
+        });
+
+        const searchInput = document.getElementById('helpSearch');
+        const searchResults = document.getElementById('helpSearchResults');
+        const helpNav = document.getElementById('helpNav');
+        const searchIndex = Array.from(articles).map(function(a) {
+            const h = a.querySelector('h1');
+            return { id: a.id, title: h ? h.textContent : a.id, text: a.textContent.toLowerCase() };
+        });
+        function runSearch() {
+            const q = searchInput.value.trim().toLowerCase();
+            if (!q) {
+                searchResults.hidden = true;
+                searchResults.innerHTML = '';
+                helpNav.hidden = false;
+                return;
+            }
+            helpNav.hidden = true;
+            const matches = searchIndex.filter(function(it) {
+                return it.title.toLowerCase().indexOf(q) !== -1 || it.text.indexOf(q) !== -1;
+            });
+            if (!matches.length) {
+                searchResults.innerHTML = '<p class="help-search-empty">검색 결과가 없습니다.</p>';
+            } else {
+                searchResults.innerHTML = matches.map(function(m) {
+                    return '<a class="help-nav-link" data-target="' + m.id + '" href="#' + m.id + '">' + m.title + '</a>';
+                }).join('');
+            }
+            searchResults.hidden = false;
+        }
+        searchInput.addEventListener('input', runSearch);
+
+        showArticle((location.hash || '#welcome').slice(1));
+    </script>
+</body>
+</html>

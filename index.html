@@ -589,11 +589,30 @@
         .screenshot {
             position: absolute;
             inset: 0;
-            opacity: 0;
-            transition: opacity 0.3s ease;
+            opacity: 1;
+            transform: translateX(101%);
+            transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), filter 0.5s ease;
             z-index: 1;
+            will-change: transform;
         }
-        .screenshot.active { opacity: 1; z-index: 2; }
+        .screenshot.active { transform: translateX(0); z-index: 2; }
+        .screenshot.is-prev { transform: translateX(-20%); filter: brightness(0.6); }
+        /* Crossfade override for the Whiteboard <-> Collaborate step */
+        .screenshot.xfade-in,
+        .screenshot.xfade-out {
+            transform: translateX(0) !important;
+            filter: none !important;
+            transition: none !important;
+        }
+        .screenshot.xfade-in { z-index: 3; animation: ssXFadeIn 0.3s ease both; }
+        .screenshot.xfade-out { z-index: 2; animation: ssXFadeOut 0.3s ease both; }
+        @keyframes ssXFadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes ssXFadeOut { from { opacity: 1; } to { opacity: 0; } }
+        @media (prefers-reduced-motion: reduce) {
+            .screenshot { transition: opacity 0.3s ease; opacity: 0; transform: none; filter: none; }
+            .screenshot.active { opacity: 1; }
+            .screenshot.is-prev { opacity: 0; }
+        }
 
         .screenshot img {
             width: 100%;
@@ -713,6 +732,29 @@
         .pricing-header p {
             color: var(--text-secondary);
             font-size: 1.1rem;
+        }
+        .pricing-help-prompt {
+            display: inline-block;
+            margin-top: 28px;
+            color: var(--text-secondary);
+            font-size: 1rem;
+            text-decoration: underline;
+            text-underline-offset: 4px;
+            text-decoration-color: var(--border);
+            transition: color 0.2s ease, text-decoration-color 0.2s ease;
+        }
+        .pricing-help-prompt::after {
+            content: " \2192";
+            text-decoration: none;
+            display: inline-block;
+            transition: transform 0.2s ease;
+        }
+        .pricing-help-prompt:hover {
+            color: var(--text-primary);
+            text-decoration-color: var(--text-primary);
+        }
+        .pricing-help-prompt:hover::after {
+            transform: translateX(4px);
         }
         .pricing-cards {
             display: grid;
@@ -1405,16 +1447,16 @@
                             <img class="screenshot-dark" src="assets/screenshots/collab-dark.png" alt="Collaborative workout">
                         </div>
 
-                        <!-- Screenshot 5: Score Tracking -->
+                        <!-- Screenshot 5: Leaderboard -->
                         <div class="screenshot" data-index="4">
-                            <img class="screenshot-light" src="assets/screenshots/scores.png" alt="Score tracking">
-                            <img class="screenshot-dark" src="assets/screenshots/scores-dark.png" alt="Score tracking">
-                        </div>
-
-                        <!-- Screenshot 6: Leaderboard -->
-                        <div class="screenshot" data-index="5">
                             <img class="screenshot-light" src="assets/screenshots/leaderboard.png" alt="Leaderboard">
                             <img class="screenshot-dark" src="assets/screenshots/leaderboard-dark.png" alt="Leaderboard">
+                        </div>
+
+                        <!-- Screenshot 6: Score Tracking -->
+                        <div class="screenshot" data-index="5">
+                            <img class="screenshot-light" src="assets/screenshots/scores.png" alt="Score tracking">
+                            <img class="screenshot-dark" src="assets/screenshots/scores-dark.png" alt="Score tracking">
                         </div>
 
                         <!-- Screenshot 7: Community -->
@@ -1423,16 +1465,16 @@
                             <img class="screenshot-dark" src="assets/screenshots/community-dark.png" alt="Community space">
                         </div>
 
-                        <!-- Screenshot 8: PR Detail -->
+                        <!-- Screenshot 8: Personal Records -->
                         <div class="screenshot" data-index="7">
-                            <img class="screenshot-light" src="assets/screenshots/pr-detail.png" alt="PR detail with chart">
-                            <img class="screenshot-dark" src="assets/screenshots/pr-detail-dark.png" alt="PR detail with chart">
-                        </div>
-
-                        <!-- Screenshot 9: Personal Records -->
-                        <div class="screenshot" data-index="8">
                             <img class="screenshot-light" src="assets/screenshots/personal-records.png" alt="Personal records">
                             <img class="screenshot-dark" src="assets/screenshots/personal-records-dark.png" alt="Personal records">
+                        </div>
+
+                        <!-- Screenshot 9: PR Detail -->
+                        <div class="screenshot" data-index="8">
+                            <img class="screenshot-light" src="assets/screenshots/pr-detail.png" alt="PR detail with chart">
+                            <img class="screenshot-dark" src="assets/screenshots/pr-detail-dark.png" alt="PR detail with chart">
                         </div>
 
                     </div>
@@ -1448,7 +1490,7 @@
             <div class="feature-panel side-right" data-index="1">
                 <span class="feature-tag tag-workouts">Workouts</span>
                 <h3 data-i18n="feat.workouts.title">Follow the Program</h3>
-                <p data-i18n="feat.workouts.desc">See the full workout calendar for your space. Every session programmed and ready to go.</p>
+                <p data-i18n-html="feat.workouts.desc">See the full workout calendar for your space. Every session programmed and ready to go.</p>
             </div>
             <div class="feature-panel side-left" data-index="2">
                 <span class="feature-tag tag-whiteboard">Whiteboard</span>
@@ -1458,17 +1500,17 @@
             <div class="feature-panel side-right" data-index="3">
                 <span class="feature-tag tag-collaborate">Collaborate</span>
                 <h3 data-i18n="feat.collab.title">Train Across Squads</h3>
-                <p data-i18n="feat.collab.desc">Share workouts across spaces with reference media and shared leaderboards. Same WOD, multiple squads.</p>
+                <p data-i18n-html="feat.collab.desc">Share workouts across spaces with reference media and shared leaderboards. Same WOD, multiple squads.</p>
             </div>
             <div class="feature-panel side-left" data-index="4">
-                <span class="feature-tag tag-collaborate">Scores</span>
-                <h3 data-i18n="feat.scores.title">Score it. Share it.</h3>
-                <p data-i18n="feat.scores.desc">Record your results with multiple sets and scores. Track your progression across attempts and add notes.</p>
-            </div>
-            <div class="feature-panel side-right" data-index="5">
                 <span class="feature-tag tag-posts">Leaderboard</span>
                 <h3 data-i18n="feat.leaderboard.title">See Where You Stand</h3>
                 <p data-i18n="feat.leaderboard.desc">Live leaderboard with your community on every workout. Rx or Scaled &mdash; everyone has a place on the board.</p>
+            </div>
+            <div class="feature-panel side-right" data-index="5">
+                <span class="feature-tag tag-collaborate">Scores</span>
+                <h3 data-i18n="feat.scores.title">Score it. Share it.</h3>
+                <p data-i18n-html="feat.scores.desc">Record your results with multiple sets and scores. Track your progression across attempts and add notes.</p>
             </div>
             <div class="feature-panel side-left" data-index="6">
                 <span class="feature-tag tag-community">Community</span>
@@ -1476,14 +1518,14 @@
                 <p data-i18n="feat.community.desc">Share posts, PR Board, and Media Library in one place.</p>
             </div>
             <div class="feature-panel side-right" data-index="7">
-                <span class="feature-tag tag-media">PR Tracking</span>
-                <h3 data-i18n="feat.prdetail.title">Watch Yourself Grow</h3>
-                <p data-i18n="feat.prdetail.desc">Track your personal records over time with detailed charts. Every PR tells a story of progress.</p>
-            </div>
-            <div class="feature-panel side-left" data-index="8">
                 <span class="feature-tag tag-whiteboard">Records</span>
                 <h3 data-i18n="feat.records.title">Own Your Numbers</h3>
                 <p data-i18n="feat.records.desc">All your personal records in one place &mdash; press, deadlift, squat, run, and more. Filter by category and see your best.</p>
+            </div>
+            <div class="feature-panel side-left" data-index="8">
+                <span class="feature-tag tag-media">PR Tracking</span>
+                <h3 data-i18n="feat.prdetail.title">Watch Yourself Grow</h3>
+                <p data-i18n-html="feat.prdetail.desc">Track your personal records over time with detailed charts. Every PR tells a story of progress.</p>
             </div>
         </div>
     </div>
@@ -1505,7 +1547,7 @@
             </div>
         </div>
         <div class="hero-ctas">
-            <a href="#" class="btn btn-primary">
+            <a href="https://apps.apple.com/app/showup-it-counts/id6761016399" target="_blank" rel="noopener" class="btn btn-primary">
                 <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
                 <span data-i18n="hero.download">Download on App Store</span>
             </a>
@@ -1523,6 +1565,7 @@
         <div class="pricing-header">
             <h2 data-i18n="pricing.title">Start free. Grow from there.</h2>
             <p data-i18n="pricing.subtitle">Download and start building your community today.</p>
+            <a href="help.html" class="pricing-help-prompt" data-i18n="pricing.helpPrompt">Learn how to use the Showup app</a>
         </div>
     </section>
 
@@ -1601,6 +1644,7 @@
                 <div class="footer-col">
                     <h4 data-i18n="footer.connect">Connect</h4>
                     <a href="https://instagram.com/showupcounts" target="_blank">Instagram</a>
+                    <a href="help.html" data-i18n="footer.help">Help Center</a>
                     <a href="contact.html" data-i18n="footer.contact">Contact</a>
                 </div>
             </div>
@@ -1673,10 +1717,19 @@
         const newIndex = Math.max(0, Math.min(Math.floor(rawIndex), FEATURE_COUNT - 1));
 
         if (newIndex !== currentFeatureIndex) {
+            const prevIndex = currentFeatureIndex;
             currentFeatureIndex = newIndex;
+            // Crossfade (not slide) on these adjacent steps:
+            // Whiteboard<->Collaborate (2-3), Scores<->Community (5-6), Community<->Records (6-7)
+            const lo = Math.min(prevIndex, newIndex), hi = Math.max(prevIndex, newIndex);
+            const crossfade = (hi - lo === 1) && (lo === 2 || lo === 5 || lo === 6);
 
             screenshots.forEach((el, i) => {
+                el.classList.remove('xfade-in', 'xfade-out');
                 el.classList.toggle('active', i === currentFeatureIndex);
+                el.classList.toggle('is-prev', i < currentFeatureIndex);
+                if (crossfade && i === newIndex) el.classList.add('xfade-in');
+                else if (crossfade && i === prevIndex) el.classList.add('xfade-out');
             });
             featurePanels.forEach((el, i) => {
                 el.classList.toggle('active', i === currentFeatureIndex);
@@ -1828,12 +1881,14 @@
             // Pricing
             'pricing.title': 'Start free. Grow from there.',
             'pricing.subtitle': 'Download and start building your community today.',
+            'pricing.helpPrompt': 'Learn how to use the Showup app',
             // Footer
-            'footer.desc': 'Build your fitness community. Connect. Train. Grow together.',
+            'footer.desc': 'Show up together. Share the wins.',
             'footer.product': 'Product',
             'footer.legal': 'Legal',
             'footer.connect': 'Connect',
             'footer.terms': 'Terms of Service',
+            'footer.help': 'Help Center',
             'footer.contact': 'Contact',
             'footer.copyright': '\u00a9 2025 Showup. All rights reserved.',
             'footer.appstore': 'Download on the App Store'
@@ -1845,13 +1900,13 @@
             'nav.privacy': '개인정보처리방침',
             // Hero
             'hero.badge': '커뮤니티에 의한, 커뮤니티를 위한',
-            'hero.line1': '당신의 크루와.',
-            'hero.line2': '운동을 만들고.',
+            'hero.line1': '여러분의 크루와.',
+            'hero.line2': '워크아웃을 만들고.',
             'hero.line3': '함께 땀 흘리세요.',
             'hero.line4': '<span class="block">누구나</span>.',
             'hero.line5': '<span class="block">어디서나</span>.',
-            'hero.bottom.h1': '당신의 팀.',
-            'hero.bottom.h2': '당신의 공간. 어디서나.',
+            'hero.bottom.h1': '여러분의 크루와',
+            'hero.bottom.h2': '어디서나 성취감을 공유해 보세요.',
             'hero.bottom.tag1': '박스',
             'hero.bottom.tag2': '트레이닝 그룹',
             'hero.bottom.tag3': '러닝 크루',
@@ -1863,46 +1918,48 @@
             'hero.comingSoon': '출시 예정',
             'hero.scroll': '스크롤하여 둘러보기',
             // Features intro
-            'features.title': '팀에 필요한 모든 것.<br>하나의 앱에서.',
-            'features.subtitle': '9가지 강력한 기능. 하나의 매끄러운 경험.',
+            'features.title': '여러분의 크루에게 필요한 모든 것,<br>이 앱 하나로.',
+            'features.subtitle': '9가지 강력한 기능, 하나처럼 매끄럽게.',
             // Mock screens
             // Feature panels
             'feat.home.tag': '홈',
-            'feat.home.title': '나만의 공간을 만드세요.',
-            'feat.home.desc': '짐, 그룹, 프로그램을 위해 \u2014 혼자서도 가능합니다.',
-            'feat.workouts.tag': '운동',
-            'feat.workouts.title': '프로그램을 따라가세요',
-            'feat.workouts.desc': '스페이스의 전체 운동 캘린더를 확인하세요. 모든 세션이 프로그래밍되어 준비되어 있습니다.',
+            'feat.home.title': '여러분의 스페이스를 만들어 보세요.',
+            'feat.home.desc': '짐, 그룹, 프로그램까지 \u2014 나 혼자여도 충분해요.',
+            'feat.workouts.tag': '워크아웃',
+            'feat.workouts.title': '워크아웃 캘린더를 한눈에',
+            'feat.workouts.desc': '오늘과 이번 주는 물론, 지난 워크아웃까지<br>모두 확인할 수 있어요.',
             'feat.detail.tag': '화이트보드',
-            'feat.detail.title': '오늘의 운동 확인',
-            'feat.detail.desc': '운동 세부사항을 확인하세요 \u2014 동작, 무게, 기준. 점수를 기록하거나 리더보드를 확인하세요.',
-            'feat.collab.tag': '콜라보 운동',
-            'feat.collab.title': '팀을 넘어 함께',
-            'feat.collab.desc': '레퍼런스 미디어와 공유 리더보드로 여러 스페이스에 운동을 공유하세요. 같은 운동, 여러 팀.',
+            'feat.detail.title': '오늘의 워크아웃',
+            'feat.detail.desc': '워크아웃 스탠다드와 코치님 코멘트를 한눈에. 그리고 무엇보다, 댓글로 멤버들과 오늘 워크아웃 수다도 떨어 보세요.',
+            'feat.collab.tag': '콜라보',
+            'feat.collab.title': '콜라보 워크아웃',
+            'feat.collab.desc': '여러 스페이스와 같은 워크아웃을 함께 공유하고,<br>리더보드에서 다 같이 만나 보세요.',
             'feat.scores.tag': '점수',
             'feat.scores.title': '기록하고 공유하세요.',
-            'feat.scores.desc': '여러 세트와 점수로 결과를 기록하세요. 시도별 진행 상황을 추적하고 메모를 추가하세요.',
+            'feat.scores.desc': '워크아웃 결과와 메모를 기록해 보세요.<br>멤버들의 점수엔 리액션도 남겨 보세요.',
             'feat.leaderboard.tag': '리더보드',
-            'feat.leaderboard.title': '순위를 확인하세요',
-            'feat.leaderboard.desc': '매 운동마다 커뮤니티와 실시간 리더보드로 경쟁하세요. Rx 또는 스케일드 \u2014 모두의 자리가 있습니다.',
+            'feat.leaderboard.title': '리더보드를 확인하세요',
+            'feat.leaderboard.desc': '워크아웃마다 커뮤니티와 실시간으로 만나 보세요.',
             'feat.community.tag': '커뮤니티',
-            'feat.community.title': '함께 연결되세요',
-            'feat.community.desc': '게시물, PR 보드, 미디어 라이브러리를 한 곳에서.',
+            'feat.community.title': '언제나 크루와 함께',
+            'feat.community.desc': '소식과 PR 보드, 미디어 라이브러리를 한곳에서.',
             'feat.prdetail.tag': 'PR 추적',
-            'feat.prdetail.title': '성장을 지켜보세요',
-            'feat.prdetail.desc': '상세 차트로 개인 기록을 시간에 따라 추적하세요. 모든 PR은 성장의 이야기입니다.',
+            'feat.prdetail.title': '나의 성장을 한눈에',
+            'feat.prdetail.desc': '상세한 차트로 기록이 어떻게 변해왔는지 살펴봐요.<br>PR 하나하나가 성장의 증거예요.',
             'feat.records.tag': '기록',
-            'feat.records.title': '나의 숫자를 소유하세요',
-            'feat.records.desc': '모든 개인 기록을 한 곳에서 \u2014 프레스, 데드리프트, 스쿼트, 달리기 등. 카테고리별로 필터링하고 최고 기록을 확인하세요.',
+            'feat.records.title': '내 모든 PR을 한곳에',
+            'feat.records.desc': '종목별로 골라 최고 기록을 확인해 보세요.',
             // Pricing
             'pricing.title': '무료로 시작하세요.',
-            'pricing.subtitle': '지금 다운로드하고 커뮤니티를 만드세요.',
+            'pricing.subtitle': '지금 다운로드하고 여러분의 크루를 만들어 보세요.',
+            'pricing.helpPrompt': 'Showup 앱 사용방법 알아보기',
             // Footer
-            'footer.desc': '피트니스 커뮤니티를 만드세요. 연결하고, 훈련하고, 함께 성장하세요.',
+            'footer.desc': '함께 쇼업하고 성취를 나눠 보는 곳.',
             'footer.product': '제품',
             'footer.legal': '법적 고지',
             'footer.connect': '소셜',
             'footer.terms': '이용약관',
+            'footer.help': '고객 센터',
             'footer.contact': '문의',
             'footer.copyright': '\u00a9 2025 Showup. 모든 권리 보유.',
             'footer.appstore': 'App Store에서 다운로드'
@@ -1966,12 +2023,14 @@
             // Pricing
             'pricing.title': 'Starte kostenlos. Wachse weiter.',
             'pricing.subtitle': 'Lade die App herunter und baue deine Community auf.',
+            'pricing.helpPrompt': 'So nutzt du die Showup-App',
             // Footer
-            'footer.desc': 'Baue deine Fitness-Community auf. Verbinden. Trainieren. Gemeinsam wachsen.',
+            'footer.desc': 'Show up together. Erfolge teilen.',
             'footer.product': 'Produkt',
             'footer.legal': 'Rechtliches',
             'footer.connect': 'Kontakt',
             'footer.terms': 'Nutzungsbedingungen',
+            'footer.help': 'Hilfe-Center',
             'footer.contact': 'Kontakt',
             'footer.copyright': '\u00a9 2025 Showup. Alle Rechte vorbehalten.',
             'footer.appstore': 'Im App Store laden'
@@ -2023,7 +2082,13 @@
         if (privacyLink) privacyLink.href = lang === 'en' ? 'legal/privacy.html' : 'legal/privacy-' + lang + '.html';
         if (termsLink) termsLink.href = lang === 'en' ? 'legal/terms.html' : 'legal/terms-' + lang + '.html';
 
-        // Update dropdown label and active state
+        // Update Help Center links (footer + pricing prompt) to open in the current language
+        var helpFile = lang === 'en' ? 'help.html' : 'help-' + lang + '.html';
+        document.querySelectorAll('a[data-i18n="footer.help"], a[data-i18n="pricing.helpPrompt"]').forEach(function(el) {
+            el.setAttribute('href', helpFile);
+        });
+
+        // dropdown label and active state
         var langLabels = { en: 'EN', ko: 'KR', de: 'DE' };
         langCurrent.querySelector('span').textContent = langLabels[lang] || lang.toUpperCase();
         langMenu.querySelectorAll('button').forEach(function(btn) {

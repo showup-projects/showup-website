@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help Center — Showup</title>
+    <meta name="description" content="Showup Help Center. Step-by-step guides for Spaces, Workouts, roles, collaborations, and more.">
+    <link rel="icon" id="favicon" type="image/svg+xml" href="assets/favicon-dark.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        (function() {
+            var theme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+            document.documentElement.setAttribute('data-theme', theme);
+            document.getElementById('favicon').href = theme === 'light' ? 'assets/favicon-light.svg' : 'assets/favicon-dark.svg';
+            window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', function(e) {
+                localStorage.removeItem('theme');
+                var t = e.matches ? 'light' : 'dark';
+                document.documentElement.setAttribute('data-theme', t);
+                document.getElementById('favicon').href = t === 'light' ? 'assets/favicon-light.svg' : 'assets/favicon-dark.svg';
+            });
+        })();
+    </script>
+
+    <style>
+        :root {
+            --bg-primary: #0A0A0A;
+            --bg-secondary: #111111;
+            --text-primary: #FFFFFF;
+            --text-secondary: rgba(255, 255, 255, 0.6);
+            --text-tertiary: rgba(255, 255, 255, 0.35);
+            --accent-blue: #FFFFFF;
+            --border: rgba(255, 255, 255, 0.2);
+            --glass: #0A0A0A;
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --nav-height: 72px;
+        }
+
+        [data-theme="light"] {
+            --bg-primary: #FFFFFF;
+            --bg-secondary: #FFFFFF;
+            --text-primary: #1A1A1A;
+            --text-secondary: rgba(26, 26, 26, 0.55);
+            --text-tertiary: rgba(26, 26, 26, 0.3);
+            --accent-blue: #1A1A1A;
+            --border: rgba(0, 0, 0, 0.15);
+            --glass: #FFFFFF;
+            --glass-border: rgba(0, 0, 0, 0.15);
+        }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+        body { font-family: 'Inter', sans-serif; color: var(--text-primary); background: var(--bg-primary); line-height: 1.6; }
+        a { color: inherit; text-decoration: none; }
+        body::after { display: none; }
+
+        .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; height: var(--nav-height); background: var(--bg-primary); border-bottom: 1px solid var(--border); }
+        .nav::before { display: none; }
+        .nav-inner { max-width: 1280px; margin: 0 auto; padding: 0 32px; height: 100%; display: flex; align-items: center; justify-content: space-between; position: relative; }
+        .nav-logo { display: flex; align-items: center; position: absolute; left: 50%; transform: translateX(-50%); }
+        .nav-logo img { height: 34px; width: auto; display: block; }
+        img.logo-dark { display: block; }
+        img.logo-light { display: none; }
+        [data-theme="light"] img.logo-dark { display: none; }
+        [data-theme="light"] img.logo-light { display: block; }
+
+        .theme-toggle { width: 38px; height: 38px; border: none; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: transparent; cursor: pointer; transition: color 0.3s ease; color: var(--text-secondary); margin-left: auto; }
+        .theme-toggle:hover { color: var(--text-primary); }
+        .theme-toggle svg { width: 18px; height: 18px; transition: transform 0.2s ease; }
+        .theme-toggle:hover svg { transform: rotate(15deg); }
+        .icon-sun { display: block; }
+        .icon-moon { display: none; }
+        [data-theme="light"] .icon-sun { display: none; }
+        [data-theme="light"] .icon-moon { display: block; }
+
+        .nav-actions { display: flex; align-items: center; gap: 8px; margin-left: auto; }
+        .lang-dropdown { position: relative; flex-shrink: 0; }
+        .lang-current { display: flex; align-items: center; gap: 4px; padding: 6px 4px; background: transparent; border: none; color: var(--text-secondary); font-family: 'Inter', sans-serif; font-weight: 600; font-size: 0.75rem; letter-spacing: 0.04em; text-transform: uppercase; cursor: pointer; transition: color 0.2s ease; }
+        .lang-current:hover { color: var(--text-primary); }
+        .lang-current svg { width: 10px; height: 10px; transition: transform 0.2s ease; }
+        .lang-dropdown.open .lang-current svg { transform: rotate(180deg); }
+        .lang-menu { position: absolute; top: calc(100% + 6px); right: 0; background: var(--bg-primary); border: 1px solid var(--border); min-width: 100%; opacity: 0; pointer-events: none; transform: translateY(-4px); transition: opacity 0.15s ease, transform 0.15s ease; z-index: 100; }
+        .lang-dropdown.open .lang-menu { opacity: 1; pointer-events: auto; transform: translateY(0); }
+        .lang-menu a { display: block; width: 100%; padding: 8px 12px; color: var(--text-secondary); font-family: 'Inter', sans-serif; font-weight: 600; font-size: 0.75rem; letter-spacing: 0.04em; text-transform: uppercase; text-decoration: none; transition: color 0.15s ease, background 0.15s ease; }
+        .lang-menu a:hover { color: var(--text-primary); background: rgba(255,255,255,0.06); }
+        [data-theme="light"] .lang-menu a:hover { background: rgba(0,0,0,0.04); }
+        .lang-menu a.active { color: var(--text-primary); }
+
+        .help-layout { max-width: 1200px; margin: 0 auto; display: flex; align-items: flex-start; gap: 0; padding-top: var(--nav-height); }
+        .help-sidebar { width: 280px; flex-shrink: 0; position: sticky; top: var(--nav-height); height: calc(100vh - var(--nav-height)); overflow-y: auto; border-right: 1px solid var(--border); padding: 40px 28px 48px 32px; }
+        .help-sidebar-title { font-family: 'Inter', sans-serif; font-weight: 900; font-size: 1.1rem; letter-spacing: -0.02em; text-transform: uppercase; margin-bottom: 20px; }
+        .help-search-wrap { margin-bottom: 28px; }
+        .help-search { width: 100%; padding: 10px 14px; background: var(--bg-secondary); border: 1px solid var(--border); color: var(--text-primary); font-family: 'Inter', sans-serif; font-size: 0.9rem; outline: none; transition: border-color 0.15s ease; }
+        .help-search::placeholder { color: var(--text-tertiary); }
+        .help-search:focus { border-color: var(--text-secondary); }
+        [data-theme="light"] .help-search { background: #FAFAFA; }
+        .help-search-results { margin-bottom: 28px; }
+        .help-search-empty { color: var(--text-tertiary); font-size: 0.9rem; padding: 8px 12px; }
+        .help-nav-group { margin-bottom: 28px; }
+        .help-nav-group-title { font-family: 'Inter', sans-serif; font-weight: 400; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-tertiary); margin-bottom: 10px; padding-left: 12px; }
+        .help-nav-link { display: block; color: var(--text-secondary); font-size: 0.92rem; line-height: 1.4; padding: 8px 12px; border-left: 2px solid transparent; cursor: pointer; transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease; }
+        .help-nav-link:hover { color: var(--text-primary); }
+        .help-nav-link.active { color: var(--text-primary); font-weight: 600; border-left-color: var(--text-primary); background: rgba(255,255,255,0.05); }
+        [data-theme="light"] .help-nav-link.active { background: rgba(0,0,0,0.04); }
+
+        .help-main { flex: 1; min-width: 0; max-width: 760px; padding: 56px 24px 100px 56px; }
+        .help-article h1 { font-family: 'Inter', sans-serif; font-weight: 900; font-size: clamp(1.7rem, 3.2vw, 2.4rem); line-height: 1.15; letter-spacing: -0.035em; text-transform: uppercase; margin-bottom: 24px; }
+        .help-article h2 { font-family: 'Inter', sans-serif; font-weight: 900; font-size: 1.25rem; line-height: 1.25; letter-spacing: -0.02em; margin-top: 40px; margin-bottom: 14px; }
+        .help-article p { color: var(--text-secondary); font-size: 0.98rem; line-height: 1.8; margin-bottom: 16px; }
+        .help-article ul, .help-article ol { list-style: none; margin-bottom: 16px; padding-left: 0; }
+        .help-article ul li, .help-article ol li { color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8; padding-left: 24px; position: relative; margin-bottom: 6px; }
+        .help-article ul li::before { content: ''; position: absolute; left: 0; top: 11px; width: 6px; height: 6px; border-radius: 50%; background: var(--text-primary); opacity: 0.4; }
+        .help-article ol { counter-reset: step; }
+        .help-article ol li { counter-increment: step; }
+        .help-article ol li::before { content: counter(step); position: absolute; left: 0; top: 6px; width: 18px; height: 18px; font-size: 0.75rem; font-weight: 700; color: var(--text-primary); opacity: 0.5; border-radius: 50%; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; }
+        .help-article a { color: var(--text-primary); text-decoration: underline; text-underline-offset: 3px; }
+        .help-article a:hover { opacity: 0.7; }
+        .help-article strong { color: var(--text-primary); font-weight: 600; }
+        .help-callout { background: var(--bg-secondary); border: 1px solid var(--border); padding: 16px 20px; margin: 20px 0; font-size: 0.92rem; color: var(--text-secondary); line-height: 1.7; }
+        .help-callout strong { color: var(--text-primary); }
+        [data-theme="light"] .help-callout { background: #FAFAFA; }
+
+        .help-table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 0.92rem; }
+        .help-table th, .help-table td { text-align: left; vertical-align: top; padding: 14px 16px; border: 1px solid var(--border); }
+        .help-table th { font-weight: 700; color: var(--text-primary); text-transform: uppercase; font-size: 0.78rem; letter-spacing: 0.06em; background: var(--bg-secondary); }
+        [data-theme="light"] .help-table th { background: #FAFAFA; }
+        .help-table td { color: var(--text-secondary); }
+        .help-table .role-name { color: var(--text-primary); font-weight: 700; white-space: nowrap; }
+        .help-table .role-inherits { display: block; font-weight: 400; font-size: 0.82rem; color: var(--text-tertiary); margin-top: 4px; }
+        .help-table ul { list-style: none; margin: 0; padding: 0; }
+        .help-table ul li { position: relative; padding-left: 18px; margin-bottom: 4px; line-height: 1.6; }
+        .help-table ul li::before { content: ''; position: absolute; left: 0; top: 10px; width: 5px; height: 5px; border-radius: 50%; background: var(--text-primary); opacity: 0.4; color: transparent; font-size: 0; }
+
+        .help-quicklinks { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 28px 0 8px; }
+        .help-quicklink { display: block; padding: 16px 18px; border: 1px solid var(--border); color: var(--text-primary); font-size: 0.95rem; font-weight: 600; cursor: pointer; transition: background 0.15s ease; }
+        .help-quicklink:hover { background: var(--bg-secondary); }
+        [data-theme="light"] .help-quicklink:hover { background: #FAFAFA; }
+        .help-quicklink span { display: block; font-weight: 400; font-size: 0.85rem; color: var(--text-secondary); margin-top: 4px; }
+
+        .help-contact-box { margin-top: 72px; padding: 28px 32px; border: 1px solid var(--border); text-align: center; }
+        .help-contact-box p { margin: 0; font-size: 0.98rem; color: var(--text-secondary); }
+        .help-contact-box a { color: var(--text-primary); text-decoration: underline; text-underline-offset: 3px; }
+
+        .help-mobile-label { display: none; font-family: 'Inter', sans-serif; font-weight: 400; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-tertiary); margin-bottom: 14px; }
+
+        @media (max-width: 900px) {
+            :root { --nav-height: 64px; }
+            .help-layout { flex-direction: column; padding-top: var(--nav-height); }
+            .help-sidebar { width: 100%; position: static; height: auto; overflow: visible; border-right: none; border-bottom: 1px solid var(--border); padding: 32px 24px; }
+            .help-sidebar-title { display: none; }
+            .help-mobile-label { display: block; }
+            .help-nav-group { margin-bottom: 20px; }
+            .help-main { padding: 40px 24px 80px; max-width: 100%; }
+            .help-quicklinks { grid-template-columns: 1fr; }
+            .help-table th, .help-table td { padding: 10px 12px; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            * { transition-duration: 0.01ms !important; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="index.html" class="nav-logo">
+                <img src="assets/images/logo-dark.svg" alt="Showup" class="logo-dark">
+                <img src="assets/images/logo-light.svg" alt="Showup" class="logo-light">
+            </a>
+            <div class="nav-actions">
+                <div class="lang-dropdown" id="langDropdown">
+                    <button class="lang-current" id="langCurrent" aria-label="Change language">
+                        <span>EN</span>
+                        <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg>
+                    </button>
+                    <div class="lang-menu">
+                        <a href="help.html" class="active">EN</a>
+                        <a href="help-ko.html">KR</a>
+                        <a href="help-de.html">DE</a>
+                    </div>
+                </div>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="help-layout">
+        <aside class="help-sidebar">
+            <div class="help-sidebar-title">Help Center</div>
+            <div class="help-mobile-label">Browse topics</div>
+            <div class="help-search-wrap">
+                <input type="search" id="helpSearch" class="help-search" placeholder="Search the Help Center…" autocomplete="off" aria-label="Search the Help Center">
+            </div>
+            <div id="helpSearchResults" class="help-search-results" hidden></div>
+            <nav id="helpNav">
+                <div class="help-nav-group">
+                    <a class="help-nav-link" data-target="welcome" href="#welcome">Welcome</a>
+                </div>
+                <div class="help-nav-group">
+                    <div class="help-nav-group-title">Spaces</div>
+                    <a class="help-nav-link" data-target="space-what" href="#space-what">What is a Space?</a>
+                    <a class="help-nav-link" data-target="space-create" href="#space-create">Create a Space</a>
+                    <a class="help-nav-link" data-target="space-update" href="#space-update">Update a Space</a>
+                    <a class="help-nav-link" data-target="space-leave" href="#space-leave">Leave a Space</a>
+                    <a class="help-nav-link" data-target="space-archive" href="#space-archive">Archive a Space</a>
+                    <a class="help-nav-link" data-target="roles" href="#roles">Roles &amp; permissions</a>
+                    <a class="help-nav-link" data-target="space-extras" href="#space-extras">Related concepts</a>
+                </div>
+                <div class="help-nav-group">
+                    <div class="help-nav-group-title">Workouts</div>
+                    <a class="help-nav-link" data-target="workout-what" href="#workout-what">What is a Workout?</a>
+                    <a class="help-nav-link" data-target="workout-create" href="#workout-create">Create a Workout</a>
+                    <a class="help-nav-link" data-target="workout-edit" href="#workout-edit">Edit a Workout</a>
+                    <a class="help-nav-link" data-target="workout-archive" href="#workout-archive">Archive or delete a Workout</a>
+                    <a class="help-nav-link" data-target="workout-collab" href="#workout-collab">Collaborative workouts</a>
+                    <a class="help-nav-link" data-target="workout-extras" href="#workout-extras">Related actions</a>
+                </div>
+                <div class="help-nav-group">
+                    <div class="help-nav-group-title">Community</div>
+                    <a class="help-nav-link" data-target="community-posts" href="#community-posts">Community posts</a>
+                    <a class="help-nav-link" data-target="community-prboard" href="#community-prboard">PR Board</a>
+                    <a class="help-nav-link" data-target="community-media" href="#community-media">Media Library</a>
+                    <a class="help-nav-link" data-target="community-invite" href="#community-invite">Invite members</a>
+                    <a class="help-nav-link" data-target="community-manage" href="#community-manage">Manage members</a>
+                </div>
+                <div class="help-nav-group">
+                    <div class="help-nav-group-title">Account</div>
+                    <a class="help-nav-link" data-target="account-profile" href="#account-profile">Edit your profile</a>
+                    <a class="help-nav-link" data-target="account-records" href="#account-records">Personal Records</a>
+                    <a class="help-nav-link" data-target="account-benchmarks" href="#account-benchmarks">Benchmarks</a>
+                    <a class="help-nav-link" data-target="account-preferences" href="#account-preferences">Language, units &amp; appearance</a>
+                    <a class="help-nav-link" data-target="account-notifications" href="#account-notifications">Notifications</a>
+                    <a class="help-nav-link" data-target="account-privacy" href="#account-privacy">Profile visibility &amp; blocked users</a>
+                    <a class="help-nav-link" data-target="account-subscription" href="#account-subscription">Subscription</a>
+                    <a class="help-nav-link" data-target="account-security" href="#account-security">Email, password &amp; sign out</a>
+                    <a class="help-nav-link" data-target="account-close" href="#account-close">Deactivate or delete account</a>
+                </div>
+            </nav>
+        </aside>
+
+        <main class="help-main">
+            <article class="help-article" id="welcome">
+                <h1>Welcome to the Help Center</h1>
+                <p>
+                    Step-by-step guides for getting the most out of Showup — <strong>Spaces</strong>, <strong>Workouts</strong>, the <strong>Community</strong> tab (posts, PR Board, Media Library, members), and your <strong>Account</strong>. Search above, pick a topic from the menu, or start with one of the popular guides below.
+                </p>
+                <div class="help-quicklinks">
+                    <a class="help-quicklink" data-target="space-what" href="#space-what">What is a Space?<span>Understand the core building block</span></a>
+                    <a class="help-quicklink" data-target="space-create" href="#space-create">Create a Space<span>Set up your first Space in 4 steps</span></a>
+                    <a class="help-quicklink" data-target="roles" href="#roles">Roles &amp; permissions<span>See what each role can do</span></a>
+                    <a class="help-quicklink" data-target="workout-collab" href="#workout-collab">Collaborative workouts<span>Share a workout across Spaces</span></a>
+                    <a class="help-quicklink" data-target="community-prboard" href="#community-prboard">PR Board<span>Track personal records together</span></a>
+                    <a class="help-quicklink" data-target="account-profile" href="#account-profile">Your Account<span>Profile, PR, settings &amp; more</span></a>
+                </div>
+            </article>
+
+            <article class="help-article" id="space-what">
+                <h1>What is a Space?</h1>
+                <p>
+                    A Space is your home for tracking workouts — solo, with friends, or with a team you coach. It's where your sessions, workouts, scores, and leaderboards live. How many Spaces you can create depends on your plan, and each Space has its own members, sessions, and history.
+                </p>
+                <p>When you create a Space, you pick one of four purposes:</p>
+                <ul>
+                    <li><strong>Just for Me</strong> — a private Space for your own training log.</li>
+                    <li><strong>Small Group</strong> — workouts with a handful of friends or training partners.</li>
+                    <li><strong>Gym or Team</strong> — programming and leaderboards for a club, box, or team.</li>
+                    <li><strong>Training Program</strong> — a structured program you publish for athletes to follow.</li>
+                </ul>
+            </article>
+
+            <article class="help-article" id="space-create">
+                <h1>Create a Space</h1>
+                <p>From the home tab, tap the <strong>+</strong> button to start a new Space. The flow walks you through four steps:</p>
+                <ol>
+                    <li><strong>Purpose</strong> — choose one of the four types (Just for Me, Small Group, Gym or Team, Training Program).</li>
+                    <li><strong>Name</strong> — give your Space a name (up to 30 characters).</li>
+                    <li><strong>Sessions</strong> — add at least one session type (e.g., "Cardio", "Strength", "Monday WOD"). You can add more later.</li>
+                    <li><strong>Customize</strong> — pick a color and icon, and upload a logo.</li>
+                </ol>
+                <div class="help-callout">
+                    <strong>Required:</strong> name, purpose, and at least one session. Everything else — logo, introduction, color — is optional and can be changed later.
+                </div>
+            </article>
+
+            <article class="help-article" id="space-update">
+                <h1>Update a Space</h1>
+                <p>
+                    Open the Space and tap the settings icon to edit. You can change:
+                </p>
+                <ul>
+                    <li>Name, icon, color, and custom logo</li>
+                    <li>Introduction text (up to 2,000 characters)</li>
+                    <li>Sessions — add new ones, rename existing ones, or archive ones you no longer use</li>
+                </ul>
+                <p>
+                    Editing Space settings and sessions requires an <a data-target="roles" href="#roles">Admin or Staff</a> role. Members and Coaches can't change these — ask an Admin or Staff member of your Space if you need a change.
+                </p>
+                <div class="help-callout">
+                    <strong>Heads-up:</strong> if your Space has more active sessions than your current plan allows, session editing is frozen until you archive a few. Archiving is reversible, so this isn't permanent.
+                </div>
+            </article>
+
+            <article class="help-article" id="space-leave">
+                <h1>Leave a Space</h1>
+                <p>
+                    Open the Space, tap the members or settings area, and choose <strong>Leave Space</strong>. You'll see a confirmation: once you leave, you'll need to be invited again to rejoin.
+                </p>
+                <p><strong>One-admin rule:</strong> every active Space needs at least one <a data-target="roles" href="#roles">Admin</a>. If you're the only Admin, you can't leave directly — archive the Space first, or promote another member to Admin and then leave.</p>
+            </article>
+
+            <article class="help-article" id="space-archive">
+                <h1>Archive a Space</h1>
+                <p>
+                    Archiving retires a Space without permanently deleting it. Everything stays recoverable — you can unarchive at any time. There are two options when you archive:
+                </p>
+                <ul>
+                    <li><strong>Archive (keep media)</strong> — text, workouts, scores, and photos are all preserved in read-only mode.</li>
+                    <li><strong>Archive &amp; remove media</strong> — deletes photos, videos, and media library content but keeps text content, scores, and metadata. Useful if you want to keep the workout history but free up storage.</li>
+                </ul>
+                <p>Archived Spaces show an "Archived" badge in your membership list and are hidden from active views. They can be unarchived at any time.</p>
+                <h2>Who can archive a Space?</h2>
+                <p>Archiving or deleting a Space is an <a data-target="roles" href="#roles">Admin</a>-only action. Here's the full role and permission breakdown:</p>
+                <table class="help-table">
+                    <thead><tr><th>Role</th><th>Permissions</th></tr></thead>
+                    <tbody>
+                        <tr>
+                            <td class="role-name">Admin<span class="role-inherits">All Staff permissions, plus:</span></td>
+                            <td><ul><li>Archive or delete the Space</li><li>Delete session types</li></ul></td>
+                        </tr>
+                        <tr>
+                            <td class="role-name">Staff<span class="role-inherits">All Coach permissions, plus:</span></td>
+                            <td><ul><li>Edit Space settings and session types</li><li>Manage members and assign roles (up to Staff)</li><li>Accept or decline join requests</li><li>Edit or delete any workout</li><li>Delete any score or comment</li><li>Moderate posts and media</li></ul></td>
+                        </tr>
+                        <tr>
+                            <td class="role-name">Coach<span class="role-inherits">All Member permissions, plus:</span></td>
+                            <td><ul><li>Create and edit own workouts</li><li>Invite new members</li><li>Add and manage own media in the library</li></ul></td>
+                        </tr>
+                        <tr>
+                            <td class="role-name">Member<span class="role-inherits">The base role:</span></td>
+                            <td><ul><li>Log scores on workouts</li><li>Add comments and reactions</li><li>Create community posts</li><li>View community, members, and media library</li></ul></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </article>
+
+            <article class="help-article" id="roles">
+                <h1>Roles &amp; permissions</h1>
+                <p>
+                    Every member of a Space has a role that determines what they can do. Roles are <strong>cumulative</strong> — each role includes all the permissions of the roles below it, plus its own.
+                </p>
+                <table class="help-table">
+                    <thead><tr><th>Role</th><th>Permissions</th></tr></thead>
+                    <tbody>
+                        <tr>
+                            <td class="role-name">Admin<span class="role-inherits">All Staff permissions, plus:</span></td>
+                            <td><ul><li>Archive or delete the Space</li><li>Delete session types</li></ul></td>
+                        </tr>
+                        <tr>
+                            <td class="role-name">Staff<span class="role-inherits">All Coach permissions, plus:</span></td>
+                            <td><ul><li>Edit Space settings and session types</li><li>Manage members and assign roles (up to Staff)</li><li>Accept or decline join requests</li><li>Edit or delete any workout</li><li>Delete any score or comment</li><li>Moderate posts and media</li></ul></td>
+                        </tr>
+                        <tr>
+                            <td class="role-name">Coach<span class="role-inherits">All Member permissions, plus:</span></td>
+                            <td><ul><li>Create and edit own workouts</li><li>Invite new members</li><li>Add and manage own media in the library</li></ul></td>
+                        </tr>
+                        <tr>
+                            <td class="role-name">Member<span class="role-inherits">The base role:</span></td>
+                            <td><ul><li>Log scores on workouts</li><li>Add comments and reactions</li><li>Create community posts</li><li>View community, members, and media library</li></ul></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>
+                    Admins have full control of a Space. Staff can manage members and assign roles up to Staff (they can't create or remove Admins). Coaches focus on programming and media. Members participate by logging scores, commenting, and posting.
+                </p>
+            </article>
+
+            <article class="help-article" id="space-extras">
+                <h1>Spaces: related concepts</h1>
+                <h2>Sessions</h2>
+                <p>Every Space is organized by sessions (e.g., "Monday Strength", "Cardio Club"). Session names can be up to 20 characters, and free plans allow up to 10 active sessions per Space.</p>
+                <h2>Roles</h2>
+                <p>Members can be Admins, Staff, Coaches, or Members. Only Admins can archive or delete the Space; Staff can edit settings and moderate. See <a data-target="roles" href="#roles">Roles &amp; permissions</a> for the full breakdown.</p>
+                <h2>Membership status</h2>
+                <p>Active (full access), Invited / Pending / Requested (awaiting approval), or Archived (you left or were removed).</p>
+            </article>
+
+            <article class="help-article" id="workout-what">
+                <h1>What is a Workout?</h1>
+                <p>
+                    A Workout is a single structured unit of training — the movements, the scoring rules, and any coaching notes — that members can log scores against. (It's not the same as a session: a session is a recurring category inside a Space, like "Monday Strength", and it holds many workouts over time.) A workout belongs to a Space and a session, but it can also be shared with other Spaces through collaborations, creating a combined leaderboard across all participating members.
+                </p>
+            </article>
+
+            <article class="help-article" id="workout-create">
+                <h1>Create a Workout</h1>
+                <p>Inside a Space, open the session you want and tap <strong>+</strong> to create a new workout. Creating and editing workouts requires a <a data-target="roles" href="#roles">Coach</a> role or higher. You'll fill in:</p>
+                <h2>Required</h2>
+                <ul>
+                    <li><strong>Content</strong> — the workout description (movements, sets, structure). Up to 1,000 characters.</li>
+                    <li><strong>Date</strong> — when the workout is programmed for.</li>
+                    <li><strong>Session</strong> — which session in the Space this belongs to.</li>
+                    <li><strong>Scoring method</strong> — pick one: no score, reps, time, weight, or distance.</li>
+                    <li><strong>Ranking</strong> — higher is better (e.g., more reps) or lower is better (e.g., faster time).</li>
+                </ul>
+                <h2>Optional</h2>
+                <ul>
+                    <li>Title (up to 30 characters)</li>
+                    <li>Coaching notes (up to 2,000 characters)</li>
+                    <li>Movement tags (e.g., "pull-up", "deadlift")</li>
+                    <li>Reps per round (for AMRAP / round-based workouts)</li>
+                    <li>Time cap (for time-based workouts)</li>
+                    <li>Multi-score (allow members to log multiple score attempts)</li>
+                    <li>Variations enabled (Rx / scaled options)</li>
+                    <li>Tiebreaks (up to 8, evaluated in priority order)</li>
+                    <li>Media references (up to 5 reference images, videos, or YouTube links) — uploaded directly, or reused from your <strong>Media Library</strong> (see below)</li>
+                    <li>Collaborating Spaces (invite other Spaces — see <a data-target="workout-collab" href="#workout-collab">Collaborative workouts</a>)</li>
+                </ul>
+                <h2>About the Media Library</h2>
+                <p>
+                    Your Space has a <strong>Media Library</strong> — a place to save <em>reusable references</em> so you don't re-upload the same media for every workout. Each item is one photo, video, or YouTube link with a title (up to 100 characters) and an optional note (up to 500 characters). Save a movement demo once, then attach it to as many workouts as you like. Coaches and above can add and manage media in the library.
+                </p>
+                <div class="help-callout">
+                    <strong>Note:</strong> attaching media is plan-dependent (free plans can't attach media to workouts), and a workout that uses Media Library items can't also have collaborating Spaces — choose one approach per workout.
+                </div>
+            </article>
+
+            <article class="help-article" id="workout-edit">
+                <h1>Edit a Workout</h1>
+                <p>
+                    Open the workout and tap the edit icon. Within a Space, a <a data-target="roles" href="#roles">Coach</a> can edit their own workouts and Staff can edit any workout. For collaborative workouts, only the Space that created the workout can change its settings — Spaces that joined as collaborators can still log scores and comment.
+                </p>
+                <h2>What can't be changed</h2>
+                <p>
+                    Some fields are locked once the workout exists, because changing them would conflict with scores members may have already submitted:
+                </p>
+                <ul>
+                    <li><strong>Scoring method</strong> (reps / time / weight / distance) — fixed after creation.</li>
+                    <li><strong>Multi-score</strong> — can't be turned on or off later.</li>
+                    <li><strong>Variations</strong> (Rx / scaled) — locked after creation.</li>
+                </ul>
+                <p>
+                    You can still edit the content, title, date, coaching notes, movement tags, ranking, tiebreaks, and media references.
+                </p>
+            </article>
+
+            <article class="help-article" id="workout-archive">
+                <h1>Archive or delete a Workout</h1>
+                <p>Showup automatically picks the right action when you remove a workout:</p>
+                <ul>
+                    <li><strong>Archive (soft)</strong> — if anyone has logged a score, or if multiple Spaces are collaborating, the workout is archived rather than deleted. It's hidden from lists but score history and the leaderboard are preserved. It can be unarchived any time.</li>
+                    <li><strong>Delete (permanent)</strong> — if no scores have been logged and only one Space is involved, you can delete it outright. This can't be undone, so you'll see a confirmation prompt.</li>
+                </ul>
+                <p>Editing or deleting any workout requires <a data-target="roles" href="#roles">Staff</a>; Coaches can remove their own workouts.</p>
+            </article>
+
+            <article class="help-article" id="workout-collab">
+                <h1>Collaborative workouts</h1>
+                <p>
+                    A collaborative workout is shared by more than one Space. When you invite another Space, all of their members can log scores on the same workout, and a single combined leaderboard ranks everyone together — perfect for friendly competitions between gyms, partner programs, or training groups across cities. In the app this lives under the <strong>Collaboration</strong> section.
+                </p>
+                <p>How it works:</p>
+                <ol>
+                    <li>While creating or editing a workout, tap <strong>Add Collaborator</strong> (shown as "콜라보 스페이스 추가" in Korean) and pick the Spaces you want to invite.</li>
+                    <li>Each invited Space gets a pending invitation. An admin of that Space can <strong>accept</strong> (choosing which of their sessions the workout should appear in) or <strong>reject</strong> it.</li>
+                    <li>Once accepted, the workout appears in the invitee's Space, and their members can start logging scores on the shared leaderboard.</li>
+                </ol>
+                <div class="help-callout">
+                    <strong>Note:</strong> the number of Spaces you can invite depends on your plan (free plans allow 1). A collaborative workout can't also use Media Library items — pick one approach per workout.
+                </div>
+                <h2>If a collaborating Space leaves</h2>
+                <p>
+                    A Space that joined as a collaborator can leave the workout from its detail view. The workout stays active for everyone else, and that Space's members' scores remain on the leaderboard.
+                </p>
+                <h2>If everyone leaves</h2>
+                <p>
+                    If every collaborating Space leaves and only the creator remains, the workout simply reverts to a normal single-Space workout for the creator — nothing is lost.
+                </p>
+                <h2>If the creator removes it</h2>
+                <p>
+                    The creator can't "leave" their own collaborative workout, but if the creator deletes it while other Spaces are still collaborating, it's <em>archived</em> rather than permanently deleted. For the other collaborating Spaces it becomes <strong>read-only</strong>: they can still open the workout and view its full leaderboard and score history, but no one can add new scores, edit it, comment, or react (the score button shows "Scoring Disabled"). Only the original creator Space can unarchive it to make it active again.
+                </p>
+            </article>
+
+            <article class="help-article" id="workout-extras">
+                <h1>Workouts: related actions</h1>
+                <h2>Log a score</h2>
+                <p>Open a workout and tap <strong>Add score</strong>. Enter your result and any notes. If the workout has multi-score enabled, you can submit several attempts and pick how they're aggregated (best, worst, or sum).</p>
+                <h2>Leaderboard</h2>
+                <p>Every workout has a leaderboard that ranks all submitted scores using the ranking method and any tiebreaks the workout creator set. For collaborative workouts, the leaderboard spans every participating Space.</p>
+                <h2>Comment &amp; react</h2>
+                <p>Leave comments on a workout and react to other members' scores to cheer them on.</p>
+            </article>
+
+            <article class="help-article" id="community-posts">
+                <h1>Community posts</h1>
+                <p>
+                    The Community tab is your Space's feed. Anyone who is a <a data-target="roles" href="#roles">Member</a> or above can post — share updates, photos, or a quick win.
+                </p>
+                <ul>
+                    <li>A post can include text (up to 2,000 characters) and media — photos, videos, or YouTube links (up to 10, depending on your plan; free plans can't attach media).</li>
+                    <li>Members can comment on and react to posts.</li>
+                    <li>You can edit or delete your own posts at any time.</li>
+                    <li><a data-target="roles" href="#roles">Staff</a> and Admins can delete any post to moderate the feed, and can <strong>pin</strong> a post so it stays at the top.</li>
+                </ul>
+                <p>To post, open the Community tab and tap the new-post button.</p>
+            </article>
+
+            <article class="help-article" id="community-prboard">
+                <h1>PR Board</h1>
+                <p>
+                    The PR Board is the Space's personal-record leaderboard. It lives in the Community tab as a card at the top of the feed and shows each member's best results for a set of preset movements — so everyone can see where they stand and chase the top of the board.
+                </p>
+                <ul>
+                    <li><strong>Preset movements</strong> — the board tracks preset exercises across 12 categories: Press, Deadlift, Squat, Snatch, Clean, Jerk, Olympic Lift, Gymnastic, Bodyweight, Endurance, Run, and Other. They're shown with a small waves icon (three curved bars, like a signal symbol) in the app.</li>
+                    <li><strong>Per Space</strong> — each Space you join has its own PR Board. Your records for preset movements are shared on the PR Board of every Space you've joined.</li>
+                    <li><strong>Shared vs. private</strong> — only your preset-movement records appear on the board. Custom exercises you add stay private in your own Personal Records (Account tab).</li>
+                </ul>
+                <h2>Add or update a record</h2>
+                <ul>
+                    <li>From the PR Board, tap <strong>+</strong> to log a preset record. From Account → Personal Records you can also add custom exercises.</li>
+                    <li>A record includes the exercise, a value with its unit, the measure type (weight, time, distance, or reps), and the date. For strength lifts you can log rep-maxes — 1RM, 3RM, 5RM, and so on, up to 20RM.</li>
+                    <li>Tap any record to see its full history on a progress chart, with your best attempt marked. Filter the history by rep-max (1RM / 3RM / 5RM …).</li>
+                </ul>
+                <h2>Who can use it</h2>
+                <p>
+                    Any <a data-target="roles" href="#roles">Member</a> of a Space can add records and appear on its PR Board — no special role or plan is required. Values display in your preferred units (kg/lb, km/mi); a record logged in another unit shows a converted badge. The board's detail view can also be filtered by category, gender, and age group.
+                </p>
+            </article>
+
+            <article class="help-article" id="community-media">
+                <h1>Media Library</h1>
+                <p>
+                    The Media Library lives in the Community tab. It's a shared store of <em>reusable references</em> — each item is one photo, video, or YouTube link with a title (up to 100 characters) and an optional note (up to 500 characters). Save a movement demo or briefing once, then attach it to as many workouts as you like instead of re-uploading.
+                </p>
+                <ul>
+                    <li><a data-target="roles" href="#roles">Coaches</a>, Staff, and Admins can add, edit, and archive items. Members can browse and use them.</li>
+                    <li><strong>Archive vs delete:</strong> archiving keeps the item and is reversible (managers can still see archived items; Members see only active ones). Deleting is permanent and removes it everywhere it's referenced.</li>
+                </ul>
+                <div class="help-callout">
+                    <strong>Note:</strong> attaching media is plan-dependent (free plans can't add media), and a workout that uses Media Library items can't also have collaborating Spaces. See <a data-target="workout-create" href="#workout-create">Create a Workout</a>.
+                </div>
+            </article>
+
+            <article class="help-article" id="community-invite">
+                <h1>Invite members</h1>
+                <p>
+                    From the Community tab, open <strong>Members</strong> and tap the invite (add-person) button. Invite someone by email or @username.
+                </p>
+                <ul>
+                    <li><a data-target="roles" href="#roles">Coaches</a> and above can invite new members.</li>
+                    <li>New members join as <strong>Member</strong> by default. If your role allows it, you can pick a higher role when inviting.</li>
+                    <li>Spaces are private — there's no public discovery — so inviting is the main way people join.</li>
+                    <li>If your Space accepts join requests, <a data-target="roles" href="#roles">Staff</a> and Admins can approve or decline them from the Members view.</li>
+                </ul>
+            </article>
+
+            <article class="help-article" id="community-manage">
+                <h1>Manage members</h1>
+                <p>
+                    Open <strong>Members</strong> from the Community tab to see everyone in the Space. Anyone can view and search the member list.
+                </p>
+                <p><a data-target="roles" href="#roles">Staff</a> and Admins can change a member's role and remove members, with a few limits:</p>
+                <ul>
+                    <li>You can't change your own role.</li>
+                    <li>Staff can assign roles up to Staff — only an Admin can promote someone to, or remove, an Admin.</li>
+                    <li>Staff can't change or remove Admins.</li>
+                </ul>
+                <p>Staff and Admins can also accept or decline join requests from the Members view. For the full breakdown of what each role can do, see <a data-target="roles" href="#roles">Roles &amp; permissions</a>.</p>
+            </article>
+
+            <article class="help-article" id="account-profile">
+                <h1>Edit your profile</h1>
+                <p>
+                    Open the <strong>Account</strong> tab and tap your username at the top to edit your profile. You can change:
+                </p>
+                <ul>
+                    <li><strong>Username</strong> — lowercase and unique; availability is checked as you type. There's a cooldown, so it can only be changed once every so often.</li>
+                    <li><strong>Display name</strong> — required, up to 30 characters.</li>
+                    <li><strong>Date of birth</strong>, <strong>country</strong>, and <strong>gender</strong>.</li>
+                </ul>
+                <p>
+                    Your email is shown here but isn't editable on this screen — see <a data-target="account-security" href="#account-security">Email, password &amp; sign out</a>. Save becomes available once you've made a change and the username is valid. <strong>View My Profile</strong> opens your public profile exactly as other members see it.
+                </p>
+            </article>
+
+            <article class="help-article" id="account-records">
+                <h1>Personal Records</h1>
+                <p>
+                    Go to <strong>Account → Personal Records</strong>. This tracks your bests for preset exercises across 12 categories (Press, Deadlift, Squat, Snatch, Clean, Jerk, Olympic Lift, Gymnastic, Bodyweight, Endurance, Run, Other) as well as your own custom exercises. In the app, preset movements are marked with a small waves icon (three curved bars, like a signal symbol) so you can recognize them at a glance.
+                </p>
+                <h2>Add a record</h2>
+                <ul>
+                    <li>Tap <strong>+</strong>, then choose a preset movement or create a custom exercise.</li>
+                    <li>Enter the value with its unit, the measure type (weight, time, distance, or reps), and the date. For strength lifts you can log rep-maxes — 1RM, 3RM, 5RM, and so on, up to 20RM.</li>
+                </ul>
+                <h2>Edit or remove a record</h2>
+                <ul>
+                    <li>Tap a record to open its detail view, with a progress chart and the full history of attempts (your best is highlighted).</li>
+                    <li>Edit a record from the pencil/menu in the detail view.</li>
+                    <li>Delete a single record with a confirmation, or remove several at once in edit mode.</li>
+                </ul>
+                <p>
+                    Filter by category or search by name. Records for <strong>preset</strong> movements are shared on the <a data-target="community-prboard" href="#community-prboard">PR Board</a> of every Space you've joined; <strong>custom</strong> exercises stay private to you.
+                </p>
+            </article>
+
+            <article class="help-article" id="account-benchmarks">
+                <h1>Benchmarks</h1>
+                <p>
+                    Go to <strong>Account → Benchmarks</strong>. Benchmarks are standardized, named workouts with fixed movements (for example, Hero and Heroine WODs). They're different from Personal Records: a Personal Record tracks the best for a single exercise, while a benchmark tracks your best score for a whole, predefined workout.
+                </p>
+                <ul>
+                    <li><strong>Record / update</strong> — open a benchmark and enter your score or time. Only your best result per benchmark is kept, shown with its date.</li>
+                    <li><strong>Edit / remove</strong> — open the benchmark and edit or delete your recorded result.</li>
+                    <li><strong>Find one</strong> — search by name or movement (pull-up, pull_up, and pullup all match) or filter by category (Hero, Heroine, and so on).</li>
+                </ul>
+                <p>
+                    Benchmarks are private to you and aren't shown on any PR Board. You can still choose whether they appear on your public profile — see <a data-target="account-privacy" href="#account-privacy">Profile visibility</a>.
+                </p>
+            </article>
+
+            <article class="help-article" id="account-preferences">
+                <h1>Language, units &amp; appearance</h1>
+                <ul>
+                    <li><strong>Language</strong> — shows the app's current language. The button takes you to iOS Settings → Showup → Language to change it (Showup follows your iOS app-language setting).</li>
+                    <li><strong>Unit</strong> — choose your weight unit (kg or lb) and distance unit (km or mi). Saved instantly; values display in your units, with a converted badge when a record was logged in another unit.</li>
+                    <li><strong>Appearance</strong> — Light, Dark, or System (matches your device).</li>
+                </ul>
+            </article>
+
+            <article class="help-article" id="account-notifications">
+                <h1>Notifications</h1>
+                <p>
+                    Under <strong>Account → Notifications</strong> there's a master <strong>All Notifications</strong> switch plus four categories you can toggle individually:
+                </p>
+                <ul>
+                    <li><strong>Workouts</strong> — new workouts and updates.</li>
+                    <li><strong>Social</strong> — reactions and comments on your posts and scores.</li>
+                    <li><strong>Community</strong> — new posts and announcements.</li>
+                    <li><strong>Memberships</strong> — invitations and approvals.</li>
+                </ul>
+                <p>
+                    If notifications are turned off at the system level, an <strong>Enable Notifications</strong> button appears and opens the iOS permission dialog. Categories stay disabled until both the system permission and the master switch are on.
+                </p>
+            </article>
+
+            <article class="help-article" id="account-privacy">
+                <h1>Profile visibility &amp; blocked users</h1>
+                <h2>Visibility</h2>
+                <p>
+                    <strong>Account → Visibility</strong> controls what other people see on your public profile. Toggle each section on or off:
+                </p>
+                <ul>
+                    <li><strong>Showup Stats</strong> — your workout activity and streak data.</li>
+                    <li><strong>Personal Records</strong> — your exercise PRs and lifting history.</li>
+                    <li><strong>Benchmarks</strong> — your benchmark workout scores.</li>
+                    <li><strong>Communities</strong> — the gyms and groups you belong to.</li>
+                </ul>
+                <p>Your own profile always shows every section; changes save immediately.</p>
+                <h2>Blocked users</h2>
+                <p>
+                    <strong>Account → Blocked Users</strong> lists everyone you've blocked, with the date. Swipe a row to unblock. People you block can't tell they're blocked, and their posts, comments, and notifications are hidden from you.
+                </p>
+            </article>
+
+            <article class="help-article" id="account-subscription">
+                <h1>Subscription</h1>
+                <p>
+                    <strong>Account → Subscription</strong> shows your current plan and billing cycle, the status (active, cancelled, or expired) with the renewal or expiry date, and the Spaces you own.
+                </p>
+                <ul>
+                    <li><strong>Change Plan</strong> — upgrade or downgrade your subscription.</li>
+                    <li><strong>Restore Purchases</strong> — re-sync your subscription with the App Store (e.g., on a new device).</li>
+                    <li>Promo or offer codes can be redeemed where available.</li>
+                </ul>
+                <p>Showup re-checks your Apple subscription when the app resumes and keeps your plan in sync automatically.</p>
+            </article>
+
+            <article class="help-article" id="account-security">
+                <h1>Email, password &amp; sign out</h1>
+                <ul>
+                    <li><strong>Update Email Address</strong> and <strong>Change Password</strong> appear only if you signed up with email (not Google or Apple). Changing your email sends a verification link to the new address; changing your password requires your current one.</li>
+                    <li><strong>Sign Out</strong> asks for confirmation before signing you out.</li>
+                    <li><strong>Contact Support</strong> opens a support form. <strong>Privacy Policy</strong> and <strong>Terms of Service</strong> open in your browser.</li>
+                </ul>
+            </article>
+
+            <article class="help-article" id="account-close">
+                <h1>Deactivate or delete your account</h1>
+                <h2>Deactivate</h2>
+                <p>
+                    Deactivating is <strong>temporary and reversible</strong>: your account is hidden and you're signed out, but you can reactivate any time simply by signing back in. Note that this does <em>not</em> cancel your subscription — Apple will keep billing until you cancel it in the App Store.
+                </p>
+                <h2>Delete</h2>
+                <p>
+                    Deleting is <strong>permanent and cannot be undone</strong>. You can't delete while you have an active Apple subscription — cancel it in the App Store first. When you delete:
+                </p>
+                <ul>
+                    <li>Spaces you own are archived (members' score history is preserved).</li>
+                    <li>Your personal data — posts, workouts, records, and more — is deleted.</li>
+                    <li>You confirm by typing the name of each Space you own.</li>
+                </ul>
+            </article>
+
+            <div class="help-contact-box">
+                <p>Didn't find what you need? <a href="contact.html">Contact us</a>.</p>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        const themeToggle = document.getElementById('themeToggle');
+        themeToggle.addEventListener('click', function() {
+            const current = document.documentElement.getAttribute('data-theme');
+            const next = current === 'light' ? 'dark' : 'light';
+            document.documentElement.setAttribute('data-theme', next);
+            localStorage.setItem('theme', next);
+        });
+
+        const langDropdown = document.getElementById('langDropdown');
+        const langCurrent = document.getElementById('langCurrent');
+        langCurrent.addEventListener('click', function(e) {
+            e.stopPropagation();
+            langDropdown.classList.toggle('open');
+        });
+        document.addEventListener('click', function() {
+            langDropdown.classList.remove('open');
+        });
+
+        const articles = document.querySelectorAll('.help-article');
+        const navLinks = document.querySelectorAll('#helpNav .help-nav-link');
+        function showArticle(id) {
+            if (!document.getElementById(id) || !document.getElementById(id).classList.contains('help-article')) {
+                id = 'welcome';
+            }
+            articles.forEach(function(a) { a.hidden = (a.id !== id); });
+            navLinks.forEach(function(l) { l.classList.toggle('active', l.dataset.target === id); });
+            window.scrollTo({ top: 0 });
+        }
+        document.addEventListener('click', function(e) {
+            const el = e.target.closest('[data-target]');
+            if (!el) return;
+            e.preventDefault();
+            const id = el.dataset.target;
+            history.replaceState(null, '', '#' + id);
+            showArticle(id);
+            if (searchInput.value) { searchInput.value = ''; runSearch(); }
+        });
+        window.addEventListener('hashchange', function() {
+            showArticle((location.hash || '#welcome').slice(1));
+        });
+
+        // Help Center search
+        const searchInput = document.getElementById('helpSearch');
+        const searchResults = document.getElementById('helpSearchResults');
+        const helpNav = document.getElementById('helpNav');
+        const searchIndex = Array.from(articles).map(function(a) {
+            const h = a.querySelector('h1');
+            return { id: a.id, title: h ? h.textContent : a.id, text: a.textContent.toLowerCase() };
+        });
+        function runSearch() {
+            const q = searchInput.value.trim().toLowerCase();
+            if (!q) {
+                searchResults.hidden = true;
+                searchResults.innerHTML = '';
+                helpNav.hidden = false;
+                return;
+            }
+            helpNav.hidden = true;
+            const matches = searchIndex.filter(function(it) {
+                return it.title.toLowerCase().indexOf(q) !== -1 || it.text.indexOf(q) !== -1;
+            });
+            if (!matches.length) {
+                searchResults.innerHTML = '<p class="help-search-empty">No results found.</p>';
+            } else {
+                searchResults.innerHTML = matches.map(function(m) {
+                    return '<a class="help-nav-link" data-target="' + m.id + '" href="#' + m.id + '">' + m.title + '</a>';
+                }).join('');
+            }
+            searchResults.hidden = false;
+        }
+        searchInput.addEventListener('input', runSearch);
+
+        showArticle((location.hash || '#welcome').slice(1));
+    </script>
+</body>
+</html>

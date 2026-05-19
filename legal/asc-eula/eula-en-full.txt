@@ -1,0 +1,261 @@
+Terms of Service
+
+Last updated: May 4, 2026
+
+Welcome to Showup. These Terms of Service ("Terms") govern your access to and use of the Showup mobile application and website (collectively, the "Service"), operated by Showup ("we," "our," or "us").
+
+By creating an account or using the Service, you agree to be bound by these Terms. If you do not agree, do not use the Service.
+
+These Terms also serve as the End User License Agreement ("EULA") between you and Showup with respect to the Showup mobile application distributed through the Apple App Store. Apple-specific provisions are set out in Section 16.
+
+1. Eligibility
+
+You must be at least 13 years old (or 16 in the European Economic Area/United Kingdom, or 14 in South Korea) to use the Service. By using the Service, you represent that you meet the applicable minimum age requirement in your jurisdiction.
+
+If you are under the age of 18 (or the age of majority in your jurisdiction), you must have the consent of a parent or legal guardian to use the Service.
+
+2. Accounts
+
+2.1 Account Creation
+
+To use the Service, you must create an account using a valid email address, Google Sign-In, or Apple Sign-In. You are responsible for maintaining the confidentiality of your account credentials and for all activities that occur under your account.
+
+2.2 Account Accuracy
+
+You agree to provide accurate, current, and complete information during registration and to update your information as needed to keep it accurate.
+
+2.3 Account Security
+
+You must notify us immediately at support@showupcounts.com if you become aware of any unauthorized use of your account. We are not liable for any loss arising from unauthorized access to your account.
+
+2.4 Account Deletion
+
+You may delete your account at any time from the Account settings in the app. Upon deletion, your personal data, workout scores, posts, comments, and uploaded media will be permanently removed in accordance with our Privacy Policy.
+
+3. Use of the Service
+
+3.1 License
+
+We grant you a limited, non-exclusive, non-transferable, revocable license to use the Service for your personal, non-commercial use, subject to these Terms.
+
+3.2 Acceptable Use
+
+You agree not to:
+
+Use the Service for any unlawful purpose or in violation of any applicable law
+
+Impersonate any person or entity, or misrepresent your identity or affiliation
+
+Interfere with, disrupt, or attempt to gain unauthorized access to the Service or its infrastructure
+
+Use automated means (bots, scrapers, crawlers) to access or collect data from the Service
+
+Reverse engineer, decompile, or disassemble any part of the Service
+
+Use the Service to send spam or unsolicited communications
+
+Upload or transmit viruses, malware, or other harmful code
+
+Circumvent any access controls or security measures
+
+3.3 In-App Purchases and Subscriptions
+
+The Service offers products and services for purchase within the app ("In-App Purchases"), including auto-renewable subscriptions. In-App Purchases are processed through the Apple App Store and are subject to Apple's terms and conditions.
+
+3.3.1 Subscription Plans
+
+Showup offers tiered subscription plans (such as XS, S, M, L, XL, and Max) on monthly and annual billing cycles. Each plan unlocks a different set of feature limits — including the number of members, sessions, collaborations, staff/coach roles, spaces, and media storage available to a Space owner. The current title, length, price (in your local currency), and feature set of each plan are displayed on the in-app purchase screen prior to confirming any purchase. Prices may vary by region and are subject to change.
+
+3.3.2 Payment, Auto-Renewal, and Cancellation
+
+You acknowledge and agree that:
+
+Payment will be charged to your Apple ID account at confirmation of purchase.
+
+Subscriptions automatically renew for the same period (monthly or annual) at the same price unless auto-renew is turned off at least 24 hours before the end of the current period.
+
+Your Apple ID account will be charged for renewal within 24 hours prior to the end of the current period at the cost of the renewal subscription.
+
+You can manage your subscriptions and turn off auto-renewal by going to your Apple ID account settings after purchase.
+
+If a price change applies to your subscription, we will notify you and, where required by Apple, request your consent before the change takes effect.
+
+You are responsible for all charges incurred through your account, including any purchases made by minors using your device.
+
+3.3.3 Free Trials
+
+Some subscription plans may offer a free trial period to eligible users. If you purchase a subscription during an active free trial, any unused portion of the free trial will be forfeited at the time of purchase. Free trial eligibility is determined by Apple based on your Apple ID's prior subscription history.
+
+3.3.4 Refunds
+
+All In-App Purchases are final and non-refundable except as required by applicable law or by Apple's refund policies. Refund requests must be directed to Apple, which processes all payments and manages refund policies for apps distributed through the App Store.
+
+4. Communities (Spaces)
+
+4.1 Creating and Managing Spaces
+
+Users may create communities ("Spaces") to organize workouts and connect with others. Space administrators are responsible for managing their Space, including moderating content and members.
+
+4.2 Joining Spaces
+
+Spaces may be open to join or require approval from an administrator. Administrators may accept or decline join requests at their discretion.
+
+4.3 Space Administrator Responsibilities
+
+Space administrators agree to:
+
+Moderate content and member behavior within their Space
+
+Remove content that violates these Terms or applicable Community Guidelines
+
+Not use their Space for illegal activities
+
+5. User-Generated Content
+
+5.1 Your Content
+
+The Service allows you to post content including workout scores, posts, comments, and photos ("User Content"). You retain ownership of your User Content. By posting User Content, you grant us a worldwide, non-exclusive, royalty-free license to use, display, reproduce, and distribute your User Content solely for the purpose of operating and providing the Service.
+
+5.2 Content Standards
+
+You agree that your User Content will not:
+
+Contain hate speech, threats, harassment, or bullying
+
+Include sexually explicit or pornographic material
+
+Promote violence, self-harm, or illegal activities
+
+Infringe on the intellectual property rights of others
+
+Contain false or misleading information intended to deceive
+
+Include personal or private information of others without their consent
+
+Contain spam, advertisements, or unauthorized promotions
+
+5.3 Content Moderation
+
+We reserve the right to review, remove, or disable access to any User Content that we determine, in our sole discretion, violates these Terms. We are not obligated to monitor all User Content but may do so at our discretion.
+
+5.4 Reporting
+
+If you encounter content that violates these Terms, you may report it using the report feature within the app. We will review reports and take appropriate action.
+
+6. Community Guidelines
+
+All users are expected to treat others with respect. The following behaviors are prohibited across all Spaces:
+
+Harassment, bullying, or intimidation of any kind
+
+Hate speech based on race, ethnicity, gender, sexual orientation, religion, disability, or any other protected characteristic
+
+Sharing or threatening to share private or personal information of others (doxxing)
+
+Posting spam, scams, or misleading content
+
+Attempting to manipulate scores, leaderboards, or other competitive features
+
+Creating multiple accounts to evade bans or restrictions
+
+Violations may result in content removal, temporary suspension, or permanent account termination at our discretion.
+
+7. Intellectual Property
+
+7.1 Our Property
+
+The Service, including its design, features, code, trademarks, logos, and all related intellectual property, is owned by Showup and is protected by applicable intellectual property laws. You may not copy, modify, distribute, or create derivative works based on the Service without our prior written consent.
+
+7.2 Feedback
+
+If you provide feedback, suggestions, or ideas about the Service, you agree that we may use them without any obligation to compensate you.
+
+8. Third-Party Services
+
+The Service uses third-party services including Firebase (Google Cloud) for infrastructure, Apple/Google for authentication, and the Apple App Store for in-app purchase processing. Your use of these services is subject to their respective terms and privacy policies. We are not responsible for the practices of third-party services.
+
+9. Disclaimer of Warranties
+
+The Service is provided "as is" and "as available" without warranties of any kind, either express or implied, including but not limited to implied warranties of merchantability, fitness for a particular purpose, and non-infringement.
+
+We do not warrant that the Service will be uninterrupted, error-free, secure, or free of viruses or other harmful components. We make no representations about the accuracy or reliability of any User Content or information obtained through the Service.
+
+Fitness Disclaimer: The Service is a fitness tracking and community platform. It does not provide medical advice. Always consult a qualified healthcare professional before starting any exercise program. You use the Service and perform any workouts at your own risk.
+
+10. Limitation of Liability
+
+To the maximum extent permitted by applicable law, Showup and its officers, directors, employees, and agents shall not be liable for any indirect, incidental, special, consequential, or punitive damages, or any loss of profits, revenue, data, or goodwill, arising out of or in connection with your use of the Service.
+
+Our total liability for any claim arising from your use of the Service shall not exceed the amount you paid us in the twelve (12) months preceding the claim, or fifty US dollars (USD $50), whichever is greater.
+
+Some jurisdictions do not allow the exclusion or limitation of certain damages. In such jurisdictions, our liability shall be limited to the fullest extent permitted by law. Nothing in these Terms excludes or limits liability for death or personal injury caused by negligence, fraud, or any liability that cannot be excluded by applicable law.
+
+11. Indemnification
+
+You agree to indemnify and hold harmless Showup and its officers, directors, employees, and agents from any claims, damages, losses, liabilities, and expenses (including reasonable attorneys' fees) arising out of or related to your use of the Service, your User Content, or your violation of these Terms.
+
+12. Termination
+
+12.1 Termination by You
+
+You may stop using the Service and delete your account at any time.
+
+12.2 Termination by Us
+
+We may suspend or terminate your account and access to the Service at any time, with or without notice, for any reason, including but not limited to violation of these Terms. Upon termination, your right to use the Service ceases immediately.
+
+12.3 Effect of Termination
+
+Sections that by their nature should survive termination will survive, including but not limited to: Intellectual Property, Disclaimer of Warranties, Limitation of Liability, Indemnification, and Governing Law.
+
+13. Changes to These Terms
+
+We may update these Terms from time to time. We will notify you of material changes by posting the updated Terms on this page and updating the "Last updated" date. Your continued use of the Service after any changes constitutes acceptance of the updated Terms.
+
+If you do not agree to the revised Terms, you must stop using the Service and delete your account.
+
+14. Governing Law and Disputes
+
+These Terms are governed by and construed in accordance with the laws of the Republic of Korea, without regard to its conflict of law provisions.
+
+Any disputes arising from these Terms or your use of the Service shall be resolved through good-faith negotiation. If negotiation fails, disputes shall be submitted to the exclusive jurisdiction of the courts of the Republic of Korea.
+
+For users in the European Economic Area: Nothing in these Terms affects your rights under mandatory consumer protection laws of your country of residence. You may also have the right to bring proceedings before the courts of your country of residence, and to refer disputes to the European Commission's Online Dispute Resolution platform at https://ec.europa.eu/consumers/odr.
+
+15. General Provisions
+
+Entire Agreement: These Terms, together with our Privacy Policy, constitute the entire agreement between you and Showup regarding the Service.
+
+Severability: If any provision of these Terms is found to be unenforceable, the remaining provisions will continue in full force and effect.
+
+Waiver: Our failure to enforce any right or provision of these Terms does not constitute a waiver of that right or provision.
+
+Assignment: You may not assign or transfer your rights under these Terms without our consent. We may assign our rights without restriction.
+
+Language: These Terms are written in English. If translated into another language, the English version shall prevail in case of conflict.
+
+16. Apple App Store Provisions
+
+The following provisions apply specifically to the Showup application as licensed and distributed through the Apple App Store. In the event of any conflict between these provisions and other parts of these Terms, these Apple-specific provisions govern with respect to the Apple App Store distribution.
+
+Parties: These Terms are an agreement solely between you and Showup, and not with Apple Inc. ("Apple"). Apple is not responsible for the application or its content.
+
+Scope of License: The license granted to you for the Showup application is limited to a non-transferable license to use the application on any Apple-branded products that you own or control, as permitted by the Usage Rules in the Apple Media Services Terms and Conditions.
+
+Maintenance and Support: Showup is solely responsible for providing any maintenance and support services with respect to the application, as required under applicable law. Apple has no obligation whatsoever to furnish any maintenance or support services with respect to the application.
+
+Warranty: Showup is solely responsible for any product warranties, whether express or implied by law, to the extent not effectively disclaimed. In the event of any failure of the application to conform to any applicable warranty, you may notify Apple, and Apple will refund the purchase price (if any) for the application to you. To the maximum extent permitted by applicable law, Apple has no other warranty obligation whatsoever with respect to the application.
+
+Product Claims: Showup, not Apple, is responsible for addressing any claims you or any third party may have relating to the application or your use of the application, including but not limited to: (i) product liability claims; (ii) any claim that the application fails to conform to any applicable legal or regulatory requirement; and (iii) claims arising under consumer protection, privacy, or similar legislation.
+
+Intellectual Property Rights: In the event of any third-party claim that the application or your possession or use of the application infringes that third party's intellectual property rights, Showup, not Apple, will be solely responsible for the investigation, defense, settlement, and discharge of any such claim.
+
+Legal Compliance: You represent and warrant that (i) you are not located in a country that is subject to a U.S. Government embargo, or that has been designated by the U.S. Government as a "terrorist supporting" country, and (ii) you are not listed on any U.S. Government list of prohibited or restricted parties.
+
+Third-Party Beneficiary: You acknowledge and agree that Apple and Apple's subsidiaries are third-party beneficiaries of these Terms, and that, upon your acceptance of these Terms, Apple will have the right (and will be deemed to have accepted the right) to enforce these Terms against you as a third-party beneficiary thereof.
+
+17. Contact Us
+
+If you have questions about these Terms, please contact us at:
+
+support@showupcounts.com
