@@ -143,9 +143,9 @@
             border-color: #fff;
         }
         .btn-android {
-            background: #fff;
-            color: #0A0A0A;
-            border: 2px solid #fff;
+            background: transparent;
+            color: rgba(255, 255, 255, 0.5);
+            border: 2px solid rgba(255, 255, 255, 0.18);
             cursor: default;
             position: relative;
         }
@@ -156,11 +156,26 @@
             font-size: 0.55rem;
             text-transform: uppercase;
             letter-spacing: 0.1em;
-            background: rgba(0, 0, 0, 0.08);
+            background: rgba(255, 255, 255, 0.12);
             padding: 2px 8px;
             border-radius: 100px;
-            color: rgba(0, 0, 0, 0.55);
+            color: rgba(255, 255, 255, 0.6);
             white-space: nowrap;
+        }
+        /* Hero (first screen) download buttons stay white in any theme — they sit on the dark photo.
+           Page-bottom buttons keep the theme-dependent styling above. */
+        .hero .btn-primary,
+        .hero .btn-android,
+        [data-theme="light"] .hero .btn-primary,
+        [data-theme="light"] .hero .btn-android {
+            background: #fff;
+            color: #0A0A0A;
+            border-color: #fff;
+        }
+        .hero .btn-android .coming-soon-tag,
+        [data-theme="light"] .hero .btn-android .coming-soon-tag {
+            background: rgba(0, 0, 0, 0.08);
+            color: rgba(0, 0, 0, 0.55);
         }
 
         /* ============================================
@@ -1127,9 +1142,9 @@
 
         /* Buttons */
         [data-theme="light"] .btn-primary {
-            background: #fff;
-            color: #0A0A0A;
-            border-color: #fff;
+            background: #1A1A1A;
+            color: #F4F4F4;
+            border-color: #1A1A1A;
         }
         [data-theme="light"] .btn-secondary {
             background: transparent;
@@ -1220,13 +1235,12 @@
             color: #F4F4F4;
         }
         [data-theme="light"] .btn-android {
-            background: #fff;
-            color: #0A0A0A;
-            border-color: #fff;
+            color: rgba(0, 0, 0, 0.35);
+            border-color: rgba(0, 0, 0, 0.12);
         }
         [data-theme="light"] .btn-android .coming-soon-tag {
-            background: rgba(0, 0, 0, 0.08);
-            color: rgba(0, 0, 0, 0.55);
+            background: rgba(0, 0, 0, 0.07);
+            color: rgba(0, 0, 0, 0.4);
         }
 
         /* Feature tags - inverted in light mode */
