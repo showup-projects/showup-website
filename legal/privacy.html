@@ -502,10 +502,10 @@
 
     <main class="privacy-content">
         <h1>Privacy Policy</h1>
-        <p class="privacy-updated">Last updated: March 24, 2026</p>
+        <p class="privacy-updated">Last updated: August 25, 2026</p>
 
         <p>
-            Showup ("we," "our," or "us") operates the Showup mobile application and website (collectively, the "Service"). This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use the Service.
+            Showup ("we," "our," or "us") operates the Showup mobile application for iOS and Android and the website at www.showupcounts.com (collectively, the "Service"). This Privacy Policy explains what information we collect, how we use it, who else can see it, and what you can do about it.
         </p>
         <p>
             By using the Service, you agree to the collection and use of information in accordance with this Privacy Policy. If you do not agree with the terms of this policy, please do not use the Service.
@@ -514,185 +514,308 @@
         <h2>1. Information We Collect</h2>
 
         <h3>1.1 Information You Provide</h3>
-        <p>We collect information that you voluntarily provide when you:</p>
+        <p>To create an account you must provide the following, including when you sign up with a social login:</p>
         <ul>
-            <li>Register for an account</li>
-            <li>Create or join a community (space)</li>
-            <li>Participate in workouts and record scores</li>
-            <li>Post content or comments</li>
-            <li>Upload photos or media</li>
-            <li>Make in-app purchases</li>
-            <li>Contact us for support</li>
+            <li>Email address</li>
+            <li>Username (globally unique and visible to other users)</li>
+            <li>Display name</li>
+            <li>Date of birth</li>
+            <li>Gender</li>
+            <li>Country</li>
         </ul>
-        <p>This information may include:</p>
+        <p>As you use the Service, we also collect:</p>
         <ul>
-            <li>Name and email address</li>
-            <li>Date of birth and gender</li>
-            <li>Profile photo</li>
-            <li>Fitness data, including workout scores, personal records, and benchmarks</li>
-            <li>User-generated content such as posts, comments, and media</li>
-            <li>Community membership and role information</li>
-            <li>Unit preferences (weight, distance)</li>
-            <li>Purchase and transaction data, including items purchased and subscription status</li>
+            <li><strong>Fitness data:</strong> workout scores, personal records, and benchmark results, together with the workouts and sessions you create</li>
+            <li><strong>User-generated content:</strong> posts, comments, reactions, and photos or videos you upload to a Space</li>
+            <li><strong>Community data:</strong> the Spaces you belong to, your role in each, join requests, invitations you send, and users you block</li>
+            <li><strong>Booking and membership data:</strong> class bookings and cancellations, waitlist entries, the membership plan assigned to you by a Space, your membership start and end dates, membership holds, your credit balance and the record of credits used in each period, and a membership history trail. Booking records also note whether an administrator booked or cancelled on your behalf.</li>
+            <li><strong>Purchase data:</strong> your subscription plan and status, billing period, store transaction identifiers, renewal and expiry dates, billing-failure status, and any promotional offer you redeem</li>
+            <li><strong>Support communications:</strong> your account email, a reply-to email address you type in, your name, your message, and diagnostic details such as app version and subscription plan</li>
+            <li><strong>Content reports:</strong> if you report content, we collect your identity as the reporter, what you reported, the reason, and your description</li>
+            <li><strong>Preferences:</strong> unit preferences (weight, distance), language, notification settings, and your profile privacy switches</li>
+        </ul>
+        <p>
+            Showup does not host a profile photo that you upload. If a profile picture appears, it is a link supplied by the sign-in provider you used.
+        </p>
+
+        <h3>1.2 Information We Receive from Your Sign-In Provider</h3>
+        <p>When you sign in with a third-party account, we receive a limited profile from that provider:</p>
+        <ul>
+            <li><strong>Sign in with Apple (iOS):</strong> a stable Apple user identifier, your name if you choose to share it, and your email address or an Apple private-relay address</li>
+            <li><strong>Google Sign-In:</strong> your Google account identifier, name, email address, and profile picture URL</li>
+            <li><strong>Naver Sign-In (available in Korea):</strong> your Naver user identifier, name, and email address. We store a permanent mapping between your Naver identifier and your Showup account so that you can sign in again.</li>
         </ul>
 
-        <h3>1.2 Information Collected Automatically</h3>
-        <p>When you use the Service, we may automatically collect:</p>
+        <h3>1.3 Information Collected Automatically</h3>
         <ul>
-            <li>Device type and operating system version</li>
-            <li>Unique device identifiers</li>
-            <li>App usage data</li>
-            <li>Crash reports and performance diagnostics</li>
+            <li><strong>Device identifier:</strong> on iOS, a random identifier we generate and store in the device Keychain, which persists if you delete and reinstall the app; on Android, the system-provided Android ID. We use it to enforce a limit of two registered devices per account, a cooldown between device changes, and the ability to sign a device out remotely.</li>
+            <li><strong>Device details:</strong> device model name, operating system version, app version, and the time each device was registered and last active</li>
+            <li><strong>Push notification tokens:</strong> one per device, so we can deliver notifications</li>
+            <li><strong>Usage data:</strong> in-app events and screen views collected through Google Analytics for Firebase (see Section 4)</li>
+            <li><strong>Crash reports and performance diagnostics:</strong> on iOS, collected through Firebase Crashlytics and linked to your account identifier (see Section 4)</li>
+            <li><strong>Device integrity signals:</strong> the app asks Apple's App Attest service (iOS) or Google Play Integrity (Android) to attest that it is a genuine, unmodified copy of Showup, and sends the resulting token to Firebase App Check. This is used to block abuse of our servers.</li>
         </ul>
+
+        <h3>1.4 Information About Other People</h3>
+        <p>
+            If you invite someone to a Space, you provide us with their email address, and optionally their name or username. We store that invitation and send an email to the address you gave us, naming you and the Space. If the person never had a Showup account, we hold their email address only for the purpose of delivering and tracking that invitation. Anyone who receives an invitation they did not want can contact us at the address in Section 14 and we will delete the invitation and their address.
+        </p>
+        <p>
+            The same applies in reverse: if you ask to join a Space, the administrators of that Space receive your name, username, email address, and any message you write.
+        </p>
 
         <h2>2. How We Use Your Information</h2>
         <p>We use the information we collect to:</p>
         <ul>
+            <li>Create and manage your account and authenticate you</li>
             <li>Provide, operate, and maintain the Service</li>
-            <li>Create and manage your account</li>
-            <li>Enable community features, leaderboards, and social interactions</li>
-            <li>Track and display workout scores, personal records, and benchmarks</li>
-            <li>Send push notifications about workouts, community activity, and updates</li>
-            <li>Respond to support requests and communicate with you</li>
-            <li>Process in-app purchases and manage subscriptions</li>
-            <li>Monitor and improve the Service</li>
-            <li>Detect, prevent, and address abuse, fraud, or technical issues</li>
-            <li>Enforce our terms and community guidelines</li>
+            <li>Enable Spaces, leaderboards, PR boards, and social interactions</li>
+            <li>Record and display workout scores, personal records, and benchmarks, including deriving your age from your date of birth and publishing your age and gender alongside your results so that boards can be filtered by category, gender, and age group</li>
+            <li>Operate class booking: reserve and cancel places, manage waitlists, apply membership plans, and track credit balances</li>
+            <li>Send push notifications about workouts, bookings, community activity, and account changes</li>
+            <li>Send transactional emails, such as Space invitations and replies to support requests</li>
+            <li>Process in-app purchases, determine which features your plan unlocks, and manage subscriptions</li>
+            <li>Enforce the two-device limit, the device-change cooldown, and remote sign-out</li>
+            <li>Detect, prevent, and address abuse, fraud, and technical problems, including device attestation</li>
+            <li>Review content reports and enforce our Terms and community guidelines</li>
+            <li>Monitor and improve the Service through aggregate usage analytics and crash diagnostics</li>
         </ul>
 
-        <h2>3. How We Share Your Information</h2>
+        <h2>3. How Your Information Is Shared</h2>
 
-        <h3>3.1 Within the Service</h3>
+        <h3>3.1 Visibility Within the Service</h3>
         <p>
-            Your profile name, profile photo, workout scores, posts, and comments are visible to members of communities you join. Leaderboard rankings are visible to other community members.
-        </p>
-
-        <h3>3.2 Service Providers</h3>
-        <p>
-            We use the following third-party service providers to operate the Service:
+            Showup is a community product, and much of what you record is meant to be seen by other people. Within the Service, the following is readable by <strong>signed-in Showup users</strong>, and not only by members of the Spaces you belong to:
         </p>
         <ul>
-            <li><strong>Firebase (Google Cloud):</strong> Authentication, database storage, file storage, cloud functions, and push notifications</li>
-            <li><strong>Apple App Store:</strong> In-app purchase processing and subscription management</li>
-            <li><strong>Apple Sign-In and Google Sign-In:</strong> Account authentication</li>
+            <li>Your profile record, including your username, display name, email address, date of birth, gender, and country</li>
+            <li>Your workout scores, personal records, and benchmark results, each of which carries your name, your gender, and your age</li>
+            <li>Posts, comments, reactions, and any photos or videos uploaded to a Space</li>
+            <li>Your notification and language preferences and your registered device list, including push notification tokens</li>
         </ul>
         <p>
-            These providers process your data on our behalf and are bound by their own privacy policies and data protection obligations.
+            Whether a username is already taken can also be checked without signing in — that is how the sign-up screen tells you a name is free. The profile privacy switches in the app control whether your stats, personal records, benchmarks, and Space list are <em>displayed</em> on your profile to other members; they do not narrow the access described above.
+        </p>
+        <p>
+            We are working to narrow this access so that it follows the Spaces you belong to. We will update this section as we do; this policy always describes the access that is actually in force.
         </p>
 
-        <h3>3.3 Legal Requirements</h3>
+        <h3>3.2 Space Administrators</h3>
+        <p>
+            A Space is run by its own administrators, who are other Showup users and not our staff. If you join a Space, its administrators and staff can:
+        </p>
+        <ul>
+            <li>See your display name, username, email address, join date, and role</li>
+            <li>See your membership plan, start and end dates, holds, full credit ledger, and membership history</li>
+            <li>See your bookings and cancellations for that Space, and book or cancel classes on your behalf, choosing whether the credit is returned</li>
+            <li>Assign or change your membership plan, create or backdate a hold, and remove you from the Space</li>
+            <li>Write a free-text note about you on your membership record. You can read this note too.</li>
+        </ul>
+        <p>
+            Whether other members can see who is booked into a class is set per class by the Space. The default is that only administrators and staff can see the participant list, and the waitlist is always visible only to them.
+        </p>
+        <p>
+            Space administrators are responsible for how they handle their members' information. We provide the tools; we do not control what an individual Space does with them.
+        </p>
+
+        <h3>3.3 Service Providers</h3>
+        <p>We use the following third parties to operate the Service:</p>
+        <ul>
+            <li><strong>Google (Firebase and Google Cloud):</strong> authentication, database and file storage, server functions, push notification delivery, app analytics, crash reporting, and App Check anti-abuse attestation</li>
+            <li><strong>Apple:</strong> Sign in with Apple, App Store purchase and subscription processing, App Attest device attestation, and push notification delivery on iOS</li>
+            <li><strong>Google Play:</strong> purchase and subscription processing and Play Integrity device attestation on Android</li>
+            <li><strong>RevenueCat, Inc. (United States):</strong> subscription and entitlement management. RevenueCat receives your Showup account identifier together with your store purchase and transaction history. We do not send it your name, email address, or any profile data.</li>
+            <li><strong>NAVER Corp. (Republic of Korea):</strong> Naver Sign-In, for users who choose it. The Naver SDK is initialised when the app starts.</li>
+            <li><strong>Our email delivery provider:</strong> delivers Space invitations, support-request emails, and content-report notifications, and therefore processes the addresses and message contents involved</li>
+            <li><strong>GitHub, Inc. (United States):</strong> hosts the Showup website (see Section 5)</li>
+            <li><strong>YouTube (Google):</strong> if a Space links a YouTube video, playing it or displaying its thumbnail loads content from Google's servers, which receives your IP address and user agent and may set its own identifiers. This is governed by Google's privacy policy.</li>
+        </ul>
+        <p>
+            These providers process your data on our behalf or, where they are independent controllers, under their own privacy policies. We require them to provide protection for your data at least equivalent to that described in this policy.
+        </p>
+
+        <h3>3.4 Legal Requirements</h3>
         <p>We may disclose your information if required to do so by law, or in response to valid legal requests by public authorities.</p>
 
-        <h3>3.4 Business Transfers</h3>
+        <h3>3.5 Business Transfers</h3>
         <p>In the event of a merger, acquisition, or sale of assets, your information may be transferred as part of that transaction. We will notify you before your information becomes subject to a different privacy policy.</p>
 
-        <h3>3.5 No Sale of Data</h3>
-        <p>We do not sell, rent, or trade your personal information to third parties for their marketing purposes.</p>
+        <h3>3.6 No Sale of Data</h3>
+        <p>We do not sell, rent, trade, or share your personal information for advertising or for third-party marketing purposes, and we never have.</p>
 
-        <h2>4. Advertising and Tracking</h2>
+        <h2>4. Analytics, Diagnostics, and Advertising</h2>
         <p>
-            The Service does not contain third-party advertising. We do not use advertising SDKs or tracking frameworks. We do not track you across other apps or websites.
+            The Service contains no third-party advertising. We do not use advertising SDKs, attribution SDKs, or cross-app tracking, and we do not track you across other apps or websites. We do not use Apple's App Tracking Transparency prompt because we have nothing to ask you for.
         </p>
-
-        <h2>5. Data Storage and Security</h2>
-        <p>
-            Your data is stored using Firebase (Google Cloud) infrastructure. All data is encrypted in transit using HTTPS/TLS and encrypted at rest on Google's servers.
-        </p>
-        <p>
-            While we use industry-standard security measures to protect your information, no method of electronic storage or transmission is 100% secure. We cannot guarantee absolute security.
-        </p>
-
-        <h2>6. Data Retention</h2>
-        <p>
-            We retain your personal information for as long as your account is active or as needed to provide the Service. When you delete your account, we will delete your personal information, including:
-        </p>
+        <p>We do use two Google diagnostic tools inside the app:</p>
         <ul>
-            <li>Your user profile and account credentials</li>
-            <li>Your workout scores and personal records</li>
-            <li>Your posts and comments</li>
-            <li>Your uploaded media files</li>
-            <li>Your community memberships</li>
-            <li>Your purchase history and transaction records</li>
+            <li><strong>Google Analytics for Firebase</strong> is enabled on both iOS and Android. It records app usage — screens viewed, sessions, and automatically collected events — along with device and app metadata and a Google-generated app instance identifier. We use it in aggregate to understand which parts of the app are used. On Android, the analytics library also declares the advertising-identifier permission; we do not use an advertising identifier, do not run ads, and do not build advertising profiles.</li>
+            <li><strong>Firebase Crashlytics</strong> is enabled on iOS only. It records crashes and non-fatal errors, and we attach your account identifier to those reports so that we can investigate a problem you report to us.</li>
         </ul>
         <p>
-            Some information may be retained in our backups for a limited period or as required by law. Anonymized or aggregated data that cannot identify you may be retained indefinitely.
+            If you are in the European Economic Area or the United Kingdom and do not want this processing, contact us at the address in Section 14 and we will disable analytics and diagnostics collection for your account.
         </p>
 
-        <h2>7. Legal Basis for Processing (EEA/UK Users)</h2>
+        <h2>5. The Showup Website</h2>
         <p>
-            If you are located in the European Economic Area (EEA) or the United Kingdom, we process your personal data under the following legal bases as defined by the General Data Protection Regulation (GDPR):
+            The website at www.showupcounts.com is a set of static pages. It runs no analytics, no advertising, and no tracking scripts, sets no cookies, and has no forms — the contact page is a plain email link. It stores two values in your browser's local storage, "theme" and "lang", purely to remember your appearance and language choice. Both are strictly necessary for the preference you set, which is why the site shows no consent banner.
         </p>
+        <p>Three third parties are involved in serving the site:</p>
         <ul>
-            <li><strong>Contract:</strong> Processing necessary to provide the Service you have signed up for (account creation, workout tracking, community features)</li>
-            <li><strong>Legitimate Interests:</strong> Processing necessary for our legitimate interests, such as improving the Service, preventing abuse, and ensuring security, where these interests are not overridden by your rights</li>
-            <li><strong>Consent:</strong> Where you have given explicit consent, such as opting in to push notifications</li>
-            <li><strong>Legal Obligation:</strong> Processing necessary to comply with legal requirements</li>
+            <li><strong>GitHub, Inc.</strong> hosts the pages and generates server access logs that contain visitor IP addresses. We cannot read or erase those logs; they are handled under GitHub's privacy statement.</li>
+            <li><strong>Google Fonts</strong> (fonts.googleapis.com and fonts.gstatic.com) serves the typefaces used on every page, and therefore receives your IP address and user agent when a page loads.</li>
+            <li><strong>jsDelivr</strong> serves one additional typeface on the home page only, and likewise receives your IP address and user agent.</li>
         </ul>
 
-        <h2>8. Your Rights and Choices</h2>
-        <p>Depending on your location, you may have the following rights regarding your personal information:</p>
+        <h2>6. Automated Processing</h2>
+        <p>Some things happen on our servers on a schedule, without anyone reviewing them:</p>
+        <ul>
+            <li>Memberships that have reached their end date are marked expired once a day</li>
+            <li>Subscriptions that have lapsed are downgraded to the free plan once a day, which also reduces the limits applied to Spaces you own and to their members</li>
+            <li>Reminders are sent seven days and one day before a subscription expires</li>
+            <li>Waitlist places that are not claimed in time are released, and the held credit is returned or forfeited according to the Space's rules</li>
+            <li>Classes that do not reach their minimum booking count are cancelled automatically, credits are returned, and participants and managers are notified</li>
+            <li>When a place frees up, the next person on the waitlist is promoted automatically</li>
+            <li>When a Space creates or widens a membership hold, bookings and waitlist entries inside the held period are cancelled automatically, and credits may be forfeited under the Space's rules</li>
+        </ul>
+        <p>
+            None of these produce legal effects concerning you or similarly significantly affect you within the meaning of Article 22 of the GDPR. If you believe an automated action was wrong, contact us and a person will look at it.
+        </p>
 
-        <h3>8.1 Rights for All Users</h3>
+        <h2>7. Data Storage and Security</h2>
+        <p>
+            Your account data, fitness records, community content, and uploaded media are stored on Google Cloud infrastructure through Firebase. Your subscription and purchase history is additionally held by RevenueCat, and your crash reports by Firebase Crashlytics. All data is encrypted in transit using HTTPS/TLS and encrypted at rest by the provider.
+        </p>
+        <p>
+            The app also caches your data on your own device so that it works offline. Signing out or deleting the app removes that cache.
+        </p>
+        <p>
+            While we use industry-standard security measures to protect your information, no method of electronic storage or transmission is 100% secure. We cannot guarantee absolute security. Please also read Section 3.1, which describes the access that is currently in force.
+        </p>
+
+        <h2>8. Data Retention and Account Deletion</h2>
+        <p>
+            You can delete your account at any time from Account settings in the app. If you cannot reach the app, email us from your account's email address with the subject "Delete my account" and we will verify ownership and process it. Deletion is queued and carried out by our servers rather than instantly; it normally completes within minutes and always within 30 days. If you have an active subscription bought through the App Store, you must cancel it with Apple before the app will let you delete the account.
+        </p>
+
+        <h3>8.1 What Deleting Your Account Removes</h3>
+        <ul>
+            <li>Your account and sign-in credentials, including the mapping to any Google, Apple, or Naver login</li>
+            <li>Your profile record, your username reservation, and your app settings, including your registered devices and push tokens</li>
+            <li>Your personal records, benchmark records, and workout scores</li>
+            <li>Posts you authored, together with their media, comments, and reactions</li>
+            <li>Comments you wrote on other people's workouts, scores, and posts</li>
+            <li>Your membership record in every Space, and your notifications</li>
+        </ul>
+
+        <h3>8.2 What Is Retained After Deletion</h3>
+        <p>The following are not removed by the deletion process, and you should assume they persist:</p>
+        <ul>
+            <li>Spaces you created that still have other members are <strong>archived, not deleted</strong>, so the remaining members keep their own history</li>
+            <li>Your booking and credit history in Spaces you belonged to</li>
+            <li>Support tickets you sent us, and content reports you filed</li>
+            <li>Invitations you sent and join requests you made</li>
+            <li>Your reactions on other people's content, and media or workouts you contributed to a Space you did not own, which remain part of that Space's records</li>
+            <li>Membership history entries in a Space that name you</li>
+            <li>Purchase and transaction records held by us, by RevenueCat, and by the app store, retained for the period required by tax, accounting, and consumer law</li>
+            <li>A record that a deletion was requested and completed, kept as proof that we honoured your request</li>
+            <li>Crash reports already collected</li>
+        </ul>
+        <p>
+            If you want any of the retained items removed, contact us at the address in Section 14 and we will remove what we are not legally required to keep.
+        </p>
+
+        <h3>8.3 Retention Periods</h3>
+        <ul>
+            <li><strong>Account, profile, fitness, and community data:</strong> kept while your account is active, then removed as described in Section 8.1</li>
+            <li><strong>Booking, credit, and membership records:</strong> kept for as long as the Space they belong to exists</li>
+            <li><strong>Invitations:</strong> kept until accepted or withdrawn; an unaccepted invitation is deleted on request</li>
+            <li><strong>Support tickets and content reports:</strong> kept for as long as needed to handle the request and to defend against repeat abuse</li>
+            <li><strong>Purchase and transaction records:</strong> kept for the period required by applicable tax, accounting, and consumer protection law</li>
+            <li><strong>Analytics and crash diagnostics:</strong> kept for the retention period set by Google for Firebase</li>
+            <li><strong>Backups:</strong> deleted data may persist in backups for a limited period before being overwritten</li>
+        </ul>
+        <p>Anonymised or aggregated data that cannot identify you may be retained indefinitely.</p>
+
+        <h2>9. Legal Basis for Processing (EEA/UK Users)</h2>
+        <p>
+            If you are located in the European Economic Area or the United Kingdom, we process your personal data under the following legal bases as defined by the General Data Protection Regulation (GDPR):
+        </p>
+        <ul>
+            <li><strong>Contract:</strong> creating and running your account, recording your fitness data, operating Spaces and bookings, and processing your subscription</li>
+            <li><strong>Legitimate Interests:</strong> keeping the Service secure and free of abuse, device attestation and the device limit, crash diagnostics, aggregate usage analytics, handling support requests and content reports, and delivering invitations you ask us to send</li>
+            <li><strong>Consent:</strong> push notifications, and access to your photo library</li>
+            <li><strong>Legal Obligation:</strong> retaining transaction records and responding to lawful requests</li>
+        </ul>
+        <p>
+            Where we rely on legitimate interests, you can object at any time using the contact details in Section 14.
+        </p>
+
+        <h2>10. Your Rights and Choices</h2>
+
+        <h3>10.1 Rights for All Users</h3>
         <ul>
             <li><strong>Access:</strong> Request a copy of the personal information we hold about you</li>
-            <li><strong>Correction:</strong> Update or correct your personal information through the app</li>
-            <li><strong>Deletion:</strong> Delete your account and all associated data from the Account settings in the app</li>
-            <li><strong>Notifications:</strong> Opt out of push notifications through your device settings</li>
-            <li><strong>Withdraw Consent:</strong> Stop using the Service at any time</li>
+            <li><strong>Correction:</strong> Update your profile in the app, or ask us to correct anything you cannot edit yourself</li>
+            <li><strong>Deletion:</strong> Delete your account from Account settings in the app, subject to Section 8</li>
+            <li><strong>Notifications:</strong> Turn off push notifications in the app or in your device settings</li>
+            <li><strong>Analytics:</strong> Ask us to disable analytics and crash diagnostics for your account</li>
+            <li><strong>Withdraw Consent:</strong> Withdraw any consent you have given, and stop using the Service at any time</li>
         </ul>
 
-        <h3>8.2 Additional Rights for EEA/UK Users (GDPR)</h3>
+        <h3>10.2 Additional Rights for EEA/UK Users (GDPR)</h3>
         <p>If you are located in the EEA or the United Kingdom, you also have the right to:</p>
         <ul>
             <li><strong>Data Portability:</strong> Receive your personal data in a structured, commonly used, and machine-readable format</li>
             <li><strong>Restrict Processing:</strong> Request that we limit the processing of your personal data under certain circumstances</li>
             <li><strong>Object to Processing:</strong> Object to processing based on legitimate interests</li>
-            <li><strong>Lodge a Complaint:</strong> File a complaint with your local data protection supervisory authority if you believe your rights have been violated</li>
+            <li><strong>Lodge a Complaint:</strong> File a complaint with your local data protection supervisory authority</li>
         </ul>
 
-        <h3>8.3 Rights for US Users (California / CCPA)</h3>
-        <p>If you are a California resident, under the California Consumer Privacy Act (CCPA) you have the right to:</p>
-        <ul>
-            <li>Know what personal information we collect, use, and disclose</li>
-            <li>Request deletion of your personal information</li>
-            <li>Opt out of the sale of personal information (we do not sell your data)</li>
-            <li>Non-discrimination for exercising your privacy rights</li>
-        </ul>
-
-        <h3>8.4 Rights for South Korean Users (PIPA)</h3>
-        <p>If you are located in South Korea, under the Personal Information Protection Act (PIPA) you have the right to:</p>
-        <ul>
-            <li>Access, correct, delete, or suspend processing of your personal information</li>
-            <li>Be notified of the collection and use of your personal information</li>
-            <li>Withdraw consent to the processing of your personal information</li>
-        </ul>
-
+        <h3>10.3 Rights for Users in the United States</h3>
         <p>
-            To exercise any of these rights, you may use the in-app settings or contact us at the email address below. We will respond to your request within the timeframe required by applicable law (generally within 30 days).
+            Depending on your state of residence, you may have the right to know what personal information we collect, use, and disclose; to obtain a copy of it; to correct it; to delete it; to appeal a decision we make about your request; and not to be discriminated against for exercising these rights. We do not sell or share personal information as those terms are defined by the California Consumer Privacy Act, and we do not use or disclose sensitive personal information for purposes that require an opt-out. Because the Showup website runs no advertising or analytics, there is nothing for an opt-out preference signal such as Global Privacy Control to act on.
         </p>
 
-        <h2>9. Children's Privacy</h2>
+        <h3>10.4 Rights for South Korean Users (PIPA)</h3>
         <p>
-            The Service is not intended for children under the age of 13 (or 16 in the EEA/UK, or 14 in South Korea). We do not knowingly collect personal information from children under these ages. If you are a parent or guardian and believe your child has provided us with personal information, please contact us and we will take steps to delete such information.
+            If you are located in South Korea, under the Personal Information Protection Act you have the right to access, correct, delete, or suspend the processing of your personal information, to be informed of its collection and use, and to withdraw your consent. You may also refuse consent to non-essential collection, though this may limit parts of the Service.
+        </p>
+        <p>
+            Categories of personal information we collect, the purposes, and the retention periods are set out in Sections 1, 2, and 8. Processing we entrust to third parties, and the transfers of personal information outside Korea that this involves, are set out in Sections 3.3 and 12. When personal information reaches the end of its retention period or its purpose is achieved, we destroy it without delay: electronic files are deleted irrecoverably, and any printed material is shredded or incinerated.
+        </p>
+        <p>
+            <strong>Personal Information Protection Officer:</strong> Showup — support@showupcounts.com
+        </p>
+        <p>
+            You may also report concerns to the Personal Information Dispute Mediation Committee (kopico.go.kr, 1833-6972), the Korea Internet &amp; Security Agency Privacy Complaint Centre (privacy.kisa.or.kr, 118), or the Personal Information Protection Commission (pipc.go.kr).
+        </p>
+        <p>
+            To exercise any of these rights, use the in-app settings or contact us at the email address in Section 14. We will respond within the timeframe required by applicable law, generally within 30 days.
         </p>
 
-        <h2>10. International Data Transfers</h2>
+        <h2>11. Children's Privacy</h2>
         <p>
-            Showup operates in South Korea, the United States, and the European Economic Area (EEA). Your personal data may be transferred to and processed in any of these regions, as well as in countries where our service providers (such as Google Cloud/Firebase) maintain facilities.
-        </p>
-        <p>
-            For transfers of personal data from the EEA/UK to countries outside the EEA/UK that have not been deemed to provide an adequate level of data protection, we rely on appropriate safeguards, including Standard Contractual Clauses (SCCs) adopted by the European Commission, to ensure your data is protected in accordance with GDPR requirements.
-        </p>
-        <p>
-            By using the Service, you acknowledge that your information may be processed in these regions. We take steps to ensure your data receives the same level of protection regardless of where it is processed.
+            The Service requires you to be at least 13 years old, and we do not knowingly collect personal information from children under 13. Where the law of your country sets a higher age for consenting to online services on your own — 16 in parts of the EEA and the UK, and 14 in South Korea — you may use the Service below that age only with the consent of a parent or guardian. If you are a parent or guardian and believe your child has provided us with personal information without your consent, contact us and we will delete it.
         </p>
 
-        <h2>11. Changes to This Policy</h2>
+        <h2>12. International Data Transfers</h2>
+        <p>
+            Showup is operated from the Republic of Korea. We have no establishment in the European Union. Your personal data is processed on Google Cloud infrastructure and may be handled in the regions where Google, Apple, RevenueCat, and our other providers operate facilities, including the United States.
+        </p>
+        <p>
+            <strong>For EEA and UK users:</strong> transfers of personal data to the Republic of Korea rely on the European Commission's adequacy decision for Korea, adopted on 17 December 2021 and confirmed on its first periodic review on 23 July 2026, under which no additional safeguards are required. Personal data received from the EEA is handled under Korean law as supplemented by the Personal Information Protection Commission's Supplementary Rules. Transfers to providers in the United States rely on the EU–US Data Privacy Framework and the UK Extension where the provider is certified, and otherwise on the European Commission's Standard Contractual Clauses.
+        </p>
+        <p>
+            <strong>For Korean users:</strong> personal information is transferred outside Korea to Google (United States and other Google Cloud regions) for infrastructure, analytics, crash diagnostics, and push delivery; to Apple (United States) for sign-in, purchases, and push delivery; and to RevenueCat, Inc. (United States) for subscription management. The items transferred, the purposes, and the retention periods are those set out in Sections 1, 3.3, and 8. You may refuse these transfers, but because they are necessary to run the Service, refusing means you cannot use it.
+        </p>
+
+        <h2>13. Changes to This Policy</h2>
         <p>
             We may update this Privacy Policy from time to time. We will notify you of material changes by posting the updated policy on this page and updating the "Last updated" date. Your continued use of the Service after any changes constitutes acceptance of the updated policy.
         </p>
 
-        <h2>12. Contact Us</h2>
+        <h2>14. Contact Us</h2>
         <p>If you have questions about this Privacy Policy, wish to exercise your data protection rights, or have concerns about our data practices, please contact us at:</p>
         <p>
             <a href="mailto:support@showupcounts.com">support@showupcounts.com</a>
