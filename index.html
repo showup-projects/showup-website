@@ -9,6 +9,8 @@
     <meta property="og:description" content="Create fitness communities, program workouts, and stay connected. Anyone can build their tribe with showup.">
     <meta property="og:type" content="website">
     <link rel="icon" id="favicon" type="image/svg+xml" href="assets/favicon-dark.svg">
+    <!-- Start the hero photo before the render-blocking stylesheets below -->
+    <link rel="preload" as="image" href="assets/images/hero-bg.webp" type="image/webp" fetchpriority="high">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=Comfortaa:wght@700&family=Inter:opsz,wght@14..32,100..900&family=Nunito:wght@900&family=Work+Sans:wght@400;600;700;800;900&display=swap" rel="stylesheet">
@@ -144,23 +146,12 @@
         }
         .btn-android {
             background: transparent;
-            color: rgba(255, 255, 255, 0.5);
-            border: 2px solid rgba(255, 255, 255, 0.18);
-            cursor: default;
+            color: #fff;
+            border: 2px solid rgba(255, 255, 255, 0.3);
             position: relative;
         }
         .btn-android:hover {
-            opacity: 1;
-        }
-        .btn-android .coming-soon-tag {
-            font-size: 0.55rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            background: rgba(255, 255, 255, 0.12);
-            padding: 2px 8px;
-            border-radius: 100px;
-            color: rgba(255, 255, 255, 0.6);
-            white-space: nowrap;
+            border-color: #fff;
         }
         /* Hero (first screen) download buttons stay white in any theme — they sit on the dark photo.
            Page-bottom buttons keep the theme-dependent styling above. */
@@ -172,10 +163,9 @@
             color: #0A0A0A;
             border-color: #fff;
         }
-        .hero .btn-android .coming-soon-tag,
-        [data-theme="light"] .hero .btn-android .coming-soon-tag {
-            background: rgba(0, 0, 0, 0.08);
-            color: rgba(0, 0, 0, 0.55);
+        .hero .btn-android:hover {
+            opacity: 0.85;
+            border-color: #fff;
         }
 
         /* ============================================
@@ -330,12 +320,18 @@
             inset: 0;
             z-index: 0;
             overflow: hidden;
+            /* Inline 32px placeholder so the hero is never blank while the photo loads */
+            background: #0A0A0A url('data:image/webp;base64,UklGRvoAAABXRUJQVlA4IO4AAABwBQCdASogABIAPrVQoEqnJSMhsBgIAOAWiWcAxkAKpDNmTpMKa1fdRa31HIpZLMXEBX4AAMtPSdtPl+yaOwCLUZISzJTusBV4flCt+9sCQcJoqdo3n3rZgdI2Nb8bt1N0povAb8gd9+J2fzfbQHJJwLwc/chtVRtaR7So36Mrtf3GbXJeVf103wxXixhlCoYVIL4r2cn0Vbs8CgH+hdqErzcTAlw/3fEy0nIuensrCl9BZnq6jZwv57P/Iufhz7wy73HvclQciMxxRG/SUF64su5ZC/yKfJg3af7rn1Ub++uET95dlUrCBZhEAAAA') center / cover no-repeat;
         }
         .orb, .orb-1, .orb-2, .orb-3 { display: none; }
+        .hero-bg picture { display: contents; }
         .hero-bg-img {
             position: absolute;
             inset: 0;
-            background: #0A0A0A url('assets/images/hero-bg.png') center / cover no-repeat;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
         }
         .hero-scrim {
             position: absolute;
@@ -560,7 +556,8 @@
            FEATURES SCROLL SECTION
            ============================================ */
         .features-scroll-container {
-            height: 680vh;
+            /* 100vh sticky + ~65vh of scroll per feature step (11 steps) */
+            height: 820vh;
             position: relative;
         }
         .features-sticky {
@@ -631,7 +628,7 @@
         }
         .screenshot.active { transform: translateX(0); z-index: 2; }
         .screenshot.is-prev { transform: translateX(-20%); filter: brightness(0.6); }
-        /* Crossfade override for the Whiteboard <-> Collaborate step */
+        /* Crossfade override for adjacent steps that show a similar screen */
         .screenshot.xfade-in,
         .screenshot.xfade-out {
             transform: translateX(0) !important;
@@ -705,7 +702,7 @@
             transform: rotate(-1.5deg);
         }
         .tag-community, .tag-workouts, .tag-collaborate,
-        .tag-posts, .tag-whiteboard, .tag-media {
+        .tag-posts, .tag-whiteboard, .tag-media, .tag-booking {
             background: #fff;
             color: #0A0A0A;
             border: none;
@@ -719,6 +716,8 @@
         .feature-panel[data-index="6"] .feature-tag { transform: rotate(-3deg); }
         .feature-panel[data-index="7"] .feature-tag { transform: rotate(2.2deg); }
         .feature-panel[data-index="8"] .feature-tag { transform: rotate(-1.5deg); }
+        .feature-panel[data-index="9"] .feature-tag { transform: rotate(2.6deg); }
+        .feature-panel[data-index="10"] .feature-tag { transform: rotate(-2.2deg); }
 
         .feature-panel h3 {
             font-size: clamp(1.5rem, 2.8vw, 2.2rem);
@@ -1052,7 +1051,7 @@
             /* hero headline keeps its fixed base size on mobile (no shrink) */
 
             /* Features mobile layout */
-            .features-scroll-container { height: 620vh; }
+            .features-scroll-container { height: 740vh; }
             .features-sticky {
                 flex-direction: column;
                 padding-top: 11vh;
@@ -1180,6 +1179,7 @@
         [data-theme="light"] .tag-collaborate,
         [data-theme="light"] .tag-posts,
         [data-theme="light"] .tag-whiteboard,
+        [data-theme="light"] .tag-booking,
         [data-theme="light"] .tag-media {
             background: #1A1A1A;
             color: #fff;
@@ -1235,12 +1235,11 @@
             color: #F4F4F4;
         }
         [data-theme="light"] .btn-android {
-            color: rgba(0, 0, 0, 0.35);
-            border-color: rgba(0, 0, 0, 0.12);
+            color: var(--text-primary);
+            border-color: rgba(0, 0, 0, 0.2);
         }
-        [data-theme="light"] .btn-android .coming-soon-tag {
-            background: rgba(0, 0, 0, 0.07);
-            color: rgba(0, 0, 0, 0.4);
+        [data-theme="light"] .btn-android:hover {
+            border-color: #1A1A1A;
         }
 
         /* Feature tags - inverted in light mode */
@@ -1429,7 +1428,10 @@
     <!-- Hero Section -->
     <section class="hero" id="hero">
         <div class="hero-bg">
-            <div class="hero-bg-img"></div>
+            <picture>
+                <source srcset="assets/images/hero-bg.webp" type="image/webp">
+                <img class="hero-bg-img" src="assets/images/hero-bg.jpg" alt="" width="1376" height="768" fetchpriority="high">
+            </picture>
             <div class="hero-scrim"></div>
         </div>
         <img class="hero-logo" src="assets/images/logo-light.svg" alt="showup">
@@ -1447,11 +1449,10 @@
                     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
                     <span data-i18n="hero.download">Download on App Store</span>
                 </a>
-                <span class="btn btn-android">
+                <a href="https://play.google.com/store/apps/details?id=com.showup.showupAndroid" target="_blank" rel="noopener" class="btn btn-android">
                     <svg viewBox="0 0 24 24" width="20" height="20"><path d="M1.22 0.345C0.947 0.639 0.787 1.089 0.787 1.674V22.326c0 0.585 0.16 1.035 0.433 1.329l0.07 0.068L13.068 12V11.862L1.29 0.277 1.22 0.345z" fill="#4285F4"/><path d="M17 16.003l-3.932-3.934V11.931L17 7.997l0.088 0.05 4.66 2.647c1.33 0.756 1.33 1.993 0 2.749L17.088 16.09 17 16.003z" fill="#FFBC00"/><path d="M17.088 16.09L13.068 12 1.22 23.655c0.439 0.465 1.162 0.522 1.982 0.058L17.088 16.09z" fill="#EA4335"/><path d="M17.088 7.91L3.202 0.287C2.382-0.177 1.659-0.12 1.22 0.345L13.068 12l4.02-4.09z" fill="#34A853"/></svg>
-                    <span data-i18n="hero.android">Google Play</span>
-                    <span class="coming-soon-tag" data-i18n="hero.comingSoon">Coming Soon</span>
-                </span>
+                    <span data-i18n="hero.android">Download on Google Play</span>
+                </a>
             </div>
         </div>
     </section>
@@ -1472,56 +1473,68 @@
 
                         <!-- Screenshot 1: Home Dashboard -->
                         <div class="screenshot active" data-index="0">
-                            <img class="screenshot-light" src="assets/screenshots/home.png" alt="Home dashboard">
-                            <img class="screenshot-dark" src="assets/screenshots/home-dark.png" alt="Home dashboard">
+                            <img class="screenshot-light" data-shot="home" src="assets/screenshots/en/home.webp" alt="Home dashboard" loading="lazy" decoding="async">
+                            <img class="screenshot-dark" data-shot="home" src="assets/screenshots/en/home-dark.webp" alt="Home dashboard" loading="lazy" decoding="async">
                         </div>
 
                         <!-- Screenshot 2: Workouts Calendar -->
                         <div class="screenshot" data-index="1">
-                            <img class="screenshot-light" src="assets/screenshots/workouts.png" alt="Workout calendar">
-                            <img class="screenshot-dark" src="assets/screenshots/workouts-dark.png" alt="Workout calendar">
+                            <img class="screenshot-light" data-shot="workouts" src="assets/screenshots/en/workouts.webp" alt="Workout calendar" loading="lazy" decoding="async">
+                            <img class="screenshot-dark" data-shot="workouts" src="assets/screenshots/en/workouts-dark.webp" alt="Workout calendar" loading="lazy" decoding="async">
                         </div>
 
                         <!-- Screenshot 3: Workout Detail -->
                         <div class="screenshot" data-index="2">
-                            <img class="screenshot-light" src="assets/screenshots/workout-detail.png" alt="Workout detail">
-                            <img class="screenshot-dark" src="assets/screenshots/workout-detail-dark.png" alt="Workout detail">
+                            <img class="screenshot-light" data-shot="workout-detail" src="assets/screenshots/en/workout-detail.webp" alt="Workout detail" loading="lazy" decoding="async">
+                            <img class="screenshot-dark" data-shot="workout-detail" src="assets/screenshots/en/workout-detail-dark.webp" alt="Workout detail" loading="lazy" decoding="async">
                         </div>
 
                         <!-- Screenshot 4: Collaborative Workout -->
                         <div class="screenshot" data-index="3">
-                            <img class="screenshot-light" src="assets/screenshots/collab.png" alt="Collaborative workout">
-                            <img class="screenshot-dark" src="assets/screenshots/collab-dark.png" alt="Collaborative workout">
+                            <img class="screenshot-light" data-shot="collab" src="assets/screenshots/en/collab.webp" alt="Collaborative workout" loading="lazy" decoding="async">
+                            <img class="screenshot-dark" data-shot="collab" src="assets/screenshots/en/collab-dark.webp" alt="Collaborative workout" loading="lazy" decoding="async">
+                        </div>
+
+                        <!-- Screenshot 5: Booking Calendar -->
+                        <div class="screenshot" data-index="4">
+                            <img class="screenshot-light" data-shot="booking" src="assets/screenshots/en/booking.webp" alt="Class booking calendar" loading="lazy" decoding="async">
+                            <img class="screenshot-dark" data-shot="booking" src="assets/screenshots/en/booking-dark.webp" alt="Class booking calendar" loading="lazy" decoding="async">
+                        </div>
+
+                        <!-- Screenshot 6: Class Detail -->
+                        <div class="screenshot" data-index="5">
+                            <img class="screenshot-light" data-shot="booking-detail" src="assets/screenshots/en/booking-detail.webp" alt="Class detail with booking" loading="lazy" decoding="async">
+                            <img class="screenshot-dark" data-shot="booking-detail" src="assets/screenshots/en/booking-detail-dark.webp" alt="Class detail with booking" loading="lazy" decoding="async">
                         </div>
 
                         <!-- Screenshot 5: Leaderboard -->
-                        <div class="screenshot" data-index="4">
-                            <img class="screenshot-light" src="assets/screenshots/leaderboard.png" alt="Leaderboard">
-                            <img class="screenshot-dark" src="assets/screenshots/leaderboard-dark.png" alt="Leaderboard">
+                        <div class="screenshot" data-index="6">
+                            <img class="screenshot-light" data-shot="leaderboard" src="assets/screenshots/en/leaderboard.webp" alt="Leaderboard" loading="lazy" decoding="async">
+                            <img class="screenshot-dark" data-shot="leaderboard" src="assets/screenshots/en/leaderboard-dark.webp" alt="Leaderboard" loading="lazy" decoding="async">
                         </div>
 
                         <!-- Screenshot 6: Score Tracking -->
-                        <div class="screenshot" data-index="5">
-                            <img class="screenshot-light" src="assets/screenshots/scores.png" alt="Score tracking">
-                            <img class="screenshot-dark" src="assets/screenshots/scores-dark.png" alt="Score tracking">
+                        <div class="screenshot" data-index="7">
+                            <img class="screenshot-light" data-shot="scores" src="assets/screenshots/en/scores.webp" alt="Score tracking" loading="lazy" decoding="async">
+                            <img class="screenshot-dark" data-shot="scores" src="assets/screenshots/en/scores-dark.webp" alt="Score tracking" loading="lazy" decoding="async">
                         </div>
 
                         <!-- Screenshot 7: Community -->
-                        <div class="screenshot" data-index="6">
-                            <img class="screenshot-light" src="assets/screenshots/community.png" alt="Community space">
-                            <img class="screenshot-dark" src="assets/screenshots/community-dark.png" alt="Community space">
+                        <div class="screenshot" data-index="8">
+                            <img class="screenshot-light" data-shot="community" src="assets/screenshots/en/community.webp" alt="Community space" loading="lazy" decoding="async">
+                            <img class="screenshot-dark" data-shot="community" src="assets/screenshots/en/community-dark.webp" alt="Community space" loading="lazy" decoding="async">
                         </div>
 
                         <!-- Screenshot 8: Personal Records -->
-                        <div class="screenshot" data-index="7">
-                            <img class="screenshot-light" src="assets/screenshots/personal-records.png" alt="Personal records">
-                            <img class="screenshot-dark" src="assets/screenshots/personal-records-dark.png" alt="Personal records">
+                        <div class="screenshot" data-index="9">
+                            <img class="screenshot-light" data-shot="personal-records" src="assets/screenshots/en/personal-records.webp" alt="Personal records" loading="lazy" decoding="async">
+                            <img class="screenshot-dark" data-shot="personal-records" src="assets/screenshots/en/personal-records-dark.webp" alt="Personal records" loading="lazy" decoding="async">
                         </div>
 
                         <!-- Screenshot 9: PR Detail -->
-                        <div class="screenshot" data-index="8">
-                            <img class="screenshot-light" src="assets/screenshots/pr-detail.png" alt="PR detail with chart">
-                            <img class="screenshot-dark" src="assets/screenshots/pr-detail-dark.png" alt="PR detail with chart">
+                        <div class="screenshot" data-index="10">
+                            <img class="screenshot-light" data-shot="pr-detail" src="assets/screenshots/en/pr-detail.webp" alt="PR detail with chart" loading="lazy" decoding="async">
+                            <img class="screenshot-dark" data-shot="pr-detail" src="assets/screenshots/en/pr-detail-dark.webp" alt="PR detail with chart" loading="lazy" decoding="async">
                         </div>
 
                     </div>
@@ -1550,26 +1563,36 @@
                 <p data-i18n-html="feat.collab.desc">Share workouts across spaces with reference media and shared leaderboards. Same WOD, multiple squads.</p>
             </div>
             <div class="feature-panel side-left" data-index="4">
+                <span class="feature-tag tag-booking">Booking</span>
+                <h3 data-i18n="feat.booking.title">Save Your Spot</h3>
+                <p data-i18n="feat.booking.desc">See the whole week at a glance and book the classes you want. Capacity, coaches and your remaining credits, all in one view.</p>
+            </div>
+            <div class="feature-panel side-right" data-index="5">
+                <span class="feature-tag tag-booking">Booking</span>
+                <h3 data-i18n="feat.bookingdetail.title">One Tap to Book</h3>
+                <p data-i18n="feat.bookingdetail.desc">Class details, who&rsquo;s coaching, and how many spots are left &mdash; or the waitlist if it&rsquo;s full. Your membership handles the rest.</p>
+            </div>
+            <div class="feature-panel side-left" data-index="6">
                 <span class="feature-tag tag-posts">Leaderboard</span>
                 <h3 data-i18n="feat.leaderboard.title">See Where You Stand</h3>
                 <p data-i18n="feat.leaderboard.desc">Live leaderboard with your community on every workout. Rx or Scaled &mdash; everyone has a place on the board.</p>
             </div>
-            <div class="feature-panel side-right" data-index="5">
+            <div class="feature-panel side-right" data-index="7">
                 <span class="feature-tag tag-collaborate">Scores</span>
                 <h3 data-i18n="feat.scores.title">Score it. Share it.</h3>
                 <p data-i18n-html="feat.scores.desc">Record your results with multiple sets and scores. Track your progression across attempts and add notes.</p>
             </div>
-            <div class="feature-panel side-left" data-index="6">
+            <div class="feature-panel side-left" data-index="8">
                 <span class="feature-tag tag-community">Community</span>
                 <h3 data-i18n="feat.community.title">Stay Connected</h3>
                 <p data-i18n="feat.community.desc">Share posts, PR Board, and Media Library in one place.</p>
             </div>
-            <div class="feature-panel side-right" data-index="7">
+            <div class="feature-panel side-right" data-index="9">
                 <span class="feature-tag tag-whiteboard">Records</span>
                 <h3 data-i18n="feat.records.title">Own Your Numbers</h3>
                 <p data-i18n="feat.records.desc">All your personal records in one place &mdash; press, deadlift, squat, run, and more. Filter by category and see your best.</p>
             </div>
-            <div class="feature-panel side-left" data-index="8">
+            <div class="feature-panel side-left" data-index="10">
                 <span class="feature-tag tag-media">PR Tracking</span>
                 <h3 data-i18n="feat.prdetail.title">Watch Yourself Grow</h3>
                 <p data-i18n-html="feat.prdetail.desc">Track your personal records over time with detailed charts. Every PR tells a story of progress.</p>
@@ -1598,11 +1621,10 @@
                 <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
                 <span data-i18n="hero.download">Download on App Store</span>
             </a>
-            <span class="btn btn-android">
+            <a href="https://play.google.com/store/apps/details?id=com.showup.showupAndroid" target="_blank" rel="noopener" class="btn btn-android">
                 <svg viewBox="0 0 24 24" width="20" height="20"><path d="M1.22 0.345C0.947 0.639 0.787 1.089 0.787 1.674V22.326c0 0.585 0.16 1.035 0.433 1.329l0.07 0.068L13.068 12V11.862L1.29 0.277 1.22 0.345z" fill="#4285F4"/><path d="M17 16.003l-3.932-3.934V11.931L17 7.997l0.088 0.05 4.66 2.647c1.33 0.756 1.33 1.993 0 2.749L17.088 16.09 17 16.003z" fill="#FFBC00"/><path d="M17.088 16.09L13.068 12 1.22 23.655c0.439 0.465 1.162 0.522 1.982 0.058L17.088 16.09z" fill="#EA4335"/><path d="M17.088 7.91L3.202 0.287C2.382-0.177 1.659-0.12 1.22 0.345L13.068 12l4.02-4.09z" fill="#34A853"/></svg>
-                <span data-i18n="hero.android">Google Play</span>
-                <span class="coming-soon-tag" data-i18n="hero.comingSoon">Coming Soon</span>
-            </span>
+                <span data-i18n="hero.android">Download on Google Play</span>
+            </a>
         </div>
     </section>
 
@@ -1753,7 +1775,7 @@
     const featuresContainer = document.getElementById('featuresScroll');
     const screenshots = document.querySelectorAll('.screenshot');
     const featurePanels = document.querySelectorAll('.feature-panel');
-    const FEATURE_COUNT = 9;
+    const FEATURE_COUNT = 11;
     let currentFeatureIndex = 0;
 
     function updateFeatures() {
@@ -1772,9 +1794,10 @@
             const prevIndex = currentFeatureIndex;
             currentFeatureIndex = newIndex;
             // Crossfade (not slide) on these adjacent steps:
-            // Whiteboard<->Collaborate (2-3), Scores<->Community (5-6), Community<->Records (6-7)
+            // Whiteboard<->Collaborate (2-3), Booking<->Class detail (4-5),
+            // Scores<->Community (7-8), Community<->Records (8-9)
             const lo = Math.min(prevIndex, newIndex), hi = Math.max(prevIndex, newIndex);
-            const crossfade = (hi - lo === 1) && (lo === 2 || lo === 5 || lo === 6);
+            const crossfade = (hi - lo === 1) && (lo === 2 || lo === 4 || lo === 7 || lo === 8);
 
             screenshots.forEach((el, i) => {
                 el.classList.remove('xfade-in', 'xfade-out');
@@ -1891,8 +1914,7 @@
             'hero.bottom.tag5': 'Personal Programming',
             'hero.bottom.tag6': 'Solo',
             'hero.download': 'Download on App Store',
-            'hero.android': 'Google Play',
-            'hero.comingSoon': 'Coming Soon',
+            'hero.android': 'Download on Google Play',
             'hero.scroll': 'Scroll to explore',
             // Features intro
             'features.title': 'Everything your squad needs.<br>All in one place.',
@@ -1922,6 +1944,10 @@
             'feat.prdetail.tag': 'PR Tracking',
             'feat.prdetail.title': 'Watch Yourself Grow',
             'feat.prdetail.desc': 'Track your personal records over time with detailed charts. Every PR tells a story of progress.',
+            'feat.booking.title': 'Save Your Spot',
+            'feat.booking.desc': 'See the whole week at a glance and book the classes you want. Capacity, coaches and your remaining credits, all in one view.',
+            'feat.bookingdetail.title': 'One Tap to Book',
+            'feat.bookingdetail.desc': 'Class details, who\u2019s coaching, and how many spots are left \u2014 or the waitlist if it\u2019s full. Your membership handles the rest.',
             'feat.records.tag': 'Records',
             'feat.records.title': 'Own Your Numbers',
             'feat.records.desc': 'All your personal records in one place \u2014 press, deadlift, squat, run, and more. Filter by category and see your best.',
@@ -1961,8 +1987,7 @@
             'hero.bottom.tag5': '개인 프로그래밍',
             'hero.bottom.tag6': '혼자서',
             'hero.download': 'App Store에서 다운로드',
-            'hero.android': 'Google Play',
-            'hero.comingSoon': '출시 예정',
+            'hero.android': 'Google Play에서 다운로드',
             'hero.scroll': '스크롤하여 둘러보기',
             // Features intro
             'features.title': '여러분의 크루에게 필요한 모든 것,<br>이 앱 하나로.',
@@ -1993,6 +2018,10 @@
             'feat.prdetail.tag': 'PR 추적',
             'feat.prdetail.title': '나의 성장을 한눈에',
             'feat.prdetail.desc': '상세한 차트로 기록이 어떻게 변해왔는지 살펴봐요.<br>PR 하나하나가 성장의 증거예요.',
+            'feat.booking.title': '자리를 미리 잡아요',
+            'feat.booking.desc': '한 주를 한눈에 보고 원하는 수업을 예약하세요. 정원, 코치, 남은 크레딧이 한 화면에 있어요.',
+            'feat.bookingdetail.title': '예약은 한 번에',
+            'feat.bookingdetail.desc': '수업 내용과 담당 코치, 남은 자리를 확인하고 바로 예약하세요. 자리가 찼다면 대기자 명단에 올라가요.',
             'feat.records.tag': '기록',
             'feat.records.title': '내 모든 PR을 한곳에',
             'feat.records.desc': '종목별로 골라 최고 기록을 확인해 보세요.',
@@ -2032,8 +2061,7 @@
             'hero.bottom.tag5': 'Persönliches Programming',
             'hero.bottom.tag6': 'Solo',
             'hero.download': 'Im App Store laden',
-            'hero.android': 'Google Play',
-            'hero.comingSoon': 'Kommt bald',
+            'hero.android': 'Bei Google Play laden',
             'hero.scroll': 'Scrollen zum Entdecken',
             // Features intro
             'features.title': 'Alles, was dein Team braucht.<br>In einer App.',
@@ -2064,6 +2092,10 @@
             'feat.prdetail.tag': 'PR-Tracking',
             'feat.prdetail.title': 'Beobachte dein Wachstum',
             'feat.prdetail.desc': 'Verfolge deine pers\u00f6nlichen Rekorde \u00fcber die Zeit mit detaillierten Charts. Jeder PR erz\u00e4hlt eine Geschichte.',
+            'feat.booking.title': 'Sichere dir deinen Platz',
+            'feat.booking.desc': 'Sieh die ganze Woche auf einen Blick und buche die Kurse, die du willst. Kapazit\u00e4t, Coaches und deine restlichen Credits in einer Ansicht.',
+            'feat.bookingdetail.title': 'Buchen mit einem Tipp',
+            'feat.bookingdetail.desc': 'Kursdetails, wer coacht und wie viele Pl\u00e4tze frei sind \u2014 oder die Warteliste, wenn er voll ist. Um den Rest k\u00fcmmert sich deine Mitgliedschaft.',
             'feat.records.tag': 'Rekorde',
             'feat.records.title': 'Besitze deine Zahlen',
             'feat.records.desc': 'Alle pers\u00f6nlichen Rekorde an einem Ort \u2014 Press, Deadlift, Squat, Laufen und mehr. Filtere nach Kategorie.',
@@ -2121,6 +2153,14 @@
             if (strings[key] !== undefined) {
                 el.innerHTML = strings[key];
             }
+        });
+
+        // Swap the phone screenshots. Only Korean has its own capture set;
+        // German reads the English one, which is what the app ships there too.
+        var shotDir = lang === 'ko' ? 'ko' : 'en';
+        document.querySelectorAll('.screenshot img[data-shot]').forEach(function(img) {
+            var dark = img.classList.contains('screenshot-dark') ? '-dark' : '';
+            img.src = 'assets/screenshots/' + shotDir + '/' + img.dataset.shot + dark + '.webp';
         });
 
         // Update footer legal links based on language
