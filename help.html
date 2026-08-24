@@ -4,7 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Help Center — Showup</title>
-    <meta name="description" content="Showup Help Center. Step-by-step guides for Spaces, Workouts, roles, collaborations, and more.">
+    <meta name="description" content="Showup Help Center. Step-by-step guides for Spaces, Workouts, class booking, roles, collaborations, and more.">
+    <link rel="canonical" href="https://www.showupcounts.com/help.html">
+    <link rel="alternate" hreflang="en" href="https://www.showupcounts.com/help.html">
+    <link rel="alternate" hreflang="ko" href="https://www.showupcounts.com/help-ko.html">
+    <link rel="alternate" hreflang="de" href="https://www.showupcounts.com/help-de.html">
+    <link rel="alternate" hreflang="x-default" href="https://www.showupcounts.com/help.html">
     <link rel="icon" id="favicon" type="image/svg+xml" href="assets/favicon-dark.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -141,6 +146,7 @@
         .help-contact-box { margin-top: 72px; padding: 28px 32px; border: 1px solid var(--border); text-align: center; }
         .help-contact-box p { margin: 0; font-size: 0.98rem; color: var(--text-secondary); }
         .help-contact-box a { color: var(--text-primary); text-decoration: underline; text-underline-offset: 3px; }
+        .help-updated { margin-top: 14px !important; font-size: 0.85rem !important; color: var(--text-tertiary) !important; }
 
         .help-mobile-label { display: none; font-family: 'Inter', sans-serif; font-weight: 400; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-tertiary); margin-bottom: 14px; }
 
@@ -219,6 +225,23 @@
                     <a class="help-nav-link" data-target="workout-collab" href="#workout-collab">Collaborative workouts</a>
                     <a class="help-nav-link" data-target="workout-extras" href="#workout-extras">Related actions</a>
                 </div>
+                                <div class="help-nav-group">
+                    <div class="help-nav-group-title">Booking</div>
+                    <a class="help-nav-link" data-target="booking-what" href="#booking-what">What is Booking?</a>
+                    <a class="help-nav-link" data-target="booking-book" href="#booking-book">Book a class</a>
+                    <a class="help-nav-link" data-target="booking-cancel" href="#booking-cancel">Cancel a booking</a>
+                    <a class="help-nav-link" data-target="booking-waitlist" href="#booking-waitlist">Waitlist</a>
+                    <a class="help-nav-link" data-target="booking-membership" href="#booking-membership">Your membership &amp; credits</a>
+                    <a class="help-nav-link" data-target="booking-hold" href="#booking-hold">Membership holds</a>
+                    <a class="help-nav-link" data-target="booking-troubleshoot" href="#booking-troubleshoot">Why can't I book?</a>
+                </div>
+                <div class="help-nav-group">
+                    <div class="help-nav-group-title">Managing booking</div>
+                    <a class="help-nav-link" data-target="booking-admin-enable" href="#booking-admin-enable">Turn on booking</a>
+                    <a class="help-nav-link" data-target="booking-admin-schedule" href="#booking-admin-schedule">Create &amp; edit schedules</a>
+                    <a class="help-nav-link" data-target="booking-admin-plans" href="#booking-admin-plans">Membership plans</a>
+                    <a class="help-nav-link" data-target="booking-admin-roster" href="#booking-admin-roster">Participants &amp; waitlist</a>
+                </div>
                 <div class="help-nav-group">
                     <div class="help-nav-group-title">Community</div>
                     <a class="help-nav-link" data-target="community-posts" href="#community-posts">Community posts</a>
@@ -237,6 +260,7 @@
                     <a class="help-nav-link" data-target="account-privacy" href="#account-privacy">Profile visibility &amp; blocked users</a>
                     <a class="help-nav-link" data-target="account-subscription" href="#account-subscription">Subscription</a>
                     <a class="help-nav-link" data-target="account-security" href="#account-security">Email, password &amp; sign out</a>
+                    <a class="help-nav-link" data-target="account-devices" href="#account-devices">Device limit</a>
                     <a class="help-nav-link" data-target="account-close" href="#account-close">Deactivate or delete account</a>
                 </div>
             </nav>
@@ -246,13 +270,15 @@
             <article class="help-article" id="welcome">
                 <h1>Welcome to the Help Center</h1>
                 <p>
-                    Step-by-step guides for getting the most out of Showup — <strong>Spaces</strong>, <strong>Workouts</strong>, the <strong>Community</strong> tab (posts, PR Board, Media Library, members), and your <strong>Account</strong>. Search above, pick a topic from the menu, or start with one of the popular guides below.
+                    Step-by-step guides for getting the most out of Showup — <strong>Spaces</strong>, <strong>Workouts</strong>, <strong>Booking</strong>, the <strong>Community</strong> tab (posts, PR Board, Media Library, members), and your <strong>Account</strong>. Search above, pick a topic from the menu, or start with one of the popular guides below.
                 </p>
                 <div class="help-quicklinks">
                     <a class="help-quicklink" data-target="space-what" href="#space-what">What is a Space?<span>Understand the core building block</span></a>
                     <a class="help-quicklink" data-target="space-create" href="#space-create">Create a Space<span>Set up your first Space in 4 steps</span></a>
                     <a class="help-quicklink" data-target="roles" href="#roles">Roles &amp; permissions<span>See what each role can do</span></a>
                     <a class="help-quicklink" data-target="workout-collab" href="#workout-collab">Collaborative workouts<span>Share a workout across Spaces</span></a>
+                    <a class="help-quicklink" data-target="booking-book" href="#booking-book">Book a class<span>Reserve a spot in a class</span></a>
+                    <a class="help-quicklink" data-target="booking-troubleshoot" href="#booking-troubleshoot">Why can't I book?<span>What each booking message means</span></a>
                     <a class="help-quicklink" data-target="community-prboard" href="#community-prboard">PR Board<span>Track personal records together</span></a>
                     <a class="help-quicklink" data-target="account-profile" href="#account-profile">Your Account<span>Profile, PR, settings &amp; more</span></a>
                 </div>
@@ -323,28 +349,7 @@
                 </ul>
                 <p>Archived Spaces show an "Archived" badge in your membership list and are hidden from active views. They can be unarchived at any time.</p>
                 <h2>Who can archive a Space?</h2>
-                <p>Archiving or deleting a Space is an <a data-target="roles" href="#roles">Admin</a>-only action. Here's the full role and permission breakdown:</p>
-                <table class="help-table">
-                    <thead><tr><th>Role</th><th>Permissions</th></tr></thead>
-                    <tbody>
-                        <tr>
-                            <td class="role-name">Admin<span class="role-inherits">All Staff permissions, plus:</span></td>
-                            <td><ul><li>Archive or delete the Space</li><li>Delete session types</li></ul></td>
-                        </tr>
-                        <tr>
-                            <td class="role-name">Staff<span class="role-inherits">All Coach permissions, plus:</span></td>
-                            <td><ul><li>Edit Space settings and session types</li><li>Manage members and assign roles (up to Staff)</li><li>Accept or decline join requests</li><li>Edit or delete any workout</li><li>Delete any score or comment</li><li>Moderate posts and media</li></ul></td>
-                        </tr>
-                        <tr>
-                            <td class="role-name">Coach<span class="role-inherits">All Member permissions, plus:</span></td>
-                            <td><ul><li>Create and edit own workouts</li><li>Invite new members</li><li>Add and manage own media in the library</li></ul></td>
-                        </tr>
-                        <tr>
-                            <td class="role-name">Member<span class="role-inherits">The base role:</span></td>
-                            <td><ul><li>Log scores on workouts</li><li>Add comments and reactions</li><li>Create community posts</li><li>View community, members, and media library</li></ul></td>
-                        </tr>
-                    </tbody>
-                </table>
+                <p>Archiving or deleting a Space is an <a data-target="roles" href="#roles">Admin</a>-only action. See <a data-target="roles" href="#roles">Roles &amp; permissions</a> for what every role can do.</p>
             </article>
 
             <article class="help-article" id="roles">
@@ -353,35 +358,26 @@
                     Every member of a Space has a role that determines what they can do. Roles are <strong>cumulative</strong> — each role includes all the permissions of the roles below it, plus its own.
                 </p>
                 <table class="help-table">
-                    <thead><tr><th>Role</th><th>Permissions</th></tr></thead>
+                    <thead><tr><th>Role</th><th>Can</th></tr></thead>
                     <tbody>
-                        <tr>
-                            <td class="role-name">Admin<span class="role-inherits">All Staff permissions, plus:</span></td>
-                            <td><ul><li>Archive or delete the Space</li><li>Delete session types</li></ul></td>
-                        </tr>
-                        <tr>
-                            <td class="role-name">Staff<span class="role-inherits">All Coach permissions, plus:</span></td>
-                            <td><ul><li>Edit Space settings and session types</li><li>Manage members and assign roles (up to Staff)</li><li>Accept or decline join requests</li><li>Edit or delete any workout</li><li>Delete any score or comment</li><li>Moderate posts and media</li></ul></td>
-                        </tr>
-                        <tr>
-                            <td class="role-name">Coach<span class="role-inherits">All Member permissions, plus:</span></td>
-                            <td><ul><li>Create and edit own workouts</li><li>Invite new members</li><li>Add and manage own media in the library</li></ul></td>
-                        </tr>
-                        <tr>
-                            <td class="role-name">Member<span class="role-inherits">The base role:</span></td>
-                            <td><ul><li>Log scores on workouts</li><li>Add comments and reactions</li><li>Create community posts</li><li>View community, members, and media library</li></ul></td>
-                        </tr>
+                        <tr><td class="role-name">Admin<span class="role-inherits">Everything Staff can, plus:</span></td><td><ul><li>Archive or delete the Space</li><li>Delete session types</li></ul></td></tr>
+                        <tr><td class="role-name">Staff<span class="role-inherits">Everything a Coach can, plus:</span></td><td><ul><li>Edit Space settings and session types</li><li>Manage members and assign roles (up to Staff)</li><li>Accept or decline join requests</li><li>Edit or delete any workout</li><li>Delete any score or comment</li><li>Moderate posts and media</li><li>Turn booking on and manage membership plans</li><li>Delete schedules, and cancel the bookings on them</li><li>Create, edit or remove any member's membership hold</li></ul></td></tr>
+                        <tr><td class="role-name">Coach<span class="role-inherits">Everything a Member can, plus:</span></td><td><ul><li>Create and edit their own workouts</li><li>Invite new members</li><li>Add and manage their own media in the library</li><li>Create and edit schedules, be assigned to them, and add or remove participants</li></ul></td></tr>
+                        <tr><td class="role-name">Member<span class="role-inherits">The default role:</span></td><td><ul><li>Log scores on workouts</li><li>Add comments and reactions</li><li>Write community posts</li><li>View the community, members and Media Library</li><li>Book classes, join waitlists, and manage their own holds</li></ul></td></tr>
+                        <tr><td class="role-name">Guest Member<span class="role-inherits">Limited access:</span></td><td><ul><li>Log scores, comment and react on workouts shared with them</li><li>No community feed, members list, Media Library or booking</li></ul></td></tr>
+                        <tr><td class="role-name">Guest Viewer<span class="role-inherits">View only — the default for anyone who isn't a member:</span></td><td><ul><li>See a workout and its leaderboard</li><li>Nothing else — no scores, comments or reactions</li></ul></td></tr>
                     </tbody>
                 </table>
                 <p>
-                    Admins have full control of a Space. Staff can manage members and assign roles up to Staff (they can't create or remove Admins). Coaches focus on programming and media. Members participate by logging scores, commenting, and posting.
+                    Admins have full control of a Space. Staff can manage members and assign roles up to Staff (they can't create or remove Admins). Coaches focus on programming and media, and can run schedules. Members participate by logging scores, commenting, posting, and booking classes. The two guest tiers are for people who aren't members of the Space: a Guest Member can take part in a workout that was shared with them, a Guest Viewer can only look.
                 </p>
             </article>
 
             <article class="help-article" id="space-extras">
                 <h1>Spaces: related concepts</h1>
                 <h2>Sessions</h2>
-                <p>Every Space is organized by sessions (e.g., "Monday Strength", "Cardio Club"). Session names can be up to 20 characters, and free plans allow up to 10 active sessions per Space.</p>
+                <p>Every Space is organized by sessions (e.g., "Monday Strength", "Cardio Club"). Session names can be up to 20 characters. The free plan allows 2 active sessions per Space; paid tiers allow 5 to 10 depending on the tier.</p>
+                <p class="help-callout"><strong>Free plan limits:</strong> 2 active sessions and 5 members per Space, 2 Spaces of your own, and 1 collaboration. Paid tiers raise each of these — the app tells you which limit you've hit and what upgrading would give you.</p>
                 <h2>Roles</h2>
                 <p>Members can be Admins, Staff, Coaches, or Members. Only Admins can archive or delete the Space; Staff can edit settings and moderate. See <a data-target="roles" href="#roles">Roles &amp; permissions</a> for the full breakdown.</p>
                 <h2>Membership status</h2>
@@ -493,6 +489,208 @@
                 <p>Every workout has a leaderboard that ranks all submitted scores using the ranking method and any tiebreaks the workout creator set. For collaborative workouts, the leaderboard spans every participating Space.</p>
                 <h2>Comment &amp; react</h2>
                 <p>Leave comments on a workout and react to other members' scores to cheer them on.</p>
+            </article>
+
+            <article class="help-article" id="booking-what">
+                <h1>What is Booking?</h1>
+                <p>Booking lets a Space run scheduled classes that members reserve a spot in — with capacity limits, membership credits, and a waitlist. It's available on every plan, but you'll only see it in Spaces where an admin has turned it on.</p>
+                <h2>Where to find it</h2>
+                <ol>
+                    <li>Open the <strong>Booking</strong> tab.</li>
+                    <li>Pick a Space, then swipe through the weeks to find a day.</li>
+                    <li>Tap a class to see its details, who's coaching, and how many spots are left.</li>
+                </ol>
+                <h2>Schedules and sessions are different things</h2>
+                <p>A <strong>session</strong> is a recurring category inside a Space, like "Monday Strength" — it groups workouts over time. A <strong>schedule</strong> is a specific class at a specific time that people book into, and it can optionally be linked to a session. Each day of a repeating schedule counts separately, so capacity is tracked per day rather than across the whole series.</p>
+                <p class="help-callout"><strong>Don't see a Space in the Booking tab?</strong> Booking is a per-Space setting. If a Space you belong to is missing, its admins haven't enabled it.</p>
+            </article>
+
+            <article class="help-article" id="booking-book">
+                <h1>Book a class</h1>
+                <p>Once a Space has booking turned on, you reserve a spot straight from the calendar.</p>
+                <h2>How to book</h2>
+                <ol>
+                    <li>Open the <strong>Booking</strong> tab and pick the Space.</li>
+                    <li>Find the day and tap the class you want.</li>
+                    <li>Tap <strong>Book</strong>. Your spot is confirmed straight away.</li>
+                </ol>
+                <h2>What affects whether you can book</h2>
+                <ul>
+                    <li><strong>Booking window</strong> — a class can open for booking a set number of days before it starts. Until then you'll see "Booking opens" with the date, and no Book button.</li>
+                    <li><strong>Capacity</strong> — limited classes show how many spots are left. When a class is full you can join the <a data-target="booking-waitlist" href="#booking-waitlist">waitlist</a> instead.</li>
+                    <li><strong>Credits</strong> — if the class requires a credit, booking spends one from your membership. Your remaining count is shown on the class's Membership card.</li>
+                    <li><strong>Your role</strong> — admins, staff and coaches book for free and never spend credits. The booking window still applies to them.</li>
+                </ul>
+                <p class="help-callout">If a class fills up while you're looking at it, tapping <strong>Book</strong> puts you on the waitlist automatically and tells you your position — you don't need to tap again.</p>
+            </article>
+
+            <article class="help-article" id="booking-cancel">
+                <h1>Cancel a booking</h1>
+                <p>Open the class from the calendar or from <strong>My Bookings</strong>, then tap <strong>Cancel Booking</strong>. Whether your credit comes back depends on the cancellation policy that applies to that booking.</p>
+                <h2>Cancellation policies</h2>
+                <table class="help-table">
+                    <thead><tr><th>Policy</th><th>Do you get the credit back?</th></tr></thead>
+                    <tbody>
+                        <tr><td>Always free</td><td>Yes — whenever you cancel.</td></tr>
+                        <tr><td>Free up to a deadline</td><td>Yes, if you cancel at least the set number of hours before the class starts. Cancel after that and the credit is forfeited. The app tells you the deadline before you confirm.</td></tr>
+                        <tr><td>Never free</td><td>No — the credit is spent once the booking is made.</td></tr>
+                    </tbody>
+                </table>
+                <h2>Worth knowing</h2>
+                <ul>
+                    <li>The policy that applies is the one <strong>stored on your booking when you made it</strong>. If an admin edits the membership plan afterwards, bookings you already hold keep their original terms.</li>
+                    <li>Once the class has started you can no longer cancel it.</li>
+                    <li>Cancelling frees your spot, so the person who has waited longest on the waitlist is moved into a confirmed booking automatically.</li>
+                </ul>
+            </article>
+
+            <article class="help-article" id="booking-waitlist">
+                <h1>Waitlist</h1>
+                <p>When a class with limited capacity is full, you can join its waitlist and be moved in automatically if a spot opens up.</p>
+                <h2>How credits work on the waitlist</h2>
+                <ul>
+                    <li><strong>A credit is taken when you join the waitlist</strong>, not when you get a spot. That reserves it so the same credit can't be spent on another class.</li>
+                    <li><strong>Nothing extra is charged</strong> if you're moved into a confirmed booking — the credit was already taken.</li>
+                    <li><strong>Leaving the waitlist always returns the credit</strong>, no matter how close to the class it is. You never held a spot, so no cancellation policy applies.</li>
+                </ul>
+                <h2>Getting a spot</h2>
+                <ul>
+                    <li>The order is strictly first come, first served. There's no way to move up the queue.</li>
+                    <li>When someone cancels, the person who has waited longest is moved in automatically and notified. You don't have to accept anything.</li>
+                    <li>If the class starts and a spot never opened, your hold is released and <strong>the credit is refunded automatically</strong>.</li>
+                </ul>
+                <p class="help-callout">The full waitlist is only visible to admins, staff and coaches. As a member you can see that you're on it, but not who else is.</p>
+            </article>
+
+            <article class="help-article" id="booking-membership">
+                <h1>Your membership and credits</h1>
+                <p>A membership is your join record in a Space — your role, your status, the plan you've been assigned, and your credits. Open it from <strong>Account → My Memberships</strong>, or inside a Space from <strong>Community ▸ Members ▸ My Membership</strong>.</p>
+                <h2>Credit types</h2>
+                <table class="help-table">
+                    <thead><tr><th>Type</th><th>How it works</th></tr></thead>
+                    <tbody>
+                        <tr><td>Per week</td><td>A set number of credits each week, reset at the start of the week.</td></tr>
+                        <tr><td>Per month</td><td>A set number of credits each calendar month, reset on the 1st.</td></tr>
+                        <tr><td>Fixed pack</td><td>A total number of credits that doesn't renew. When they're gone, they're gone.</td></tr>
+                        <tr><td>Unlimited</td><td>No credit is ever spent, however many classes you book.</td></tr>
+                    </tbody>
+                </table>
+                <h2>How your remaining credits are counted</h2>
+                <ul>
+                    <li>Credits left = your allotment minus what you've used in the current period. <strong>Waitlist holds count as used</strong> until they're refunded.</li>
+                    <li>Periods are worked out in the <strong>Space's time zone</strong>, not your phone's — so a Sunday-night class can land in a different week than you'd expect if you're travelling.</li>
+                    <li>Your membership can have a start and an end date. Classes that fall before your start date can't be booked. <strong>Credit history</strong> lists every credit spent and returned.</li>
+                </ul>
+            </article>
+
+            <article class="help-article" id="booking-hold">
+                <h1>Membership holds</h1>
+                <p>A hold pauses your membership for a range of dates — for a holiday, an injury, or any break. If your plan allows holds, you create them yourself from <strong>My Membership</strong>.</p>
+                <h2>The rules</h2>
+                <ul>
+                    <li>Your plan sets <strong>how many holds</strong> you may take and <strong>how many days in total</strong>. The allowance resets each membership period, and either limit can be unlimited.</li>
+                    <li><strong>You can edit or cancel a hold until its start date arrives.</strong> Once it has started, only an admin or staff member can change it.</li>
+                    <li>You can't book classes that fall inside a hold. Days either side of it are unaffected.</li>
+                    <li>Holds can't overlap each other, be backdated, or fall outside your membership period.</li>
+                </ul>
+                <h2>If you already have bookings in that range</h2>
+                <p>Those bookings are cancelled when the hold is created. Whether each credit comes back follows the same rules as cancelling yourself, so a hold can produce a mix of refunded and forfeited credits. The confirmation dialog spells out exactly what will happen before you commit.</p>
+                <p class="help-callout">Admins and staff can create, change or remove any member's hold — including ones that have already started. If you need a hold adjusted after it began, ask them.</p>
+            </article>
+
+            <article class="help-article" id="booking-troubleshoot">
+                <h1>Why can't I book?</h1>
+                <p>When the Book button isn't there, the class tells you why. These are the messages you might see, in the order the app checks them.</p>
+                <table class="help-table">
+                    <thead><tr><th>What you see</th><th>What it means</th></tr></thead>
+                    <tbody>
+                        <tr><td>This class was cancelled</td><td>An admin cancelled it, or it cancelled itself because too few people had booked. It stays on the calendar with a "Cancelled" badge so you can still open it.</td></tr>
+                        <tr><td>This class has finished</td><td>It's already over.</td></tr>
+                        <tr><td>This class is in progress</td><td>It has already started.</td></tr>
+                        <tr><td>You're booked</td><td>You already have a confirmed spot.</td></tr>
+                        <tr><td>You're on the waitlist</td><td>Your hold is in the queue. You'll be moved in automatically if a spot opens.</td></tr>
+                        <tr><td>Booking for this schedule has closed</td><td>The class cancels itself if too few people book, and that deadline has passed. Bookings already made are unaffected — and an admin can still add you by hand.</td></tr>
+                        <tr><td>Booking opens on a date</td><td>The booking window hasn't opened yet. Come back on the date shown.</td></tr>
+                        <tr><td>Your membership hasn't started</td><td>The class is earlier than your membership's start date.</td></tr>
+                        <tr><td>Your membership is on hold</td><td>The class falls inside a <a data-target="booking-hold" href="#booking-hold">hold</a>. Days either side of the hold are still bookable.</td></tr>
+                        <tr><td>Fully booked</td><td>Capacity is reached. Join the waitlist and you'll be moved in if someone cancels.</td></tr>
+                        <tr><td>Membership required</td><td>The class costs a credit and you have no plan assigned. Ask an admin or staff member to assign you one.</td></tr>
+                        <tr><td>Not on your membership</td><td>The class is limited to certain membership plans and yours isn't one of them.</td></tr>
+                        <tr><td>No credits left</td><td>You've used your allotment for this period. It resets at the start of the next one — a fixed pack doesn't reset at all.</td></tr>
+                    </tbody>
+                </table>
+                <p class="help-callout">Seeing <strong>"pull to refresh and try again"</strong> means the class changed while you were booking it — usually its capacity or whether it needs a credit. Refresh and the current state will show.</p>
+            </article>
+
+            <article class="help-article" id="booking-admin-enable">
+                <h1>Turn on booking for a Space</h1>
+                <p>Booking is off by default and is turned on per Space. You need the <a data-target="roles" href="#roles">Admin or Staff</a> role, and it's available on every plan.</p>
+                <ol>
+                    <li><strong>Set the Space's time zone first.</strong> Every class time, day boundary and credit period is worked out in it, so changing it later shifts how existing schedules are read.</li>
+                    <li>Edit the Space and turn on <strong>Enable Booking</strong>.</li>
+                    <li>Create at least one <a data-target="booking-admin-plans" href="#booking-admin-plans">membership plan</a>, then add your <a data-target="booking-admin-schedule" href="#booking-admin-schedule">schedules</a>.</li>
+                </ol>
+                <p class="help-callout">On the free plan the limit you'll hit first is the <strong>5-member cap</strong>, not booking itself — booking is not a paid-only feature.</p>
+            </article>
+
+            <article class="help-article" id="booking-admin-schedule">
+                <h1>Create and edit schedules</h1>
+                <p>A schedule is one bookable class. From a Space with booking enabled, open the <strong>⋯</strong> menu and choose <strong>Add Schedule</strong>. Admins and staff can manage any schedule; coaches can be assigned to one but can't delete it.</p>
+                <h2>What you set</h2>
+                <ul>
+                    <li><strong>Title and session</strong> — a name, and optionally the session it belongs to.</li>
+                    <li><strong>Date and time</strong> — start and end, read in the Space's time zone.</li>
+                    <li><strong>Repeat</strong> — never, daily or weekly, with an interval, chosen weekdays, and an end date.</li>
+                    <li><strong>Capacity</strong> — limited with a maximum, or unlimited.</li>
+                    <li><strong>Requires a credit</strong> — whether booking spends one of the member's credits.</li>
+                    <li><strong>Eligible memberships</strong> — restrict the class to certain plans. Leave it empty to open it to everyone. This works independently of whether a credit is required.</li>
+                    <li><strong>Coaches</strong> — who's running it. Their names show on the class.</li>
+                    <li><strong>Participant visibility</strong> — who can see the list of people booked. Defaults to managers only.</li>
+                    <li><strong>Booking opens</strong> and <strong>auto-cancel</strong> — how many days ahead booking opens, and whether the class cancels itself when the number booked is at or below a threshold, a set number of minutes before it starts.</li>
+                </ul>
+                <h2>Editing a repeating schedule</h2>
+                <p>Changing one day of a repeating schedule asks what you meant, the way a calendar app does:</p>
+                <ul>
+                    <li><strong>This Schedule Only</strong> — the change applies to that one day and the rest of the series is untouched.</li>
+                    <li><strong>Save for Future Schedules</strong> — the change applies from that day onwards. If you changed the repeat pattern itself, this is the only option offered, because the pattern belongs to the whole series.</li>
+                </ul>
+                <p>Members who had booked are moved across automatically and notified, and their credits follow the class — including into a different week or month if the date moved.</p>
+                <p class="help-callout"><strong>Capacity can't be set below the number already booked</strong> for that day. Changing eligible memberships never cancels bookings that already exist — it applies from that point on.</p>
+            </article>
+
+            <article class="help-article" id="booking-admin-plans">
+                <h1>Membership plans</h1>
+                <p>A membership plan is the credit package you assign to a member. Plans work on every subscription tier and even without booking turned on — you can use them purely to track who's a member and until when.</p>
+                <h2>What a plan defines</h2>
+                <ul>
+                    <li><strong>Name</strong> — what members see, like "Everyday" or "3 per week".</li>
+                    <li><strong>Duration</strong> — optional. Assigning the plan then sets the member's end date automatically.</li>
+                    <li><strong>Credits</strong> — per week, per month, a fixed pack, or unlimited, and how many.</li>
+                    <li><strong>Cancellation policy</strong> — always free, free up to a set number of hours before the class, or never free.</li>
+                    <li><strong>Holds</strong> — whether members may pause their membership, how many holds they get, and how many days in total.</li>
+                </ul>
+                <p class="help-callout"><strong>Plan edits are not retroactive.</strong> A booking keeps the cancellation terms that were in force when it was made, so changing a policy today never changes what happens to a booking someone already holds.</p>
+            </article>
+
+            <article class="help-article" id="booking-admin-roster">
+                <h1>Participants, waitlist and holds</h1>
+                <p>Open a schedule to see who's booked. Admins, staff and coaches can all view the roster; the actions below vary by role.</p>
+                <h2>Booking and removing members</h2>
+                <ul>
+                    <li><strong>Add a member</strong> — you can override a full class (which books them over capacity), the credit charge, and the eligibility check. Adding someone also bypasses the booking window and the auto-cancel cutoff, so it works when self-booking is closed.</li>
+                    <li><strong>Remove a member</strong> — you choose whether to refund the credit. Removing frees a spot, so the first person on the waitlist is promoted automatically.</li>
+                </ul>
+                <h2>The waitlist</h2>
+                <ul>
+                    <li>A <strong>Waitlist</strong> card lists everyone waiting, in order. It's visible to admins, staff and coaches only — members never see it, and there's no setting to change that.</li>
+                    <li>You can add someone to the waitlist or remove them. <strong>Removing always refunds</strong> the held credit, because a waitlist hold never occupied a spot.</li>
+                </ul>
+                <h2>Holds and deletion</h2>
+                <ul>
+                    <li>Admins and staff can create, edit or remove any member's <a data-target="booking-hold" href="#booking-hold">hold</a>, including one that has already started. Coaches can't.</li>
+                    <li>Deleting a schedule that has bookings asks for the scope — that one day or the whole series — and whether to refund the credits. Deleting is admin and staff only.</li>
+                </ul>
+                <p class="help-callout">Increasing a full class's capacity doesn't promote anyone from the waitlist by itself. The next cancellation does. To fill the new spots straight away, add the members by hand.</p>
             </article>
 
             <article class="help-article" id="community-posts">
@@ -626,7 +824,7 @@
             <article class="help-article" id="account-preferences">
                 <h1>Language, units &amp; appearance</h1>
                 <ul>
-                    <li><strong>Language</strong> — shows the app's current language. The button takes you to iOS Settings → Showup → Language to change it (Showup follows your iOS app-language setting).</li>
+                    <li><strong>Language</strong> — shows the app's current language. On iPhone and iPad the button opens iOS Settings → Showup → Language. On Android you pick the language in the app; on Android 13 and later that opens the system's per-app language screen.</li>
                     <li><strong>Unit</strong> — choose your weight unit (kg or lb) and distance unit (km or mi). Saved instantly; values display in your units, with a converted badge when a record was logged in another unit.</li>
                     <li><strong>Appearance</strong> — Light, Dark, or System (matches your device).</li>
                 </ul>
@@ -641,10 +839,10 @@
                     <li><strong>Workouts</strong> — new workouts and updates.</li>
                     <li><strong>Social</strong> — reactions and comments on your posts and scores.</li>
                     <li><strong>Community</strong> — new posts and announcements.</li>
-                    <li><strong>Memberships</strong> — invitations and approvals.</li>
+                    <li><strong>Memberships</strong> — invitations and approvals, plus everything to do with <a data-target="booking-what" href="#booking-what">booking</a>: waitlist promotions, classes an admin booked you into or removed you from, and classes that cancelled themselves for low enrolment.</li>
                 </ul>
                 <p>
-                    If notifications are turned off at the system level, an <strong>Enable Notifications</strong> button appears and opens the iOS permission dialog. Categories stay disabled until both the system permission and the master switch are on.
+                    If notifications are turned off at the system level, an <strong>Enable Notifications</strong> button appears and opens your device's permission prompt — on Android 13 and later that prompt also appears once, shortly after you first sign in. Categories stay disabled until both the system permission and the master switch are on.
                 </p>
             </article>
 
@@ -674,10 +872,10 @@
                 </p>
                 <ul>
                     <li><strong>Change Plan</strong> — upgrade or downgrade your subscription.</li>
-                    <li><strong>Restore Purchases</strong> — re-sync your subscription with the App Store (e.g., on a new device).</li>
+                    <li><strong>Restore Purchases</strong> — re-sync your subscription with the store you bought it from, App Store or Google Play (e.g., on a new device).</li>
                     <li>Promo or offer codes can be redeemed where available.</li>
                 </ul>
-                <p>Showup re-checks your Apple subscription when the app resumes and keeps your plan in sync automatically.</p>
+                <p>Showup re-checks your subscription with the store when the app resumes and keeps your plan in sync automatically.</p>
             </article>
 
             <article class="help-article" id="account-security">
@@ -685,8 +883,19 @@
                 <ul>
                     <li><strong>Update Email Address</strong> and <strong>Change Password</strong> appear only if you signed up with email (not Google or Apple). Changing your email sends a verification link to the new address; changing your password requires your current one.</li>
                     <li><strong>Sign Out</strong> asks for confirmation before signing you out.</li>
-                    <li><strong>Contact Support</strong> opens a support form. <strong>Privacy Policy</strong> and <strong>Terms of Service</strong> open in your browser.</li>
+                    <li><strong>Contact Support</strong> opens a form that emails our support team. <strong>Privacy Policy</strong> and <strong>Terms of Service</strong> open in your browser.</li>
                 </ul>
+            </article>
+
+            <article class="help-article" id="account-devices">
+                <h1>Device limit</h1>
+                <p>Your account can be signed in on a limited number of devices at once. If you try to sign in on one more than that, the sign-in is blocked and you'll see a screen explaining why.</p>
+                <ul>
+                    <li>You can use Showup on <strong>up to 2 devices</strong> at a time.</li>
+                    <li>There's a <strong>7-day cooldown</strong> between device changes, so you can't swap devices repeatedly.</li>
+                    <li>To free a slot, sign out on a device you no longer use. If you're inside the cooldown, the screen shows how many days are left.</li>
+                </ul>
+                <p class="help-callout">Signing out of a device you still have is the quickest fix. If you've lost the device or can't sign out on it, email <a href="mailto:support@showupcounts.com?subject=Device%20limit">support@showupcounts.com</a> and we'll reset it for you.</p>
             </article>
 
             <article class="help-article" id="account-close">
@@ -700,7 +909,7 @@
                     Deleting your Showup account is <strong>permanent and cannot be undone</strong>.
                 </p>
                 <p>
-                    <strong>Before you delete, cancel any paid subscription.</strong> Deleting your account does not cancel an active subscription, because billing is managed by the store. Cancel it first:
+                    <strong>Before you delete, cancel any paid subscription.</strong> Billing is managed by the store, not by us, so deleting your account would not cancel it — which is why the <strong>Delete account</strong> button stays disabled while a paid subscription is still active. Cancel it first:
                 </p>
                 <ul>
                     <li><strong>Android:</strong> Google Play Store → your profile → <em>Payments &amp; subscriptions → Subscriptions</em> → Showup → Cancel.</li>
@@ -719,16 +928,27 @@
                 <p><strong>What is deleted:</strong></p>
                 <ul>
                     <li>Your account and sign-in credentials (email/password and any Google, Apple, or Naver login).</li>
-                    <li>Your profile, username, and app settings.</li>
+                    <li>Your profile, your username, and your app settings — including your registered devices and their push notification tokens.</li>
                     <li>Your fitness data: personal records, benchmark records, and workout scores.</li>
-                    <li>Your community posts and comments, and photos or videos you uploaded.</li>
-                    <li>Your Space memberships and notifications.</li>
+                    <li>Posts you wrote, together with their photos, videos, comments, and reactions.</li>
+                    <li>Comments you wrote on other people's workouts, scores, and posts.</li>
+                    <li>Your membership in every Space, and your notifications.</li>
                 </ul>
                 <p><strong>What is kept:</strong></p>
                 <ul>
                     <li>Spaces you created that still have other members are <strong>archived, not deleted</strong>, so those members keep their own score history and records.</li>
-                    <li>Records required for legal, tax, or financial obligations are retained for the period required by law, then deleted.</li>
+                    <li>Your booking and credit history in the Spaces you belonged to.</li>
+                    <li>Support tickets you sent us, and content reports you filed.</li>
+                    <li>Invitations you sent and join requests you made.</li>
+                    <li>Your reactions on other people's content, and media or workouts you contributed to a Space you did not own — these stay part of that Space's records.</li>
+                    <li>Membership history entries in a Space that name you.</li>
+                    <li>Purchase and transaction records held by us, by our subscription provider, and by the app store, for the period required by tax, accounting, and consumer law.</li>
+                    <li>A record that a deletion was requested and completed, kept as proof that we honoured your request.</li>
+                    <li>Crash reports already collected.</li>
                 </ul>
+                <p>
+                    If you want any of the retained items removed, email us and we will remove what we are not legally required to keep. Section 8 of the <a href="legal/privacy.html">Privacy Policy</a> sets all of this out in full.
+                </p>
                 <p>
                     <strong>Timing:</strong> deletion starts as soon as you confirm and is normally completed within minutes; in all cases it is fully completed within <strong>30 days</strong>, except for data we are legally required to retain.
                 </p>
@@ -736,6 +956,7 @@
 
             <div class="help-contact-box">
                 <p>Didn't find what you need? <a href="contact.html">Contact us</a>.</p>
+                <p class="help-updated">Last updated: August 25, 2026 · <a href="legal/privacy.html">Privacy Policy</a> · <a href="legal/terms.html">Terms of Service</a></p>
             </div>
         </main>
     </div>

@@ -4,7 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hilfe-Center — Showup</title>
-    <meta name="description" content="Showup Hilfe-Center. Schritt-für-Schritt-Anleitungen für Spaces, Workouts, Rollen, Kollaborationen und mehr.">
+    <meta name="description" content="Showup Hilfe-Center. Schritt-für-Schritt-Anleitungen für Spaces, Workouts, Kursbuchung, Rollen, Kollaborationen und mehr.">
+    <link rel="canonical" href="https://www.showupcounts.com/help-de.html">
+    <link rel="alternate" hreflang="en" href="https://www.showupcounts.com/help.html">
+    <link rel="alternate" hreflang="ko" href="https://www.showupcounts.com/help-ko.html">
+    <link rel="alternate" hreflang="de" href="https://www.showupcounts.com/help-de.html">
+    <link rel="alternate" hreflang="x-default" href="https://www.showupcounts.com/help.html">
     <link rel="icon" id="favicon" type="image/svg+xml" href="assets/favicon-dark.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -141,6 +146,7 @@
         .help-contact-box { margin-top: 72px; padding: 28px 32px; border: 1px solid var(--border); text-align: center; }
         .help-contact-box p { margin: 0; font-size: 0.98rem; color: var(--text-secondary); }
         .help-contact-box a { color: var(--text-primary); text-decoration: underline; text-underline-offset: 3px; }
+        .help-updated { margin-top: 14px !important; font-size: 0.85rem !important; color: var(--text-tertiary) !important; }
 
         .help-mobile-label { display: none; font-family: 'Inter', sans-serif; font-weight: 400; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-tertiary); margin-bottom: 14px; }
 
@@ -219,6 +225,23 @@
                     <a class="help-nav-link" data-target="workout-collab" href="#workout-collab">Kollaborative Workouts</a>
                     <a class="help-nav-link" data-target="workout-extras" href="#workout-extras">Verwandte Aktionen</a>
                 </div>
+                                <div class="help-nav-group">
+                    <div class="help-nav-group-title">Buchung</div>
+                    <a class="help-nav-link" data-target="booking-what" href="#booking-what">Was ist Buchung?</a>
+                    <a class="help-nav-link" data-target="booking-book" href="#booking-book">Einen Kurs buchen</a>
+                    <a class="help-nav-link" data-target="booking-cancel" href="#booking-cancel">Buchung stornieren</a>
+                    <a class="help-nav-link" data-target="booking-waitlist" href="#booking-waitlist">Warteliste</a>
+                    <a class="help-nav-link" data-target="booking-membership" href="#booking-membership">Mitgliedschaft &amp; Credits</a>
+                    <a class="help-nav-link" data-target="booking-hold" href="#booking-hold">Pausen</a>
+                    <a class="help-nav-link" data-target="booking-troubleshoot" href="#booking-troubleshoot">Warum kann ich nicht buchen?</a>
+                </div>
+                <div class="help-nav-group">
+                    <div class="help-nav-group-title">Buchung verwalten</div>
+                    <a class="help-nav-link" data-target="booking-admin-enable" href="#booking-admin-enable">Buchung aktivieren</a>
+                    <a class="help-nav-link" data-target="booking-admin-schedule" href="#booking-admin-schedule">Termine anlegen &amp; ändern</a>
+                    <a class="help-nav-link" data-target="booking-admin-plans" href="#booking-admin-plans">Mitgliedschaftspläne</a>
+                    <a class="help-nav-link" data-target="booking-admin-roster" href="#booking-admin-roster">Teilnehmer &amp; Warteliste</a>
+                </div>
                 <div class="help-nav-group">
                     <div class="help-nav-group-title">Community</div>
                     <a class="help-nav-link" data-target="community-posts" href="#community-posts">Community-Beiträge</a>
@@ -237,6 +260,7 @@
                     <a class="help-nav-link" data-target="account-privacy" href="#account-privacy">Profil-Sichtbarkeit &amp; blockierte Nutzer</a>
                     <a class="help-nav-link" data-target="account-subscription" href="#account-subscription">Abonnement</a>
                     <a class="help-nav-link" data-target="account-security" href="#account-security">E-Mail, Passwort &amp; Abmelden</a>
+                    <a class="help-nav-link" data-target="account-devices" href="#account-devices">Gerätelimit</a>
                     <a class="help-nav-link" data-target="account-close" href="#account-close">Konto deaktivieren oder löschen</a>
                 </div>
             </nav>
@@ -246,13 +270,15 @@
             <article class="help-article" id="welcome">
                 <h1>Willkommen im Hilfe-Center</h1>
                 <p>
-                    Schritt-für-Schritt-Anleitungen, mit denen du das Beste aus Showup herausholst – <strong>Spaces</strong>, <strong>Workouts</strong>, der <strong>Community</strong>-Tab (Beiträge, PR-Board, Medienbibliothek, Mitglieder) und dein <strong>Konto</strong>. Suche oben, wähle ein Thema im Menü oder beginne mit einer der beliebten Anleitungen unten.
+                    Schritt-für-Schritt-Anleitungen, mit denen du das Beste aus Showup herausholst – <strong>Spaces</strong>, <strong>Workouts</strong>, <strong>Buchung</strong>, der <strong>Community</strong>-Tab (Beiträge, PR-Board, Medienbibliothek, Mitglieder) und dein <strong>Konto</strong>. Suche oben, wähle ein Thema im Menü oder beginne mit einer der beliebten Anleitungen unten.
                 </p>
                 <div class="help-quicklinks">
                     <a class="help-quicklink" data-target="space-what" href="#space-what">Was ist ein Space?<span>Verstehe den zentralen Baustein</span></a>
                     <a class="help-quicklink" data-target="space-create" href="#space-create">Space erstellen<span>Richte deinen ersten Space in 4 Schritten ein</span></a>
                     <a class="help-quicklink" data-target="roles" href="#roles">Rollen &amp; Berechtigungen<span>Sieh, was jede Rolle darf</span></a>
                     <a class="help-quicklink" data-target="workout-collab" href="#workout-collab">Kollaborative Workouts<span>Teile ein Workout über Spaces hinweg</span></a>
+                    <a class="help-quicklink" data-target="booking-book" href="#booking-book">Einen Kurs buchen<span>Sichere dir einen Platz im Kurs</span></a>
+                    <a class="help-quicklink" data-target="booking-troubleshoot" href="#booking-troubleshoot">Warum kann ich nicht buchen?<span>Was die Buchungsmeldungen bedeuten</span></a>
                     <a class="help-quicklink" data-target="community-prboard" href="#community-prboard">PR-Board<span>Persönliche Rekorde gemeinsam verfolgen</span></a>
                     <a class="help-quicklink" data-target="account-profile" href="#account-profile">Dein Konto<span>Profil, PR, Einstellungen &amp; mehr</span></a>
                 </div>
@@ -323,28 +349,7 @@
                 </ul>
                 <p>Archivierte Spaces tragen in deiner Mitgliedschaftsliste das Label „Archiviert" und werden aus aktiven Ansichten ausgeblendet. Sie können jederzeit dearchiviert werden.</p>
                 <h2>Wer darf einen Space archivieren?</h2>
-                <p>Einen Space zu archivieren oder zu löschen ist eine reine <a data-target="roles" href="#roles">Admin</a>-Aktion. Hier die vollständige Übersicht der Rollen und Berechtigungen:</p>
-                <table class="help-table">
-                    <thead><tr><th>Rolle</th><th>Berechtigungen</th></tr></thead>
-                    <tbody>
-                        <tr>
-                            <td class="role-name">Admin<span class="role-inherits">Alle Staff-Berechtigungen, plus:</span></td>
-                            <td><ul><li>Space archivieren oder löschen</li><li>Session-Arten löschen</li></ul></td>
-                        </tr>
-                        <tr>
-                            <td class="role-name">Staff<span class="role-inherits">Alle Coach-Berechtigungen, plus:</span></td>
-                            <td><ul><li>Space-Einstellungen und Session-Arten bearbeiten</li><li>Mitglieder verwalten und Rollen vergeben (bis Staff)</li><li>Beitrittsanfragen annehmen oder ablehnen</li><li>Jedes Workout bearbeiten oder löschen</li><li>Jeden Score oder Kommentar löschen</li><li>Beiträge und Medien moderieren</li></ul></td>
-                        </tr>
-                        <tr>
-                            <td class="role-name">Coach<span class="role-inherits">Alle Member-Berechtigungen, plus:</span></td>
-                            <td><ul><li>Eigene Workouts erstellen und bearbeiten</li><li>Neue Mitglieder einladen</li><li>Eigene Medien in der Bibliothek hinzufügen und verwalten</li></ul></td>
-                        </tr>
-                        <tr>
-                            <td class="role-name">Member<span class="role-inherits">Die Basisrolle:</span></td>
-                            <td><ul><li>Scores zu Workouts eintragen</li><li>Kommentare und Reaktionen hinzufügen</li><li>Community-Beiträge erstellen</li><li>Community, Mitglieder und Medienbibliothek ansehen</li></ul></td>
-                        </tr>
-                    </tbody>
-                </table>
+                <p>Einen Space zu archivieren oder zu löschen ist eine reine <a data-target="roles" href="#roles">Admin</a>-Aktion. Was jede Rolle darf, steht unter <a data-target="roles" href="#roles">Rollen &amp; Berechtigungen</a>.</p>
             </article>
 
             <article class="help-article" id="roles">
@@ -355,33 +360,24 @@
                 <table class="help-table">
                     <thead><tr><th>Rolle</th><th>Berechtigungen</th></tr></thead>
                     <tbody>
-                        <tr>
-                            <td class="role-name">Admin<span class="role-inherits">Alle Staff-Berechtigungen, plus:</span></td>
-                            <td><ul><li>Space archivieren oder löschen</li><li>Session-Arten löschen</li></ul></td>
-                        </tr>
-                        <tr>
-                            <td class="role-name">Staff<span class="role-inherits">Alle Coach-Berechtigungen, plus:</span></td>
-                            <td><ul><li>Space-Einstellungen und Session-Arten bearbeiten</li><li>Mitglieder verwalten und Rollen vergeben (bis Staff)</li><li>Beitrittsanfragen annehmen oder ablehnen</li><li>Jedes Workout bearbeiten oder löschen</li><li>Jeden Score oder Kommentar löschen</li><li>Beiträge und Medien moderieren</li></ul></td>
-                        </tr>
-                        <tr>
-                            <td class="role-name">Coach<span class="role-inherits">Alle Member-Berechtigungen, plus:</span></td>
-                            <td><ul><li>Eigene Workouts erstellen und bearbeiten</li><li>Neue Mitglieder einladen</li><li>Eigene Medien in der Bibliothek hinzufügen und verwalten</li></ul></td>
-                        </tr>
-                        <tr>
-                            <td class="role-name">Member<span class="role-inherits">Die Basisrolle:</span></td>
-                            <td><ul><li>Scores zu Workouts eintragen</li><li>Kommentare und Reaktionen hinzufügen</li><li>Community-Beiträge erstellen</li><li>Community, Mitglieder und Medienbibliothek ansehen</li></ul></td>
-                        </tr>
+                        <tr><td class="role-name">Admin<span class="role-inherits">Alles, was Staff kann, plus:</span></td><td><ul><li>Den Space archivieren oder löschen</li><li>Session-Typen löschen</li></ul></td></tr>
+                        <tr><td class="role-name">Staff<span class="role-inherits">Alles, was ein Coach kann, plus:</span></td><td><ul><li>Space-Einstellungen und Session-Typen bearbeiten</li><li>Mitglieder verwalten und Rollen vergeben (bis Staff)</li><li>Beitrittsanfragen annehmen oder ablehnen</li><li>Jedes Workout bearbeiten oder löschen</li><li>Jeden Score oder Kommentar löschen</li><li>Beiträge und Medien moderieren</li><li>Buchung aktivieren und Mitgliedschaftspläne verwalten</li><li>Termine löschen und die Buchungen darauf stornieren</li><li>Die Pause jedes Mitglieds anlegen, ändern oder entfernen</li></ul></td></tr>
+                        <tr><td class="role-name">Coach<span class="role-inherits">Alles, was ein Member kann, plus:</span></td><td><ul><li>Eigene Workouts erstellen und bearbeiten</li><li>Neue Mitglieder einladen</li><li>Eigene Medien in der Bibliothek hinzufügen und verwalten</li><li>Termine erstellen und bearbeiten, ihnen zugewiesen werden, Teilnehmer eintragen und entfernen</li></ul></td></tr>
+                        <tr><td class="role-name">Member<span class="role-inherits">Die Standardrolle:</span></td><td><ul><li>Scores zu Workouts eintragen</li><li>Kommentare und Reaktionen hinzufügen</li><li>Community-Beiträge schreiben</li><li>Community, Mitglieder und Medienbibliothek ansehen</li><li>Kurse buchen, auf Wartelisten gehen, eigene Pausen verwalten</li></ul></td></tr>
+                        <tr><td class="role-name">Guest Member<span class="role-inherits">Eingeschränkter Zugriff:</span></td><td><ul><li>Scores eintragen, kommentieren und reagieren bei geteilten Workouts</li><li>Kein Community-Feed, keine Mitgliederliste, keine Medienbibliothek, keine Buchung</li></ul></td></tr>
+                        <tr><td class="role-name">Guest Viewer<span class="role-inherits">Nur ansehen – Standard für alle, die kein Mitglied sind:</span></td><td><ul><li>Ein Workout und seine Rangliste ansehen</li><li>Sonst nichts – keine Scores, Kommentare oder Reaktionen</li></ul></td></tr>
                     </tbody>
                 </table>
                 <p>
-                    Admins haben die volle Kontrolle über einen Space. Staff können Mitglieder verwalten und Rollen bis Staff vergeben (sie können keine Admins erstellen oder entfernen). Coaches konzentrieren sich auf Programming und Medien. Members nehmen teil, indem sie Scores eintragen, kommentieren und posten.
+                    Admins haben die volle Kontrolle über einen Space. Staff können Mitglieder verwalten und Rollen bis Staff vergeben (sie können keine Admins erstellen oder entfernen). Coaches konzentrieren sich auf Programming und Medien und können Termine leiten. Members nehmen teil, indem sie Scores eintragen, kommentieren, posten und Kurse buchen. Die beiden Gast-Stufen sind für Personen, die nicht Mitglied des Space sind: ein Guest Member kann bei einem geteilten Workout mitmachen, ein Guest Viewer kann nur zusehen.
                 </p>
             </article>
 
             <article class="help-article" id="space-extras">
                 <h1>Spaces: verwandte Konzepte</h1>
                 <h2>Sessions</h2>
-                <p>Jeder Space ist in Sessions gegliedert (z. B. „Montag Kraft", „Cardio Club"). Session-Namen dürfen bis zu 20 Zeichen lang sein, und Gratistarife erlauben bis zu 10 aktive Sessions pro Space.</p>
+                <p>Jeder Space ist in Sessions gegliedert (z. B. „Montag Kraft", „Cardio Club"). Session-Namen dürfen bis zu 20 Zeichen lang sein. Der Gratistarif erlaubt 2 aktive Sessions pro Space, Bezahltarife je nach Stufe 5 bis 10.</p>
+                <p class="help-callout"><strong>Grenzen im Gratistarif:</strong> 2 aktive Sessions und 5 Mitglieder pro Space, 2 eigene Spaces und 1 Kollaboration. Bezahltarife heben jede dieser Grenzen an – die App sagt dir, an welche du gestoßen bist und was ein Upgrade brächte.</p>
                 <h2>Rollen</h2>
                 <p>Mitglieder können Admins, Staff, Coaches oder Members sein. Nur Admins können den Space archivieren oder löschen; Staff können Einstellungen bearbeiten und moderieren. Die vollständige Übersicht findest du unter <a data-target="roles" href="#roles">Rollen &amp; Berechtigungen</a>.</p>
                 <h2>Mitgliedschaftsstatus</h2>
@@ -493,6 +489,208 @@
                 <p>Jedes Workout hat eine Bestenliste, die alle eingereichten Scores anhand der Bewertungsmethode und der Tiebreaker des Erstellers sortiert. Bei kollaborativen Workouts umfasst die Bestenliste alle teilnehmenden Spaces.</p>
                 <h2>Kommentieren &amp; reagieren</h2>
                 <p>Hinterlasse Kommentare zu einem Workout und reagiere auf die Scores anderer Mitglieder, um sie anzufeuern.</p>
+            </article>
+
+            <article class="help-article" id="booking-what">
+                <h1>Was ist Buchung?</h1>
+                <p>Mit der Buchung kann ein Space Kurse zu festen Zeiten anbieten, für die sich Mitglieder einen Platz sichern – mit Kapazitätsgrenzen, Credits aus der Mitgliedschaft und einer Warteliste. Das gibt es in jedem Tarif, du siehst es aber nur in Spaces, in denen ein Admin es aktiviert hat.</p>
+                <h2>Wo du es findest</h2>
+                <ol>
+                    <li>Öffne den Tab <strong>Booking</strong>.</li>
+                    <li>Wähle einen Space und wische durch die Wochen, bis du den Tag gefunden hast.</li>
+                    <li>Tippe auf einen Kurs, um Details, Coaches und die freien Plätze zu sehen.</li>
+                </ol>
+                <h2>Termine und Sessions sind zweierlei</h2>
+                <p>Eine <strong>Session</strong> ist eine wiederkehrende Kategorie innerhalb eines Space, etwa „Montag Kraft" – sie bündelt Workouts über die Zeit. Ein <strong>Termin</strong> ist ein konkreter Kurs zu einer konkreten Zeit, den man bucht, und er kann optional mit einer Session verknüpft sein. Jeder Tag eines wiederkehrenden Termins zählt für sich, die Kapazität gilt also pro Tag und nicht für die ganze Serie.</p>
+                <p class="help-callout"><strong>Ein Space fehlt im Booking-Tab?</strong> Buchung wird pro Space eingeschaltet. Fehlt ein Space, in dem du Mitglied bist, haben seine Admins die Funktion noch nicht aktiviert.</p>
+            </article>
+
+            <article class="help-article" id="booking-book">
+                <h1>Einen Kurs buchen</h1>
+                <p>Sobald in einem Space die Buchung aktiv ist, sicherst du dir deinen Platz direkt aus dem Kalender.</p>
+                <h2>So buchst du</h2>
+                <ol>
+                    <li>Öffne den Tab <strong>Booking</strong> und wähle den Space.</li>
+                    <li>Suche den Tag und tippe auf den gewünschten Kurs.</li>
+                    <li>Tippe auf <strong>Buchen</strong>. Dein Platz ist sofort bestätigt.</li>
+                </ol>
+                <h2>Wovon es abhängt, ob du buchen kannst</h2>
+                <ul>
+                    <li><strong>Buchungsfenster</strong> – ein Kurs kann eine festgelegte Zahl von Tagen vor Beginn zur Buchung freigeschaltet werden. Vorher siehst du das Startdatum der Buchung statt der Schaltfläche.</li>
+                    <li><strong>Kapazität</strong> – bei begrenzten Kursen siehst du die freien Plätze. Ist der Kurs voll, kannst du auf die <a data-target="booking-waitlist" href="#booking-waitlist">Warteliste</a>.</li>
+                    <li><strong>Credits</strong> – verlangt der Kurs einen Credit, wird beim Buchen einer aus deiner Mitgliedschaft abgezogen. Wie viele dir bleiben, steht auf der Mitgliedschaftskarte des Kurses.</li>
+                    <li><strong>Deine Rolle</strong> – Admins, Staff und Coaches buchen kostenlos und verbrauchen nie Credits. Das Buchungsfenster gilt aber auch für sie.</li>
+                </ul>
+                <p class="help-callout">Füllt sich ein Kurs, während du ihn ansiehst, setzt dich <strong>Buchen</strong> automatisch auf die Warteliste und nennt dir deine Position – ein zweites Tippen ist nicht nötig.</p>
+            </article>
+
+            <article class="help-article" id="booking-cancel">
+                <h1>Buchung stornieren</h1>
+                <p>Öffne den Kurs im Kalender oder unter <strong>Meine Buchungen</strong> und tippe auf <strong>Buchung stornieren</strong>. Ob du den Credit zurückbekommst, hängt von der Stornierungsrichtlinie dieser Buchung ab.</p>
+                <h2>Stornierungsrichtlinien</h2>
+                <table class="help-table">
+                    <thead><tr><th>Richtlinie</th><th>Bekommst du den Credit zurück?</th></tr></thead>
+                    <tbody>
+                        <tr><td>Immer kostenlos</td><td>Ja – egal, wann du stornierst.</td></tr>
+                        <tr><td>Kostenlos bis zu einer Frist</td><td>Ja, wenn du mindestens die festgelegte Stundenzahl vor Kursbeginn stornierst. Danach verfällt der Credit. Die App nennt dir die Frist, bevor du bestätigst.</td></tr>
+                        <tr><td>Nie kostenlos</td><td>Nein – der Credit ist mit der Buchung verbraucht.</td></tr>
+                    </tbody>
+                </table>
+                <h2>Gut zu wissen</h2>
+                <ul>
+                    <li>Es gilt die Richtlinie, die <strong>beim Buchen auf der Buchung festgehalten wurde</strong>. Ändert ein Admin später den Mitgliedschaftsplan, behalten bereits bestehende Buchungen ihre ursprünglichen Bedingungen.</li>
+                    <li>Sobald der Kurs begonnen hat, kannst du nicht mehr stornieren.</li>
+                    <li>Durch das Stornieren wird dein Platz frei – die Person, die am längsten auf der Warteliste steht, rückt automatisch nach.</li>
+                </ul>
+            </article>
+
+            <article class="help-article" id="booking-waitlist">
+                <h1>Warteliste</h1>
+                <p>Ist ein Kurs mit begrenzter Kapazität voll, kannst du dich auf die Warteliste setzen und rückst automatisch nach, sobald ein Platz frei wird.</p>
+                <h2>Wie Credits auf der Warteliste funktionieren</h2>
+                <ul>
+                    <li><strong>Der Credit wird abgezogen, wenn du dich auf die Warteliste setzt</strong>, nicht erst beim Nachrücken. So ist er reserviert und kann nicht gleichzeitig für einen anderen Kurs ausgegeben werden.</li>
+                    <li>Beim Nachrücken wird <strong>nichts zusätzlich abgezogen</strong> – der Credit wurde ja bereits beim Eintragen genommen.</li>
+                    <li><strong>Beim Verlassen der Warteliste bekommst du den Credit immer zurück</strong>, egal wie kurzfristig. Du hattest nie einen Platz, also greift keine Stornierungsrichtlinie.</li>
+                </ul>
+                <h2>Wenn ein Platz frei wird</h2>
+                <ul>
+                    <li>Die Reihenfolge ist strikt: wer zuerst kommt, rückt zuerst nach. Vordrängeln geht nicht.</li>
+                    <li>Storniert jemand, rückt automatisch die Person nach, die am längsten wartet, und wird benachrichtigt. Du musst nichts bestätigen.</li>
+                    <li>Wird bis zum Kursbeginn kein Platz frei, endet die Reservierung und <strong>der Credit wird automatisch erstattet</strong>.</li>
+                </ul>
+                <p class="help-callout">Die vollständige Warteliste sehen nur Admins, Staff und Coaches. Als Mitglied siehst du, dass du daraufstehst, aber nicht, wer sonst noch wartet.</p>
+            </article>
+
+            <article class="help-article" id="booking-membership">
+                <h1>Deine Mitgliedschaft und Credits</h1>
+                <p>Deine Mitgliedschaft ist dein Eintrag in einem Space – Rolle, Status, zugewiesener Plan und Credits. Du öffnest sie über <strong>Konto → Meine Mitgliedschaften</strong> oder im Space über <strong>Community ▸ Mitglieder ▸ Meine Mitgliedschaft</strong>.</p>
+                <h2>Credit-Arten</h2>
+                <table class="help-table">
+                    <thead><tr><th>Art</th><th>Funktionsweise</th></tr></thead>
+                    <tbody>
+                        <tr><td>Pro Woche</td><td>Eine feste Zahl pro Woche, zurückgesetzt zum Wochenbeginn.</td></tr>
+                        <tr><td>Pro Monat</td><td>Eine feste Zahl pro Kalendermonat, zurückgesetzt am Ersten.</td></tr>
+                        <tr><td>Festes Paket</td><td>Eine Gesamtzahl, die sich nicht erneuert. Sind sie aufgebraucht, sind sie weg.</td></tr>
+                        <tr><td>Unbegrenzt</td><td>Es wird nie ein Credit abgezogen, egal wie viel du buchst.</td></tr>
+                    </tbody>
+                </table>
+                <h2>So werden deine verbleibenden Credits gezählt</h2>
+                <ul>
+                    <li>Verbleibende Credits = dein Kontingent minus dem, was du in der laufenden Periode genutzt hast. <strong>Wartelisten-Reservierungen zählen als genutzt</strong>, bis sie erstattet werden.</li>
+                    <li>Die Perioden richten sich nach der <strong>Zeitzone des Space</strong>, nicht nach der deines Telefons – ein Kurs am Sonntagabend kann also in einer anderen Woche landen, als du erwartest, wenn du unterwegs bist.</li>
+                    <li>Deine Mitgliedschaft kann ein Start- und ein Enddatum haben. Kurse vor dem Startdatum lassen sich nicht buchen. Der <strong>Credit-Verlauf</strong> listet jeden ausgegebenen und zurückerstatteten Credit auf.</li>
+                </ul>
+            </article>
+
+            <article class="help-article" id="booking-hold">
+                <h1>Pausen</h1>
+                <p>Eine Pause setzt deine Mitgliedschaft für einen Zeitraum aus – für Urlaub, eine Verletzung oder einfach eine Auszeit. Erlaubt dein Plan Pausen, legst du sie unter <strong>Meine Mitgliedschaft</strong> selbst an.</p>
+                <h2>Die Regeln</h2>
+                <ul>
+                    <li>Dein Plan legt fest, <strong>wie viele Pausen</strong> du nehmen darfst und <strong>wie viele Tage insgesamt</strong>. Das Kontingent wird jede Mitgliedschaftsperiode zurückgesetzt, und beide Grenzen können unbegrenzt sein.</li>
+                    <li><strong>Bis zum Startdatum kannst du eine Pause selbst ändern oder löschen.</strong> Sobald sie begonnen hat, können das nur noch Admins oder Staff.</li>
+                    <li>Kurse innerhalb einer Pause lassen sich nicht buchen. Die Tage davor und danach sind nicht betroffen.</li>
+                    <li>Pausen dürfen sich nicht überschneiden, nicht rückdatiert werden und nicht außerhalb deiner Mitgliedschaftsperiode liegen.</li>
+                </ul>
+                <h2>Wenn du in dem Zeitraum schon Buchungen hast</h2>
+                <p>Diese Buchungen werden mit dem Anlegen der Pause storniert. Ob der jeweilige Credit zurückkommt, richtet sich nach denselben Regeln wie beim eigenen Stornieren – eine Pause kann also erstattete und verfallene Credits mischen. Der Bestätigungsdialog sagt dir genau, was passieren wird, bevor du zustimmst.</p>
+                <p class="help-callout">Admins und Staff können die Pause jedes Mitglieds anlegen, ändern oder entfernen – auch eine bereits laufende. Muss eine begonnene Pause angepasst werden, wende dich an sie.</p>
+            </article>
+
+            <article class="help-article" id="booking-troubleshoot">
+                <h1>Warum kann ich nicht buchen?</h1>
+                <p>Fehlt die Schaltfläche zum Buchen, sagt dir der Kurs, woran es liegt. Das sind die möglichen Meldungen, in der Reihenfolge, in der die App prüft.</p>
+                <table class="help-table">
+                    <thead><tr><th>Was du siehst</th><th>Was es bedeutet</th></tr></thead>
+                    <tbody>
+                        <tr><td>Dieser Kurs wurde abgesagt</td><td>Ein Admin hat ihn abgesagt, oder er hat sich selbst abgesagt, weil zu wenige gebucht hatten. Er bleibt mit dem Hinweis „Abgesagt" im Kalender und lässt sich weiter öffnen.</td></tr>
+                        <tr><td>Dieser Kurs ist vorbei</td><td>Er hat bereits stattgefunden.</td></tr>
+                        <tr><td>Dieser Kurs läuft gerade</td><td>Er hat schon begonnen.</td></tr>
+                        <tr><td>Du bist gebucht</td><td>Du hast bereits einen bestätigten Platz.</td></tr>
+                        <tr><td>Du stehst auf der Warteliste</td><td>Deine Reservierung wartet in der Schlange. Wird ein Platz frei, rückst du automatisch nach.</td></tr>
+                        <tr><td>Die Buchung für diesen Termin ist geschlossen</td><td>Der Kurs sagt sich bei zu wenigen Buchungen selbst ab, und diese Frist ist verstrichen. Bereits bestehende Buchungen bleiben – und ein Admin kann dich weiterhin von Hand eintragen.</td></tr>
+                        <tr><td>Es wird ein Buchungsstart angezeigt</td><td>Das Buchungsfenster ist noch nicht offen. Schau am genannten Datum wieder vorbei.</td></tr>
+                        <tr><td>Deine Mitgliedschaft hat noch nicht begonnen</td><td>Der Kurs liegt vor dem Startdatum deiner Mitgliedschaft.</td></tr>
+                        <tr><td>Deine Mitgliedschaft pausiert</td><td>Der Kurs fällt in eine <a data-target="booking-hold" href="#booking-hold">Pause</a>. Die Tage davor und danach kannst du normal buchen.</td></tr>
+                        <tr><td>Ausgebucht</td><td>Die Kapazität ist erreicht. Setz dich auf die Warteliste, dann rückst du bei einer Stornierung nach.</td></tr>
+                        <tr><td>Mitgliedschaft erforderlich</td><td>Der Kurs kostet einen Credit, dir ist aber kein Plan zugewiesen. Bitte einen Admin oder Staff darum.</td></tr>
+                        <tr><td>Nicht in deiner Mitgliedschaft enthalten</td><td>Der Kurs ist auf bestimmte Mitgliedschaftspläne beschränkt, und deiner gehört nicht dazu.</td></tr>
+                        <tr><td>Keine Credits mehr</td><td>Du hast dein Kontingent für diese Periode aufgebraucht. Es wird zu Beginn der nächsten zurückgesetzt – ein festes Paket wird gar nicht zurückgesetzt.</td></tr>
+                    </tbody>
+                </table>
+                <p class="help-callout">Der Hinweis, <strong>zum Aktualisieren zu ziehen und es erneut zu versuchen</strong>, bedeutet, dass sich der Kurs während des Buchens geändert hat – meist seine Kapazität oder ob er einen Credit kostet. Nach dem Aktualisieren siehst du den aktuellen Stand.</p>
+            </article>
+
+            <article class="help-article" id="booking-admin-enable">
+                <h1>Buchung für einen Space aktivieren</h1>
+                <p>Buchung ist standardmäßig aus und wird pro Space eingeschaltet. Du brauchst die Rolle <a data-target="roles" href="#roles">Admin oder Staff</a>, und es ist in jedem Tarif verfügbar.</p>
+                <ol>
+                    <li><strong>Lege zuerst die Zeitzone des Space fest.</strong> Jede Kurszeit, jede Tagesgrenze und jede Credit-Periode wird darin berechnet – änderst du sie später, verschiebt sich, wie bestehende Termine gelesen werden.</li>
+                    <li>Bearbeite den Space und aktiviere <strong>Buchung aktivieren</strong>.</li>
+                    <li>Lege mindestens einen <a data-target="booking-admin-plans" href="#booking-admin-plans">Mitgliedschaftsplan</a> an und füge dann deine <a data-target="booking-admin-schedule" href="#booking-admin-schedule">Termine</a> hinzu.</li>
+                </ol>
+                <p class="help-callout">Im Gratistarif stößt du zuerst an das <strong>Limit von 5 Mitgliedern</strong>, nicht an die Buchung selbst – Buchung ist keine reine Bezahlfunktion.</p>
+            </article>
+
+            <article class="help-article" id="booking-admin-schedule">
+                <h1>Termine anlegen und ändern</h1>
+                <p>Ein Termin ist ein buchbarer Kurs. Öffne in einem Space mit aktiver Buchung das Menü <strong>⋯</strong> und wähle <strong>Termin hinzufügen</strong>. Admins und Staff können jeden Termin verwalten; Coaches können einem zugewiesen werden, ihn aber nicht löschen.</p>
+                <h2>Was du festlegst</h2>
+                <ul>
+                    <li><strong>Titel und Session</strong> – ein Name und optional die zugehörige Session.</li>
+                    <li><strong>Datum und Uhrzeit</strong> – Beginn und Ende, gelesen in der Zeitzone des Space.</li>
+                    <li><strong>Wiederholung</strong> – nie, täglich oder wöchentlich, mit Intervall, ausgewählten Wochentagen und Enddatum.</li>
+                    <li><strong>Kapazität</strong> – begrenzt mit einer Höchstzahl oder unbegrenzt.</li>
+                    <li><strong>Credit erforderlich</strong> – ob das Buchen einen Credit des Mitglieds kostet.</li>
+                    <li><strong>Berechtigte Mitgliedschaften</strong> – beschränkt den Kurs auf bestimmte Pläne. Leer lassen heißt: offen für alle. Das ist unabhängig davon, ob ein Credit nötig ist.</li>
+                    <li><strong>Coaches</strong> – wer den Kurs leitet. Die Namen erscheinen am Kurs.</li>
+                    <li><strong>Sichtbarkeit der Teilnehmer</strong> – wer die Liste der Gebuchten sehen darf. Standard sind nur die Verwaltenden.</li>
+                    <li><strong>Buchungsstart</strong> und <strong>automatische Absage</strong> – wie viele Tage im Voraus die Buchung öffnet und ob sich der Kurs eine festgelegte Zahl von Minuten vor Beginn selbst absagt, wenn höchstens eine bestimmte Zahl gebucht hat.</li>
+                </ul>
+                <h2>Einen wiederkehrenden Termin ändern</h2>
+                <p>Änderst du einen einzelnen Tag einer Serie, fragt die App nach, wie eine Kalender-App es täte:</p>
+                <ul>
+                    <li><strong>Nur dieser Termin</strong> – die Änderung gilt nur für diesen Tag, der Rest der Serie bleibt unberührt.</li>
+                    <li><strong>Für künftige Termine speichern</strong> – die Änderung gilt ab diesem Tag. Hast du die Wiederholung selbst geändert, ist das die einzige angebotene Option, denn das Muster gehört zur ganzen Serie.</li>
+                </ul>
+                <p>Mitglieder mit Buchung werden automatisch mitgenommen und benachrichtigt, und ihre Credits folgen dem Kurs – auch in eine andere Woche oder einen anderen Monat, wenn sich das Datum verschiebt.</p>
+                <p class="help-callout"><strong>Die Kapazität lässt sich nicht unter die für den Tag bereits gebuchte Zahl setzen.</strong> Das Ändern der berechtigten Mitgliedschaften storniert nie bestehende Buchungen – es gilt ab diesem Zeitpunkt.</p>
+            </article>
+
+            <article class="help-article" id="booking-admin-plans">
+                <h1>Mitgliedschaftspläne</h1>
+                <p>Ein Mitgliedschaftsplan ist das Credit-Paket, das du einem Mitglied zuweist. Pläne funktionieren in jeder Abostufe und auch ohne aktivierte Buchung – du kannst sie allein dafür nutzen, festzuhalten, wer bis wann Mitglied ist.</p>
+                <h2>Was ein Plan festlegt</h2>
+                <ul>
+                    <li><strong>Name</strong> – was Mitglieder sehen, etwa „Täglich" oder „3 pro Woche".</li>
+                    <li><strong>Laufzeit</strong> – optional. Beim Zuweisen wird daraus automatisch das Enddatum des Mitglieds.</li>
+                    <li><strong>Credits</strong> – pro Woche, pro Monat, als festes Paket oder unbegrenzt, und wie viele.</li>
+                    <li><strong>Stornierungsrichtlinie</strong> – immer kostenlos, kostenlos bis zu einer festgelegten Stundenzahl vor dem Kurs, oder nie kostenlos.</li>
+                    <li><strong>Pausen</strong> – ob Mitglieder ihre Mitgliedschaft aussetzen dürfen, wie oft und wie viele Tage insgesamt.</li>
+                </ul>
+                <p class="help-callout"><strong>Änderungen an einem Plan wirken nicht rückwirkend.</strong> Eine Buchung behält die Stornierungsbedingungen, die beim Buchen galten – eine heutige Änderung ändert also nie, was mit einer bestehenden Buchung passiert.</p>
+            </article>
+
+            <article class="help-article" id="booking-admin-roster">
+                <h1>Teilnehmer, Warteliste und Pausen</h1>
+                <p>Öffne einen Termin, um zu sehen, wer gebucht hat. Admins, Staff und Coaches sehen die Liste alle; die Aktionen unten hängen von der Rolle ab.</p>
+                <h2>Mitglieder eintragen und entfernen</h2>
+                <ul>
+                    <li><strong>Mitglied hinzufügen</strong> – du kannst einen vollen Kurs übersteuern (dann wird über die Kapazität hinaus gebucht), ebenso den Credit-Abzug und die Berechtigungsprüfung. Das Hinzufügen umgeht außerdem das Buchungsfenster und die Frist der automatischen Absage und funktioniert daher auch, wenn das Selbstbuchen geschlossen ist.</li>
+                    <li><strong>Mitglied entfernen</strong> – du entscheidest, ob der Credit erstattet wird. Durch das Entfernen wird ein Platz frei, die erste Person auf der Warteliste rückt automatisch nach.</li>
+                </ul>
+                <h2>Die Warteliste</h2>
+                <ul>
+                    <li>Eine Karte <strong>Warteliste</strong> listet alle Wartenden in ihrer Reihenfolge. Sie ist nur für Admins, Staff und Coaches sichtbar – Mitglieder sehen sie nie, und daran lässt sich nichts einstellen.</li>
+                    <li>Du kannst jemanden auf die Warteliste setzen oder herunternehmen. <strong>Beim Herunternehmen wird immer erstattet</strong>, denn eine Wartelisten-Reservierung hatte nie einen Platz.</li>
+                </ul>
+                <h2>Pausen und Löschen</h2>
+                <ul>
+                    <li>Admins und Staff können die <a data-target="booking-hold" href="#booking-hold">Pause</a> jedes Mitglieds anlegen, ändern oder entfernen – auch eine bereits laufende. Coaches können das nicht.</li>
+                    <li>Beim Löschen eines Termins mit Buchungen wirst du nach dem Umfang gefragt – dieser eine Tag oder die ganze Serie – und danach, ob die Credits erstattet werden. Löschen können nur Admins und Staff.</li>
+                </ul>
+                <p class="help-callout">Erhöhst du die Kapazität eines vollen Kurses, rückt dadurch allein niemand von der Warteliste nach. Das passiert bei der nächsten Stornierung. Willst du die neuen Plätze sofort füllen, trage die Mitglieder von Hand ein.</p>
             </article>
 
             <article class="help-article" id="community-posts">
@@ -626,7 +824,7 @@
             <article class="help-article" id="account-preferences">
                 <h1>Sprache, Einheiten &amp; Design</h1>
                 <ul>
-                    <li><strong>Sprache</strong> – zeigt die aktuelle App-Sprache. Die Schaltfläche führt zu iOS-Einstellungen → Showup → Sprache, um sie zu ändern (Showup folgt deiner iOS-App-Sprache).</li>
+                    <li><strong>Sprache</strong> – zeigt die aktuelle App-Sprache. Auf iPhone und iPad führt die Schaltfläche zu iOS-Einstellungen → Showup → Sprache. Unter Android wählst du die Sprache in der App; ab Android 13 öffnet sich dafür der systemeigene Bildschirm für App-Sprachen.</li>
                     <li><strong>Einheit</strong> – wähle deine Gewichtseinheit (kg oder lb) und Distanzeinheit (km oder mi). Wird sofort gespeichert; Werte erscheinen in deinen Einheiten, mit einem Umrechnungs-Badge, wenn ein Rekord in einer anderen Einheit eingetragen wurde.</li>
                     <li><strong>Design</strong> – Hell, Dunkel oder System (passt sich deinem Gerät an).</li>
                 </ul>
@@ -641,10 +839,10 @@
                     <li><strong>Workouts</strong> – neue Workouts und Updates.</li>
                     <li><strong>Soziales</strong> – Reaktionen und Kommentare zu deinen Beiträgen und Scores.</li>
                     <li><strong>Community</strong> – neue Beiträge und Ankündigungen.</li>
-                    <li><strong>Mitgliedschaften</strong> – Einladungen und Genehmigungen.</li>
+                    <li><strong>Mitgliedschaften</strong> – Einladungen und Genehmigungen sowie alles rund um die <a data-target="booking-what" href="#booking-what">Buchung</a>: das Nachrücken von der Warteliste, Kurse, in die ein Admin dich eingetragen oder aus denen er dich entfernt hat, und Kurse, die sich wegen zu weniger Anmeldungen selbst abgesagt haben.</li>
                 </ul>
                 <p>
-                    Sind Benachrichtigungen auf Systemebene aus, erscheint eine Schaltfläche <strong>Benachrichtigungen aktivieren</strong>, die den iOS-Berechtigungsdialog öffnet. Die Kategorien bleiben deaktiviert, bis sowohl die Systemberechtigung als auch der Hauptschalter aktiv sind.
+                    Sind Benachrichtigungen auf Systemebene aus, erscheint eine Schaltfläche <strong>Benachrichtigungen aktivieren</strong>, die die Berechtigungsabfrage deines Geräts öffnet – ab Android 13 erscheint diese Abfrage außerdem einmal kurz nach der ersten Anmeldung. Die Kategorien bleiben deaktiviert, bis sowohl die Systemberechtigung als auch der Hauptschalter aktiv sind.
                 </p>
             </article>
 
@@ -674,10 +872,10 @@
                 </p>
                 <ul>
                     <li><strong>Tarif ändern</strong> – Abonnement upgraden oder downgraden.</li>
-                    <li><strong>Käufe wiederherstellen</strong> – Abonnement mit dem App Store neu synchronisieren (z. B. auf einem neuen Gerät).</li>
+                    <li><strong>Käufe wiederherstellen</strong> – Abonnement mit dem Store neu synchronisieren, in dem du es gekauft hast, App Store oder Google Play (z. B. auf einem neuen Gerät).</li>
                     <li>Promo- oder Angebotscodes können eingelöst werden, wo verfügbar.</li>
                 </ul>
-                <p>Showup prüft dein Apple-Abonnement beim Fortsetzen der App erneut und hält deinen Tarif automatisch synchron.</p>
+                <p>Showup prüft dein Abonnement beim Fortsetzen der App erneut beim Store und hält deinen Tarif automatisch synchron.</p>
             </article>
 
             <article class="help-article" id="account-security">
@@ -685,8 +883,19 @@
                 <ul>
                     <li><strong>E-Mail-Adresse aktualisieren</strong> und <strong>Passwort ändern</strong> erscheinen nur, wenn du dich mit E-Mail registriert hast (nicht mit Google oder Apple). Eine E-Mail-Änderung sendet einen Bestätigungslink an die neue Adresse; eine Passwortänderung erfordert dein aktuelles Passwort.</li>
                     <li><strong>Abmelden</strong> fragt vor dem Abmelden nach einer Bestätigung.</li>
-                    <li><strong>Support kontaktieren</strong> öffnet ein Support-Formular. <strong>Datenschutz</strong> und <strong>Nutzungsbedingungen</strong> öffnen sich im Browser.</li>
+                    <li><strong>Support kontaktieren</strong> öffnet ein Formular, das unserem Support-Team eine E-Mail schickt. <strong>Datenschutz</strong> und <strong>Nutzungsbedingungen</strong> öffnen sich im Browser.</li>
                 </ul>
+            </article>
+
+            <article class="help-article" id="account-devices">
+                <h1>Gerätelimit</h1>
+                <p>Dein Konto kann nur auf einer begrenzten Zahl von Geräten gleichzeitig angemeldet sein. Meldest du dich auf einem weiteren an, wird die Anmeldung blockiert und du siehst einen Hinweis dazu.</p>
+                <ul>
+                    <li>Du kannst Showup auf <strong>bis zu 2 Geräten</strong> gleichzeitig nutzen.</li>
+                    <li>Zwischen Gerätewechseln liegt eine <strong>Wartezeit von 7 Tagen</strong>, damit Geräte nicht ständig getauscht werden.</li>
+                    <li>Um einen Platz frei zu machen, melde dich auf einem Gerät ab, das du nicht mehr nutzt. Läuft gerade die Wartezeit, zeigt der Hinweis, wie viele Tage noch bleiben.</li>
+                </ul>
+                <p class="help-callout">Am schnellsten geht es, wenn du dich auf einem Gerät abmeldest, das du noch hast. Ist das Gerät verloren oder kannst du dich dort nicht abmelden, schreib an <a href="mailto:support@showupcounts.com?subject=Ger%C3%A4telimit">support@showupcounts.com</a> – wir setzen es für dich zurück.</p>
             </article>
 
             <article class="help-article" id="account-close">
@@ -700,7 +909,7 @@
                     Das Löschen deines Showup-Kontos ist <strong>dauerhaft und nicht rückgängig zu machen</strong>.
                 </p>
                 <p>
-                    <strong>Kündige vor dem Löschen ein laufendes Abonnement.</strong> Das Löschen deines Kontos kündigt ein aktives Abonnement nicht, da die Abrechnung vom Store verwaltet wird. Kündige es zuerst:
+                    <strong>Kündige vor dem Löschen ein laufendes Abonnement.</strong> Die Abrechnung verwaltet der Store, nicht wir — das Löschen deines Kontos würde ein Abonnement also nicht beenden. Deshalb bleibt die Schaltfläche <strong>Konto löschen</strong> deaktiviert, solange ein kostenpflichtiges Abonnement aktiv ist. Kündige es zuerst:
                 </p>
                 <ul>
                     <li><strong>Android:</strong> Google Play Store → dein Profil → <em>Zahlungen &amp; Abos → Abos</em> → Showup → Kündigen.</li>
@@ -714,21 +923,32 @@
                     <li>Gib zur Bestätigung den Namen jedes Space ein, der dir gehört, und bestätige dann die Löschung.</li>
                 </ol>
                 <p>
-                    Falls du nicht auf die App zugreifen kannst, schreibe von der E-Mail-Adresse deines Kontos an <a href="mailto:support@showupcounts.com">support@showupcounts.com</a> mit dem Betreff „Konto löschen", und wir prüfen die Inhaberschaft und bearbeiten es.
+                    Falls du nicht auf die App zugreifen kannst, schreibe von der E-Mail-Adresse deines Kontos an <a href="mailto:support@showupcounts.com">support@showupcounts.com</a> mit dem Betreff „Delete my account“ (bitte genau so in englischer Sprache), und wir prüfen die Inhaberschaft und bearbeiten es.
                 </p>
                 <p><strong>Was gelöscht wird:</strong></p>
                 <ul>
                     <li>Dein Konto und deine Anmeldedaten (E-Mail/Passwort und jede Google-, Apple- oder Naver-Anmeldung).</li>
-                    <li>Dein Profil, dein Benutzername und deine App-Einstellungen.</li>
+                    <li>Dein Profil, dein Benutzername und deine App-Einstellungen — einschließlich deiner registrierten Geräte und ihrer Push-Tokens.</li>
                     <li>Deine Fitnessdaten: persönliche Rekorde, Benchmark-Rekorde und Workout-Scores.</li>
-                    <li>Deine Community-Beiträge und Kommentare sowie hochgeladene Fotos oder Videos.</li>
-                    <li>Deine Space-Mitgliedschaften und Benachrichtigungen.</li>
+                    <li>Von dir verfasste Beiträge samt ihrer Fotos, Videos, Kommentare und Reaktionen.</li>
+                    <li>Kommentare, die du zu Workouts, Scores und Beiträgen anderer geschrieben hast.</li>
+                    <li>Deine Mitgliedschaft in jedem Space und deine Benachrichtigungen.</li>
                 </ul>
                 <p><strong>Was aufbewahrt wird:</strong></p>
                 <ul>
                     <li>Spaces, die du erstellt hast und die noch andere Mitglieder haben, werden <strong>archiviert, nicht gelöscht</strong>, damit diese Mitglieder ihre eigene Score-Historie und Rekorde behalten.</li>
-                    <li>Aufzeichnungen, die aus rechtlichen, steuerlichen oder finanziellen Gründen erforderlich sind, werden für den gesetzlich vorgeschriebenen Zeitraum aufbewahrt und danach gelöscht.</li>
+                    <li>Deine Buchungs- und Guthaben-Historie in den Spaces, denen du angehört hast.</li>
+                    <li>Support-Anfragen, die du uns geschickt hast, und Meldungen, die du eingereicht hast.</li>
+                    <li>Einladungen, die du verschickt hast, und Beitrittsanfragen, die du gestellt hast.</li>
+                    <li>Deine Reaktionen auf Inhalte anderer sowie Medien oder Workouts, die du zu einem Space beigetragen hast, der dir nicht gehört — sie bleiben Teil der Aufzeichnungen dieses Space.</li>
+                    <li>Einträge in der Mitgliedschaftshistorie eines Space, in denen du genannt wirst.</li>
+                    <li>Kauf- und Transaktionsaufzeichnungen bei uns, bei unserem Abo-Dienstleister und beim App-Store — für den Zeitraum, den Steuer-, Buchhaltungs- und Verbraucherschutzrecht vorschreiben.</li>
+                    <li>Der Nachweis, dass eine Löschung beantragt und durchgeführt wurde — als Beleg dafür, dass wir deinem Wunsch nachgekommen sind.</li>
+                    <li>Bereits erfasste Absturzberichte.</li>
                 </ul>
+                <p>
+                    Wenn du möchtest, dass etwas davon entfernt wird, schreib uns — wir löschen alles, wozu wir nicht gesetzlich verpflichtet sind, es aufzubewahren. Abschnitt 8 der <a href="legal/privacy-de.html">Datenschutzerklärung</a> legt das vollständig dar.
+                </p>
                 <p>
                     <strong>Zeitrahmen:</strong> Die Löschung beginnt, sobald du bestätigst, und ist normalerweise innerhalb von Minuten abgeschlossen; in allen Fällen ist sie innerhalb von <strong>30 Tagen</strong> vollständig abgeschlossen, mit Ausnahme von Daten, die wir gesetzlich aufbewahren müssen.
                 </p>
@@ -736,6 +956,7 @@
 
             <div class="help-contact-box">
                 <p>Nichts Passendes gefunden? <a href="contact-de.html">Kontaktiere uns</a>.</p>
+                <p class="help-updated">Zuletzt aktualisiert: 25. August 2026 · <a href="legal/privacy-de.html">Datenschutz</a> · <a href="legal/terms-de.html">Nutzungsbedingungen</a></p>
             </div>
         </main>
     </div>
