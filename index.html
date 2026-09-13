@@ -10,10 +10,7 @@
     <meta property="og:type" content="website">
     <link rel="icon" id="favicon" type="image/svg+xml" href="assets/favicon-dark.svg">
     <!-- Start the hero photo before the render-blocking stylesheets below -->
-    <link rel="preload" as="image" href="assets/images/hero-bg.webp" type="image/webp" fetchpriority="high">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=Comfortaa:wght@700&family=Inter:opsz,wght@14..32,100..900&family=Nunito:wght@900&family=Work+Sans:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="preload" as="image" href="assets/images/hero2-bg.webp" type="image/webp" fetchpriority="high">
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css">
 
     <!-- Prevent flash of wrong theme -->
@@ -25,6 +22,8 @@
             document.getElementById('favicon').href = theme === 'light' ? 'assets/favicon-light.svg' : 'assets/favicon-dark.svg';
         })();
     </script>
+
+        <link rel="stylesheet" href="assets/css/footer.css">
 
     <style>
         /* ============================================
@@ -85,15 +84,14 @@
         /* ============================================
            TYPOGRAPHY
            ============================================ */
-        .font-brand { font-family: 'Comfortaa', cursive; }
-        .font-display { font-family: 'Bowlby One', 'Gill Sans', sans-serif; }
+        .font-display { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif; }
         .font-body { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif; }
 
         h1, h2, h3, h4 {
-            font-family: 'Bowlby One', 'Gill Sans', sans-serif;
-            line-height: 1.0;
-            letter-spacing: -0.01em;
-            font-weight: 400;
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            line-height: 1.05;
+            letter-spacing: -0.02em;
+            font-weight: 800;
         }
         :lang(ko) h1, :lang(ko) h2, :lang(ko) h3, :lang(ko) h4,
         :lang(ko) .hero-headline,
@@ -107,7 +105,6 @@
             letter-spacing: -0.02em;
         }
         :lang(ko) .hero-headline .block { line-height: 1.1; }
-
 
         /* ============================================
            BUTTONS
@@ -126,14 +123,16 @@
             border: 2px solid transparent;
             white-space: nowrap;
             text-transform: uppercase;
-            letter-spacing: 0.06em;
+            letter-spacing: normal;
         }
-        .btn-primary {
+        .btn-primary,
+        .btn-android {
             background: #fff;
             color: #0A0A0A;
             border-color: #fff;
         }
-        .btn-primary:hover {
+        .btn-primary:hover,
+        .btn-android:hover {
             opacity: 0.85;
         }
         .btn-secondary {
@@ -142,15 +141,6 @@
             border: 2px solid rgba(255, 255, 255, 0.3);
         }
         .btn-secondary:hover {
-            border-color: #fff;
-        }
-        .btn-android {
-            background: transparent;
-            color: #fff;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            position: relative;
-        }
-        .btn-android:hover {
             border-color: #fff;
         }
         /* Hero (first screen) download buttons stay white in any theme — they sit on the dark photo.
@@ -321,7 +311,7 @@
             z-index: 0;
             overflow: hidden;
             /* Inline 32px placeholder so the hero is never blank while the photo loads */
-            background: #0A0A0A url('data:image/webp;base64,UklGRvoAAABXRUJQVlA4IO4AAABwBQCdASogABIAPrVQoEqnJSMhsBgIAOAWiWcAxkAKpDNmTpMKa1fdRa31HIpZLMXEBX4AAMtPSdtPl+yaOwCLUZISzJTusBV4flCt+9sCQcJoqdo3n3rZgdI2Nb8bt1N0povAb8gd9+J2fzfbQHJJwLwc/chtVRtaR7So36Mrtf3GbXJeVf103wxXixhlCoYVIL4r2cn0Vbs8CgH+hdqErzcTAlw/3fEy0nIuensrCl9BZnq6jZwv57P/Iufhz7wy73HvclQciMxxRG/SUF64su5ZC/yKfJg3af7rn1Ub++uET95dlUrCBZhEAAAA') center / cover no-repeat;
+            background: #0A0A0A url('data:image/webp;base64,UklGRi4BAABXRUJQVlA4ICIBAACQBgCdASogABYAPrVKoUunJCMhsBgIAOAWiWMAvz64n5ltXyo6oZNSJUGPoYfuUGxCex/snWpL34GT9WmAAP7ffGwEzP5sSxrQD9/sEEIiHZmVrcmjY6S0s1frKkwg/wOsQkiMEHW7nhDonLECQVM85rGY980l/gDE7G4JMiDVJRdzgqGDRosHe3jdjIXgZCt/5XRR+cD15NChlGJ1ORWaZUeWHYRLB2h2PtMHRzCLm/v1cN9lcwnYSNb70o5dyo8moy9WP/W3dD0APbB8MLZ9ETXEWPaRu/tgSU3Sj6xCoJGpKipOnvdISdyXJLz1KUNEp67YJ82c7iBgTy7hQHa3efD82ZzQkIXQ61w18f9F2acz3nNOorK9vqAUvJwGlBF4AA==') center / cover no-repeat;
         }
         .orb, .orb-1, .orb-2, .orb-3 { display: none; }
         .hero-bg picture { display: contents; }
@@ -336,7 +326,14 @@
         .hero-scrim {
             position: absolute;
             inset: 0;
-            background: linear-gradient(180deg, rgba(10,10,10,0.60) 0%, rgba(10,10,10,0.55) 45%, rgba(10,10,10,0.75) 100%);
+            /* Clear photo up top; the dark wash only comes in behind the headline and CTAs */
+            background: linear-gradient(180deg,
+                rgba(10,10,10,0) 0%,
+                rgba(10,10,10,0) 50%,
+                rgba(10,10,10,0.22) 60%,
+                rgba(10,10,10,0.55) 70%,
+                rgba(10,10,10,0.78) 80%,
+                rgba(10,10,10,0.88) 100%);
         }
         /* Fade the bottom edge of the hero photo into the page background */
         .hero-bg::after {
@@ -347,15 +344,6 @@
             bottom: 0;
             height: 3%;
             background: linear-gradient(180deg, transparent 0%, var(--bg-primary) 100%);
-            pointer-events: none;
-        }
-        .hero-logo {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: clamp(320px, 60vw, 920px);
-            z-index: 2;
             pointer-events: none;
         }
         .hero-content {
@@ -413,17 +401,6 @@
             color: var(--text-primary);
             -webkit-text-fill-color: var(--text-primary);
         }
-        .nav-logo {
-            transition: opacity 0.3s ease;
-        }
-        .nav-logo.hidden {
-            opacity: 0;
-            pointer-events: none;
-        }
-        .nav-logo.visible {
-            opacity: 1;
-            pointer-events: auto;
-        }
         .hero-ctas {
             display: flex;
             align-items: center;
@@ -461,12 +438,11 @@
             margin: 0 auto 48px;
         }
         .hero-bottom-headline {
-            font-family: 'Bowlby One', 'Gill Sans', sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif;
             font-size: clamp(1.9rem, 5.4vw, 4.2rem);
-            font-weight: 400;
-            line-height: 1.05;
-            letter-spacing: -0.01em;
-            text-transform: uppercase;
+            font-weight: 900;
+            line-height: 0.95;
+            letter-spacing: -0.035em;
             text-align: center;
             color: #fff;
             margin: 0 auto 20px;
@@ -531,13 +507,13 @@
         }
         .features-intro h2 {
             font-size: clamp(2rem, 5vw, 3.5rem);
-            font-weight: 400;
+            font-weight: 900;
+            line-height: 0.95;
             margin-bottom: 16px;
             opacity: 0;
             transform: translateY(30px);
             transition: all 0.4s ease;
-            text-transform: uppercase;
-            letter-spacing: -0.01em;
+            letter-spacing: -0.035em;
         }
         .features-intro p {
             font-size: clamp(1rem, 2vw, 1.15rem);
@@ -688,44 +664,25 @@
         }
         .feature-tag {
             display: inline-block;
-            padding: 4px 10px 3px;
-            border-radius: 0;
+            padding: 5px 12px;
+            border-radius: 100px;
             font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            font-weight: 800;
-            font-size: 0.7rem;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
+            font-weight: 700;
+            font-size: 0.78rem;
+            letter-spacing: -0.01em;
+            text-transform: none;
             margin-bottom: 16px;
             border: none;
-            background: #fff;
-            color: #0A0A0A;
-            transform: rotate(-1.5deg);
+            background: rgba(255, 255, 255, 0.10);
+            color: #fff;
         }
-        .tag-community, .tag-workouts, .tag-collaborate,
-        .tag-posts, .tag-whiteboard, .tag-media, .tag-booking {
-            background: #fff;
-            color: #0A0A0A;
-            border: none;
-        }
-        .feature-panel[data-index="0"] .feature-tag { transform: rotate(-2.5deg); }
-        .feature-panel[data-index="1"] .feature-tag { transform: rotate(1.8deg); }
-        .feature-panel[data-index="2"] .feature-tag { transform: rotate(-1deg); }
-        .feature-panel[data-index="3"] .feature-tag { transform: rotate(3deg); }
-        .feature-panel[data-index="4"] .feature-tag { transform: rotate(-2deg); }
-        .feature-panel[data-index="5"] .feature-tag { transform: rotate(1.2deg); }
-        .feature-panel[data-index="6"] .feature-tag { transform: rotate(-3deg); }
-        .feature-panel[data-index="7"] .feature-tag { transform: rotate(2.2deg); }
-        .feature-panel[data-index="8"] .feature-tag { transform: rotate(-1.5deg); }
-        .feature-panel[data-index="9"] .feature-tag { transform: rotate(2.6deg); }
-        .feature-panel[data-index="10"] .feature-tag { transform: rotate(-2.2deg); }
 
         .feature-panel h3 {
             font-size: clamp(1.5rem, 2.8vw, 2.2rem);
-            font-weight: 400;
+            font-weight: 900;
             margin-bottom: 14px;
-            line-height: 1.05;
-            text-transform: uppercase;
-            letter-spacing: -0.01em;
+            line-height: 0.95;
+            letter-spacing: -0.035em;
         }
         .feature-panel p {
             font-size: 1rem;
@@ -757,18 +714,24 @@
         }
         .pricing-header h2 {
             font-size: clamp(2rem, 5vw, 3.5rem);
-            font-weight: 400;
+            font-weight: 900;
+            line-height: 0.95;
             margin-bottom: 12px;
-            text-transform: uppercase;
-            letter-spacing: -0.01em;
+            letter-spacing: -0.035em;
         }
         .pricing-header p {
             color: var(--text-secondary);
             font-size: 1.1rem;
         }
+        .pricing-prompts {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            margin-top: 28px;
+        }
         .pricing-help-prompt {
             display: inline-block;
-            margin-top: 28px;
             color: var(--text-secondary);
             font-size: 1rem;
             text-decoration: underline;
@@ -901,98 +864,6 @@
         }
 
         /* ============================================
-           FOOTER
-           ============================================ */
-        .footer {
-            border-top: 1px solid var(--border);
-            padding: 80px 24px 40px;
-            background: var(--bg-primary);
-        }
-        .footer-inner {
-            max-width: 1080px;
-            margin: 0 auto;
-        }
-        .footer-top {
-            display: grid;
-            grid-template-columns: 1.2fr 2fr;
-            gap: 64px;
-            margin-bottom: 64px;
-        }
-        .footer-logo {
-            display: inline-block;
-            margin-bottom: 16px;
-        }
-        .footer-logo img {
-            height: 34px;
-            width: auto;
-        }
-        .footer-brand p {
-            color: var(--text-secondary);
-            font-size: 0.92rem;
-            line-height: 1.6;
-            max-width: 280px;
-        }
-        .footer-links {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 32px;
-        }
-        .footer-col h4 {
-            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            font-weight: 800;
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--text-tertiary);
-            margin-bottom: 20px;
-        }
-        .footer-col a {
-            display: block;
-            color: var(--text-secondary);
-            font-size: 0.92rem;
-            padding: 6px 0;
-            transition: color 0.2s ease;
-        }
-        .footer-col a:hover { color: #fff; }
-        .footer-bottom {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding-top: 32px;
-            border-top: 1px solid var(--border);
-            margin-left: calc(-50vw + 50%);
-            margin-right: calc(-50vw + 50%);
-            padding-left: 24px;
-            padding-right: 24px;
-        }
-        .footer-bottom p {
-            color: var(--text-tertiary);
-            font-size: 0.85rem;
-        }
-        .app-store-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 10px 20px;
-            border-radius: 0;
-            background: #fff;
-            color: #0A0A0A;
-            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            font-weight: 800;
-            font-size: 0.78rem;
-            transition: opacity 0.15s ease;
-            letter-spacing: 0.04em;
-            text-transform: uppercase;
-        }
-        .app-store-badge:hover {
-            opacity: 0.85;
-        }
-        .app-store-badge svg {
-            width: 18px;
-            height: 18px;
-        }
-
-        /* ============================================
            SECONDARY TEXT — Gill Sans regular, sentence case
            ============================================ */
         .hero-badge,
@@ -1004,18 +875,14 @@
         .pricing-tier,
         .pricing-period,
         .pricing-features li,
-        .footer-brand p,
-        .footer-col h4,
-        .footer-col a,
-        .footer-bottom p,
         .lang-current,
         .lang-menu button,
-        .app-store-badge,
         .btn {
             font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif;
             font-weight: 400;
             text-transform: none;
         }
+        .btn { font-weight: 500; }
 
         /* ============================================
            ANIMATIONS
@@ -1043,11 +910,19 @@
         }
         @media (max-width: 768px) {
             :root { --nav-height: 64px; }
+            /* The photo is cropped much tighter here, so hold the clear area longer */
+            .hero-scrim {
+                background: linear-gradient(180deg,
+                    rgba(10,10,10,0) 0%,
+                    rgba(10,10,10,0) 38%,
+                    rgba(10,10,10,0.45) 56%,
+                    rgba(10,10,10,0.78) 70%,
+                    rgba(10,10,10,0.88) 100%);
+            }
             .nav-links { display: none; }
             .nav-cta { display: none; }
             .nav-hamburger { display: none; }
             .hero { padding-top: calc(var(--nav-height) + 24px); }
-            .hero-logo { top: 42%; }
             /* hero headline keeps its fixed base size on mobile (no shrink) */
 
             /* Features mobile layout */
@@ -1086,16 +961,13 @@
             /* Pricing mobile */
             .pricing { padding: 80px 24px; }
             .pricing-cards { grid-template-columns: 1fr; max-width: 400px; }
-
-            /* Footer mobile */
-            .footer-top { grid-template-columns: 1fr; gap: 40px; }
-            .footer-links { grid-template-columns: repeat(3, 1fr); gap: 20px; }
-            .footer-bottom { flex-direction: column; gap: 20px; text-align: center; }
         }
         @media (max-width: 480px) {
+            /* The nav logo is centred, so keep it clear of the language/theme controls */
+            .nav-inner { padding: 0 16px; }
+            .nav-logo img { height: 28px; }
             .hero-ctas { flex-direction: column; width: 100%; }
             .hero-ctas .btn { width: 100%; justify-content: center; }
-            .footer-links { grid-template-columns: 1fr 1fr; }
             .iphone { height: min(460px, 52vh); aspect-ratio: 340 / 734; border-radius: 36px; }
             .iphone-screen { border-radius: 31px; }
             .feature-panel h3 { font-size: 1.25rem; }
@@ -1140,7 +1012,8 @@
         }
 
         /* Buttons */
-        [data-theme="light"] .btn-primary {
+        [data-theme="light"] .btn-primary,
+        [data-theme="light"] .btn-android {
             background: #1A1A1A;
             color: #F4F4F4;
             border-color: #1A1A1A;
@@ -1173,16 +1046,9 @@
             background: #1A1A1A;
             color: #fff;
         }
-        [data-theme="light"] .feature-tag,
-        [data-theme="light"] .tag-community,
-        [data-theme="light"] .tag-workouts,
-        [data-theme="light"] .tag-collaborate,
-        [data-theme="light"] .tag-posts,
-        [data-theme="light"] .tag-whiteboard,
-        [data-theme="light"] .tag-booking,
-        [data-theme="light"] .tag-media {
-            background: #1A1A1A;
-            color: #fff;
+        [data-theme="light"] .feature-tag {
+            background: rgba(0, 0, 0, 0.06);
+            color: var(--text-primary);
         }
         [data-theme="light"] .hero-tag {
             color: rgba(26, 26, 26, 0.85);
@@ -1227,41 +1093,13 @@
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18'%3E%3Cpath d='M7.5 12.3L4.2 9l1.05-1.05L7.5 10.2l5.25-5.25L13.8 6z' fill='%231A1A1A'/%3E%3C/svg%3E");
         }
 
-        /* Footer */
-        [data-theme="light"] .footer { background: var(--bg-primary); }
-        [data-theme="light"] .footer-col a:hover { color: var(--text-primary); }
-        [data-theme="light"] .app-store-badge {
-            background: #1A1A1A;
-            color: #F4F4F4;
-        }
-        [data-theme="light"] .btn-android {
-            color: var(--text-primary);
-            border-color: rgba(0, 0, 0, 0.2);
-        }
-        [data-theme="light"] .btn-android:hover {
-            border-color: #1A1A1A;
-        }
-
         /* Feature tags - inverted in light mode */
-        [data-theme="light"] .tag-community,
-        [data-theme="light"] .tag-workouts,
-        [data-theme="light"] .tag-collaborate,
-        [data-theme="light"] .tag-posts,
-        [data-theme="light"] .tag-whiteboard,
-        [data-theme="light"] .tag-media {
-            background: #1A1A1A;
-            color: #fff;
-            border: none;
-        }
 
         /* Gradient text in light mode — disabled, solid color */
         [data-theme="light"] .gradient-text {
             color: var(--text-primary);
             -webkit-text-fill-color: var(--text-primary);
         }
-
-        /* Light theme footer */
-        [data-theme="light"] .footer { background: var(--bg-primary); }
 
         /* ============================================
            THEME TOGGLE
@@ -1380,7 +1218,11 @@
         .nav.over-hero .lang-current,
         .nav.over-hero .theme-toggle,
         .nav.over-hero .lang-current:hover,
-        .nav.over-hero .theme-toggle:hover { color: #fff; }
+        .nav.over-hero .theme-toggle:hover {
+            color: #fff;
+            /* The photo runs at full brightness up here, so the white controls need their own shadow */
+            filter: drop-shadow(0 1px 2px rgba(0,0,0,0.9)) drop-shadow(0 0 7px rgba(0,0,0,0.6));
+        }
     </style>
 </head>
 <body>
@@ -1429,12 +1271,11 @@
     <section class="hero" id="hero">
         <div class="hero-bg">
             <picture>
-                <source srcset="assets/images/hero-bg.webp" type="image/webp">
-                <img class="hero-bg-img" src="assets/images/hero-bg.jpg" alt="" width="1376" height="768" fetchpriority="high">
+                <source srcset="assets/images/hero2-bg.webp" type="image/webp">
+                <img class="hero-bg-img" src="assets/images/hero2-bg.jpg" alt="" width="1920" height="1344" fetchpriority="high">
             </picture>
             <div class="hero-scrim"></div>
         </div>
-        <img class="hero-logo" src="assets/images/logo-light.svg" alt="showup">
         <div class="hero-content">
             <h1 class="hero-headline">
                 <span class="line" data-i18n="hero.line1">Build Your Squad.</span>
@@ -1451,7 +1292,7 @@
                 </a>
                 <a href="https://play.google.com/store/apps/details?id=com.showup.showupAndroid" target="_blank" rel="noopener" class="btn btn-android">
                     <svg viewBox="0 0 24 24" width="20" height="20"><path d="M1.22 0.345C0.947 0.639 0.787 1.089 0.787 1.674V22.326c0 0.585 0.16 1.035 0.433 1.329l0.07 0.068L13.068 12V11.862L1.29 0.277 1.22 0.345z" fill="#4285F4"/><path d="M17 16.003l-3.932-3.934V11.931L17 7.997l0.088 0.05 4.66 2.647c1.33 0.756 1.33 1.993 0 2.749L17.088 16.09 17 16.003z" fill="#FFBC00"/><path d="M17.088 16.09L13.068 12 1.22 23.655c0.439 0.465 1.162 0.522 1.982 0.058L17.088 16.09z" fill="#EA4335"/><path d="M17.088 7.91L3.202 0.287C2.382-0.177 1.659-0.12 1.22 0.345L13.068 12l4.02-4.09z" fill="#34A853"/></svg>
-                    <span data-i18n="hero.android">Download on Google Play</span>
+                    <span data-i18n="hero.android">GET IT ON Google Play</span>
                 </a>
             </div>
         </div>
@@ -1623,7 +1464,7 @@
             </a>
             <a href="https://play.google.com/store/apps/details?id=com.showup.showupAndroid" target="_blank" rel="noopener" class="btn btn-android">
                 <svg viewBox="0 0 24 24" width="20" height="20"><path d="M1.22 0.345C0.947 0.639 0.787 1.089 0.787 1.674V22.326c0 0.585 0.16 1.035 0.433 1.329l0.07 0.068L13.068 12V11.862L1.29 0.277 1.22 0.345z" fill="#4285F4"/><path d="M17 16.003l-3.932-3.934V11.931L17 7.997l0.088 0.05 4.66 2.647c1.33 0.756 1.33 1.993 0 2.749L17.088 16.09 17 16.003z" fill="#FFBC00"/><path d="M17.088 16.09L13.068 12 1.22 23.655c0.439 0.465 1.162 0.522 1.982 0.058L17.088 16.09z" fill="#EA4335"/><path d="M17.088 7.91L3.202 0.287C2.382-0.177 1.659-0.12 1.22 0.345L13.068 12l4.02-4.09z" fill="#34A853"/></svg>
-                <span data-i18n="hero.android">Download on Google Play</span>
+                <span data-i18n="hero.android">GET IT ON Google Play</span>
             </a>
         </div>
     </section>
@@ -1634,7 +1475,10 @@
         <div class="pricing-header">
             <h2 data-i18n="pricing.title">Start free. Grow from there.</h2>
             <p data-i18n="pricing.subtitle">Download and start building your community today.</p>
-            <a href="help.html" class="pricing-help-prompt" data-i18n="pricing.helpPrompt">Learn how to use the Showup app</a>
+            <div class="pricing-prompts">
+                <a href="pricing.html" class="pricing-help-prompt" data-i18n="pricing.compare">See what each plan includes</a>
+                <a href="help.html" class="pricing-help-prompt" data-i18n="pricing.helpPrompt">Learn how to use the Showup app</a>
+            </div>
         </div>
     </section>
 
@@ -1694,6 +1538,7 @@
 </main>
 
 <!-- Footer -->
+<!-- footer:start — generated by tools/sync_footer.py, edit there not here -->
 <footer class="footer">
     <div class="footer-inner">
         <div class="footer-top">
@@ -1702,7 +1547,17 @@
                     <img src="assets/images/logo-dark.svg" alt="showup" class="logo-dark">
                     <img src="assets/images/logo-light.svg" alt="showup" class="logo-light">
                 </a>
-                <p data-i18n="footer.desc">Build your fitness community. Connect. Train. Grow together.</p>
+                <p data-i18n="footer.desc">Show up together. Share the Grind.</p>
+                <div class="footer-store">
+                    <a href="https://apps.apple.com/app/showup-it-counts/id6761016399" target="_blank" rel="noopener" class="store-btn">
+                        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                        <span data-i18n="footer.appstore">App Store</span>
+                    </a>
+                    <a href="https://play.google.com/store/apps/details?id=com.showup.showupAndroid" target="_blank" rel="noopener" class="store-btn">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M1.22 0.345C0.947 0.639 0.787 1.089 0.787 1.674V22.326c0 0.585 0.16 1.035 0.433 1.329l0.07 0.068L13.068 12V11.862L1.29 0.277 1.22 0.345z" fill="#4285F4"/><path d="M17 16.003l-3.932-3.934V11.931L17 7.997l0.088 0.05 4.66 2.647c1.33 0.756 1.33 1.993 0 2.749L17.088 16.09 17 16.003z" fill="#FFBC00"/><path d="M17.088 16.09L13.068 12 1.22 23.655c0.439 0.465 1.162 0.522 1.982 0.058L17.088 16.09z" fill="#EA4335"/><path d="M17.088 7.91L3.202 0.287C2.382-0.177 1.659-0.12 1.22 0.345L13.068 12l4.02-4.09z" fill="#34A853"/></svg>
+                        <span data-i18n="footer.playstore">Google Play</span>
+                    </a>
+                </div>
             </div>
             <div class="footer-links">
                 <div class="footer-col">
@@ -1712,7 +1567,8 @@
                 </div>
                 <div class="footer-col">
                     <h4 data-i18n="footer.connect">Connect</h4>
-                    <a href="https://instagram.com/showupcounts" target="_blank">Instagram</a>
+                    <a href="https://instagram.com/showupcounts" target="_blank" rel="noopener">Instagram</a>
+                    <a href="pricing.html" data-i18n="nav.pricing">Pricing</a>
                     <a href="help.html" data-i18n="footer.help">Help Center</a>
                     <a href="contact.html" data-i18n="footer.contact">Contact</a>
                 </div>
@@ -1723,6 +1579,7 @@
         </div>
     </div>
 </footer>
+<!-- footer:end -->
 
 <script>
     /* ============================================
@@ -1740,14 +1597,12 @@
        NAVIGATION SCROLL STATE
        ============================================ */
     const nav = document.getElementById('nav');
-    const navLogo = document.querySelector('.nav-logo');
     function updateNav() {
         nav.classList.toggle('scrolled', window.scrollY > 40);
-        // While the hero background photo is still on screen: keep nav logo hidden + controls white
+        // While the hero background photo is still on screen, keep the nav controls white
         var heroEl = document.getElementById('hero');
         var heroBottom = heroEl ? heroEl.getBoundingClientRect().bottom : window.innerHeight;
         var overHero = heroBottom > 80;
-        navLogo.classList.toggle('hidden', overHero);
         nav.classList.toggle('over-hero', overHero);
     }
 
@@ -1914,7 +1769,7 @@
             'hero.bottom.tag5': 'Personal Programming',
             'hero.bottom.tag6': 'Solo',
             'hero.download': 'Download on App Store',
-            'hero.android': 'Download on Google Play',
+            'hero.android': 'GET IT ON Google Play',
             'hero.scroll': 'Scroll to explore',
             // Features intro
             'features.title': 'Everything your squad needs.<br>All in one place.',
@@ -1955,16 +1810,18 @@
             'pricing.title': 'Start free. Grow from there.',
             'pricing.subtitle': 'Download and start building your community today.',
             'pricing.helpPrompt': 'Learn how to use the Showup app',
+            'pricing.compare': 'See what each plan includes',
             // Footer
-            'footer.desc': 'Show up together. Share the wins.',
+            'footer.desc': 'Show up together. Share the Grind.',
             'footer.product': 'Product',
             'footer.legal': 'Legal',
             'footer.connect': 'Connect',
             'footer.terms': 'Terms of Service',
             'footer.help': 'Help Center',
             'footer.contact': 'Contact',
-            'footer.copyright': '\u00a9 2025 Showup. All rights reserved.',
-            'footer.appstore': 'Download on the App Store'
+            'footer.copyright': '\u00a9 2026 Showup. All rights reserved.',
+            'footer.appstore': 'App Store',
+            'footer.playstore': 'Google Play'
         },
         ko: {
             // Nav
@@ -2029,16 +1886,18 @@
             'pricing.title': '무료로 시작하세요.',
             'pricing.subtitle': '지금 다운로드하고 여러분의 크루를 만들어 보세요.',
             'pricing.helpPrompt': 'Showup 앱 사용방법 알아보기',
+            'pricing.compare': '플랜별로 무엇이 되는지 보기',
             // Footer
             'footer.desc': '함께 쇼업하고 성취를 나누는 곳.',
             'footer.product': '제품',
             'footer.legal': '법적 고지',
-            'footer.connect': '소셜',
+            'footer.connect': '연결',
             'footer.terms': '이용약관',
             'footer.help': '고객 센터',
             'footer.contact': '문의',
-            'footer.copyright': '\u00a9 2025 Showup. 모든 권리 보유.',
-            'footer.appstore': 'App Store에서 다운로드'
+            'footer.copyright': '\u00a9 2026 Showup. 모든 권리 보유.',
+            'footer.appstore': 'App Store',
+            'footer.playstore': 'Google Play'
         },
         de: {
             // Nav
@@ -2103,16 +1962,18 @@
             'pricing.title': 'Starte kostenlos. Wachse weiter.',
             'pricing.subtitle': 'Lade die App herunter und baue deine Community auf.',
             'pricing.helpPrompt': 'So nutzt du die Showup-App',
+            'pricing.compare': 'Sehen, was jeder Tarif enthält',
             // Footer
-            'footer.desc': 'Show up together. Erfolge teilen.',
+            'footer.desc': 'Show up together. Teile den Grind.',
             'footer.product': 'Produkt',
             'footer.legal': 'Rechtliches',
-            'footer.connect': 'Kontakt',
+            'footer.connect': 'Verbinden',
             'footer.terms': 'Nutzungsbedingungen',
             'footer.help': 'Hilfe-Center',
             'footer.contact': 'Kontakt',
-            'footer.copyright': '\u00a9 2025 Showup. Alle Rechte vorbehalten.',
-            'footer.appstore': 'Im App Store laden'
+            'footer.copyright': '\u00a9 2026 Showup. Alle Rechte vorbehalten.',
+            'footer.appstore': 'App Store',
+            'footer.playstore': 'Google Play'
         }
     };
 
@@ -2173,6 +2034,18 @@
         var helpFile = lang === 'en' ? 'help.html' : 'help-' + lang + '.html';
         document.querySelectorAll('a[data-i18n="footer.help"], a[data-i18n="pricing.helpPrompt"]').forEach(function(el) {
             el.setAttribute('href', helpFile);
+        });
+
+        // Same for the Pricing page (footer + the compare prompt under the pricing header)
+        var pricingFile = lang === 'en' ? 'pricing.html' : 'pricing-' + lang + '.html';
+        document.querySelectorAll('a[data-i18n="nav.pricing"], a[data-i18n="pricing.compare"]').forEach(function(el) {
+            el.setAttribute('href', pricingFile);
+        });
+
+        // ...and Contact, which otherwise keeps its English href while its label translates
+        var contactFile = lang === 'en' ? 'contact.html' : 'contact-' + lang + '.html';
+        document.querySelectorAll('a[data-i18n="footer.contact"]').forEach(function(el) {
+            el.setAttribute('href', contactFile);
         });
 
         // dropdown label and active state

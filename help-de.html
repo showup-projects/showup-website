@@ -11,9 +11,6 @@
     <link rel="alternate" hreflang="de" href="https://www.showupcounts.com/help-de.html">
     <link rel="alternate" hreflang="x-default" href="https://www.showupcounts.com/help.html">
     <link rel="icon" id="favicon" type="image/svg+xml" href="assets/favicon-dark.svg">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script>
         (function() {
             var theme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
@@ -27,6 +24,8 @@
             });
         })();
     </script>
+
+        <link rel="stylesheet" href="assets/css/footer.css">
 
     <style>
         :root {
@@ -56,7 +55,7 @@
 
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
-        body { font-family: 'Inter', sans-serif; color: var(--text-primary); background: var(--bg-primary); line-height: 1.6; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif; color: var(--text-primary); background: var(--bg-primary); line-height: 1.6; }
         a { color: inherit; text-decoration: none; }
         body::after { display: none; }
 
@@ -81,37 +80,37 @@
 
         .nav-actions { display: flex; align-items: center; gap: 8px; margin-left: auto; }
         .lang-dropdown { position: relative; flex-shrink: 0; }
-        .lang-current { display: flex; align-items: center; gap: 4px; padding: 6px 4px; background: transparent; border: none; color: var(--text-secondary); font-family: 'Inter', sans-serif; font-weight: 600; font-size: 0.75rem; letter-spacing: 0.04em; text-transform: uppercase; cursor: pointer; transition: color 0.2s ease; }
+        .lang-current { display: flex; align-items: center; gap: 4px; padding: 6px 4px; background: transparent; border: none; color: var(--text-secondary); font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 600; font-size: 0.75rem; letter-spacing: 0.04em; text-transform: uppercase; cursor: pointer; transition: color 0.2s ease; }
         .lang-current:hover { color: var(--text-primary); }
         .lang-current svg { width: 10px; height: 10px; transition: transform 0.2s ease; }
         .lang-dropdown.open .lang-current svg { transform: rotate(180deg); }
         .lang-menu { position: absolute; top: calc(100% + 6px); right: 0; background: var(--bg-primary); border: 1px solid var(--border); min-width: 100%; opacity: 0; pointer-events: none; transform: translateY(-4px); transition: opacity 0.15s ease, transform 0.15s ease; z-index: 100; }
         .lang-dropdown.open .lang-menu { opacity: 1; pointer-events: auto; transform: translateY(0); }
-        .lang-menu a { display: block; width: 100%; padding: 8px 12px; color: var(--text-secondary); font-family: 'Inter', sans-serif; font-weight: 600; font-size: 0.75rem; letter-spacing: 0.04em; text-transform: uppercase; text-decoration: none; transition: color 0.15s ease, background 0.15s ease; }
+        .lang-menu a { display: block; width: 100%; padding: 8px 12px; color: var(--text-secondary); font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 600; font-size: 0.75rem; letter-spacing: 0.04em; text-transform: uppercase; text-decoration: none; transition: color 0.15s ease, background 0.15s ease; }
         .lang-menu a:hover { color: var(--text-primary); background: rgba(255,255,255,0.06); }
         [data-theme="light"] .lang-menu a:hover { background: rgba(0,0,0,0.04); }
         .lang-menu a.active { color: var(--text-primary); }
 
         .help-layout { max-width: 1200px; margin: 0 auto; display: flex; align-items: flex-start; gap: 0; padding-top: var(--nav-height); }
         .help-sidebar { width: 280px; flex-shrink: 0; position: sticky; top: var(--nav-height); height: calc(100vh - var(--nav-height)); overflow-y: auto; border-right: 1px solid var(--border); padding: 40px 28px 48px 32px; }
-        .help-sidebar-title { font-family: 'Inter', sans-serif; font-weight: 900; font-size: 1.1rem; letter-spacing: -0.02em; text-transform: uppercase; margin-bottom: 20px; }
+        .help-sidebar-title { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 900; font-size: 1.1rem; letter-spacing: -0.02em; text-transform: uppercase; margin-bottom: 20px; }
         .help-search-wrap { margin-bottom: 28px; }
-        .help-search { width: 100%; padding: 10px 14px; background: var(--bg-secondary); border: 1px solid var(--border); color: var(--text-primary); font-family: 'Inter', sans-serif; font-size: 0.9rem; outline: none; transition: border-color 0.15s ease; }
+        .help-search { width: 100%; padding: 10px 14px; background: var(--bg-secondary); border: 1px solid var(--border); color: var(--text-primary); font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 0.9rem; outline: none; transition: border-color 0.15s ease; }
         .help-search::placeholder { color: var(--text-tertiary); }
         .help-search:focus { border-color: var(--text-secondary); }
         [data-theme="light"] .help-search { background: #FAFAFA; }
         .help-search-results { margin-bottom: 28px; }
         .help-search-empty { color: var(--text-tertiary); font-size: 0.9rem; padding: 8px 12px; }
         .help-nav-group { margin-bottom: 28px; }
-        .help-nav-group-title { font-family: 'Inter', sans-serif; font-weight: 400; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-tertiary); margin-bottom: 10px; padding-left: 12px; }
+        .help-nav-group-title { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 400; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-tertiary); margin-bottom: 10px; padding-left: 12px; }
         .help-nav-link { display: block; color: var(--text-secondary); font-size: 0.92rem; line-height: 1.4; padding: 8px 12px; border-left: 2px solid transparent; cursor: pointer; transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease; }
         .help-nav-link:hover { color: var(--text-primary); }
         .help-nav-link.active { color: var(--text-primary); font-weight: 600; border-left-color: var(--text-primary); background: rgba(255,255,255,0.05); }
         [data-theme="light"] .help-nav-link.active { background: rgba(0,0,0,0.04); }
 
         .help-main { flex: 1; min-width: 0; max-width: 760px; padding: 56px 24px 100px 56px; }
-        .help-article h1 { font-family: 'Inter', sans-serif; font-weight: 900; font-size: clamp(1.7rem, 3.2vw, 2.4rem); line-height: 1.15; letter-spacing: -0.035em; text-transform: uppercase; margin-bottom: 24px; word-break: break-word; hyphens: auto; }
-        .help-article h2 { font-family: 'Inter', sans-serif; font-weight: 900; font-size: 1.25rem; line-height: 1.25; letter-spacing: -0.02em; margin-top: 40px; margin-bottom: 14px; word-break: break-word; hyphens: auto; }
+        .help-article h1 { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 900; font-size: clamp(1.7rem, 3.2vw, 2.4rem); line-height: 1.15; letter-spacing: -0.035em; text-transform: uppercase; margin-bottom: 24px; word-break: break-word; hyphens: auto; }
+        .help-article h2 { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 900; font-size: 1.25rem; line-height: 1.25; letter-spacing: -0.02em; margin-top: 40px; margin-bottom: 14px; word-break: break-word; hyphens: auto; }
         .help-article p { color: var(--text-secondary); font-size: 0.98rem; line-height: 1.8; margin-bottom: 16px; }
         .help-article ul, .help-article ol { list-style: none; margin-bottom: 16px; padding-left: 0; }
         .help-article ul li, .help-article ol li { color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8; padding-left: 24px; position: relative; margin-bottom: 6px; }
@@ -148,7 +147,7 @@
         .help-contact-box a { color: var(--text-primary); text-decoration: underline; text-underline-offset: 3px; }
         .help-updated { margin-top: 14px !important; font-size: 0.85rem !important; color: var(--text-tertiary) !important; }
 
-        .help-mobile-label { display: none; font-family: 'Inter', sans-serif; font-weight: 400; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-tertiary); margin-bottom: 14px; }
+        .help-mobile-label { display: none; font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 400; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-tertiary); margin-bottom: 14px; }
 
         @media (max-width: 900px) {
             :root { --nav-height: 64px; }
@@ -876,6 +875,11 @@
                     <li>Promo- oder Angebotscodes können eingelöst werden, wo verfügbar.</li>
                 </ul>
                 <p>Showup prüft dein Abonnement beim Fortsetzen der App erneut beim Store und hält deinen Tarif automatisch synchron.</p>
+                <h2>Ein Abo gilt für alle deine Spaces</h2>
+                <p>Dein Tarif hängt an deinem Konto, nicht an einem einzelnen Space. Jeder Space, den du erstellst, erhält die vollen Tarif-Vorteile unabhängig — pro Space fällt nichts extra an.</p>
+                <h2>Wo die Zahlung läuft</h2>
+                <p>Die Preise legen App Store und Google Play in deiner Landeswährung fest und zeigen sie dort an; Zahlung, Verlängerung und Belege laufen über den Store, nicht über uns. Verwalte oder kündige dein Abo in dem Store, in dem du es gekauft hast — Kündigen ist ein eigener Schritt, getrennt vom <a data-target="account-close" href="#account-close">Löschen deines Kontos</a>.</p>
+                <p>Was jede Stufe im direkten Vergleich enthält, steht auf der <a href="pricing-de.html">Preise-Seite</a>.</p>
             </article>
 
             <article class="help-article" id="account-security">
@@ -960,6 +964,49 @@
             </div>
         </main>
     </div>
+
+    <!-- footer:start — generated by tools/sync_footer.py, edit there not here -->
+<footer class="footer">
+    <div class="footer-inner">
+        <div class="footer-top">
+            <div class="footer-brand">
+                <a href="index.html" class="footer-logo">
+                    <img src="assets/images/logo-dark.svg" alt="showup" class="logo-dark">
+                    <img src="assets/images/logo-light.svg" alt="showup" class="logo-light">
+                </a>
+                <p>Show up together. Teile den Grind.</p>
+                <div class="footer-store">
+                    <a href="https://apps.apple.com/app/showup-it-counts/id6761016399" target="_blank" rel="noopener" class="store-btn">
+                        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                        <span>App Store</span>
+                    </a>
+                    <a href="https://play.google.com/store/apps/details?id=com.showup.showupAndroid" target="_blank" rel="noopener" class="store-btn">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M1.22 0.345C0.947 0.639 0.787 1.089 0.787 1.674V22.326c0 0.585 0.16 1.035 0.433 1.329l0.07 0.068L13.068 12V11.862L1.29 0.277 1.22 0.345z" fill="#4285F4"/><path d="M17 16.003l-3.932-3.934V11.931L17 7.997l0.088 0.05 4.66 2.647c1.33 0.756 1.33 1.993 0 2.749L17.088 16.09 17 16.003z" fill="#FFBC00"/><path d="M17.088 16.09L13.068 12 1.22 23.655c0.439 0.465 1.162 0.522 1.982 0.058L17.088 16.09z" fill="#EA4335"/><path d="M17.088 7.91L3.202 0.287C2.382-0.177 1.659-0.12 1.22 0.345L13.068 12l4.02-4.09z" fill="#34A853"/></svg>
+                        <span>Google Play</span>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <div class="footer-col">
+                    <h4>Rechtliches</h4>
+                    <a href="legal/privacy-de.html">Datenschutz</a>
+                    <a href="legal/terms-de.html">Nutzungsbedingungen</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Verbinden</h4>
+                    <a href="https://instagram.com/showupcounts" target="_blank" rel="noopener">Instagram</a>
+                    <a href="pricing-de.html">Preise</a>
+                    <a href="help-de.html">Hilfe-Center</a>
+                    <a href="contact-de.html">Kontakt</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Showup. Alle Rechte vorbehalten.</p>
+        </div>
+    </div>
+</footer>
+<!-- footer:end -->
 
     <script>
         const themeToggle = document.getElementById('themeToggle');

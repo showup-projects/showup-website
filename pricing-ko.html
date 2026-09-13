@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>요금제 — showup</title>
+    <meta name="description" content="Showup 플랜별로 무엇이 되는지 한눈에 비교하세요 — 스페이스, 멤버, 세션, 미디어 한도와 기능 정리.">
+    <link rel="icon" id="favicon" type="image/svg+xml" href="assets/favicon-dark.svg">
+    <script>
+        (function() {
+            var stored = localStorage.getItem('theme');
+            var theme = stored || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+            document.documentElement.setAttribute('data-theme', theme);
+            document.getElementById('favicon').href = theme === 'light' ? 'assets/favicon-light.svg' : 'assets/favicon-dark.svg';
+        })();
+    </script>
+
+        <link rel="stylesheet" href="assets/css/footer.css">
+
+    <style>
+        :root {
+            --bg-primary: #0A0A0A;
+            --bg-secondary: #111111;
+            --text-primary: #FFFFFF;
+            --text-secondary: rgba(255, 255, 255, 0.6);
+            --text-tertiary: rgba(255, 255, 255, 0.35);
+            --accent-blue: #FFFFFF;
+            --border: rgba(255, 255, 255, 0.2);
+            --glass: #0A0A0A;
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --nav-height: 72px;
+        }
+
+        [data-theme="light"] {
+            --bg-primary: #FFFFFF;
+            --bg-secondary: #FFFFFF;
+            --text-primary: #1A1A1A;
+            --text-secondary: rgba(26, 26, 26, 0.55);
+            --text-tertiary: rgba(26, 26, 26, 0.3);
+            --accent-blue: #1A1A1A;
+            --border: rgba(0, 0, 0, 0.15);
+            --glass: #FFFFFF;
+            --glass-border: rgba(0, 0, 0, 0.15);
+        }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            color: var(--text-primary);
+            background: var(--bg-primary);
+            line-height: 1.6;
+            /* The full-bleed sticky bar is sized with 50vw, which counts the
+               scrollbar on platforms that reserve space for one. `clip` absorbs
+               that half-scrollbar without creating a scroll container, so it does
+               not break the bar's position: sticky the way `hidden` would. */
+            overflow-x: clip;
+        }
+        a { color: inherit; text-decoration: none; }
+
+        .sr-only {
+            position: absolute; width: 1px; height: 1px;
+            padding: 0; margin: -1px; overflow: hidden;
+            clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            height: var(--nav-height);
+            background: var(--bg-primary);
+            border: none;
+        }
+        .nav-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 32px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+        }
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .nav-logo img {
+            height: 34px;
+            width: auto;
+            display: block;
+        }
+        img.logo-dark { display: block; }
+        img.logo-light { display: none; }
+        [data-theme="light"] img.logo-dark { display: none; }
+        [data-theme="light"] img.logo-light { display: block; }
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-left: auto;
+        }
+        .lang-dropdown { position: relative; flex-shrink: 0; }
+        .lang-current {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            padding: 6px 4px;
+            background: transparent;
+            border: none;
+            color: var(--text-secondary);
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-weight: 600;
+            font-size: 0.75rem;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+        .lang-current:hover { color: var(--text-primary); }
+        .lang-current svg { width: 10px; height: 10px; transition: transform 0.2s ease; }
+        .lang-dropdown.open .lang-current svg { transform: rotate(180deg); }
+        .lang-menu {
+            position: absolute;
+            top: calc(100% + 6px);
+            right: 0;
+            background: var(--bg-primary);
+            border: 1px solid var(--border);
+            min-width: 100%;
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(-4px);
+            transition: opacity 0.15s ease, transform 0.15s ease;
+            z-index: 100;
+        }
+        .lang-dropdown.open .lang-menu { opacity: 1; pointer-events: auto; transform: translateY(0); }
+        .lang-menu a {
+            display: block;
+            width: 100%;
+            padding: 8px 12px;
+            color: var(--text-secondary);
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-weight: 600;
+            font-size: 0.75rem;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: color 0.15s ease, background 0.15s ease;
+        }
+        .lang-menu a:hover { color: var(--text-primary); background: rgba(255,255,255,0.06); }
+        [data-theme="light"] .lang-menu a:hover { background: rgba(0,0,0,0.04); }
+        .lang-menu a.active { color: var(--text-primary); }
+        .theme-toggle {
+            width: 38px;
+            height: 38px;
+            border: none;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            color: var(--text-secondary);
+        }
+        .theme-toggle:hover { color: var(--text-primary); }
+        .theme-toggle svg { width: 18px; height: 18px; transition: transform 0.2s ease; }
+        .theme-toggle:hover svg { transform: rotate(15deg); }
+        .icon-sun { display: block; }
+        .icon-moon { display: none; }
+        [data-theme="light"] .icon-sun { display: none; }
+        [data-theme="light"] .icon-moon { display: block; }
+
+        /* Content */
+        .pricing-lede {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            line-height: 1.7;
+            max-width: 760px;
+            margin-bottom: 40px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .plan-legend {
+            font-size: 0.85rem !important;
+            color: var(--text-tertiary) !important;
+            margin-bottom: 0 !important;
+        }
+
+        /* Korean line breaking */
+        .plans-head p, .plans-note,
+        .plan-free .ds, .plan-free ul, .plan-c ul,
+        .plans-every h2, .plans-every > p, .plans-every li,
+        .plans-store { word-break: keep-all; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            :root { --nav-height: 64px; }
+        }
+        
+        @media (prefers-reduced-motion: reduce) {
+            * { transition-duration: 0.01ms !important; }
+        }
+
+        /* ============================================
+           PRICING — PLAN CARDS
+           ============================================ */
+        :root { --plan-card: #1C1C1E; --plan-card-line: rgba(255,255,255,0.10); --plan-go: #30D158; --plan-go-bg: rgba(48,209,88,0.14); --plan-seg: #2C2C2E; --plan-seg-on: #48484A; --plan-tip: #3A3A3C; --plan-tip-fg: #FFFFFF; }
+        [data-theme="light"] { --plan-card: #F2F2F4; --plan-card-line: rgba(0,0,0,0.09); --plan-go: #2B6B41; --plan-go-bg: #DCEFE3; --plan-seg: #ECECEE; --plan-seg-on: #FFFFFF; --plan-tip: #1F1F21; --plan-tip-fg: #F5F5F7; }
+
+        .plans { max-width: 1040px; margin: 0 auto; padding: calc(var(--nav-height) + 64px) 24px 100px; }
+        .plans-head { text-align: center; max-width: 620px; margin: 0 auto 30px; }
+        .plans-head h1 { font-size: clamp(2.1rem, 5.5vw, 3.2rem); font-weight: 900; letter-spacing: -0.035em; line-height: 0.95; }
+        .plans-head p { color: var(--text-secondary); font-size: 15px; line-height: 1.7; margin-top: 14px; }
+
+        /* 1fr auto 1fr keeps the switch centred on the page while the currency sits
+           hard right, without the two having to know each other's width. */
+        /* Pinned under the nav so the reader can switch cycle or currency from
+           anywhere in the plan list instead of scrolling back up for it. The
+           savings line rides along, since it is what the switch is answering. */
+        .plans-sticky { position: sticky; top: var(--nav-height); z-index: 4;
+            background: var(--bg-primary);
+            /* Full-bleed. The bar reads as a continuation of the fixed nav above it,
+               so its background and divider have to reach both window edges instead
+               of stopping at the 1040px container — otherwise the line looks cut off
+               on wide screens and cards show through the gutters. The paddings put
+               the controls back on the container's own left and right edges, and the
+               whole thing collapses to the old 24px inset once the window is narrower
+               than the container. */
+            margin-left: calc(-50vw + 50%); margin-right: calc(-50vw + 50%);
+            margin-bottom: 12px;
+            padding: 12px calc(50vw - 50%);
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s ease; }
+        /* Only once it is actually pinned, so it reads flat in its resting place. */
+        .plans-sticky.is-stuck { border-bottom-color: var(--border); }
+        .plans-controls { display: grid; grid-template-columns: 1fr auto 1fr;
+            align-items: center; gap: 12px; margin-bottom: 10px; }
+        /* Equal halves, always. The savings copy used to live inside the Annual button and
+           made it roughly twice the width of Monthly, at which point the control stopped
+           reading as a switch at all; that copy is now the line underneath. */
+        .plans-seg { grid-column: 2; display: grid; grid-template-columns: 1fr 1fr;
+            background: var(--plan-seg); border-radius: 11px; padding: 3px; gap: 2px; }
+        .plans-seg button { font-family: inherit; font-size: 14px; font-weight: 600; color: var(--text-primary);
+            background: none; border: 0; padding: 9px 16px; min-width: 116px; white-space: nowrap;
+            border-radius: 8px; cursor: pointer; transition: background 0.15s ease; }
+        .plans-seg button[aria-selected="true"] { background: var(--plan-seg-on); }
+        [data-theme="light"] .plans-seg button[aria-selected="true"] { box-shadow: 0 1px 3px rgba(0,0,0,0.12); }
+        .plans-cur { position: relative; }
+        .plans-cur select { font-family: inherit; font-size: 13.5px; font-weight: 600; color: var(--text-primary);
+            background: var(--plan-card); border: 1px solid var(--plan-card-line); border-radius: 10px;
+            padding: 8px 34px 8px 14px; cursor: pointer; -webkit-appearance: none; appearance: none; }
+        .plans-cur::after { content: ''; position: absolute; right: 14px; top: 50%; width: 7px; height: 7px;
+            border: 1.5px solid var(--text-secondary); border-top: 0; border-left: 0;
+            transform: translateY(-70%) rotate(45deg); pointer-events: none; }
+        .plans-note { text-align: center; color: var(--text-secondary); font-size: 12.5px; min-height: 18px; margin-bottom: 0; }
+        /* The saving is the reason to read this line at all, so it keeps the accent colour
+           the switch used to carry before the copy moved out of it. */
+        .plans-note b { color: var(--plan-go); font-weight: 700; }
+
+        /* Explains a term the reader may not know without sending them off the page.
+           Focusable, and the tooltip text doubles as the accessible name so it is not
+           available to sighted mouse users only. */
+        /* The tooltip hangs off the list row, not off the 15px icon. Anchored to the
+           icon it was centred on a point near the card's right edge, so half of it
+           hung outside the card and widened the whole document — the Pricing page
+           scrolled sideways below ~1000px. Anchored to the row and capped at the
+           row's width it can never reach past the card. */
+        .plan-c li, .plan-free li { position: relative; }
+        .info { display: inline-flex; align-items: center; justify-content: center;
+            width: 15px; height: 15px; margin-left: 6px; vertical-align: middle; border-radius: 50%;
+            border: 1px solid var(--text-tertiary); color: var(--text-tertiary);
+            font-size: 10px; font-weight: 700; line-height: 1; letter-spacing: 0; cursor: help; }
+        .info:hover, .info:focus-visible { color: var(--text-primary); border-color: var(--text-primary); outline: none; }
+        .info::after { content: attr(data-tip); position: absolute; bottom: calc(100% + 8px); left: 50%;
+            transform: translateX(-50%); width: min(226px, 100%); padding: 9px 11px; border-radius: 10px;
+            background: var(--plan-tip); color: var(--plan-tip-fg); font-size: 12px; font-weight: 400;
+            line-height: 1.5; text-align: left; white-space: normal; opacity: 0; pointer-events: none;
+            transition: opacity 0.15s ease; z-index: 5; }
+        .info:hover::after, .info:focus-visible::after { opacity: 1; }
+        @media (max-width: 560px) { .info::after { width: min(190px, 100%); }
+        }
+        /* Narrow phones: let the switch shrink to its text so it and the currency
+           select still share one row inside the pinned bar. */
+        @media (max-width: 480px) {
+            .plans-seg button { min-width: 0; padding: 9px 12px; }
+        }
+
+        .plan-free { background: var(--plan-card); border-radius: 22px; padding: 24px 26px;
+            display: flex; align-items: center; gap: 22px; flex-wrap: wrap; margin-bottom: 14px; }
+        .plan-free .l { flex: 1 1 240px; }
+        /* Plan names carry the index.html headline stack (SF Pro Display), not the
+           SF Pro Text stack the rest of the page inherits from body. The Free banner
+           and the tier cards share one rule so the two can never drift apart. */
+        .plan-free .nm, .plan-c .nm {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-size: 26px;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.15;
+        }
+        .plan-free .ds { color: var(--text-secondary); font-size: 13.5px; line-height: 1.6; margin-top: 4px; }
+        .plan-free .r { flex: 1 1 260px; }
+        .plan-free .r .acct { margin-top: 0; }
+        .plan-free .p { font-size: 34px; font-weight: 900; letter-spacing: -0.04em; }
+
+        .plan-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+        @media (max-width: 900px) { .plan-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 560px) { .plan-grid { grid-template-columns: 1fr; }
+        }
+        .plan-c { background: var(--plan-card); border-radius: 22px; padding: 24px 22px; display: flex; flex-direction: column; }
+        .plan-c .p { font-size: 38px; font-weight: 900; letter-spacing: -0.045em; line-height: 1; margin: 10px 0 2px; }
+        .plan-c .p small { font-size: 14px; font-weight: 600; color: var(--text-secondary); letter-spacing: 0; }
+        .plan-c .p.pending { font-size: 15px; font-weight: 600; letter-spacing: -0.01em; line-height: 1.5;
+            color: var(--text-secondary); margin: 12px 0 0; }
+        .plan-c .sub { font-size: 12.5px; color: var(--text-secondary); }
+        .plan-c .save { margin-top: 8px; align-self: flex-start; font-size: 11.5px; font-weight: 700;
+            color: var(--plan-go); background: var(--plan-go-bg); border-radius: 7px; padding: 4px 9px; }
+        /* Account-level first, then the per-space group — same split as the app's Change Plan card */
+        .plan-c ul, .plan-free .r ul { list-style: none; font-size: 13.5px; line-height: 1.95; }
+        .plan-c .acct, .plan-free .r .acct { margin-top: 16px; color: var(--text-primary); font-weight: 700; }
+        .plan-c .acct li.pri { color: var(--plan-go); }
+        .plan-c .grp, .plan-free .r .grp { margin-top: 14px; font-size: 11.5px; font-weight: 700; letter-spacing: 0.04em;
+            text-transform: uppercase; color: var(--text-tertiary); }
+        .plan-c .each, .plan-free .r .each { margin-top: 6px; padding-left: 13px; border-left: 2px solid var(--plan-card-line);
+            color: var(--text-secondary); }
+        .plan-c .price { margin-top: auto; padding-top: 18px; }
+        .plan-c .p { margin: 0; }
+        .plan-c .trial { margin-top: 10px; font-size: 12px; font-weight: 700; color: var(--plan-go); }
+        .plan-c .cancel { margin-top: 3px; font-size: 11.5px; color: var(--text-tertiary); }
+
+        .plans-store { text-align: center; color: var(--text-tertiary); font-size: 12.5px; line-height: 1.7; margin-top: 22px; }
+
+        .plans-every { margin-bottom: 30px; }
+        .plans-every h2 { font-size: clamp(1.4rem, 3vw, 1.9rem); font-weight: 800; letter-spacing: -0.025em; text-align: center; }
+        .plans-every > p { color: var(--text-secondary); font-size: 14px; text-align: center; margin-top: 8px; }
+        .plans-every ul { list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 12px; margin-top: 22px; }
+        .plans-every li { background: var(--plan-card); border-radius: 16px; padding: 16px 18px;
+            font-size: 13.5px; line-height: 1.65; color: var(--text-secondary); }
+        .plans-every li strong { display: block; color: var(--text-primary); font-weight: 700; font-size: 14.5px; margin-bottom: 3px; }
+
+        .plans-curw { grid-column: 3; justify-self: end; display: flex; align-items: center; gap: 10px; }
+        .plans-curw > label { font-size: 13px; color: var(--text-secondary); }
+
+        @media (max-width: 768px) {
+            .plans { padding-top: calc(var(--nav-height) + 40px); }
+            /* column flex would read `flex-basis` as a height, leaving a tall gap */
+            .plan-free { flex-direction: column; align-items: flex-start; gap: 14px; }
+            .plan-free .l, .plan-free .r { flex: none; }
+            /* One compact row, so the pinned bar costs as little height as possible.
+               The select already reads "$ USD", which makes the label redundant here. */
+            .plans-sticky { padding-top: 10px; padding-bottom: 10px; }
+            .plans-controls { grid-template-columns: auto auto; justify-content: space-between;
+                gap: 10px; margin-bottom: 8px; }
+            /* Two lines of note inside a pinned bar eats the screen; keep it to one. */
+            .plans-note { font-size: 12px; line-height: 1.35; }
+            .plans-seg { grid-column: 1; justify-self: start; }
+            .plans-curw { grid-column: 2; justify-self: end; }
+            .plans-curw > label { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="index.html" class="nav-logo">
+                <img src="assets/images/logo-dark.svg" alt="showup" class="logo-dark">
+                <img src="assets/images/logo-light.svg" alt="showup" class="logo-light">
+            </a>
+            <div class="nav-actions">
+                <div class="lang-dropdown" id="langDropdown">
+                    <button class="lang-current" id="langCurrent" aria-label="Change language">
+                        <span>KR</span>
+                        <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg>
+                    </button>
+                    <div class="lang-menu">
+                        <a href="pricing.html">EN</a>
+                        <a href="pricing-ko.html" class="active">KR</a>
+                        <a href="pricing-de.html">DE</a>
+                    </div>
+                </div>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="plans">
+        <div class="plans-head">
+            <h1>요금제</h1>
+            <p>Showup은 무료로 시작해서, 무료로 계속 쓸 수 있습니다. 유료 플랜은 같은 한도들을 늘려 줍니다 — 내가 만들 수 있는 스페이스 수, 그리고 스페이스마다 담을 수 있는 멤버·세션·미디어의 수입니다. 클래스 예약과 멤버십 관리를 비롯한 나머지 기능은 모든 플랜에서 똑같이 쓸 수 있습니다.</p>
+        </div>
+
+        <div class="plans-every">
+            <h2>모든 플랜에 포함</h2>
+            <p>업그레이드해야 열리는 기능이 아닙니다. 무료 플랜에서도 Max와 똑같이 동작합니다.</p>
+            <ul>
+            <li><strong>스태프·코치·멤버 역할 부여</strong>인원 제한 없이, 모든 플랜에서 가능합니다.</li>
+            <li><strong>클래스 일정 관리 및 예약</strong>정원 제한, 크레딧, 대기자 명단까지 포함합니다.</li>
+            <li><strong>멤버십 관리</strong>플랜 배정, 종료일 설정, 멤버가 직접 쓰는 홀딩 기능.</li>
+            <li><strong>멤버들의 무제한 운동 기록</strong>기록이 만료되거나 잘려 나가지 않습니다.</li>
+            <li><strong>커뮤니티 피드 및 PR보드</strong>게시물, 댓글, 리액션, 개인 기록.</li>
+        </ul>
+        </div>
+
+        <div class="plans-sticky">
+            <div class="plans-controls">
+                <div class="plans-seg" id="planSeg" role="tablist">
+                    <button type="button" role="tab" data-cycle="month" aria-selected="true">월간</button>
+                    <button type="button" role="tab" data-cycle="year" aria-selected="false">연간</button>
+                </div>
+                <div class="plans-curw">
+                    <label for="planCur">통화</label>
+                    <div class="plans-cur">
+                        <select id="planCur" aria-label="통화"><option value="USD">$ USD</option><option value="KRW" selected>₩ KRW</option><option value="EUR">€ EUR</option></select>
+                    </div>
+                </div>
+            </div>
+            <p class="plans-note" id="planNote"></p>
+        </div>
+
+        <div class="plan-free">
+            <div class="l">
+                <div class="nm">Free</div>
+                <div class="ds">함께 훈련하는 사람들과 바로 시작하세요. 카드 등록도, 기한도 없습니다.</div>
+            </div>
+            <div class="r">
+                <ul class="acct"><li>스페이스 최대 2개</li></ul>
+                <div class="grp">각 스페이스마다</div>
+                <ul class="each">
+                    <li>멤버 최대 5명</li>
+                    <li>세션 2개</li>
+                    <li>워크아웃당 미디어 1개</li>
+                    <li>콜라보 워크아웃 스페이스 1개<span class="info" tabindex="0" role="img" aria-label="하나의 워크아웃을 여러 스페이스가 함께 쓰고, 참여한 멤버 전원의 기록을 하나의 리더보드에서 공유하는 기능입니다." data-tip="하나의 워크아웃을 여러 스페이스가 함께 쓰고, 참여한 멤버 전원의 기록을 하나의 리더보드에서 공유하는 기능입니다.">i</span></li>
+                </ul>
+            </div>
+            <div class="p" id="planFreeP">$0</div>
+        </div>
+
+        <div class="plan-grid" id="planGrid"></div>
+        <p class="plans-store">가격은 App Store와 Google Play가 각 지역 통화로 표시하며, 지역에 따라 다를 수 있습니다.</p>
+
+
+
+    </main>
+
+    <!-- Footer -->
+    <!-- footer:start — generated by tools/sync_footer.py, edit there not here -->
+<footer class="footer">
+    <div class="footer-inner">
+        <div class="footer-top">
+            <div class="footer-brand">
+                <a href="index.html" class="footer-logo">
+                    <img src="assets/images/logo-dark.svg" alt="showup" class="logo-dark">
+                    <img src="assets/images/logo-light.svg" alt="showup" class="logo-light">
+                </a>
+                <p>함께 쇼업하고 성취를 나누는 곳.</p>
+                <div class="footer-store">
+                    <a href="https://apps.apple.com/app/showup-it-counts/id6761016399" target="_blank" rel="noopener" class="store-btn">
+                        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                        <span>App Store</span>
+                    </a>
+                    <a href="https://play.google.com/store/apps/details?id=com.showup.showupAndroid" target="_blank" rel="noopener" class="store-btn">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M1.22 0.345C0.947 0.639 0.787 1.089 0.787 1.674V22.326c0 0.585 0.16 1.035 0.433 1.329l0.07 0.068L13.068 12V11.862L1.29 0.277 1.22 0.345z" fill="#4285F4"/><path d="M17 16.003l-3.932-3.934V11.931L17 7.997l0.088 0.05 4.66 2.647c1.33 0.756 1.33 1.993 0 2.749L17.088 16.09 17 16.003z" fill="#FFBC00"/><path d="M17.088 16.09L13.068 12 1.22 23.655c0.439 0.465 1.162 0.522 1.982 0.058L17.088 16.09z" fill="#EA4335"/><path d="M17.088 7.91L3.202 0.287C2.382-0.177 1.659-0.12 1.22 0.345L13.068 12l4.02-4.09z" fill="#34A853"/></svg>
+                        <span>Google Play</span>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <div class="footer-col">
+                    <h4>법적 고지</h4>
+                    <a href="legal/privacy-ko.html">개인정보처리방침</a>
+                    <a href="legal/terms-ko.html">이용약관</a>
+                </div>
+                <div class="footer-col">
+                    <h4>연결</h4>
+                    <a href="https://instagram.com/showupcounts" target="_blank" rel="noopener">Instagram</a>
+                    <a href="pricing-ko.html">요금제</a>
+                    <a href="help-ko.html">고객 센터</a>
+                    <a href="contact-ko.html">문의</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Showup. 모든 권리 보유.</p>
+        </div>
+    </div>
+</footer>
+<!-- footer:end -->
+
+    <script>
+        const themeToggle = document.getElementById('themeToggle');
+        function toggleTheme() {
+            const current = document.documentElement.getAttribute('data-theme');
+            const next = current === 'light' ? 'dark' : 'light';
+            document.documentElement.setAttribute('data-theme', next);
+            localStorage.setItem('theme', next);
+            document.getElementById('favicon').href = next === 'light' ? 'assets/favicon-light.svg' : 'assets/favicon-dark.svg';
+        }
+        themeToggle.addEventListener('click', toggleTheme);
+
+        const langDropdown = document.getElementById('langDropdown');
+        const langCurrent = document.getElementById('langCurrent');
+        langCurrent.addEventListener('click', () => {
+            langDropdown.classList.toggle('open');
+        });
+        document.addEventListener('click', (e) => {
+            if (!langDropdown.contains(e.target)) langDropdown.classList.remove('open');
+        });
+
+        window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', (e) => {
+            localStorage.removeItem('theme');
+            const theme = e.matches ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', theme);
+            document.getElementById('favicon').href = theme === 'light' ? 'assets/favicon-light.svg' : 'assets/favicon-dark.svg';
+        });
+
+        /* ---- Plan cards -------------------------------------------------
+           PRICES are store display prices as [monthly, annual] pairs, in tier
+           order XS, S, M, L, XL, Max. USD matches
+           showup-ios/showup-ios/Products.storekit; KRW and EUR come from App
+           Store Connect (they live in no repo — the apps read them from
+           RevenueCat at runtime) and match the table in
+           showup-ios/docs/SUBSCRIPTION_DATA_MODEL.md.
+
+           The annual discount is NOT uniform. USD follows the 20/25% policy,
+           but KRW and EUR are hand-rounded store prices that land anywhere from
+           17% to 31%. So every percentage on this page is DERIVED from these
+           numbers rather than written down — change a price and the note, the
+           tab badge and the per-card badges all follow. Do not hardcode one
+           currency's rates back into the copy.                             */
+        var PLAN_PRICES = {
+            USD: { symbol: '$', decimals: 2, v: [[4.99, 47.90], [9.99, 95.90], [17.99, 171.99], [24.99, 224.99], [29.99, 269.99], [34.99, 314.99]] },
+            KRW: { symbol: '\u20A9', decimals: 0, v: [[6600, 66000], [14000, 129000], [25000, 229000], [33000, 299000], [44000, 399000], [49000, 449000]] },
+            EUR: { symbol: '\u20AC', decimals: 2, v: [[5.99, 49.90], [9.99, 99.90], [19.99, 199.99], [29.99, 249.99], [34.99, 299.99], [39.99, 349.99]] }
+        };
+        /* Limits mirror showup-ios/showup-ios/Constants/PlanConstants.swift */
+        var PLAN_TIERS = [
+            { n: 'XS',  sp: 3,  me: '15',  se: 5,  co: '3',   md: 3,  pri: false },
+            { n: 'S',   sp: 5,  me: '30',  se: 10, co: '5',   md: 5,  pri: false },
+            { n: 'M',   sp: 8,  me: '60',  se: 10, co: '10',  md: 10, pri: false },
+            { n: 'L',   sp: 12, me: '120', se: 10, co: null,  md: 10, pri: true  },
+            { n: 'XL',  sp: 15, me: '240', se: 10, co: null,  md: 10, pri: true  },
+            { n: 'Max', sp: 20, me: null,  se: 10, co: null,  md: 10, pri: true  }
+        ];
+        (function () {
+            var T = {"perMo": "/월", "billedM": "매월 청구", "billedA": "연 {v} 청구", "save": "{n}% 절약", "priority": "우선 지원", "pending": "App Store · Google Play에서 확인", "annualNote": "연간 결제 시 유료 플랜은 월 결제 대비 <b>{n}% 절약</b>됩니다.", "saveHint": "연간 결제로 <b>최대 {n}% 절약</b>할 수 있습니다.", "cancel": "언제든 해지 가능", "trial": "2주 무료 체험", "spaces": "스페이스 최대 {n}개", "eachSpace": "각 스페이스마다", "members": "멤버 최대 {n}명", "membersU": "멤버 무제한", "sessions": "세션 {n}개", "media": "워크아웃당 미디어 {n}개", "collab": "콜라보 워크아웃 스페이스 {n}개", "collabU": "콜라보 워크아웃 스페이스 무제한", "collabTip": "하나의 워크아웃을 여러 스페이스가 함께 쓰고, 참여한 멤버 전원의 기록을 하나의 리더보드에서 공유하는 기능입니다.", "library": "커뮤니티 미디어 라이브러리"};
+            var seg = document.getElementById('planSeg');
+            var curSel = document.getElementById('planCur');
+            var grid = document.getElementById('planGrid');
+            var note = document.getElementById('planNote');
+            var freeP = document.getElementById('planFreeP');
+            if (!seg || !curSel || !grid) return;
+
+            function money(v, c) {
+                if (!v) return c.symbol + '0';
+                return c.symbol + (c.decimals ? v.toFixed(2) : Math.round(v).toLocaleString());
+            }
+            function annualOn() { return seg.querySelector('[aria-selected="true"]').dataset.cycle === 'year'; }
+
+            /* The tooltip text is also the accessible name, so the explanation is not
+               reserved for sighted mouse users. Kept free of double quotes on purpose —
+               it is interpolated straight into two attributes. */
+            function infoTip(text) {
+                return '<span class="info" tabindex="0" role="img" aria-label="' + text + '" data-tip="' + text + '">i</span>';
+            }
+
+            /* Per-tier annual discount, rounded exactly as the card badges round it,
+               so the summary line and the badges can never disagree. */
+            function savingsRange(c) {
+                var s = c.v.map(function (p) { return Math.round((1 - p[1] / (p[0] * 12)) * 100); });
+                var lo = Math.min.apply(null, s), hi = Math.max.apply(null, s);
+                return { hi: hi, text: lo === hi ? String(lo) : lo + '\u2013' + hi };
+            }
+
+            function render() {
+                var c = PLAN_PRICES[curSel.value], yr = annualOn(), known = !!c.v;
+                var save = known ? savingsRange(c) : null;
+                freeP.textContent = known ? money(0, c) : c.symbol + '0';
+                // The switch carries no savings copy any more — it only reads as a switch
+                // once both halves are the same width — so this line does that job in both states.
+                // innerHTML rather than textContent: both strings carry a <b> so the saving
+                // itself can take the accent colour. They are our own literals and {n} is a
+                // number computed just above, so nothing user-supplied reaches the parser.
+                note.innerHTML = !known ? ''
+                    : yr ? T.annualNote.replace('{n}', save.text)
+                         : T.saveHint.replace('{n}', save.hi);
+                grid.innerHTML = PLAN_TIERS.map(function (p, i) {
+                    var price = '';
+                    if (known) {
+                        var m = c.v[i][0], a = c.v[i][1], per = yr ? a / 12 : m;
+                        var off = Math.round((1 - a / (m * 12)) * 100);
+                        price = '<div class="p">' + money(per, c) + '<small>' + T.perMo + '</small></div>'
+                              + '<div class="sub">' + (yr ? T.billedA.replace('{v}', money(a, c)) : T.billedM) + '</div>'
+                              + (yr ? '<span class="save">' + T.save.replace('{n}', off) + '</span>' : '');
+                    } else {
+                        price = '<div class="p pending">' + T.pending + '</div>';
+                    }
+                    return '<div class="plan-c"><div class="nm">' + p.n + '</div>'
+                        + '<ul class="acct"><li>' + T.spaces.replace('{n}', p.sp) + '</li>'
+                        + (p.pri ? '<li class="pri">' + T.priority + '</li>' : '') + '</ul>'
+                        + '<div class="grp">' + T.eachSpace + '</div>'
+                        + '<ul class="each">'
+                        + '<li>' + (p.me ? T.members.replace('{n}', p.me) : T.membersU) + '</li>'
+                        + '<li>' + T.sessions.replace('{n}', p.se) + '</li>'
+                        + '<li>' + T.media.replace('{n}', p.md) + '</li>'
+                        + '<li>' + (p.co ? T.collab.replace('{n}', p.co) : T.collabU) + infoTip(T.collabTip) + '</li>'
+                        + '<li>' + T.library + '</li>'
+                        + '</ul>'
+                        + '<div class="price">' + price
+                        + '<div class="trial">' + T.trial + '</div>'
+                        + '<div class="cancel">' + T.cancel + '</div></div>'
+                        + '</div>';
+                }).join('');
+            }
+            seg.addEventListener('click', function (e) {
+                var b = e.target.closest('button'); if (!b) return;
+                seg.querySelectorAll('button').forEach(function (x) { x.setAttribute('aria-selected', 'false'); });
+                b.setAttribute('aria-selected', 'true');
+                render();
+            });
+            curSel.addEventListener('change', render);
+            render();
+        })();
+
+        /* The sticky bar only earns its separator line while it is actually pinned.
+           Comparing its own offset against the nav height is exact at every
+           breakpoint, including the moment it lands on the line. */
+        (function () {
+            var bar = document.querySelector('.plans-sticky');
+            if (!bar) return;
+            var navH = 72;
+            function readNav() {
+                navH = parseInt(getComputedStyle(document.documentElement)
+                    .getPropertyValue('--nav-height'), 10) || 72;
+            }
+            /* Toggling this class only changes a border colour, so it forces no
+               layout and is safe to run straight off the scroll event — no rAF
+               latch that can wedge shut if a frame never arrives. */
+            function update() {
+                bar.classList.toggle('is-stuck',
+                    bar.getBoundingClientRect().top <= navH + 0.5);
+            }
+            readNav();
+            update();
+            window.addEventListener('scroll', update, { passive: true });
+            window.addEventListener('resize', function () { readNav(); update(); });
+        })();
+    </script>
+</body>
+</html>

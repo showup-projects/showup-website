@@ -6,9 +6,6 @@
     <title>개인정보처리방침 — Showup</title>
     <meta name="description" content="Showup 개인정보처리방침. 당사가 귀하의 데이터를 어떻게 수집·이용·보호하는지 알아보세요.">
     <link rel="icon" id="favicon" type="image/svg+xml" href="../assets/favicon-dark.svg">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script>
         (function() {
             var theme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
@@ -23,15 +20,9 @@
         })();
     </script>
 
-    <style>
-        @font-face {
-            font-family: 'SecondMoment';
-            src: url('SecondMoment.otf') format('opentype');
-            font-weight: normal;
-            font-style: normal;
-            font-display: swap;
-        }
+        <link rel="stylesheet" href="../assets/css/footer.css">
 
+    <style>
         :root {
             --bg-primary: #0A0A0A;
             --bg-secondary: #111111;
@@ -60,7 +51,7 @@
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif;
             color: var(--text-primary);
             background: var(--bg-primary);
             line-height: 1.6;
@@ -137,7 +128,7 @@
             gap: 36px;
         }
         .nav-links a {
-            font-family: 'Inter', sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif;
             font-weight: 400;
             font-size: 0.9rem;
             color: var(--text-secondary);
@@ -152,7 +143,7 @@
             border-radius: 0;
             background: #FFFFFF;
             color: #0A0A0A;
-            font-family: 'Inter', sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif;
             font-weight: 600;
             font-size: 0.88rem;
             border: 2px solid var(--text-primary);
@@ -196,7 +187,7 @@
         }
         .mobile-menu.open { opacity: 1; pointer-events: auto; }
         .mobile-menu a {
-            font-family: 'Inter', sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif;
             font-weight: 400;
             font-size: 1.5rem;
             color: var(--text-secondary);
@@ -211,7 +202,7 @@
             padding: calc(var(--nav-height) + 80px) 24px 100px;
         }
         .privacy-content h1 {
-            font-family: 'Inter', sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif;
             font-weight: 900;
             font-size: clamp(2rem, 4vw, 3rem);
             line-height: 1.1;
@@ -221,7 +212,7 @@
         }
         .privacy-updated {
             color: var(--text-tertiary);
-            font-family: 'Inter', sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif;
             font-weight: 400;
             font-size: 0.9rem;
             margin-bottom: 48px;
@@ -229,7 +220,7 @@
             border-bottom: 1px solid var(--border);
         }
         .privacy-content h2 {
-            font-family: 'Inter', sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif;
             font-weight: 900;
             font-size: 1.5rem;
             line-height: 1.2;
@@ -239,7 +230,7 @@
             margin-bottom: 16px;
         }
         .privacy-content h3 {
-            font-family: 'Inter', sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif;
             font-weight: 900;
             font-size: 1.15rem;
             margin-top: 32px;
@@ -300,7 +291,7 @@
             background: transparent;
             border: none;
             color: var(--text-secondary);
-            font-family: 'Inter', sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif;
             font-weight: 600;
             font-size: 0.75rem;
             letter-spacing: 0.04em;
@@ -342,7 +333,7 @@
             width: 100%;
             padding: 8px 12px;
             color: var(--text-secondary);
-            font-family: 'Inter', sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif;
             font-weight: 600;
             font-size: 0.75rem;
             letter-spacing: 0.04em;
@@ -361,96 +352,11 @@
             color: var(--text-primary);
         }
 
-        /* Footer */
-        .footer {
-            border-top: 1px solid var(--border);
-            padding: 80px 24px 40px;
-            background: var(--bg-primary);
-        }
-        .footer-inner { max-width: 1080px; margin: 0 auto; }
-        .footer-top {
-            display: grid;
-            grid-template-columns: 1.2fr 2fr;
-            gap: 64px;
-            margin-bottom: 64px;
-        }
-        .footer-logo {
-            display: inline-block;
-            margin-bottom: 16px;
-        }
-        .footer-logo img {
-            height: 34px;
-            width: auto;
-        }
-        .footer-brand p {
-            color: var(--text-secondary);
-            font-size: 0.92rem;
-            line-height: 1.6;
-            max-width: 280px;
-        }
-        .footer-links {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 32px;
-        }
-        .footer-col h4 {
-            font-family: 'Inter', sans-serif;
-            font-weight: 400;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            color: var(--text-tertiary);
-            margin-bottom: 20px;
-        }
-        .footer-col a {
-            display: block;
-            color: var(--text-secondary);
-            font-size: 0.92rem;
-            padding: 6px 0;
-            transition: color 0.2s ease;
-        }
-        .footer-col a:hover { color: var(--text-primary); }
-        .footer-bottom {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding-top: 32px;
-            border-top: 1px solid var(--border);
-            margin-left: calc(-50vw + 50%);
-            margin-right: calc(-50vw + 50%);
-            padding-left: 24px;
-            padding-right: 24px;
-        }
-        .footer-bottom p {
-            color: var(--text-tertiary);
-            font-size: 0.85rem;
-        }
-        .app-store-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 10px 20px;
-            border-radius: 0;
-            background: #fff;
-            color: #000;
-            font-family: 'Inter', sans-serif;
-            font-weight: 400;
-            font-size: 0.82rem;
-            border: 2px solid var(--text-primary);
-            transition: opacity 0.2s ease;
-        }
-        .app-store-badge:hover { opacity: 0.85; }
-        .app-store-badge svg { width: 18px; height: 18px; }
-
         /* Light theme overrides */
         [data-theme="light"] .nav {
             background: transparent;
         }
         [data-theme="light"] .nav-cta {
-            background: #1A1A1A;
-            color: #F4F4F4;
-        }
-        [data-theme="light"] .app-store-badge {
             background: #1A1A1A;
             color: #F4F4F4;
         }
@@ -461,13 +367,8 @@
             .nav-links, .nav-cta { display: none; }
             .nav-hamburger { display: flex; }
             .privacy-content { padding-top: calc(var(--nav-height) + 48px); }
-            .footer-top { grid-template-columns: 1fr; gap: 40px; }
-            .footer-links { grid-template-columns: repeat(3, 1fr); gap: 20px; }
-            .footer-bottom { flex-direction: column; gap: 20px; text-align: center; }
         }
-        @media (max-width: 480px) {
-            .footer-links { grid-template-columns: 1fr 1fr; }
-        }
+        
         @media (prefers-reduced-motion: reduce) {
             * { transition-duration: 0.01ms !important; }
         }
@@ -662,10 +563,9 @@
         <p>
             www.showupcounts.com 웹사이트는 정적 페이지의 모음입니다. 이 사이트는 분석 도구, 광고, 추적 스크립트를 전혀 실행하지 않고, 쿠키를 설정하지 않으며, 입력 양식도 없습니다. 문의 페이지는 단순한 이메일 링크입니다. 이 사이트는 귀하가 선택한 화면 모드와 언어를 기억하기 위한 목적으로만 브라우저의 로컬 저장소에 "theme"과 "lang" 두 개의 값을 저장합니다. 두 값 모두 귀하가 설정한 환경설정을 위해 반드시 필요하며, 그렇기 때문에 이 사이트에는 동의 배너가 표시되지 않습니다.
         </p>
-        <p>이 사이트를 제공하는 데에는 세 곳의 제3자가 관여합니다:</p>
+        <p>이 사이트를 제공하는 데에는 두 곳의 제3자가 관여합니다:</p>
         <ul>
             <li><strong>GitHub, Inc.</strong>는 페이지를 호스팅하며 방문자의 IP 주소가 포함된 서버 접속 로그를 생성합니다. 당사는 그 로그를 읽거나 삭제할 수 없으며, 해당 로그는 GitHub의 개인정보 보호 성명에 따라 처리됩니다.</li>
-            <li><strong>Google Fonts</strong>(fonts.googleapis.com 및 fonts.gstatic.com)는 모든 페이지에 사용되는 서체를 제공하며, 이에 따라 페이지가 로드될 때 귀하의 IP 주소와 사용자 에이전트를 수신합니다.</li>
             <li><strong>jsDelivr</strong>는 홈 페이지에서만 사용되는 서체 하나를 추가로 제공하며, 마찬가지로 귀하의 IP 주소와 사용자 에이전트를 수신합니다.</li>
         </ul>
 
@@ -828,15 +728,26 @@
     </main>
 
     <!-- Footer -->
+    <!-- footer:start — generated by tools/sync_footer.py, edit there not here -->
     <footer class="footer">
         <div class="footer-inner">
             <div class="footer-top">
                 <div class="footer-brand">
                     <a href="../index.html" class="footer-logo">
-                        <img src="../assets/images/logo-dark.svg" alt="Showup" class="logo-dark">
-                        <img src="../assets/images/logo-light.svg" alt="Showup" class="logo-light">
+                        <img src="../assets/images/logo-dark.svg" alt="showup" class="logo-dark">
+                        <img src="../assets/images/logo-light.svg" alt="showup" class="logo-light">
                     </a>
-                    <p>피트니스 커뮤니티를 만드세요. 연결하고, 훈련하고, 함께 성장하세요.</p>
+                    <p>함께 쇼업하고 성취를 나누는 곳.</p>
+                    <div class="footer-store">
+                        <a href="https://apps.apple.com/app/showup-it-counts/id6761016399" target="_blank" rel="noopener" class="store-btn">
+                            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                            <span>App Store</span>
+                        </a>
+                        <a href="https://play.google.com/store/apps/details?id=com.showup.showupAndroid" target="_blank" rel="noopener" class="store-btn">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M1.22 0.345C0.947 0.639 0.787 1.089 0.787 1.674V22.326c0 0.585 0.16 1.035 0.433 1.329l0.07 0.068L13.068 12V11.862L1.29 0.277 1.22 0.345z" fill="#4285F4"/><path d="M17 16.003l-3.932-3.934V11.931L17 7.997l0.088 0.05 4.66 2.647c1.33 0.756 1.33 1.993 0 2.749L17.088 16.09 17 16.003z" fill="#FFBC00"/><path d="M17.088 16.09L13.068 12 1.22 23.655c0.439 0.465 1.162 0.522 1.982 0.058L17.088 16.09z" fill="#EA4335"/><path d="M17.088 7.91L3.202 0.287C2.382-0.177 1.659-0.12 1.22 0.345L13.068 12l4.02-4.09z" fill="#34A853"/></svg>
+                            <span>Google Play</span>
+                        </a>
+                    </div>
                 </div>
                 <div class="footer-links">
                     <div class="footer-col">
@@ -846,17 +757,19 @@
                     </div>
                     <div class="footer-col">
                         <h4>연결</h4>
-                        <a href="https://instagram.com/showupcounts" target="_blank">Instagram</a>
+                        <a href="https://instagram.com/showupcounts" target="_blank" rel="noopener">Instagram</a>
+                        <a href="../pricing-ko.html">요금제</a>
                         <a href="../help-ko.html">고객 센터</a>
                         <a href="../contact-ko.html">문의</a>
                     </div>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 Showup. All rights reserved.</p>
+                <p>&copy; 2026 Showup. 모든 권리 보유.</p>
             </div>
         </div>
     </footer>
+    <!-- footer:end -->
 
     <script>
         const themeToggle = document.getElementById('themeToggle');
