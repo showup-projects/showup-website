@@ -50,13 +50,27 @@
             color: var(--text-primary);
             background: var(--bg-primary);
             line-height: 1.6;
+            /* The footer's full-bleed bottom rule is sized with 50vw, which counts
+               the scrollbar where one takes up space. `clip` absorbs that without
+               creating a scroll container (same fix as pricing.html). */
+            overflow-x: clip;
         }
         a { color: inherit; text-decoration: none; }
+        [hidden] { display: none !important; }
+
+        .sr-only {
+            position: absolute; width: 1px; height: 1px;
+            padding: 0; margin: -1px; overflow: hidden;
+            clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+        }
 
         /* Film grain — disabled */
         body::after { display: none; }
 
-        /* Navigation */
+        /* Navigation — the site's shared nav, unchanged, so the header does not
+           shift when you arrive here from Pricing or Help. The background is solid
+           rather than transparent for the same reason it is on pricing.html and
+           help.html: the cards below scroll up underneath it. */
         .nav {
             position: fixed;
             top: 0;
@@ -64,7 +78,7 @@
             right: 0;
             z-index: 1000;
             height: var(--nav-height);
-            background: transparent;
+            background: var(--bg-primary);
             border: none;
         }
         .nav::before {
@@ -195,67 +209,386 @@
         [data-theme="light"] .icon-sun { display: none; }
         [data-theme="light"] .icon-moon { display: block; }
 
-        /* Content */
-        .contact-content {
-            max-width: 760px;
-            margin: 0 auto;
-            padding: calc(var(--nav-height) + 80px) 24px 100px;
+        /* ============================================
+           CONTACT — HELP ROUTER
+           Card surfaces and the single green accent are the
+           pricing.html tokens. --c-muted / --c-faint replace
+           --text-secondary / --text-tertiary for body copy here:
+           those two fall under WCAG AA on the light cards.
+           ============================================ */
+        :root {
+            --plan-card: #1C1C1E; --plan-card-line: rgba(255,255,255,0.10);
+            --plan-go: #30D158; --plan-go-bg: rgba(48,209,88,0.14);
+            --c-muted: rgba(255,255,255,0.64);
+            --c-faint: #8E8E93;
+            --c-chip: rgba(255,255,255,0.08);
+            --c-hover: rgba(255,255,255,0.045);
+            --c-press: rgba(255,255,255,0.09);
+            --font-display: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            --font-text: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif;
         }
-        .contact-content h1 {
-            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            font-weight: 900;
-            font-size: clamp(2rem, 4vw, 3rem);
-            line-height: 1.1;
-            letter-spacing: -0.04em;
-            text-transform: uppercase;
-            margin-bottom: 12px;
-        }
-        .contact-subtitle {
-            color: var(--text-secondary);
-            font-size: 1.05rem;
-            line-height: 1.7;
-            margin-bottom: 48px;
-            padding-bottom: 32px;
-            border-bottom: 1px solid var(--border);
-        }
-        .contact-content h2 {
-            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            font-weight: 900;
-            font-size: 1.3rem;
-            line-height: 1.2;
-            letter-spacing: -0.03em;
-            text-transform: uppercase;
-            margin-top: 40px;
-            margin-bottom: 12px;
-        }
-        .contact-content p {
-            color: var(--text-secondary);
-            font-size: 0.98rem;
-            line-height: 1.8;
-            margin-bottom: 16px;
-        }
-        .contact-content a {
-            color: var(--text-primary);
-            text-decoration: underline;
-            text-underline-offset: 3px;
-        }
-        .contact-content a.no-underline { text-decoration: none; }
-        .contact-content a:hover { opacity: 0.7; }
-        .contact-email {
-            display: inline-block;
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-top: 4px;
+        [data-theme="light"] {
+            --plan-card: #F2F2F4; --plan-card-line: rgba(0,0,0,0.09);
+            --plan-go: #2B6B41; --plan-go-bg: #DCEFE3;
+            --c-muted: #5C5C61;
+            --c-faint: #6C6C70;
+            --c-chip: #FFFFFF;
+            --c-hover: rgba(0,0,0,0.035);
+            --c-press: rgba(0,0,0,0.07);
         }
 
+        :focus-visible { outline: 2px solid var(--plan-go); outline-offset: 2px; }
+
+        .router {
+            max-width: 1040px;
+            margin: 0 auto;
+            padding: calc(var(--nav-height) + 60px) 24px 104px;
+        }
+
+        /* ---- Header ---- */
+        .router-head { text-align: center; max-width: 640px; margin: 0 auto 40px; }
+        .router-kicker {
+            display: inline-block;
+            font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+            color: var(--c-faint);
+        }
+        .router-head h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2.1rem, 5.5vw, 3.2rem);
+            font-weight: 900;
+            letter-spacing: -0.035em;
+            line-height: 1;
+            margin-top: 12px;
+            text-wrap: balance;
+        }
+        .router-head > p {
+            color: var(--c-muted);
+            font-size: 15.5px;
+            line-height: 1.65;
+            margin-top: 14px;
+            text-wrap: balance;
+        }
+
+        /* ---- Filter: the routing step ----
+           Six tiles is few enough to read, but the person arriving already has a
+           word in their head ("billing", "deleted", "can't book"). Typing it takes
+           them to one tile. Everything happens in the page; the block ships hidden
+           so it never appears without JS to run it. */
+        .router-filter { margin-top: 22px; }
+        .filter-row { position: relative; display: flex; align-items: center; max-width: 440px; margin: 0 auto; }
+        .filter-row .i-search {
+            position: absolute; left: 16px; width: 17px; height: 17px;
+            color: var(--c-faint); pointer-events: none;
+        }
+        #topicFilter {
+            width: 100%; min-height: 50px;
+            padding: 12px 52px 12px 43px;
+            font-family: var(--font-text); font-size: 15.5px; line-height: 1.4;
+            color: var(--text-primary);
+            background: var(--plan-card);
+            border: 1px solid var(--plan-card-line);
+            border-radius: 14px;
+            -webkit-appearance: none; appearance: none;
+            transition: border-color 0.15s ease;
+        }
+        #topicFilter::placeholder { color: var(--c-muted); opacity: 1; }
+        #topicFilter::-webkit-search-decoration,
+        #topicFilter::-webkit-search-cancel-button { -webkit-appearance: none; appearance: none; }
+        #topicFilter:hover { border-color: var(--c-faint); }
+        .filter-clear {
+            position: absolute; right: 3px;
+            width: 44px; height: 44px; border: 0; border-radius: 11px;
+            display: flex; align-items: center; justify-content: center;
+            background: transparent; color: var(--c-faint); cursor: pointer;
+            transition: color 0.15s ease, background 0.15s ease;
+        }
+        .filter-clear:hover { color: var(--text-primary); background: var(--c-hover); }
+        .filter-clear svg { width: 15px; height: 15px; }
+        /* The count is written as "3 / 6" on purpose: it carries no plural to
+           agree with, so the Korean and German pages translate one fixed string
+           and leave the numbers alone. */
+        .filter-status {
+            font-size: 13px; line-height: 1.5; color: var(--c-faint);
+            margin-top: 10px; min-height: 20px;
+        }
+
+        /* ---- The address, up top ----
+           Somebody who only wants to write to us should not have to read the
+           whole page first, so the real address sits here, one field with the
+           copy affordance beside it. */
+        .quickmail {
+            display: inline-flex; align-items: center; max-width: 100%;
+            margin-top: 16px; padding: 3px;
+            border-radius: 14px;
+            background: var(--plan-card);
+            border: 1px solid var(--plan-card-line);
+            text-align: left;
+        }
+        .quickmail-link {
+            display: flex; align-items: center; gap: 10px; min-width: 0;
+            min-height: 44px; padding: 0 12px 0 13px; border-radius: 11px;
+            transition: background 0.15s ease;
+        }
+        .quickmail-link:hover { background: var(--c-hover); }
+        .quickmail-link svg { flex: none; width: 17px; height: 17px; color: var(--plan-go); }
+        .quickmail-addr {
+            font-size: 15px; font-weight: 600; letter-spacing: -0.01em;
+            color: var(--text-primary); overflow-wrap: anywhere;
+        }
+        .quickmail-copy {
+            flex: none; width: 44px; height: 44px; border: 0; border-radius: 11px;
+            display: flex; align-items: center; justify-content: center;
+            background: transparent; color: var(--c-faint); cursor: pointer;
+            transition: color 0.15s ease, background 0.15s ease;
+        }
+        .quickmail-copy:hover { color: var(--text-primary); background: var(--c-hover); }
+        .quickmail-copy svg { width: 17px; height: 17px; }
+        .quickmail-copy.is-copied { color: var(--plan-go); background: var(--plan-go-bg); }
+
+        /* ---- Topic grid ----
+           Cards stretch to their grid row at every breakpoint and the action rows
+           sit on the card floor, so the bottoms of a row always line up. The two
+           min-heights below are what keep that from opening a hole: they hold the
+           title and the one-line body at the same height across a row, so the
+           slack a stretched card has to absorb is a few pixels, not forty. */
+        .topics {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            align-items: stretch;
+            gap: 14px;
+        }
+        /* Once the grid is filtered the rows are whatever matched, so they hug
+           their own content instead of stretching to a stray tall neighbour. */
+        .topics.is-filtered { align-items: start; }
+        .topics.no-anim .topic { animation: none; }
+        .topic {
+            background: var(--plan-card);
+            border-radius: 22px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            animation: rise 0.5s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+            animation-delay: calc(var(--i, 0) * 45ms + 80ms);
+        }
+        .topic-body { flex: 1 1 auto; padding: 22px; }
+        .topic-icon {
+            width: 44px; height: 44px; border-radius: 13px;
+            display: flex; align-items: center; justify-content: center;
+            background: var(--c-chip); color: var(--text-primary);
+        }
+        [data-theme="light"] .topic-icon { box-shadow: 0 0 0 1px rgba(0,0,0,0.05), 0 1px 2px rgba(0,0,0,0.06); }
+        .topic-icon svg { width: 23px; height: 23px; }
+        .topic h2 {
+            font-family: var(--font-display);
+            font-size: 20px;
+            font-weight: 800;
+            letter-spacing: -0.025em;
+            line-height: 1.2;
+            margin-top: 16px;
+            text-wrap: balance;
+        }
+        .topic h2, .topic-body > p, .route-text, .panel-value, .other h2 { overflow-wrap: break-word; }
+        :lang(de) .topic h2, :lang(de) .topic-body > p, :lang(de) .route-text { -webkit-hyphens: auto; hyphens: auto; }
+        /* Korean has no hyphenation and browsers break CJK mid-word by default,
+           which strands single syllables. keep-all breaks at spaces instead; the
+           inherited overflow-wrap is the escape hatch for a word wider than its box. */
+        :lang(ko) .router { word-break: keep-all; overflow-wrap: break-word; }
+        .topic-body > p { color: var(--c-muted); font-size: 14.5px; line-height: 1.6; margin-top: 8px; }
+        .topic-body > p b { color: var(--text-primary); font-weight: 600; white-space: nowrap; }
+
+        /* Actions sit on the card floor, iOS inset-grouped style. */
+        .routes { border-top: 1px solid var(--plan-card-line); }
+        .route {
+            position: relative;
+            display: flex; align-items: center; gap: 14px;
+            min-height: 64px;
+            padding: 11px 18px 11px 22px;
+            transition: background 0.15s ease;
+        }
+        .route + .route::before {
+            content: ''; position: absolute; top: 0; left: 58px; right: 0;
+            height: 1px; background: var(--plan-card-line);
+        }
+        .route:last-child { border-radius: 0 0 22px 22px; }
+        .route:hover { background: var(--c-hover); }
+        .route:active { background: var(--c-press); }
+        .route:focus-visible { outline-offset: -3px; }
+        .route-icon { flex: none; width: 22px; height: 22px; color: var(--plan-go); }
+        .route-text { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; }
+        .route-label { font-size: 15px; font-weight: 600; line-height: 1.35; color: var(--text-primary); transition: color 0.15s ease; }
+        .route:hover .route-label { color: var(--plan-go); }
+        .route-sub { font-size: 12.5px; line-height: 1.45; color: var(--c-muted); margin-top: 1px; }
+        .route-end { flex: none; width: 14px; height: 14px; color: var(--c-faint); transition: transform 0.15s ease; }
+        .route:hover .route-end { transform: translateX(2px); }
+        .route[href^="mailto:"]:hover .route-end { transform: translate(2px, -2px); }
+
+        /* ---- Nothing matched the filter ---- */
+        .topic-empty {
+            grid-column: 1 / -1;
+            background: var(--plan-card);
+            border-radius: 22px;
+            padding: 22px;
+            display: flex; flex-flow: row wrap; align-items: center; gap: 16px 20px;
+            animation: none;
+        }
+        .empty-text { flex: 1 1 260px; min-width: 0; }
+        .empty-text strong { display: block; font-family: var(--font-display); font-size: 17px; font-weight: 800; letter-spacing: -0.02em; }
+        .empty-text span { display: block; color: var(--c-muted); font-size: 14.5px; line-height: 1.6; margin-top: 4px; }
+        .empty-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+
+        /* ---- One pill, three skins ---- */
+        .pill {
+            display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+            min-height: 46px; padding: 0 18px; border-radius: 999px;
+            border: 1px solid transparent;
+            font-family: var(--font-text); font-size: 14.5px; font-weight: 600; line-height: 1.2;
+            color: var(--text-primary); cursor: pointer;
+            transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease, opacity 0.15s ease;
+        }
+        .pill svg { flex: none; width: 16px; height: 16px; color: var(--c-faint); }
+        .pill-solid { background: var(--text-primary); color: var(--bg-primary); }
+        .pill-solid svg { color: currentColor; }
+        .pill-solid:hover { opacity: 0.86; }
+        .pill-line { background: var(--plan-card); border-color: var(--plan-card-line); }
+        .pill-line:hover { background: var(--c-press); }
+        .pill-line[href^="mailto:"] svg { color: var(--plan-go); }
+        .pill-chip { background: var(--c-chip); border-color: var(--plan-card-line); }
+        .pill-chip:hover { border-color: var(--c-faint); }
+        .pill.is-copied { background: var(--plan-go-bg); border-color: var(--plan-go); color: var(--plan-go); }
+        .pill.is-copied svg { color: currentColor; }
+        .i-check { display: none; }
+        .is-copied .i-copy { display: none; }
+        .is-copied .i-check { display: block; }
+
+        /* ---- Other places ---- */
+        .elsewhere {
+            display: flex; flex-wrap: wrap; align-items: center; justify-content: center;
+            gap: 10px; margin-top: 30px;
+        }
+        .elsewhere-label { width: 100%; text-align: center; font-size: 13px; color: var(--c-muted); margin-bottom: 2px; }
+        .chip {
+            display: inline-flex; align-items: center; gap: 7px;
+            min-height: 44px; padding: 0 14px 0 17px; border-radius: 999px;
+            background: var(--plan-card); font-size: 14px; font-weight: 600;
+            transition: background 0.15s ease;
+        }
+        .chip svg { width: 12px; height: 12px; color: var(--c-faint); }
+        .chip:hover { background: color-mix(in srgb, var(--plan-card) 88%, var(--text-primary)); }
+
+        /* ---- Something else? ----
+           The site's own card treatment, in both themes. It used to be a photo
+           band with an opaque panel laid over it, which left the picture as a
+           strip on the right at tablet width and read as a black slab under the
+           light theme. One grouped card, one inset panel — pricing.html's
+           vocabulary, and legible either way round. */
+        .other {
+            margin-top: 56px;
+            border-radius: 28px;
+            background: var(--plan-card);
+            padding: clamp(24px, 3.4vw, 40px);
+            display: flex; flex-wrap: wrap; align-items: center;
+            gap: 24px 32px;
+            scroll-margin-top: calc(var(--nav-height) + 16px);
+        }
+        .other-l { flex: 1 1 300px; min-width: 0; }
+        .other h2 {
+            font-family: var(--font-display);
+            font-size: clamp(1.9rem, 4vw, 2.7rem);
+            font-weight: 900;
+            letter-spacing: -0.04em;
+            line-height: 1.02;
+        }
+        .other-l > p { color: var(--c-muted); font-size: 15.5px; line-height: 1.6; margin-top: 12px; }
+        .other-social { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; margin-top: 20px; }
+        .other-social .pill svg:last-child { width: 13px; height: 13px; }
+        .other-note { font-size: 13px; line-height: 1.5; color: var(--c-faint); }
+        /* The 360px basis is what drops the band to one column at tablet width:
+           below it the panel never gets narrow enough to break the address in two. */
+        .panel {
+            flex: 1 1 360px; min-width: 0;
+            display: flex; flex-direction: column;
+            padding: 22px;
+            border-radius: 20px;
+            background: var(--c-chip);
+            border: 1px solid var(--plan-card-line);
+        }
+        [data-theme="light"] .panel { box-shadow: 0 1px 2px rgba(0,0,0,0.05); }
+        .panel-label {
+            display: flex; align-items: center; gap: 8px;
+            font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+            /* --c-faint is only 4.16:1 on the dark inset panel; --c-muted clears AA on both. */
+            color: var(--c-muted);
+        }
+        .panel-label svg { width: 15px; height: 15px; color: var(--plan-go); }
+        .panel-value {
+            font-family: var(--font-display);
+            /* Sized so the address stays on one line at 390px — it is one long
+               "word", and a broken email address reads as a typo. */
+            font-size: clamp(1.15rem, 3.2vw, 1.7rem);
+            font-weight: 800;
+            letter-spacing: -0.025em;
+            line-height: 1.2;
+            margin-top: 10px;
+            overflow-wrap: anywhere;
+        }
+        .panel-hint { font-size: 13px; line-height: 1.5; color: var(--c-muted); margin-top: 6px; }
+        .panel-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+
+        @keyframes rise {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: none; }
+        }
+        .router-head > * { animation: rise 0.5s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+        .router-head > :nth-child(2) { animation-delay: 30ms; }
+        .router-head > :nth-child(3) { animation-delay: 60ms; }
+        .router-head > :nth-child(4) { animation-delay: 90ms; }
+        .router-head > :nth-child(5) { animation-delay: 120ms; }
+
         /* Responsive */
+        @media (min-width: 601px) {
+            /* Two lines' worth of title and two lines' worth of body, as a floor.
+               Longer strings (German, Korean) simply push the whole row taller
+               together, which is the point: no card in a row is left with a gap
+               above its action rows. */
+            /* Reserved from the bottom up, so a one-line title still sits right on
+               top of its body copy and the spare line lands in the icon gap — the
+               hierarchy stays icon, then title-and-copy as one block. */
+            .topic h2 { min-height: calc(2 * 1.2em); display: flex; flex-direction: column; justify-content: flex-end; }
+            .topic-body > p { min-height: calc(2 * 1.6em); }
+        }
+        @media (max-width: 900px) {
+            .topics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        }
         @media (max-width: 768px) {
             :root { --nav-height: 64px; }
-            .contact-content { padding-top: calc(var(--nav-height) + 48px); }
+            .router { padding-top: calc(var(--nav-height) + 40px); }
+            .other { margin-top: 48px; }
         }
-        
+        @media (max-width: 600px) {
+            .topics { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+            /* One column: icon beside the title instead of above it, so more
+               topics fit on the first screen. */
+            .topic-body { display: grid; grid-template-columns: 40px minmax(0, 1fr); column-gap: 14px; align-items: center; padding: 20px; }
+            .topic-icon { width: 40px; height: 40px; border-radius: 12px; }
+            .topic-icon svg { width: 21px; height: 21px; }
+            .topic h2 { margin-top: 0; font-size: 19px; }
+            .topic-body > p { grid-column: 1 / -1; margin-top: 12px; }
+            .router { padding-left: 16px; padding-right: 16px; }
+            .router-head { margin-bottom: 30px; }
+            .route { padding-left: 20px; }
+            .route + .route::before { left: 56px; }
+            .topic-empty { padding: 20px; display: block; }
+            .empty-actions { margin-top: 16px; }
+            .empty-actions .pill { flex: 1 1 auto; }
+            .other { border-radius: 24px; }
+            .panel { padding: 20px; }
+            .panel-actions .pill { flex: 1 1 auto; }
+        }
+
         @media (prefers-reduced-motion: reduce) {
-            * { transition-duration: 0.01ms !important; }
+            * { transition-duration: 0.01ms !important; animation: none !important; }
+            html { scroll-behavior: auto; }
         }
     </style>
 </head>
@@ -270,7 +603,7 @@
             </a>
             <div class="nav-actions">
                 <div class="lang-dropdown" id="langDropdown">
-                    <button class="lang-current" id="langCurrent" aria-label="Change language">
+                    <button class="lang-current" id="langCurrent" aria-label="언어 변경">
                         <span>KR</span>
                         <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg>
                     </button>
@@ -280,7 +613,7 @@
                         <a href="contact-de.html">DE</a>
                     </div>
                 </div>
-                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                <button class="theme-toggle" id="themeToggle" aria-label="테마 전환">
                     <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
                     <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
                 </button>
@@ -288,22 +621,226 @@
         </div>
     </nav>
 
-    <main class="contact-content">
-        <h1>문의</h1>
-        <p class="contact-subtitle">
-            질문, 피드백, 또는 Showup에 대해 더 알고 싶으시면 언제든 연락주세요.
-        </p>
+    <!-- Shared glyphs -->
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+        <symbol id="g-guide" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6.5C10.3 5.2 7.9 4.5 4.5 4.5v14c3.4 0 5.8.7 7.5 2 1.7-1.3 4.1-2 7.5-2v-14c-3.4 0-5.8.7-7.5 2z"/><path d="M12 6.5V20.5"/></symbol>
+        <symbol id="g-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3.8 6.8 12 13l8.2-6.2"/></symbol>
+        <symbol id="g-plans" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="7" height="17" rx="2"/><rect x="13.5" y="3.5" width="7" height="17" rx="2"/><path d="M6 8h2M16 8h2"/></symbol>
+        <symbol id="g-chev" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 2.5 9.5 7 5 11.5"/></symbol>
+        <symbol id="g-out" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10 10 4M5 3.5h5.5V9"/></symbol>
+        <symbol id="g-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="8.5" y="8.5" width="12" height="12" rx="2.5"/><path d="M15.5 8.5V6A2.5 2.5 0 0 0 13 3.5H6A2.5 2.5 0 0 0 3.5 6v7A2.5 2.5 0 0 0 6 15.5h2.5"/></symbol>
+        <symbol id="g-tick" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m4.5 12.5 5 5 10-11"/></symbol>
+    </svg>
 
-        <h2>이메일</h2>
-        <p>
-            이메일 주소<br>
-            <a href="mailto:support@showupcounts.com" class="contact-email">support@showupcounts.com</a>
-        </p>
+    <main class="router">
+        <header class="router-head">
+            <span class="router-kicker">문의</span>
+            <h1>무엇을 도와드릴까요?</h1>
+            <p>지금 상황에 가장 가까운 주제를 골라&nbsp;보세요. 주제마다 답이 담긴 안내나, 제목이 미리 채워진 메일 앱이 열립니다.</p>
 
-        <h2>팔로우</h2>
-        <p>
-            <a href="https://instagram.com/showupcounts" target="_blank" class="no-underline">@showupcounts on Instagram</a>
-        </p>
+            <div class="router-filter" id="routerFilter" role="search" aria-label="주제 필터" hidden>
+                <div class="filter-row">
+                    <svg class="i-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.4 15.4 4.1 4.1"/></svg>
+                    <label class="sr-only" for="topicFilter">아래 주제 목록 좁히기</label>
+                    <input id="topicFilter" type="search" autocomplete="off" autocorrect="off" spellcheck="false"
+                           placeholder="기기, 구독, 예약&hellip;" aria-describedby="filterStatus">
+                    <button type="button" class="filter-clear" id="filterClear" aria-label="필터 지우기" hidden>
+                        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="m3.5 3.5 9 9M12.5 3.5l-9 9"/></svg>
+                    </button>
+                </div>
+                <!-- The two data- strings are the filtered state of this line, kept in
+                     the markup so a translated page never has to reach into the script.
+                     They compose as "주제: 3 / 6 · 아무것도 전송되지 않습니다." -->
+                <p class="filter-status" id="filterStatus" role="status" aria-live="polite"
+                   data-count-label="주제:" data-privacy="아무것도 전송되지 않습니다.">입력하면 주제가 좁혀집니다. 아무것도 전송되지 않습니다.</p>
+            </div>
+
+            <div class="quickmail js-copywrap">
+                <a class="quickmail-link" href="mailto:support@showupcounts.com" aria-label="support@showupcounts.com으로 메일 보내기">
+                    <svg aria-hidden="true"><use href="#g-mail"/></svg>
+                    <span class="quickmail-addr js-addr">support@showupcounts.com</span>
+                </a>
+                <button type="button" class="quickmail-copy js-copy" aria-label="이메일 주소 복사" hidden>
+                    <svg class="i-copy" aria-hidden="true"><use href="#g-copy"/></svg>
+                    <svg class="i-check" aria-hidden="true"><use href="#g-tick"/></svg>
+                </button>
+            </div>
+        </header>
+
+        <ul class="topics" id="topics" role="list">
+            <li class="topic" style="--i:0" data-keys="로그인 로그아웃 가입 새 폰 휴대폰 아이폰 안드로이드 기기 수 제한 기기 변경 잠김 초기화 인증 sign in login device limit">
+                <div class="topic-body">
+                    <div class="topic-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="6" width="10" height="15.5" rx="2.2"/><path d="M8.5 2.5h9.8a2.2 2.2 0 0 1 2.2 2.2V16"/><path d="M7.3 18.3h2.4"/></svg>
+                    </div>
+                    <h2>새 기기에서 로그인이 안 돼요</h2>
+                    <p>동시에 최대 2대까지, 기기를 바꾸면 7일의 대기&nbsp;기간이 생깁니다.</p>
+                </div>
+                <div class="routes">
+                    <a class="route" href="help-ko.html#account-devices">
+                        <svg class="route-icon" aria-hidden="true"><use href="#g-guide"/></svg>
+                        <span class="route-text"><span class="route-label">가이드 보기</span><span class="route-sub">기기 수 제한</span></span>
+                        <svg class="route-end" aria-hidden="true"><use href="#g-chev"/></svg>
+                    </a>
+                    <a class="route" href="mailto:support@showupcounts.com?subject=%EA%B8%B0%EA%B8%B0%20%EC%88%98%20%EC%A0%9C%ED%95%9C">
+                        <svg class="route-icon" aria-hidden="true"><use href="#g-mail"/></svg>
+                        <span class="route-text"><span class="route-label">메일 보내기</span><span class="route-sub">기기 자리를 초기화해 드립니다</span></span>
+                        <svg class="route-end" aria-hidden="true"><use href="#g-out"/></svg>
+                    </a>
+                </div>
+            </li>
+
+            <li class="topic" style="--i:1" data-keys="구독 결제 결제수단 갱신 영수증 환불 해지 취소 청구 요금제 가격 업그레이드 다운그레이드 구매 복원 인앱결제 subscription billing app store google play">
+                <div class="topic-body">
+                    <div class="topic-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="2.6"/><path d="M2.5 9.8h19"/><path d="M6.3 15h3.4"/></svg>
+                    </div>
+                    <h2>구독과 결제</h2>
+                    <p>결제와 갱신, 영수증은 App&nbsp;Store 또는 Google&nbsp;Play가 처리합니다.</p>
+                </div>
+                <div class="routes">
+                    <a class="route" href="help-ko.html#account-subscription">
+                        <svg class="route-icon" aria-hidden="true"><use href="#g-guide"/></svg>
+                        <span class="route-text"><span class="route-label">가이드 보기</span><span class="route-sub">구독</span></span>
+                        <svg class="route-end" aria-hidden="true"><use href="#g-chev"/></svg>
+                    </a>
+                    <a class="route" href="pricing-ko.html">
+                        <svg class="route-icon" aria-hidden="true"><use href="#g-plans"/></svg>
+                        <span class="route-text"><span class="route-label">요금제 비교</span><span class="route-sub">요금제별 포함 내용</span></span>
+                        <svg class="route-end" aria-hidden="true"><use href="#g-chev"/></svg>
+                    </a>
+                </div>
+            </li>
+
+            <li class="topic" style="--i:2" data-keys="계정 삭제 탈퇴 비활성화 데이터 지우기 개인정보 delete account">
+                <div class="topic-body">
+                    <div class="topic-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="9.5" cy="8" r="3.6"/><path d="M2.8 20.5c0-3.7 3-6.3 6.7-6.3 1.6 0 3 .5 4.2 1.3"/><path d="M16 17.5h5.5"/></svg>
+                    </div>
+                    <h2>계정을 삭제하고 싶어요</h2>
+                    <p>앱에서 <b>계정</b>&nbsp;&rarr; <b>계정 설정</b>&nbsp;&rarr; <b>계정 삭제</b>. 앱을 열&nbsp;수 없다면 메일로 요청하세요.</p>
+                </div>
+                <div class="routes">
+                    <a class="route" href="help-ko.html#account-close">
+                        <svg class="route-icon" aria-hidden="true"><use href="#g-guide"/></svg>
+                        <span class="route-text"><span class="route-label">가이드 보기</span><span class="route-sub">계정 비활성화 또는 삭제</span></span>
+                        <svg class="route-end" aria-hidden="true"><use href="#g-chev"/></svg>
+                    </a>
+                    <a class="route" href="mailto:support@showupcounts.com?subject=Delete%20my%20account">
+                        <svg class="route-icon" aria-hidden="true"><use href="#g-mail"/></svg>
+                        <span class="route-text"><span class="route-label">메일 보내기</span><span class="route-sub">제목은 영문 그대로</span></span>
+                        <svg class="route-end" aria-hidden="true"><use href="#g-out"/></svg>
+                    </a>
+                </div>
+            </li>
+
+            <li class="topic" style="--i:3" data-keys="버그 오류 에러 튕김 강제종료 먹통 멈춤 작동 안 함 고장 신고 bug crash error">
+                <div class="topic-body">
+                    <div class="topic-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M8.6 8.2V7.4a3.4 3.4 0 0 1 6.8 0v.8"/><rect x="6.8" y="8.2" width="10.4" height="12.8" rx="5.2"/><path d="M12 12v9"/><path d="M6.8 13H3.2M17.2 13h3.6M7.3 9.8 4.4 7.6M16.7 9.8l2.9-2.2M7.4 17.6l-2.9 2.2M16.6 17.6l2.9 2.2"/></svg>
+                    </div>
+                    <h2>버그 신고</h2>
+                    <p>메일에 기기, OS, 앱 버전, 재현 단계를 적는 짧은 양식이 들어&nbsp;있습니다.</p>
+                </div>
+                <div class="routes">
+                    <a class="route" href="mailto:support@showupcounts.com?subject=%EB%B2%84%EA%B7%B8%20%EC%8B%A0%EA%B3%A0&amp;body=%EA%B8%B0%EA%B8%B0%3A%20%0AOS%20%EB%B2%84%EC%A0%84%3A%20%0A%EC%95%B1%20%EB%B2%84%EC%A0%84%3A%20%0A%0A%EB%AC%B4%EC%8A%A8%20%EC%9D%BC%EC%9D%B4%20%EC%9E%88%EC%97%88%EB%82%98%EC%9A%94%3A%0A%0A%0A%EC%9E%AC%ED%98%84%20%EB%8B%A8%EA%B3%84%3A%0A%0A">
+                        <svg class="route-icon" aria-hidden="true"><use href="#g-mail"/></svg>
+                        <span class="route-text"><span class="route-label">메일 보내기</span><span class="route-sub">메일 앱이 열립니다</span></span>
+                        <svg class="route-end" aria-hidden="true"><use href="#g-out"/></svg>
+                    </a>
+                </div>
+            </li>
+
+            <li class="topic" style="--i:4" data-keys="예약 수업 일정 대기자 명단 정원 크레딧 멤버십 자리 등록 booking">
+                <div class="topic-body">
+                    <div class="topic-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="16.5" rx="2.6"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/><path d="m10 13.3 4 4M14 13.3l-4 4"/></svg>
+                    </div>
+                    <h2>예약이 안 돼요</h2>
+                    <p>수업을 예약할&nbsp;수 없는 모든 이유를 가이드에 정리해&nbsp;두었습니다.</p>
+                </div>
+                <div class="routes">
+                    <a class="route" href="help-ko.html#booking-troubleshoot">
+                        <svg class="route-icon" aria-hidden="true"><use href="#g-guide"/></svg>
+                        <span class="route-text"><span class="route-label">가이드 보기</span><span class="route-sub">예약이 안 될 때</span></span>
+                        <svg class="route-end" aria-hidden="true"><use href="#g-chev"/></svg>
+                    </a>
+                </div>
+            </li>
+
+            <li class="topic" style="--i:5" data-keys="피드백 아이디어 제안 건의 기능 요청 개선 의견 바람 feedback idea">
+                <div class="topic-body">
+                    <div class="topic-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9.2 17.5h5.6M10 21h4"/><path d="M12 2.8a6.2 6.2 0 0 0-3.7 11.2c.6.5.9 1.2.9 2v1.5h5.6V16c0-.8.3-1.5.9-2A6.2 6.2 0 0 0 12 2.8z"/></svg>
+                    </div>
+                    <h2>피드백과 아이디어</h2>
+                    <p>바꾸고 싶은 점이나 Showup에 있었으면 하는 것을&nbsp;들려주세요.</p>
+                </div>
+                <div class="routes">
+                    <a class="route" href="mailto:support@showupcounts.com?subject=%ED%94%BC%EB%93%9C%EB%B0%B1">
+                        <svg class="route-icon" aria-hidden="true"><use href="#g-mail"/></svg>
+                        <span class="route-text"><span class="route-label">메일 보내기</span><span class="route-sub">메일 앱이 열립니다</span></span>
+                        <svg class="route-end" aria-hidden="true"><use href="#g-out"/></svg>
+                    </a>
+                </div>
+            </li>
+
+            <li class="topic topic-empty" id="topicEmpty" hidden>
+                <span class="empty-text">
+                    <strong>그 단어에 맞는 주제가 없습니다.</strong>
+                    <span>다른 단어로 찾아보거나, 어떤 내용이든 메일로 보내&nbsp;주세요.</span>
+                </span>
+                <span class="empty-actions">
+                    <button type="button" class="pill pill-line" id="emptyClear">
+                        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="m3.5 3.5 9 9M12.5 3.5l-9 9"/></svg>
+                        모든 주제 보기
+                    </button>
+                    <a class="pill pill-line" href="mailto:support@showupcounts.com">
+                        <svg aria-hidden="true"><use href="#g-mail"/></svg>
+                        메일 보내기
+                    </a>
+                </span>
+            </li>
+        </ul>
+
+        <nav class="elsewhere" aria-labelledby="elsewhereLabel">
+            <p class="elsewhere-label" id="elsewhereLabel">찾는 주제가 없나요? 여기부터 확인해&nbsp;보세요</p>
+            <a class="chip" href="help-ko.html#welcome">고객 센터 둘러보기<svg viewBox="0 0 14 14" aria-hidden="true"><use href="#g-chev"/></svg></a>
+            <a class="chip" href="help-ko.html#space-create">스페이스 만들기<svg viewBox="0 0 14 14" aria-hidden="true"><use href="#g-chev"/></svg></a>
+        </nav>
+
+        <section class="other js-copywrap" id="something-else" aria-labelledby="other-title">
+            <div class="other-l">
+                <h2 id="other-title">다른 문의가 있나요?</h2>
+                <p>위 주제에 없는 내용도 편하게 메일로 보내&nbsp;주세요.</p>
+                <div class="other-social">
+                    <a class="pill pill-chip" href="https://instagram.com/showupcounts" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5.2"/><circle cx="12" cy="12" r="4.1"/><circle cx="17.3" cy="6.7" r="0.6" fill="currentColor"/></svg>@showupcounts<svg viewBox="0 0 14 14" aria-hidden="true"><use href="#g-out"/></svg>
+                    </a>
+                    <span class="other-note">새 탭에서 열립니다.</span>
+                </div>
+            </div>
+            <div class="panel">
+                <span class="panel-label"><svg aria-hidden="true"><use href="#g-mail"/></svg>이메일</span>
+                <span class="panel-value js-addr" id="supportAddress">support@<wbr>showupcounts.com</span>
+                <p class="panel-hint">메일 앱이 열립니다.</p>
+                <div class="panel-actions">
+                    <a class="pill pill-solid" href="mailto:support@showupcounts.com"><svg aria-hidden="true"><use href="#g-mail"/></svg>메일 보내기</a>
+                    <button type="button" class="pill pill-line js-copy" hidden
+                            data-copied="복사됨" data-selected="선택됨">
+                        <svg class="i-copy" aria-hidden="true"><use href="#g-copy"/></svg>
+                        <svg class="i-check" aria-hidden="true"><use href="#g-tick"/></svg>
+                        <span class="copy-label">주소 복사</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Announcement text for the copy buttons. Kept in the markup, like the
+             filter's, so translating this page never means editing the script. -->
+        <p class="sr-only" role="status" aria-live="polite" id="copyStatus"
+           data-ok="이메일 주소를 복사했습니다."
+           data-fail="자동으로 복사하지 못했습니다. 이메일 주소를 대신 선택해 두었습니다."></p>
     </main>
 
     <!-- Footer -->
@@ -376,6 +913,177 @@
             document.documentElement.setAttribute('data-theme', theme);
             document.getElementById('favicon').href = theme === 'light' ? 'assets/favicon-light.svg' : 'assets/favicon-dark.svg';
         });
+
+        /* ---- Filter the topics -----------------------------------------------
+           Purely local: it hides cards that do not match what you typed. No
+           request is made, nothing is stored. The whole block ships `hidden`, so
+           without JS the six topics simply stay on screen. */
+        (function () {
+            var wrap = document.getElementById('routerFilter');
+            var input = document.getElementById('topicFilter');
+            var clear = document.getElementById('filterClear');
+            var status = document.getElementById('filterStatus');
+            var list = document.getElementById('topics');
+            var empty = document.getElementById('topicEmpty');
+            var emptyClear = document.getElementById('emptyClear');
+            if (!wrap || !input || !list || !empty) return;
+
+            var cards = Array.prototype.slice.call(list.querySelectorAll('.topic:not(.topic-empty)'));
+            if (!cards.length) return;
+
+            // Curly apostrophes in the copy, straight ones on the keyboard.
+            function norm(s) {
+                return s.toLowerCase().replace(/[‘’ʼ]/g, "'").replace(/\s+/g, ' ');
+            }
+
+            cards.forEach(function (card) {
+                var parts = [card.querySelector('h2').textContent];
+                Array.prototype.forEach.call(card.querySelectorAll('.topic-body p'), function (p) {
+                    parts.push(p.textContent);
+                });
+                parts.push(card.getAttribute('data-keys') || '');
+                card._hay = norm(parts.join(' '));
+            });
+
+            var TOTAL = cards.length;
+            var IDLE = status.textContent;
+            // "Topics: 3 / 6" — a fixed label and two numbers, so no translation
+            // of this page ever has to agree a plural with the count.
+            var COUNT = status.getAttribute('data-count-label') || 'Topics:';
+            var PRIVACY = status.getAttribute('data-privacy') || 'Nothing leaves this page.';
+            var announceTimer = 0;
+            var animOff = false;
+
+            function say(text) {
+                clearTimeout(announceTimer);
+                announceTimer = setTimeout(function () { status.textContent = text; }, 220);
+            }
+
+            function apply() {
+                var q = norm(input.value).trim();
+                var tokens = q ? q.split(/\s+/) : [];
+                var shown = 0;
+
+                if (!animOff) { list.classList.add('no-anim'); animOff = true; }
+
+                cards.forEach(function (card) {
+                    var hit = tokens.every(function (t) { return card._hay.indexOf(t) !== -1; });
+                    card.hidden = !hit;
+                    if (hit) shown++;
+                });
+
+                list.classList.toggle('is-filtered', tokens.length > 0);
+                empty.hidden = shown !== 0;
+                clear.hidden = q === '';
+
+                if (!tokens.length) say(IDLE);
+                else say(COUNT + ' ' + shown + ' / ' + TOTAL + ' · ' + PRIVACY);
+            }
+
+            function reset(focus) {
+                input.value = '';
+                apply();
+                if (focus) input.focus();
+            }
+
+            wrap.hidden = false;
+            input.addEventListener('input', apply);
+            input.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape' && input.value) { e.preventDefault(); reset(true); }
+            });
+            clear.addEventListener('click', function () { reset(true); });
+            if (emptyClear) emptyClear.addEventListener('click', function () { reset(true); });
+        })();
+
+        /* ---- Copy the support address --------------------------------------
+           Both copy buttons ship `hidden`, so neither shows without JS; the
+           address and the mailto links are plain markup and work either way.
+           Nothing leaves the page: the text only goes to the visitor's own
+           clipboard. If the clipboard is out of reach the address is selected
+           instead, so it can still be copied by hand. */
+        (function () {
+            var status = document.getElementById('copyStatus');
+            var btns = Array.prototype.slice.call(document.querySelectorAll('.js-copy'));
+            if (!status || !btns.length) return;
+            var ADDRESS = 'support@showupcounts.com';
+            var OK_MSG = status.getAttribute('data-ok') || 'Email address copied.';
+            var FAIL_MSG = status.getAttribute('data-fail') || 'Could not copy automatically. The email address is selected.';
+            var announceTimer = 0;
+
+            function announce(text) {
+                // Clear first so the same message is read out again on a repeat copy.
+                clearTimeout(announceTimer);
+                status.textContent = '';
+                announceTimer = setTimeout(function () { status.textContent = text; }, 60);
+            }
+
+            function legacyCopy(btn) {
+                var ta = document.createElement('textarea');
+                ta.value = ADDRESS;
+                ta.setAttribute('readonly', '');
+                ta.style.cssText = 'position:fixed;top:0;left:0;width:1px;height:1px;opacity:0;font-size:16px;';
+                document.body.appendChild(ta);
+                ta.select();
+                ta.setSelectionRange(0, ADDRESS.length);
+                var ok = false;
+                try { ok = document.execCommand('copy'); } catch (e) { ok = false; }
+                document.body.removeChild(ta);
+                btn.focus();
+                return ok;
+            }
+
+            btns.forEach(function (btn) {
+                var label = btn.querySelector('.copy-label');
+                var IDLE = label ? label.textContent : '';
+                var DONE = btn.getAttribute('data-copied') || 'Copied';
+                var PICKED = btn.getAttribute('data-selected') || 'Selected';
+                var wrap = btn.closest('.js-copywrap');
+                var addrEl = (wrap && wrap.querySelector('.js-addr')) || document.getElementById('supportAddress');
+                var timer = 0;
+
+                function finish(ok) {
+                    clearTimeout(timer);
+                    // Hold the idle width so a shorter label doesn't shift the row.
+                    if (label && !btn.style.width) btn.style.width = btn.getBoundingClientRect().width + 'px';
+                    // Explicit, so a failed copy after a successful one cannot keep the
+                    // green "copied" skin while the label says otherwise.
+                    btn.classList.toggle('is-copied', ok);
+                    if (ok) {
+                        if (label) label.textContent = DONE;
+                        announce(OK_MSG);
+                    } else {
+                        // Could not reach the clipboard: select the address instead.
+                        if (addrEl) {
+                            var range = document.createRange();
+                            range.selectNodeContents(addrEl);
+                            var sel = window.getSelection();
+                            sel.removeAllRanges();
+                            sel.addRange(range);
+                        }
+                        if (label) label.textContent = PICKED;
+                        announce(FAIL_MSG);
+                    }
+                    timer = setTimeout(function () {
+                        btn.classList.remove('is-copied');
+                        if (label) label.textContent = IDLE;
+                        status.textContent = '';
+                        btn.style.width = '';
+                    }, 2400);
+                }
+
+                btn.hidden = false;
+                btn.addEventListener('click', function () {
+                    if (navigator.clipboard && window.isSecureContext) {
+                        navigator.clipboard.writeText(ADDRESS).then(
+                            function () { finish(true); },
+                            function () { finish(legacyCopy(btn)); }
+                        );
+                    } else {
+                        finish(legacyCopy(btn));
+                    }
+                });
+            });
+        })();
     </script>
 </body>
 </html>
