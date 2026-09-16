@@ -147,14 +147,25 @@
         .help-contact-box a { color: var(--text-primary); text-decoration: underline; text-underline-offset: 3px; }
         .help-updated { margin-top: 14px !important; font-size: 0.85rem !important; color: var(--text-tertiary) !important; }
 
-        .help-mobile-label { display: none; font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 400; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-tertiary); margin-bottom: 14px; }
+        .help-topics-toggle { display: none; width: 100%; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 14px; background: var(--bg-secondary); border: 1px solid var(--border); color: var(--text-primary); font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif; text-align: left; cursor: pointer; }
+        .help-topics-toggle[hidden] { display: none; }
+        [data-theme="light"] .help-topics-toggle { background: #FAFAFA; }
+        .help-topics-toggle-text { display: flex; flex-direction: column; min-width: 0; }
+        .help-topics-toggle-label { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-tertiary); }
+        .help-topics-toggle-current { font-size: 0.95rem; font-weight: 600; line-height: 1.4; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .help-topics-toggle svg { width: 12px; height: 12px; flex-shrink: 0; color: var(--text-secondary); transition: transform 0.2s ease; }
+        .help-sidebar.topics-open .help-topics-toggle svg { transform: rotate(180deg); }
 
         @media (max-width: 900px) {
             :root { --nav-height: 64px; }
             .help-layout { flex-direction: column; padding-top: var(--nav-height); }
-            .help-sidebar { width: 100%; position: static; height: auto; overflow: visible; border-right: none; border-bottom: 1px solid var(--border); padding: 32px 24px; }
+            .help-sidebar { width: 100%; position: static; height: auto; overflow: visible; border-right: none; border-bottom: 1px solid var(--border); padding: 20px 24px; }
             .help-sidebar-title { display: none; }
-            .help-mobile-label { display: block; }
+            .help-search-wrap { margin-bottom: 12px; }
+            .help-search-results { margin-bottom: 0; }
+            .help-topics-toggle { display: flex; }
+            .help-sidebar:not(.topics-open) #helpNav { display: none; }
+            #helpNav { margin-top: 24px; }
             .help-nav-group { margin-bottom: 20px; }
             .help-main { padding: 40px 24px 80px; max-width: 100%; }
             .help-quicklinks { grid-template-columns: 1fr; }
@@ -196,11 +207,17 @@
     <div class="help-layout">
         <aside class="help-sidebar">
             <div class="help-sidebar-title">고객 센터</div>
-            <div class="help-mobile-label">주제 둘러보기</div>
             <div class="help-search-wrap">
                 <input type="search" id="helpSearch" class="help-search" placeholder="고객 센터 검색…" autocomplete="off" aria-label="고객 센터 검색">
             </div>
             <div id="helpSearchResults" class="help-search-results" hidden></div>
+            <button type="button" class="help-topics-toggle" id="helpTopicsToggle" aria-expanded="false" aria-controls="helpNav">
+                <span class="help-topics-toggle-text">
+                    <span class="help-topics-toggle-label">주제 둘러보기</span>
+                    <span class="help-topics-toggle-current" id="helpTopicsCurrent"></span>
+                </span>
+                <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg>
+            </button>
             <nav id="helpNav">
                 <div class="help-nav-group">
                     <a class="help-nav-link" data-target="welcome" href="#welcome">시작하기</a>
@@ -1029,12 +1046,28 @@
 
         const articles = document.querySelectorAll('.help-article');
         const navLinks = document.querySelectorAll('#helpNav .help-nav-link');
+        // On mobile the topic list folds behind a toggle so the article shows first
+        const helpSidebar = document.querySelector('.help-sidebar');
+        const topicsToggle = document.getElementById('helpTopicsToggle');
+        const topicsCurrent = document.getElementById('helpTopicsCurrent');
+        function setTopicsOpen(open) {
+            helpSidebar.classList.toggle('topics-open', open);
+            topicsToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        }
+        topicsToggle.addEventListener('click', function() {
+            setTopicsOpen(!helpSidebar.classList.contains('topics-open'));
+        });
         function showArticle(id) {
             if (!document.getElementById(id) || !document.getElementById(id).classList.contains('help-article')) {
                 id = 'welcome';
             }
             articles.forEach(function(a) { a.hidden = (a.id !== id); });
-            navLinks.forEach(function(l) { l.classList.toggle('active', l.dataset.target === id); });
+            navLinks.forEach(function(l) {
+                const isActive = l.dataset.target === id;
+                l.classList.toggle('active', isActive);
+                if (isActive) topicsCurrent.textContent = l.textContent;
+            });
+            setTopicsOpen(false);
             window.scrollTo({ top: 0 });
         }
         document.addEventListener('click', function(e) {
@@ -1063,9 +1096,11 @@
                 searchResults.hidden = true;
                 searchResults.innerHTML = '';
                 helpNav.hidden = false;
+                topicsToggle.hidden = false;
                 return;
             }
             helpNav.hidden = true;
+            topicsToggle.hidden = true;
             const matches = searchIndex.filter(function(it) {
                 return it.title.toLowerCase().indexOf(q) !== -1 || it.text.indexOf(q) !== -1;
             });
