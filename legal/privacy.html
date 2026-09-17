@@ -236,6 +236,16 @@
             margin-top: 32px;
             margin-bottom: 12px;
         }
+
+        /* German compounds — "Gewährleistungsausschluss", "Datenschutzerklärung" —
+           are wider than a phone's text column, and a heading that does not fit
+           used to widen the whole document: both German legal pages scrolled
+           sideways at 390px. Hyphenate where the browser has a dictionary for the
+           page's language, and break the word rather than the page where it does not.
+           Headings only: body text here carries bare URLs like www.showupcounts.com,
+           and a hyphen dropped into one would read as part of the address. */
+        .privacy-content h1, .privacy-content h2, .privacy-content h3, .privacy-content p, .privacy-content li { overflow-wrap: break-word; }
+        :lang(de) .privacy-content h1, :lang(de) .privacy-content h2, :lang(de) .privacy-content h3 { -webkit-hyphens: auto; hyphens: auto; }
         .privacy-content p {
             color: var(--text-secondary);
             font-size: 0.98rem;

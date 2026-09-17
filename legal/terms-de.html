@@ -236,6 +236,16 @@
             margin-top: 32px;
             margin-bottom: 12px;
         }
+
+        /* German compounds — "Gewährleistungsausschluss", "Datenschutzerklärung" —
+           are wider than a phone's text column, and a heading that does not fit
+           used to widen the whole document: both German legal pages scrolled
+           sideways at 390px. Hyphenate where the browser has a dictionary for the
+           page's language, and break the word rather than the page where it does not.
+           Headings only: body text here carries bare URLs like www.showupcounts.com,
+           and a hyphen dropped into one would read as part of the address. */
+        .terms-content h1, .terms-content h2, .terms-content h3, .terms-content p, .terms-content li { overflow-wrap: break-word; }
+        :lang(de) .terms-content h1, :lang(de) .terms-content h2, :lang(de) .terms-content h3 { -webkit-hyphens: auto; hyphens: auto; }
         .terms-content p {
             color: var(--text-secondary);
             font-size: 0.98rem;
@@ -399,7 +409,7 @@
             </a>
             <div class="nav-actions">
                 <div class="lang-dropdown" id="langDropdown">
-                    <button class="lang-current" id="langCurrent" aria-label="Change language">
+                    <button class="lang-current" id="langCurrent" aria-label="Sprache ändern">
                         <span>DE</span>
                         <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg>
                     </button>
@@ -409,7 +419,7 @@
                         <a href="terms-de.html" class="active">DE</a>
                     </div>
                 </div>
-                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                <button class="theme-toggle" id="themeToggle" aria-label="Design umschalten">
                     <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
                     <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
                 </button>
