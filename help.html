@@ -351,7 +351,7 @@
                 <p>
                     Open the Space, tap the members or settings area, and choose <strong>Leave Space</strong>. You'll see a confirmation: once you leave, you'll need to be invited again to rejoin.
                 </p>
-                <p><strong>One-admin rule:</strong> every active Space needs at least one <a data-target="roles" href="#roles">Admin</a>. If you're the only Admin, you can't leave directly — archive the Space first, or promote another member to Admin and then leave.</p>
+                <p><strong>One-admin rule:</strong> the Admin of a Space is whoever created it, and the role can't be handed to anyone else. So if you're the Admin, you can't leave directly — <a data-target="space-archive" href="#space-archive">archive the Space</a> from Edit Space first, then leave. The app says the same thing if you try.</p>
             </article>
 
             <article class="help-article" id="space-archive">
@@ -377,15 +377,13 @@
                     <thead><tr><th>Role</th><th>Can</th></tr></thead>
                     <tbody>
                         <tr><td class="role-name">Admin<span class="role-inherits">Everything Staff can, plus:</span></td><td><ul><li>Archive or delete the Space</li><li>Delete session types</li></ul></td></tr>
-                        <tr><td class="role-name">Staff<span class="role-inherits">Everything a Coach can, plus:</span></td><td><ul><li>Edit Space settings and session types</li><li>Manage members and assign roles (up to Staff)</li><li>Accept or decline join requests</li><li>Edit or delete any workout</li><li>Delete any score or comment</li><li>Moderate posts and media</li><li>Turn booking on and manage membership plans</li><li>Delete schedules, and cancel the bookings on them</li><li>Create, edit or remove any member's membership hold</li></ul></td></tr>
+                        <tr><td class="role-name">Staff<span class="role-inherits">Everything a Coach can, plus:</span></td><td><ul><li>Edit Space settings and session types</li><li>Manage members and assign roles (up to Staff)</li><li>Accept or decline join requests</li><li>Edit or delete any workout</li><li>Delete any score or comment</li><li>Moderate posts and media</li><li>Turn booking on and manage membership plans</li><li>Delete schedules, and cancel the bookings on them</li><li>Create, edit or remove any member's membership hold in the current membership period</li><li>Renew a membership: add a period, grant bonus days, or set an exact expiry</li></ul></td></tr>
                         <tr><td class="role-name">Coach<span class="role-inherits">Everything a Member can, plus:</span></td><td><ul><li>Create and edit their own workouts</li><li>Invite new members</li><li>Add and manage their own media in the library</li><li>Create and edit schedules, be assigned to them, and add or remove participants</li></ul></td></tr>
                         <tr><td class="role-name">Member<span class="role-inherits">The default role:</span></td><td><ul><li>Log scores on workouts</li><li>Add comments and reactions</li><li>Write community posts</li><li>View the community, members and Media Library</li><li>Book classes, join waitlists, and manage their own holds</li></ul></td></tr>
-                        <tr><td class="role-name">Guest Member<span class="role-inherits">Limited access:</span></td><td><ul><li>Log scores, comment and react on workouts shared with them</li><li>No community feed, members list, Media Library or booking</li></ul></td></tr>
-                        <tr><td class="role-name">Guest Viewer<span class="role-inherits">View only — the default for anyone who isn't a member:</span></td><td><ul><li>See a workout and its leaderboard</li><li>Nothing else — no scores, comments or reactions</li></ul></td></tr>
                     </tbody>
                 </table>
                 <p>
-                    Admins have full control of a Space. Staff can manage members and assign roles up to Staff (they can't create or remove Admins). Coaches focus on programming and media, and can run schedules. Members participate by logging scores, commenting, posting, and booking classes. The two guest tiers are for people who aren't members of the Space: a Guest Member can take part in a workout that was shared with them, a Guest Viewer can only look.
+                    Admins have full control of a Space. Staff can manage members and assign roles up to Staff (they can't create or remove Admins). Coaches focus on programming and media, and can run schedules. Members participate by logging scores, commenting, posting, and booking classes — it's the role new members join with, and the one most people keep.
                 </p>
             </article>
 
@@ -397,7 +395,7 @@
                 <h2>Roles</h2>
                 <p>Members can be Admins, Staff, Coaches, or Members. Only Admins can archive or delete the Space; Staff can edit settings and moderate. See <a data-target="roles" href="#roles">Roles &amp; permissions</a> for the full breakdown.</p>
                 <h2>Membership status</h2>
-                <p>Active (full access), Invited / Pending / Requested (awaiting approval), or Archived (you left or were removed).</p>
+                <p>Active (full access), Invited / Pending / Requested (awaiting approval), Expired (past its end date — access has ended, but you're still on the Space's member list and an admin can bring you back by <a data-target="booking-membership" href="#booking-membership">adding a period</a>), or Archived (you left or were removed).</p>
             </article>
 
             <article class="help-article" id="workout-what">
@@ -587,7 +585,7 @@
                     <tbody>
                         <tr><td>Per week</td><td>A set number of credits each week, reset at the start of the week.</td></tr>
                         <tr><td>Per month</td><td>A set number of credits each calendar month, reset on the 1st.</td></tr>
-                        <tr><td>Fixed pack</td><td>A total number of credits that doesn't renew. When they're gone, they're gone.</td></tr>
+                        <tr><td>Fixed pack</td><td>A total number of credits with no weekly or monthly reset. The pack starts over when an admin renews your membership — see <strong>When your membership is renewed</strong> below.</td></tr>
                         <tr><td>Unlimited</td><td>No credit is ever spent, however many classes you book.</td></tr>
                     </tbody>
                 </table>
@@ -597,6 +595,22 @@
                     <li>Periods are worked out in the <strong>Space's time zone</strong>, not your phone's — so a Sunday-night class can land in a different week than you'd expect if you're travelling.</li>
                     <li>Your membership can have a start and an end date. Classes that fall before your start date can't be booked. <strong>Credit history</strong> lists every credit spent and returned.</li>
                 </ul>
+                <h2>When your membership is renewed</h2>
+                <p>
+                    An admin renews you by adding a <strong>period</strong> of your plan — a month, a year, however long one term of the plan runs — and your expiry moves out by that much. If your membership had already run out, the new period normally starts from the day you're renewed rather than from the expiry that had passed, so you still get the full term. They can grant <strong>bonus days</strong> on top of it, each with a reason, or set an exact expiry date by hand instead.
+                </p>
+                <ul>
+                    <li><strong>This period</strong> on your membership screen shows how the current period was built, right under the expiry it produced — for example "1 month + 7 bonus day(s)". It isn't shown when an admin set the expiry to an exact date, because a date on its own isn't built from a term and bonus days.</li>
+                    <li>Booking a class spends a credit from the period you're in now — what you used up in an earlier one doesn't follow you into it.</li>
+                    <li>A <strong>fixed pack</strong> starts counting from zero again, and the credits you hadn't used are normally carried over on top — so a renewed pack can show more than the number on its plan. An admin can switch that off for a renewal, and then the leftovers are forfeited.</li>
+                    <li>Your <a data-target="booking-hold" href="#booking-hold">hold</a> allowance starts again from the day you were renewed.</li>
+                    <li><strong>Membership History</strong>, on the same screen, records every renewal, bonus grant and correction — with the reason and who made it.</li>
+                </ul>
+                <h2>If your membership ends</h2>
+                <p>
+                    An expired membership doesn't remove you from the Space. You stay on its member list, your workout history is kept, and an admin can bring you back by adding a period — they can't send you a fresh invitation instead.
+                </p>
+                <p class="help-callout">Don't want to look at a membership that has ended? Swipe its row in <strong>Account → My Memberships</strong> and tap <strong>Hide</strong>. That only takes the row off your own list — nothing is deleted, and it comes back on its own if the membership is renewed.</p>
             </article>
 
             <article class="help-article" id="booking-hold">
@@ -604,14 +618,21 @@
                 <p>A hold pauses your membership for a range of dates — for a holiday, an injury, or any break. If your plan allows holds, you create them yourself from <strong>My Membership</strong>.</p>
                 <h2>The rules</h2>
                 <ul>
-                    <li>Your plan sets <strong>how many holds</strong> you may take and <strong>how many days in total</strong>. The allowance resets each membership period, and either limit can be unlimited.</li>
+                    <li>Your plan sets <strong>how many holds</strong> you may take and <strong>how many days in total</strong>. The allowance covers one membership period — the numbers above the list are headed <strong>This period</strong> — and either limit can be unlimited.</li>
                     <li><strong>You can edit or cancel a hold until its start date arrives.</strong> Once it has started, only an admin or staff member can change it.</li>
                     <li>You can't book classes that fall inside a hold. Days either side of it are unaffected.</li>
                     <li>Holds can't overlap each other, be backdated, or fall outside your membership period.</li>
                 </ul>
                 <h2>If you already have bookings in that range</h2>
                 <p>Those bookings are cancelled when the hold is created. Whether each credit comes back follows the same rules as cancelling yourself, so a hold can produce a mix of refunded and forfeited credits. The confirmation dialog spells out exactly what will happen before you commit.</p>
-                <p class="help-callout">Admins and staff can create, change or remove any member's hold — including ones that have already started. If you need a hold adjusted after it began, ask them.</p>
+                <h2>What a renewal does to your holds</h2>
+                <p>
+                    When an admin <a data-target="booking-membership" href="#booking-membership">renews your membership</a>, the allowance starts again from the day of the renewal. The holds you already took are <strong>kept, not deleted</strong> — they stay in the list. A hold that started before the day of the renewal stops counting against the new period's allowance; one that hasn't started yet still counts, because it falls inside the new period.
+                </p>
+                <p>
+                    A hold that belongs to an earlier period carries an <strong>Earlier period</strong> caption and can't be edited or deleted — by you, or by an admin. Removing it now would pull your renewed expiry back by the days it had added, quietly taking away time you'd already been given.
+                </p>
+                <p class="help-callout">Admins and staff can create, change or remove any member's hold in the current period, including ones that have already started. If you need a hold adjusted after it began, ask them — but an earlier period's hold is locked for them too.</p>
             </article>
 
             <article class="help-article" id="booking-troubleshoot">
@@ -632,7 +653,7 @@
                         <tr><td>Fully booked</td><td>Capacity is reached. Join the waitlist and you'll be moved in if someone cancels.</td></tr>
                         <tr><td>Membership required</td><td>The class costs a credit and you have no plan assigned. Ask an admin or staff member to assign you one.</td></tr>
                         <tr><td>Not on your membership</td><td>The class is limited to certain membership plans and yours isn't one of them.</td></tr>
-                        <tr><td>No credits left</td><td>You've used your allotment for this period. It resets at the start of the next one — a fixed pack doesn't reset at all.</td></tr>
+                        <tr><td>No credits left</td><td>You've used your allotment for this period. A weekly or monthly plan refills at the start of the next week or month; a <a data-target="booking-membership" href="#booking-membership">fixed pack</a> refills when an admin renews your membership, usually carrying your leftovers over.</td></tr>
                     </tbody>
                 </table>
                 <p class="help-callout">Seeing <strong>"pull to refresh and try again"</strong> means the class changed while you were booking it — usually its capacity or whether it needs a credit. Refresh and the current state will show.</p>
@@ -680,12 +701,26 @@
                 <h2>What a plan defines</h2>
                 <ul>
                     <li><strong>Name</strong> — what members see, like "Everyday" or "3 per week".</li>
-                    <li><strong>Duration</strong> — optional. Assigning the plan then sets the member's end date automatically.</li>
+                    <li><strong>Duration</strong> — optional; how long one term of the plan runs, like 1 month. Inviting someone on a plan with a duration sets their expiry automatically to one term after their start date, and the field is read-only. After that it's the length <strong>Add period</strong> adds when you renew them — changing an existing member's plan in <strong>Manage Member</strong> doesn't move their expiry on its own.</li>
                     <li><strong>Credits</strong> — per week, per month, a fixed pack, or unlimited, and how many.</li>
                     <li><strong>Cancellation policy</strong> — always free, free up to a set number of hours before the class, or never free.</li>
-                    <li><strong>Holds</strong> — whether members may pause their membership, how many holds they get, and how many days in total.</li>
+                    <li><strong>Holds</strong> — whether members may pause their membership, how many holds they get per period, and how many days in total.</li>
                 </ul>
                 <p class="help-callout"><strong>Plan edits are not retroactive.</strong> A booking keeps the cancellation terms that were in force when it was made, so changing a policy today never changes what happens to a booking someone already holds.</p>
+                <h2>Renewing a member</h2>
+                <p>Renewals happen in <strong>Manage Member</strong> — open <strong>Community ▸ Members</strong> and tap the member's row. Everything on that screen is a draft: the bar at the bottom previews the expiry your save would write, and one <strong>Save</strong> commits the lot.</p>
+                <ul>
+                    <li><strong>Add period</strong> — adds one or more terms of the member's plan and starts a new membership <em>period</em>. This is the renewal; there is no separate "Extend" button. If the member has already expired, the bar adds a <strong>Count from</strong> choice — <strong>From today</strong> (the default) or <strong>Continue from expiry → date</strong> — so you decide whether the lapsed days are given back or written off.</li>
+                    <li><strong>Bonus days</strong> — whole extra days on top, with a required reason (Promotion, Compensation, Referral, Loyalty, Other) and details that are optional unless the reason is Other. Up to 90 days in one save.</li>
+                    <li><strong>Set Expiry Date…</strong> — a correction, not a renewal. It asks before replacing a period you've added and any bonus days, and afterwards the member's <strong>This period</strong> line disappears, because an exact date isn't built from a term and bonus days.</li>
+                    <li>Changing the plan or the start date never moves the expiry by itself — one of the three above has to do it. If you swap someone onto a new plan expecting a renewal, the screen says so and offers <strong>Add period</strong>.</li>
+                </ul>
+                <p>Adding a period also restarts the member's <a data-target="booking-hold" href="#booking-hold">hold</a> allowance from that day, and starts a fresh credit period for a fixed pack. <strong>Membership History</strong> records every renewal, bonus grant and correction, with who made it.</p>
+                <h2>Carrying credits over a renewal</h2>
+                <p>
+                    When you renew someone on a fixed pack, <strong>Carry over remaining credits</strong> is on by default: the credits they hadn't used are added to the new period's allotment, and the row tells you how many. Switch it off for that renewal and those credits are forfeited instead — the row updates to say so before you save. It's a choice you make per renewal, not a plan setting.
+                </p>
+                <p class="help-callout"><strong>You can't re-invite someone whose membership has expired.</strong> They're still on the roster — under the <strong>Expired</strong> tab in Members — so the invite screen refuses the send and points you at Manage Member → <strong>Add period</strong>, which is what reactivates them.</p>
             </article>
 
             <article class="help-article" id="booking-admin-roster">
@@ -703,7 +738,8 @@
                 </ul>
                 <h2>Holds and deletion</h2>
                 <ul>
-                    <li>Admins and staff can create, edit or remove any member's <a data-target="booking-hold" href="#booking-hold">hold</a>, including one that has already started. Coaches can't.</li>
+                    <li>Admins and staff can create, edit or remove any member's <a data-target="booking-hold" href="#booking-hold">hold</a> in their current membership period, including one that has already started. Coaches can't.</li>
+                    <li>A hold from an <strong>earlier</strong> period is shown but locked for everyone, admins included — changing it would drag the renewed expiry backwards and take away days the member was already given.</li>
                     <li>Deleting a schedule that has bookings asks for the scope — that one day or the whole series — and whether to refund the credits. Deleting is admin and staff only.</li>
                 </ul>
                 <p class="help-callout">Increasing a full class's capacity doesn't promote anyone from the waitlist by itself. The next cancellation does. To fill the new spots straight away, add the members by hand.</p>
@@ -780,7 +816,7 @@
                 <p><a data-target="roles" href="#roles">Staff</a> and Admins can change a member's role and remove members, with a few limits:</p>
                 <ul>
                     <li>You can't change your own role.</li>
-                    <li>Staff can assign roles up to Staff — only an Admin can promote someone to, or remove, an Admin.</li>
+                    <li>Staff can assign roles up to Staff. Nobody can be made an Admin: that role belongs to the person who created the Space.</li>
                     <li>Staff can't change or remove Admins.</li>
                 </ul>
                 <p>Staff and Admins can also accept or decline join requests from the Members view. For the full breakdown of what each role can do, see <a data-target="roles" href="#roles">Roles &amp; permissions</a>.</p>
@@ -977,7 +1013,7 @@
 
             <div class="help-contact-box">
                 <p>Didn't find what you need? <a href="contact.html">Contact us</a>.</p>
-                <p class="help-updated">Last updated: August 25, 2026 · <a href="legal/privacy.html">Privacy Policy</a> · <a href="legal/terms.html">Terms of Service</a></p>
+                <p class="help-updated">Last updated: September 18, 2026 · <a href="legal/privacy.html">Privacy Policy</a> · <a href="legal/terms.html">Terms of Service</a></p>
             </div>
         </main>
     </div>

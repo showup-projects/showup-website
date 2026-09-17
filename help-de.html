@@ -351,7 +351,7 @@
                 <p>
                     Öffne den Space, tippe im Mitglieder- oder Einstellungsbereich auf <strong>Space verlassen</strong>. Du siehst eine Bestätigung: Wenn du den Space verlässt, musst du erneut eingeladen werden, um wieder beizutreten.
                 </p>
-                <p><strong>Ein-Admin-Regel:</strong> Jeder aktive Space braucht mindestens einen <a data-target="roles" href="#roles">Admin</a>. Bist du der einzige Admin, kannst du den Space nicht direkt verlassen – archiviere ihn zuvor oder befördere ein anderes Mitglied zum Admin und verlasse ihn dann.</p>
+                <p><strong>Ein-Admin-Regel:</strong> Admin eines Space ist, wer ihn erstellt hat, und diese Rolle lässt sich nicht weitergeben. Als Admin kannst du den Space deshalb nicht direkt verlassen – <a data-target="space-archive" href="#space-archive">archiviere ihn</a> zuerst unter Space bearbeiten und verlasse ihn dann. Die App sagt dir dasselbe, wenn du es versuchst.</p>
             </article>
 
             <article class="help-article" id="space-archive">
@@ -377,15 +377,13 @@
                     <thead><tr><th>Rolle</th><th>Berechtigungen</th></tr></thead>
                     <tbody>
                         <tr><td class="role-name">Admin<span class="role-inherits">Alles, was Staff kann, plus:</span></td><td><ul><li>Den Space archivieren oder löschen</li><li>Session-Typen löschen</li></ul></td></tr>
-                        <tr><td class="role-name">Staff<span class="role-inherits">Alles, was ein Coach kann, plus:</span></td><td><ul><li>Space-Einstellungen und Session-Typen bearbeiten</li><li>Mitglieder verwalten und Rollen vergeben (bis Staff)</li><li>Beitrittsanfragen annehmen oder ablehnen</li><li>Jedes Workout bearbeiten oder löschen</li><li>Jeden Score oder Kommentar löschen</li><li>Beiträge und Medien moderieren</li><li>Buchung aktivieren und Mitgliedschaftspläne verwalten</li><li>Termine löschen und die Buchungen darauf stornieren</li><li>Die Pause jedes Mitglieds anlegen, ändern oder entfernen</li></ul></td></tr>
+                        <tr><td class="role-name">Staff<span class="role-inherits">Alles, was ein Coach kann, plus:</span></td><td><ul><li>Space-Einstellungen und Session-Typen bearbeiten</li><li>Mitglieder verwalten und Rollen vergeben (bis Staff)</li><li>Beitrittsanfragen annehmen oder ablehnen</li><li>Jedes Workout bearbeiten oder löschen</li><li>Jeden Score oder Kommentar löschen</li><li>Beiträge und Medien moderieren</li><li>Buchung aktivieren und Mitgliedschaftspläne verwalten</li><li>Termine löschen und die Buchungen darauf stornieren</li><li>Die Pause jedes Mitglieds im aktuellen Mitgliedschaftszeitraum anlegen, ändern oder entfernen</li><li>Eine Mitgliedschaft verlängern: einen Zeitraum hinzufügen, Bonustage vergeben oder ein genaues Ablaufdatum festlegen</li></ul></td></tr>
                         <tr><td class="role-name">Coach<span class="role-inherits">Alles, was ein Member kann, plus:</span></td><td><ul><li>Eigene Workouts erstellen und bearbeiten</li><li>Neue Mitglieder einladen</li><li>Eigene Medien in der Bibliothek hinzufügen und verwalten</li><li>Termine erstellen und bearbeiten, ihnen zugewiesen werden, Teilnehmer eintragen und entfernen</li></ul></td></tr>
                         <tr><td class="role-name">Member<span class="role-inherits">Die Standardrolle:</span></td><td><ul><li>Scores zu Workouts eintragen</li><li>Kommentare und Reaktionen hinzufügen</li><li>Community-Beiträge schreiben</li><li>Community, Mitglieder und Medienbibliothek ansehen</li><li>Kurse buchen, auf Wartelisten gehen, eigene Pausen verwalten</li></ul></td></tr>
-                        <tr><td class="role-name">Guest Member<span class="role-inherits">Eingeschränkter Zugriff:</span></td><td><ul><li>Scores eintragen, kommentieren und reagieren bei geteilten Workouts</li><li>Kein Community-Feed, keine Mitgliederliste, keine Medienbibliothek, keine Buchung</li></ul></td></tr>
-                        <tr><td class="role-name">Guest Viewer<span class="role-inherits">Nur ansehen – Standard für alle, die kein Mitglied sind:</span></td><td><ul><li>Ein Workout und seine Rangliste ansehen</li><li>Sonst nichts – keine Scores, Kommentare oder Reaktionen</li></ul></td></tr>
                     </tbody>
                 </table>
                 <p>
-                    Admins haben die volle Kontrolle über einen Space. Staff können Mitglieder verwalten und Rollen bis Staff vergeben (sie können keine Admins erstellen oder entfernen). Coaches konzentrieren sich auf Programming und Medien und können Termine leiten. Members nehmen teil, indem sie Scores eintragen, kommentieren, posten und Kurse buchen. Die beiden Gast-Stufen sind für Personen, die nicht Mitglied des Space sind: ein Guest Member kann bei einem geteilten Workout mitmachen, ein Guest Viewer kann nur zusehen.
+                    Admins haben die volle Kontrolle über einen Space. Staff können Mitglieder verwalten und Rollen bis Staff vergeben (sie können keine Admins erstellen oder entfernen). Coaches konzentrieren sich auf Programming und Medien und können Termine leiten. Members nehmen teil, indem sie Scores eintragen, kommentieren, posten und Kurse buchen – es ist die Rolle, mit der neue Mitglieder starten, und die die meisten behalten.
                 </p>
             </article>
 
@@ -397,7 +395,7 @@
                 <h2>Rollen</h2>
                 <p>Mitglieder können Admins, Staff, Coaches oder Members sein. Nur Admins können den Space archivieren oder löschen; Staff können Einstellungen bearbeiten und moderieren. Die vollständige Übersicht findest du unter <a data-target="roles" href="#roles">Rollen &amp; Berechtigungen</a>.</p>
                 <h2>Mitgliedschaftsstatus</h2>
-                <p>Aktiv (voller Zugriff), Eingeladen / Ausstehend / Angefragt (warten auf Bestätigung) oder Archiviert (du hast den Space verlassen oder wurdest entfernt).</p>
+                <p>Aktiv (voller Zugriff), Eingeladen / Ausstehend / Angefragt (warten auf Bestätigung), Abgelaufen (das Ablaufdatum ist vorbei – der Zugang ist beendet, du stehst aber weiter auf der Mitgliederliste des Space, und ein Admin kann dich zurückholen, indem er <a data-target="booking-membership" href="#booking-membership">einen Zeitraum hinzufügt</a>) oder Archiviert (du hast den Space verlassen oder wurdest entfernt).</p>
             </article>
 
             <article class="help-article" id="workout-what">
@@ -587,7 +585,7 @@
                     <tbody>
                         <tr><td>Pro Woche</td><td>Eine feste Zahl pro Woche, zurückgesetzt zum Wochenbeginn.</td></tr>
                         <tr><td>Pro Monat</td><td>Eine feste Zahl pro Kalendermonat, zurückgesetzt am Ersten.</td></tr>
-                        <tr><td>Festes Paket</td><td>Eine Gesamtzahl, die sich nicht erneuert. Sind sie aufgebraucht, sind sie weg.</td></tr>
+                        <tr><td>Festes Paket</td><td>Eine Gesamtzahl ohne wöchentliches oder monatliches Zurücksetzen. Das Paket beginnt von vorn, wenn ein Admin deine Mitgliedschaft verlängert – siehe <strong>Wenn deine Mitgliedschaft verlängert wird</strong> weiter unten.</td></tr>
                         <tr><td>Unbegrenzt</td><td>Es wird nie ein Credit abgezogen, egal wie viel du buchst.</td></tr>
                     </tbody>
                 </table>
@@ -597,6 +595,22 @@
                     <li>Die Perioden richten sich nach der <strong>Zeitzone des Space</strong>, nicht nach der deines Telefons – ein Kurs am Sonntagabend kann also in einer anderen Woche landen, als du erwartest, wenn du unterwegs bist.</li>
                     <li>Deine Mitgliedschaft kann ein Start- und ein Enddatum haben. Kurse vor dem Startdatum lassen sich nicht buchen. Der <strong>Credit-Verlauf</strong> listet jeden ausgegebenen und zurückerstatteten Credit auf.</li>
                 </ul>
+                <h2>Wenn deine Mitgliedschaft verlängert wird</h2>
+                <p>
+                    Ein Admin verlängert deine Mitgliedschaft, indem er einen <strong>Zeitraum</strong> deines Plans hinzufügt – einen Monat, ein Jahr, je nachdem, wie lange der Plan einmal läuft – und dein Ablaufdatum verschiebt sich um genau so viel nach hinten. War deine Mitgliedschaft bereits abgelaufen, beginnt der neue Zeitraum normalerweise am Tag der Verlängerung und nicht am bereits vergangenen Ablaufdatum – du bekommst also den vollen Zeitraum. Zusätzlich kann er <strong>Bonustage</strong> vergeben, jeweils mit einem Grund, oder stattdessen ein genaues Ablaufdatum von Hand festlegen.
+                </p>
+                <ul>
+                    <li><strong>Aktueller Zeitraum</strong> auf deinem Mitgliedschaftsbildschirm zeigt direkt unter dem Ablaufdatum, wie dieser Zeitraum zustande gekommen ist – zum Beispiel „1 Monat + 7 Bonustag(e)". Nach einem von Hand festgelegten Ablaufdatum wird die Zeile nicht angezeigt, denn ein bloßes Datum setzt sich nicht aus Laufzeit und Bonustagen zusammen.</li>
+                    <li>Eine Buchung zieht einen Credit aus dem Zeitraum ab, in dem du gerade bist – was du in einem früheren verbraucht hast, wandert nicht mit.</li>
+                    <li>Ein <strong>festes Paket</strong> zählt wieder bei null los, und die Credits, die du nicht genutzt hattest, werden normalerweise obendrauf übertragen – ein verlängertes Paket kann also mehr anzeigen, als in seinem Plan steht. Ein Admin kann das für eine Verlängerung abschalten, dann verfallen die Reste.</li>
+                    <li>Dein Kontingent an <a data-target="booking-hold" href="#booking-hold">Pausen</a> beginnt ab dem Tag der Verlängerung von vorn.</li>
+                    <li>Der <strong>Mitgliedschaftsverlauf</strong> auf demselben Bildschirm hält jede Verlängerung, jede Bonusvergabe und jede Korrektur fest – mit dem Grund und mit der Person, die sie vorgenommen hat.</li>
+                </ul>
+                <h2>Wenn deine Mitgliedschaft endet</h2>
+                <p>
+                    Eine abgelaufene Mitgliedschaft entfernt dich nicht aus dem Space. Du bleibst auf der Mitgliederliste des Space, dein Workout-Verlauf bleibt erhalten, und ein Admin kann dich zurückholen, indem er einen Zeitraum hinzufügt – eine neue Einladung kann er dir stattdessen nicht schicken.
+                </p>
+                <p class="help-callout">Du willst eine beendete Mitgliedschaft nicht mehr sehen? Wische unter <strong>Konto → Meine Mitgliedschaften</strong> auf ihrer Zeile und tippe auf <strong>Ausblenden</strong>. Das nimmt die Zeile nur aus deiner eigenen Liste – gelöscht wird nichts, und sie kommt von selbst zurück, wenn die Mitgliedschaft verlängert wird.</p>
             </article>
 
             <article class="help-article" id="booking-hold">
@@ -604,14 +618,21 @@
                 <p>Eine Pause setzt deine Mitgliedschaft für einen Zeitraum aus – für Urlaub, eine Verletzung oder einfach eine Auszeit. Erlaubt dein Plan Pausen, legst du sie unter <strong>Meine Mitgliedschaft</strong> selbst an.</p>
                 <h2>Die Regeln</h2>
                 <ul>
-                    <li>Dein Plan legt fest, <strong>wie viele Pausen</strong> du nehmen darfst und <strong>wie viele Tage insgesamt</strong>. Das Kontingent wird jede Mitgliedschaftsperiode zurückgesetzt, und beide Grenzen können unbegrenzt sein.</li>
+                    <li>Dein Plan legt fest, <strong>wie viele Pausen</strong> du nehmen darfst und <strong>wie viele Tage insgesamt</strong>. Das Kontingent gilt für einen Mitgliedschaftszeitraum – die Zahlen über der Liste stehen unter <strong>Aktueller Zeitraum</strong> –, und beide Grenzen können unbegrenzt sein.</li>
                     <li><strong>Bis zum Startdatum kannst du eine Pause selbst ändern oder löschen.</strong> Sobald sie begonnen hat, können das nur noch Admins oder Staff.</li>
                     <li>Kurse innerhalb einer Pause lassen sich nicht buchen. Die Tage davor und danach sind nicht betroffen.</li>
-                    <li>Pausen dürfen sich nicht überschneiden, nicht rückdatiert werden und nicht außerhalb deiner Mitgliedschaftsperiode liegen.</li>
+                    <li>Pausen dürfen sich nicht überschneiden, nicht rückdatiert werden und nicht außerhalb deines Mitgliedschaftszeitraums liegen.</li>
                 </ul>
                 <h2>Wenn du in dem Zeitraum schon Buchungen hast</h2>
                 <p>Diese Buchungen werden mit dem Anlegen der Pause storniert. Ob der jeweilige Credit zurückkommt, richtet sich nach denselben Regeln wie beim eigenen Stornieren – eine Pause kann also erstattete und verfallene Credits mischen. Der Bestätigungsdialog sagt dir genau, was passieren wird, bevor du zustimmst.</p>
-                <p class="help-callout">Admins und Staff können die Pause jedes Mitglieds anlegen, ändern oder entfernen – auch eine bereits laufende. Muss eine begonnene Pause angepasst werden, wende dich an sie.</p>
+                <h2>Was eine Verlängerung mit deinen Pausen macht</h2>
+                <p>
+                    Verlängert ein Admin <a data-target="booking-membership" href="#booking-membership">deine Mitgliedschaft</a>, beginnt das Kontingent ab dem Tag der Verlängerung von vorn. Die Pausen, die du schon genommen hast, <strong>bleiben erhalten und werden nicht gelöscht</strong> – sie stehen weiter in der Liste. Eine Pause, die vor dem Tag der Verlängerung begonnen hat, zählt nicht mehr gegen das Kontingent des neuen Zeitraums; eine, die noch nicht begonnen hat, zählt weiter, weil sie in den neuen Zeitraum fällt.
+                </p>
+                <p>
+                    Eine Pause aus einem früheren Zeitraum trägt die Beschriftung <strong>Früherer Zeitraum</strong> und lässt sich weder bearbeiten noch löschen – von dir nicht und von einem Admin auch nicht. Würde man sie jetzt entfernen, würde dein verlängertes Ablaufdatum um die Tage vorrücken, die sie hinzugefügt hatte – und dir still und leise Zeit wegnehmen, die du schon bekommen hattest.
+                </p>
+                <p class="help-callout">Admins und Staff können die Pause jedes Mitglieds im aktuellen Zeitraum anlegen, ändern oder entfernen – auch eine bereits laufende. Muss eine begonnene Pause angepasst werden, wende dich an sie – eine Pause aus einem früheren Zeitraum ist aber auch für sie gesperrt.</p>
             </article>
 
             <article class="help-article" id="booking-troubleshoot">
@@ -632,7 +653,7 @@
                         <tr><td>Ausgebucht</td><td>Die Kapazität ist erreicht. Setz dich auf die Warteliste, dann rückst du bei einer Stornierung nach.</td></tr>
                         <tr><td>Mitgliedschaft erforderlich</td><td>Der Kurs kostet einen Credit, dir ist aber kein Plan zugewiesen. Bitte einen Admin oder Staff darum.</td></tr>
                         <tr><td>Nicht in deiner Mitgliedschaft enthalten</td><td>Der Kurs ist auf bestimmte Mitgliedschaftspläne beschränkt, und deiner gehört nicht dazu.</td></tr>
-                        <tr><td>Keine Credits mehr</td><td>Du hast dein Kontingent für diese Periode aufgebraucht. Es wird zu Beginn der nächsten zurückgesetzt – ein festes Paket wird gar nicht zurückgesetzt.</td></tr>
+                        <tr><td>Keine Credits mehr</td><td>Du hast dein Kontingent für diese Periode aufgebraucht. Ein Wochen- oder Monatsplan füllt sich zu Beginn der nächsten Woche bzw. des nächsten Monats wieder auf; ein <a data-target="booking-membership" href="#booking-membership">festes Paket</a> füllt sich, wenn ein Admin deine Mitgliedschaft verlängert – normalerweise werden deine Reste dabei übertragen.</td></tr>
                     </tbody>
                 </table>
                 <p class="help-callout">Der Hinweis, <strong>zum Aktualisieren zu ziehen und es erneut zu versuchen</strong>, bedeutet, dass sich der Kurs während des Buchens geändert hat – meist seine Kapazität oder ob er einen Credit kostet. Nach dem Aktualisieren siehst du den aktuellen Stand.</p>
@@ -680,12 +701,26 @@
                 <h2>Was ein Plan festlegt</h2>
                 <ul>
                     <li><strong>Name</strong> – was Mitglieder sehen, etwa „Täglich" oder „3 pro Woche".</li>
-                    <li><strong>Laufzeit</strong> – optional. Beim Zuweisen wird daraus automatisch das Enddatum des Mitglieds.</li>
+                    <li><strong>Laufzeit</strong> – optional; wie lange der Plan einmal läuft, etwa 1 Monat. Lädst du jemanden mit einem Plan mit Laufzeit ein, wird das Ablaufdatum automatisch auf eine Laufzeit nach dem Startdatum gesetzt und lässt sich nicht von Hand ändern. Danach ist es die Länge, die <strong>Zeitraum hinzufügen</strong> bei einer Verlängerung anhängt – den Plan eines bestehenden Mitglieds unter <strong>Mitglied verwalten</strong> zu wechseln verschiebt das Ablaufdatum für sich genommen nicht.</li>
                     <li><strong>Credits</strong> – pro Woche, pro Monat, als festes Paket oder unbegrenzt, und wie viele.</li>
                     <li><strong>Stornierungsrichtlinie</strong> – immer kostenlos, kostenlos bis zu einer festgelegten Stundenzahl vor dem Kurs, oder nie kostenlos.</li>
-                    <li><strong>Pausen</strong> – ob Mitglieder ihre Mitgliedschaft aussetzen dürfen, wie oft und wie viele Tage insgesamt.</li>
+                    <li><strong>Pausen</strong> – ob Mitglieder ihre Mitgliedschaft aussetzen dürfen, wie viele Pausen sie pro Zeitraum bekommen und wie viele Tage insgesamt.</li>
                 </ul>
                 <p class="help-callout"><strong>Änderungen an einem Plan wirken nicht rückwirkend.</strong> Eine Buchung behält die Stornierungsbedingungen, die beim Buchen galten – eine heutige Änderung ändert also nie, was mit einer bestehenden Buchung passiert.</p>
+                <h2>Ein Mitglied verlängern</h2>
+                <p>Verlängerungen laufen über <strong>Mitglied verwalten</strong> – öffne <strong>Community ▸ Mitglieder</strong> und tippe auf die Zeile des Mitglieds. Alles auf diesem Bildschirm ist ein Entwurf: Die Leiste unten zeigt dir vorab, welches Ablaufdatum dein Speichern schreiben würde, und ein <strong>Speichern</strong> übernimmt alles auf einmal.</p>
+                <ul>
+                    <li><strong>Zeitraum hinzufügen</strong> – hängt eine oder mehrere Laufzeiten des zugewiesenen Plans an und startet einen neuen Mitgliedschafts<em>zeitraum</em>. Das ist die Verlängerung; eine eigene Schaltfläche „Verlängern" gibt es nicht. Ist das Mitglied bereits abgelaufen, zeigt die Leiste zusätzlich die Auswahl <strong>Ab</strong> – <strong>Ab heute</strong> (die Voreinstellung) oder <strong>Ab Ablaufdatum → Datum</strong> –, damit du entscheidest, ob die abgelaufenen Tage zurückgegeben oder abgeschrieben werden.</li>
+                    <li><strong>Bonustage</strong> – ganze Tage obendrauf, mit einem Pflichtgrund (Aktion, Kulanz, Empfehlung, Treue, Andere) und Details, die nur beim Grund „Andere" Pflicht sind. Höchstens 90 Tage auf einmal.</li>
+                    <li><strong>Ablaufdatum festlegen...</strong> – eine Korrektur, keine Verlängerung. Die App fragt nach, bevor sie einen hinzugefügten Zeitraum und die Bonustage ersetzt, und danach verschwindet beim Mitglied die Zeile <strong>Aktueller Zeitraum</strong>, weil sich ein genaues Datum nicht aus Laufzeit und Bonustagen zusammensetzt.</li>
+                    <li>Den Plan oder das Startdatum zu ändern verschiebt das Ablaufdatum nie von allein – das muss eines der drei oben tun. Weist du jemandem einen neuen Plan zu und erwartest eine Verlängerung, sagt dir der Bildschirm das und verweist auf <strong>Zeitraum hinzufügen</strong>.</li>
+                </ul>
+                <p>Ein hinzugefügter Zeitraum lässt außerdem die genutzten <a data-target="booking-hold" href="#booking-hold">Pausen</a> des Mitglieds ab diesem Tag neu zählen und startet bei einem festen Paket einen frischen Credit-Zeitraum. Der <strong>Mitgliedschaftsverlauf</strong> hält jede Verlängerung, jede Bonusvergabe und jede Korrektur fest, samt der Person, die sie vorgenommen hat.</p>
+                <h2>Credits in eine Verlängerung mitnehmen</h2>
+                <p>
+                    Verlängerst du jemanden mit einem festen Paket, ist <strong>Verbleibende Credits übertragen</strong> standardmäßig eingeschaltet: Die nicht genutzten Credits werden dem Kontingent des neuen Zeitraums hinzugefügt, und die Zeile sagt dir, wie viele es sind. Schaltest du es für diese eine Verlängerung aus, verfallen sie stattdessen – die Zeile sagt dir das noch vor dem Speichern. Du entscheidest das pro Verlängerung, es ist keine Einstellung am Plan.
+                </p>
+                <p class="help-callout"><strong>Wessen Mitgliedschaft abgelaufen ist, den kannst du nicht erneut einladen.</strong> Die Person steht weiterhin auf der Mitgliederliste – im Tab <strong>Abgelaufen</strong> bei den Mitgliedern –, deshalb verweigert der Einladungsbildschirm das Senden und verweist dich auf Mitglied verwalten → <strong>Zeitraum hinzufügen</strong>, womit sie reaktiviert wird.</p>
             </article>
 
             <article class="help-article" id="booking-admin-roster">
@@ -703,7 +738,8 @@
                 </ul>
                 <h2>Pausen und Löschen</h2>
                 <ul>
-                    <li>Admins und Staff können die <a data-target="booking-hold" href="#booking-hold">Pause</a> jedes Mitglieds anlegen, ändern oder entfernen – auch eine bereits laufende. Coaches können das nicht.</li>
+                    <li>Admins und Staff können die <a data-target="booking-hold" href="#booking-hold">Pause</a> jedes Mitglieds in dessen aktuellem Mitgliedschaftszeitraum anlegen, ändern oder entfernen – auch eine bereits laufende. Coaches können das nicht.</li>
+                    <li>Eine Pause aus einem <strong>früheren</strong> Zeitraum wird angezeigt, ist aber für alle gesperrt, Admins eingeschlossen – sie zu ändern würde das verlängerte Ablaufdatum vorrücken lassen und dem Mitglied Tage wegnehmen, die es schon bekommen hatte.</li>
                     <li>Beim Löschen eines Termins mit Buchungen wirst du nach dem Umfang gefragt – dieser eine Tag oder die ganze Serie – und danach, ob die Credits erstattet werden. Löschen können nur Admins und Staff.</li>
                 </ul>
                 <p class="help-callout">Erhöhst du die Kapazität eines vollen Kurses, rückt dadurch allein niemand von der Warteliste nach. Das passiert bei der nächsten Stornierung. Willst du die neuen Plätze sofort füllen, trage die Mitglieder von Hand ein.</p>
@@ -780,7 +816,7 @@
                 <p><a data-target="roles" href="#roles">Staff</a> und Admins können die Rolle eines Mitglieds ändern und Mitglieder entfernen, mit ein paar Einschränkungen:</p>
                 <ul>
                     <li>Du kannst deine eigene Rolle nicht ändern.</li>
-                    <li>Staff können Rollen bis Staff vergeben — nur ein Admin kann jemanden zum Admin befördern oder einen Admin entfernen.</li>
+                    <li>Staff können Rollen bis Staff vergeben. Zum Admin kann niemand gemacht werden: Diese Rolle gehört der Person, die den Space erstellt hat.</li>
                     <li>Staff können Admins nicht ändern oder entfernen.</li>
                 </ul>
                 <p>Staff und Admins können in der Mitglieder-Ansicht auch Beitrittsanfragen annehmen oder ablehnen. Die vollständige Übersicht, was jede Rolle darf, findest du unter <a data-target="roles" href="#roles">Rollen &amp; Berechtigungen</a>.</p>
@@ -977,7 +1013,7 @@
 
             <div class="help-contact-box">
                 <p>Nichts Passendes gefunden? <a href="contact-de.html">Kontaktiere uns</a>.</p>
-                <p class="help-updated">Zuletzt aktualisiert: 25. August 2026 · <a href="legal/privacy-de.html">Datenschutz</a> · <a href="legal/terms-de.html">Nutzungsbedingungen</a></p>
+                <p class="help-updated">Zuletzt aktualisiert: 18. September 2026 · <a href="legal/privacy-de.html">Datenschutz</a> · <a href="legal/terms-de.html">Nutzungsbedingungen</a></p>
             </div>
         </main>
     </div>
