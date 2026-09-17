@@ -1241,7 +1241,7 @@
         </div>
         <div class="nav-actions">
             <div class="lang-dropdown" id="langDropdown">
-                <button class="lang-current" id="langCurrent" aria-label="Change language">
+                <button class="lang-current" id="langCurrent" aria-label="Change language" data-i18n-aria="nav.langAria">
                     <span>EN</span>
                     <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg>
                 </button>
@@ -1251,7 +1251,7 @@
                     <button data-lang="de">DE</button>
                 </div>
             </div>
-            <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" data-i18n-aria="nav.themeAria">
                 <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
                 <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
             </button>
@@ -1411,12 +1411,12 @@
             <div class="feature-panel side-right" data-index="5">
                 <span class="feature-tag tag-booking">Booking</span>
                 <h3 data-i18n="feat.bookingdetail.title">One Tap to Book</h3>
-                <p data-i18n="feat.bookingdetail.desc">Class details, who&rsquo;s coaching, and how many spots are left &mdash; or the waitlist if it&rsquo;s full. Your membership handles the rest.</p>
+                <p data-i18n-html="feat.bookingdetail.desc">Class details, who&rsquo;s coaching, and how many spots are left &mdash; or the waitlist if it&rsquo;s full. Your membership handles the rest.</p>
             </div>
             <div class="feature-panel side-left" data-index="6">
                 <span class="feature-tag tag-posts">Leaderboard</span>
                 <h3 data-i18n="feat.leaderboard.title">See Where You Stand</h3>
-                <p data-i18n="feat.leaderboard.desc">Live leaderboard with your community on every workout. Rx or Scaled &mdash; everyone has a place on the board.</p>
+                <p data-i18n-html="feat.leaderboard.desc">Live leaderboard with your community on every workout. Rx or Scaled &mdash; everyone has a place on the board.</p>
             </div>
             <div class="feature-panel side-right" data-index="7">
                 <span class="feature-tag tag-collaborate">Scores</span>
@@ -1750,6 +1750,8 @@
     const translations = {
         en: {
             // Nav
+            'nav.langAria': 'Change language',
+            'nav.themeAria': 'Toggle theme',
             'nav.features': 'Features',
             'nav.pricing': 'Pricing',
             'nav.privacy': 'Privacy Policy',
@@ -1800,7 +1802,7 @@
             'feat.prdetail.title': 'Watch Yourself Grow',
             'feat.prdetail.desc': 'Track your personal records over time with detailed charts. Every PR tells a story of progress.',
             'feat.booking.title': 'Save Your Spot',
-            'feat.booking.desc': 'See the whole week at a glance and book the classes you want. Capacity, coaches and your remaining credits, all in one view.',
+            'feat.booking.desc': 'See the whole week at a glance and book the classes you want.',
             'feat.bookingdetail.title': 'One Tap to Book',
             'feat.bookingdetail.desc': 'Class details, who\u2019s coaching, and how many spots are left \u2014 or the waitlist if it\u2019s full. Your membership handles the rest.',
             'feat.records.tag': 'Records',
@@ -1825,6 +1827,8 @@
         },
         ko: {
             // Nav
+            'nav.langAria': '언어 변경',
+            'nav.themeAria': '테마 전환',
             'nav.features': '기능',
             'nav.pricing': '요금제',
             'nav.privacy': '개인정보처리방침',
@@ -1865,20 +1869,20 @@
             'feat.collab.desc': '여러 스페이스와 같은 워크아웃을 함께 공유하고,<br>리더보드에서 다 같이 만나 보세요.',
             'feat.scores.tag': '점수',
             'feat.scores.title': '기록하고 공유하세요.',
-            'feat.scores.desc': '워크아웃 결과와 메모를 기록해 보세요.<br>멤버들의 점수엔 리액션도 남겨 보세요.',
+            'feat.scores.desc': '워크아웃 결과와 메모를 기록해 보세요.<br>멤버들의 점수엔 리액션도 남겨 보세요.<br>그렇게 서로의 하루를 응원해 주세요.',
             'feat.leaderboard.tag': '리더보드',
             'feat.leaderboard.title': '리더보드를 확인하세요',
-            'feat.leaderboard.desc': '워크아웃마다 커뮤니티와 실시간으로 만나 보세요.',
+            'feat.leaderboard.desc': '워크아웃마다 커뮤니티와 실시간으로 만나 보세요.<br>오늘 내가 어디쯤인지 바로 보여요.',
             'feat.community.tag': '커뮤니티',
-            'feat.community.title': '언제나 크루와 함께',
+            'feat.community.title': '언제나 커뮤니티와 함께',
             'feat.community.desc': '소식과 PR 보드, 미디어 라이브러리를 한곳에서.',
             'feat.prdetail.tag': 'PR 추적',
             'feat.prdetail.title': '나의 성장을 한눈에',
             'feat.prdetail.desc': '상세한 차트로 기록이 어떻게 변해왔는지 살펴봐요.<br>PR 하나하나가 성장의 증거예요.',
             'feat.booking.title': '자리를 미리 잡아요',
-            'feat.booking.desc': '한 주를 한눈에 보고 원하는 수업을 예약하세요. 정원, 코치, 남은 크레딧이 한 화면에 있어요.',
+            'feat.booking.desc': '한 주를 한눈에 보고 원하는 수업을 예약하세요.',
             'feat.bookingdetail.title': '예약은 한 번에',
-            'feat.bookingdetail.desc': '수업 내용과 담당 코치, 남은 자리를 확인하고 바로 예약하세요. 자리가 찼다면 대기자 명단에 올라가요.',
+            'feat.bookingdetail.desc': '수업 내용과 담당 코치, 남은 자리를 확인하고<br>바로 예약하세요. 자리가 찼다면 대기자 명단에 올라가요.',
             'feat.records.tag': '기록',
             'feat.records.title': '내 모든 PR을 한곳에',
             'feat.records.desc': '종목별로 골라 최고 기록을 확인해 보세요.',
@@ -1901,6 +1905,8 @@
         },
         de: {
             // Nav
+            'nav.langAria': 'Sprache ändern',
+            'nav.themeAria': 'Design umschalten',
             'nav.features': 'Funktionen',
             'nav.pricing': 'Preise',
             'nav.privacy': 'Datenschutz',
@@ -1952,7 +1958,7 @@
             'feat.prdetail.title': 'Beobachte dein Wachstum',
             'feat.prdetail.desc': 'Verfolge deine pers\u00f6nlichen Rekorde \u00fcber die Zeit mit detaillierten Charts. Jeder PR erz\u00e4hlt eine Geschichte.',
             'feat.booking.title': 'Sichere dir deinen Platz',
-            'feat.booking.desc': 'Sieh die ganze Woche auf einen Blick und buche die Kurse, die du willst. Kapazit\u00e4t, Coaches und deine restlichen Credits in einer Ansicht.',
+            'feat.booking.desc': 'Sieh die ganze Woche auf einen Blick und buche die Kurse, die du willst.',
             'feat.bookingdetail.title': 'Buchen mit einem Tipp',
             'feat.bookingdetail.desc': 'Kursdetails, wer coacht und wie viele Pl\u00e4tze frei sind \u2014 oder die Warteliste, wenn er voll ist. Um den Rest k\u00fcmmert sich deine Mitgliedschaft.',
             'feat.records.tag': 'Rekorde',
@@ -2005,6 +2011,15 @@
             var key = el.getAttribute('data-i18n');
             if (strings[key] !== undefined) {
                 el.textContent = strings[key];
+            }
+        });
+
+        // Apply aria-label translations, for the icon-only nav controls whose
+        // accessible name is their only name.
+        document.querySelectorAll('[data-i18n-aria]').forEach(function(el) {
+            var key = el.getAttribute('data-i18n-aria');
+            if (strings[key] !== undefined) {
+                el.setAttribute('aria-label', strings[key]);
             }
         });
 
