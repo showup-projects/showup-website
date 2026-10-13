@@ -264,6 +264,7 @@
                     <a class="help-nav-link" data-target="community-prboard" href="#community-prboard">PR 보드</a>
                     <a class="help-nav-link" data-target="community-media" href="#community-media">미디어 라이브러리</a>
                     <a class="help-nav-link" data-target="community-invite" href="#community-invite">멤버 초대</a>
+                    <a class="help-nav-link" data-target="community-qr" href="#community-qr">QR 코드로 가입</a>
                     <a class="help-nav-link" data-target="community-manage" href="#community-manage">멤버 관리</a>
                 </div>
                 <div class="help-nav-group">
@@ -389,9 +390,9 @@
                     <thead><tr><th>역할</th><th>할 수 있는 일</th></tr></thead>
                     <tbody>
                         <tr><td class="role-name">관리자<span class="role-inherits">모든 스태프 권한 + 다음:</span></td><td><ul><li>스페이스 아카이브 또는 삭제</li><li>세션 유형 삭제</li></ul></td></tr>
-                        <tr><td class="role-name">스태프<span class="role-inherits">모든 코치 권한 + 다음:</span></td><td><ul><li>스페이스 설정 및 세션 유형 편집</li><li>멤버 관리 및 역할 지정 (스태프까지)</li><li>가입 요청 수락 또는 거절</li><li>모든 워크아웃 편집 또는 삭제</li><li>모든 점수 또는 댓글 삭제</li><li>게시물 및 미디어 관리</li><li>예약 기능 켜기 및 멤버십 플랜 관리</li><li>일정 삭제 및 그 일정의 예약 취소</li><li>현재 멤버십 기간에 있는 모든 멤버의 멤버십 홀딩 생성·수정·삭제</li><li>멤버십 재등록: 기간 추가, 서비스 일수 부여, 만료일 직접 지정</li></ul></td></tr>
-                        <tr><td class="role-name">코치<span class="role-inherits">모든 멤버 권한 + 다음:</span></td><td><ul><li>자신의 워크아웃 생성 및 편집</li><li>신규 멤버 초대</li><li>라이브러리에서 자신의 미디어 추가 및 관리</li><li>일정 생성·편집, 일정에 배정, 참가자 추가 및 제외</li></ul></td></tr>
-                        <tr><td class="role-name">멤버<span class="role-inherits">기본 역할:</span></td><td><ul><li>워크아웃에 점수 기록</li><li>댓글 및 반응 추가</li><li>커뮤니티 게시물 작성</li><li>커뮤니티, 멤버, 미디어 라이브러리 보기</li><li>수업 예약, 대기자 명단 참여, 본인 홀딩 관리</li></ul></td></tr>
+                        <tr><td class="role-name">스태프<span class="role-inherits">모든 코치 권한 + 다음:</span></td><td><ul><li>스페이스 설정 및 세션 유형 편집</li><li>멤버 관리 및 역할 지정 (스태프까지)</li><li>가입 요청 수락 또는 거절</li><li>QR 가입 요청 받기 켜기 또는 끄기</li><li>모든 워크아웃 편집 또는 삭제</li><li>모든 점수 또는 댓글 삭제</li><li>게시물 및 미디어 관리</li><li>예약 기능 켜기 및 멤버십 플랜 관리</li><li>일정 삭제 및 그 일정의 예약 취소</li><li>현재 멤버십 기간에 있는 모든 멤버의 멤버십 홀딩 생성·수정·삭제</li><li>멤버십 재등록: 기간 추가, 서비스 일수 부여, 만료일 직접 지정</li></ul></td></tr>
+                        <tr><td class="role-name">코치<span class="role-inherits">모든 멤버 권한 + 다음:</span></td><td><ul><li>자신의 워크아웃 생성 및 편집</li><li>신규 멤버 초대</li><li>스페이스 QR 코드 보여 주기 및 공유</li><li>스페이스가 멤버에게 멤버 목록을 숨겨도 멤버 목록 보기</li><li>라이브러리에서 자신의 미디어 추가 및 관리</li><li>일정 생성·편집, 일정에 배정, 참가자 추가 및 제외</li></ul></td></tr>
+                        <tr><td class="role-name">멤버<span class="role-inherits">기본 역할:</span></td><td><ul><li>워크아웃에 점수 기록</li><li>댓글 및 반응 추가</li><li>커뮤니티 게시물 작성</li><li>커뮤니티, 멤버(스페이스가 멤버 목록을 숨기지 않은 경우), 미디어 라이브러리 보기</li><li>수업 예약, 대기자 명단 참여, 본인 홀딩 관리</li></ul></td></tr>
                     </tbody>
                 </table>
                 <p>
@@ -815,15 +816,69 @@
                 <ul>
                     <li><a data-target="roles" href="#roles">코치</a> 이상이 신규 멤버를 초대할 수 있습니다.</li>
                     <li>신규 멤버는 기본적으로 <strong>멤버</strong>로 합류합니다. 본인의 역할이 허용하면 초대 시 더 높은 역할을 지정할 수 있습니다.</li>
-                    <li>스페이스는 비공개이며 공개 검색이 없으므로, 초대가 사람들이 합류하는 주된 방법입니다.</li>
-                    <li>스페이스가 가입 요청을 받는 경우, <a data-target="roles" href="#roles">스태프</a>와 관리자는 멤버 화면에서 요청을 수락하거나 거절할 수 있습니다.</li>
+                    <li>스페이스는 비공개이며 공개 검색이 없습니다. 초대를 받거나, 스페이스의 QR 코드를 스캔해 가입을 요청해서 합류합니다(<a data-target="community-qr" href="#community-qr">QR 코드로 가입</a> 참고).</li>
+                    <li><a data-target="roles" href="#roles">스태프</a>와 관리자는 멤버 화면에서 가입 요청을 하나씩 수락하거나 거절합니다.</li>
                 </ul>
+            </article>
+
+            <article class="help-article" id="community-qr">
+                <h1>QR 코드로 가입</h1>
+                <p>
+                    모든 스페이스에는 고유한 QR 코드가 있습니다. 휴대폰 카메라로 코드를 스캔한 사람은 가입을 요청할 수 있고, <a data-target="roles" href="#roles">관리자 또는 스태프</a>가 요청을 하나씩 승인합니다. 스캔만으로 가입되지는 않습니다.
+                </p>
+                <h2>스페이스 QR 코드 보여 주기</h2>
+                <p>
+                    커뮤니티 탭에서 <strong>멤버</strong>를 열고 초대 버튼 옆의 QR 코드 버튼을 누르세요. <a data-target="roles" href="#roles">코치</a> 이상이 열 수 있습니다.
+                </p>
+                <ul>
+                    <li><strong>사진에 저장</strong> — 코드를 이미지로 저장합니다. 인쇄해서 스페이스에 붙여 둘 수 있습니다.</li>
+                    <li><strong>QR 코드 공유</strong> — 휴대폰의 공유 메뉴로 이미지를 보냅니다.</li>
+                    <li><strong>복사하기</strong> — 가입 링크를 복사합니다. 메시지나 이메일로 보낼 수 있고, 휴대폰에서 링크를 누르면 코드를 스캔한 것과 같습니다.</li>
+                </ul>
+                <p>스페이스의 코드는 바뀌지 않으므로, 한 번 인쇄한 포스터는 계속 사용할 수 있습니다.</p>
+                <h2>코드를 스캔해서 가입하기</h2>
+                <ol>
+                    <li>휴대폰 카메라로 코드를 비추고, 나타나는 링크를 누르세요. Showup 앱 안에는 스캐너가 없습니다.</li>
+                    <li>Showup이 그 스페이스의 페이지로 열립니다. 앱이 아직 없으면 App Store 또는 Google Play로 이동합니다. 설치하고 로그인한 다음 코드를 다시 스캔하세요.</li>
+                    <li><strong>가입</strong>을 누르고, 원하면 메시지(최대 500자)를 적은 뒤 <strong>보내기</strong>를 누르세요.</li>
+                </ol>
+                <p>
+                    보낸 요청은 <strong>홈</strong> 탭의 <strong>요청됨</strong>에 표시됩니다. 취소하려면 그 카드를 누르세요. 요청이 수락되거나 거절되면 알림을 받고, 수락되면 스페이스가 <strong>내 스페이스</strong>에 나타납니다. 거절되었거나 직접 취소한 경우에는 다시 요청할 수 있습니다.
+                </p>
+                <p><strong>가입</strong> 대신 다음 중 하나가 보일 수 있습니다.</p>
+                <ul>
+                    <li><strong>대기 중</strong> — 보낸 요청이 답변을 기다리고 있습니다.</li>
+                    <li><strong>초대</strong> — 이미 초대를 받았습니다. 눌러서 초대에 응답하세요.</li>
+                    <li><strong>멤버</strong> — 이미 이 스페이스의 멤버입니다.</li>
+                    <li><strong>만료됨</strong> — 이 스페이스의 멤버십이 끝났습니다. 스페이스의 관리자 또는 스태프에게 <a data-target="booking-membership" href="#booking-membership">기간을 추가</a>해 달라고 요청하세요.</li>
+                    <li><strong>마감</strong> — 스페이스가 지금은 QR 가입 요청을 받지 않습니다.</li>
+                </ul>
+                <h2>가입 요청에 응답하기</h2>
+                <p>
+                    관리자와 스태프는 요청이 올 때마다 알림을 받습니다. 알림에서 열거나, <strong>멤버 → 대기 중 → 가입 요청</strong>에서 여세요. 누가 언제 요청했는지와 메시지, 프로필로 가는 링크가 보입니다.
+                </p>
+                <ul>
+                    <li><strong>가입 요청 수락</strong>을 누르면 종료일도 멤버십 플랜도 없는 <strong>멤버</strong>로 추가됩니다. <a data-target="booking-admin-plans" href="#booking-admin-plans">멤버십 플랜</a>을 부여하거나 종료일·역할을 바꾸려면 멤버 목록에서 그 사람을 눌러 <strong>멤버 관리</strong>를 여세요.</li>
+                    <li><strong>거절</strong>은 확인 절차 없이 바로 적용됩니다.</li>
+                    <li>수락한 요청은 플랜의 멤버 수 한도에 포함됩니다. 스페이스가 가득 차 있으면 수락하기 전에 업그레이드 안내가 나옵니다.</li>
+                    <li>코치는 코드를 보여 주고 공유할 수 있지만, 요청을 보거나 응답할 수는 없습니다.</li>
+                </ul>
+                <h2>QR 가입 잠시 멈추기</h2>
+                <p>
+                    관리자와 스태프는 QR 코드 화면에서 <strong>QR로 가입 요청 받기</strong>를 끌 수 있습니다. 꺼져 있는 동안에는 다음과 같습니다.
+                </p>
+                <ul>
+                    <li>인쇄한 포스터와 공유한 링크가 모두 작동하지 않습니다. 포스터 한 장만 따로 중단할 수는 없습니다.</li>
+                    <li>이미 대기 중인 요청에는 그대로 응답할 수 있습니다.</li>
+                    <li>기존 멤버, 만료된 멤버, 이미 보낸 초대는 영향을 받지 않습니다.</li>
+                </ul>
+                <p>언제든 다시 켤 수 있고, 켜면 같은 코드가 다시 작동합니다. 스페이스를 아카이브하면 대기 중이던 요청은 취소됩니다.</p>
             </article>
 
             <article class="help-article" id="community-manage">
                 <h1>멤버 관리</h1>
                 <p>
-                    커뮤니티 탭에서 <strong>멤버</strong>를 열면 스페이스의 모든 사람을 볼 수 있습니다. 누구나 멤버 목록을 보고 검색할 수 있습니다.
+                    커뮤니티 탭에서 <strong>멤버</strong>를 열면 스페이스의 모든 사람을 볼 수 있습니다. 스페이스에 속한 사람은 누구나 멤버 목록을 보고 검색할 수 있습니다. 다만 관리자나 스태프가 <a data-target="space-update" href="#space-update">스페이스 설정</a>에서 <strong>멤버에게 멤버 목록 숨기기</strong>를 켜면 관리자, 스태프, 코치만 열 수 있습니다.
                 </p>
                 <p><a data-target="roles" href="#roles">스태프</a>와 관리자는 멤버의 역할을 변경하고 멤버를 제거할 수 있으며, 몇 가지 제한이 있습니다.</p>
                 <ul>
@@ -831,7 +886,7 @@
                     <li>스태프는 스태프까지 역할을 지정할 수 있습니다. 누구도 관리자로 지정할 수 없으며, 관리자는 스페이스를 만든 사람의 역할입니다.</li>
                     <li>스태프는 관리자를 변경하거나 제거할 수 없습니다.</li>
                 </ul>
-                <p>스태프와 관리자는 멤버 화면에서 가입 요청을 수락하거나 거절할 수도 있습니다. 각 역할이 할 수 있는 일의 전체 내용은 <a data-target="roles" href="#roles">역할 및 권한</a>을 참고하세요.</p>
+                <p>스태프와 관리자는 멤버 화면에서 <a data-target="community-qr" href="#community-qr">가입 요청</a>을 수락하거나 거절할 수도 있습니다. 각 역할이 할 수 있는 일의 전체 내용은 <a data-target="roles" href="#roles">역할 및 권한</a>을 참고하세요.</p>
             </article>
 
             <article class="help-article" id="account-profile">
@@ -903,7 +958,7 @@
                     <li><strong>워크아웃</strong> — 새 워크아웃 및 업데이트.</li>
                     <li><strong>소셜</strong> — 내 게시물과 점수에 대한 반응 및 댓글.</li>
                     <li><strong>커뮤니티</strong> — 새 게시물 및 공지.</li>
-                    <li><strong>멤버십</strong> — 초대와 승인, 그리고 <a data-target="booking-what" href="#booking-what">예약</a>에 관한 모든 알림: 대기자 명단에서의 확정, 관리자가 대신 예약하거나 제외한 수업, 인원 미달로 자동 취소된 수업.</li>
+                    <li><strong>멤버십</strong> — 초대, 가입 요청, 승인, 그리고 <a data-target="booking-what" href="#booking-what">예약</a>에 관한 모든 알림: 대기자 명단에서의 확정, 관리자가 대신 예약하거나 제외한 수업, 인원 미달로 자동 취소된 수업.</li>
                 </ul>
                 <p>
                     시스템 수준에서 알림이 꺼져 있으면 <strong>알림 활성화</strong> 버튼이 나타나 기기의 알림 권한 요청을 엽니다. Android 13 이상에서는 이 요청이 처음 로그인한 직후에 한 번 표시되기도 합니다. 시스템 권한과 마스터 스위치가 모두 켜질 때까지 카테고리는 비활성 상태로 유지됩니다.

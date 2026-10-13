@@ -264,6 +264,7 @@
                     <a class="help-nav-link" data-target="community-prboard" href="#community-prboard">PR Board</a>
                     <a class="help-nav-link" data-target="community-media" href="#community-media">Media Library</a>
                     <a class="help-nav-link" data-target="community-invite" href="#community-invite">Invite members</a>
+                    <a class="help-nav-link" data-target="community-qr" href="#community-qr">Join with a QR code</a>
                     <a class="help-nav-link" data-target="community-manage" href="#community-manage">Manage members</a>
                 </div>
                 <div class="help-nav-group">
@@ -389,9 +390,9 @@
                     <thead><tr><th>Role</th><th>Can</th></tr></thead>
                     <tbody>
                         <tr><td class="role-name">Admin<span class="role-inherits">Everything Staff can, plus:</span></td><td><ul><li>Archive or delete the Space</li><li>Delete session types</li></ul></td></tr>
-                        <tr><td class="role-name">Staff<span class="role-inherits">Everything a Coach can, plus:</span></td><td><ul><li>Edit Space settings and session types</li><li>Manage members and assign roles (up to Staff)</li><li>Accept or decline join requests</li><li>Edit or delete any workout</li><li>Delete any score or comment</li><li>Moderate posts and media</li><li>Turn booking on and manage membership plans</li><li>Delete schedules, and cancel the bookings on them</li><li>Create, edit or remove any member's membership hold in the current membership period</li><li>Renew a membership: add a period, grant bonus days, or set an exact expiry</li></ul></td></tr>
-                        <tr><td class="role-name">Coach<span class="role-inherits">Everything a Member can, plus:</span></td><td><ul><li>Create and edit their own workouts</li><li>Invite new members</li><li>Add and manage their own media in the library</li><li>Create and edit schedules, be assigned to them, and add or remove participants</li></ul></td></tr>
-                        <tr><td class="role-name">Member<span class="role-inherits">The default role:</span></td><td><ul><li>Log scores on workouts</li><li>Add comments and reactions</li><li>Write community posts</li><li>View the community, members and Media Library</li><li>Book classes, join waitlists, and manage their own holds</li></ul></td></tr>
+                        <tr><td class="role-name">Staff<span class="role-inherits">Everything a Coach can, plus:</span></td><td><ul><li>Edit Space settings and session types</li><li>Manage members and assign roles (up to Staff)</li><li>Accept or decline join requests</li><li>Turn QR join requests on or off</li><li>Edit or delete any workout</li><li>Delete any score or comment</li><li>Moderate posts and media</li><li>Turn booking on and manage membership plans</li><li>Delete schedules, and cancel the bookings on them</li><li>Create, edit or remove any member's membership hold in the current membership period</li><li>Renew a membership: add a period, grant bonus days, or set an exact expiry</li></ul></td></tr>
+                        <tr><td class="role-name">Coach<span class="role-inherits">Everything a Member can, plus:</span></td><td><ul><li>Create and edit their own workouts</li><li>Invite new members</li><li>Show and share the Space's QR code</li><li>See the member list even when the Space hides it from members</li><li>Add and manage their own media in the library</li><li>Create and edit schedules, be assigned to them, and add or remove participants</li></ul></td></tr>
+                        <tr><td class="role-name">Member<span class="role-inherits">The default role:</span></td><td><ul><li>Log scores on workouts</li><li>Add comments and reactions</li><li>Write community posts</li><li>View the community, members (unless the Space hides its member list) and Media Library</li><li>Book classes, join waitlists, and manage their own holds</li></ul></td></tr>
                     </tbody>
                 </table>
                 <p>
@@ -815,15 +816,69 @@
                 <ul>
                     <li><a data-target="roles" href="#roles">Coaches</a> and above can invite new members.</li>
                     <li>New members join as <strong>Member</strong> by default. If your role allows it, you can pick a higher role when inviting.</li>
-                    <li>Spaces are private — there's no public discovery — so inviting is the main way people join.</li>
-                    <li>If your Space accepts join requests, <a data-target="roles" href="#roles">Staff</a> and Admins can approve or decline them from the Members view.</li>
+                    <li>Spaces are private — there's no public discovery. People join by invitation, or by scanning your Space's QR code and asking to join (see <a data-target="community-qr" href="#community-qr">Join with a QR code</a>).</li>
+                    <li><a data-target="roles" href="#roles">Staff</a> and Admins approve or decline each join request from the Members view.</li>
                 </ul>
+            </article>
+
+            <article class="help-article" id="community-qr">
+                <h1>Join with a QR code</h1>
+                <p>
+                    Every Space has its own QR code. Anyone who scans it with their phone's camera can ask to join, and an <a data-target="roles" href="#roles">Admin or Staff</a> member approves each request — nobody gets in just by scanning.
+                </p>
+                <h2>Show your Space's QR code</h2>
+                <p>
+                    From the Community tab, open <strong>Members</strong> and tap the QR code button next to the invite button. <a data-target="roles" href="#roles">Coaches</a> and above can open it.
+                </p>
+                <ul>
+                    <li><strong>Save to Photos</strong> — saves the code as an image, so you can print it and put it up in your Space.</li>
+                    <li><strong>Share QR Code</strong> — sends the image through your phone's share sheet.</li>
+                    <li><strong>Copy</strong> — copies the join link, for a message or an email. Tapping the link on a phone does the same as scanning the code.</li>
+                </ul>
+                <p>A Space's code never changes, so a poster you've printed keeps working.</p>
+                <h2>Scan a code to join</h2>
+                <ol>
+                    <li>Point your phone's camera at the code and tap the link that appears. Showup has no scanner of its own.</li>
+                    <li>Showup opens on the Space's page. If you don't have the app yet, you're sent to the App Store or Google Play — install it, sign in, then scan the code again.</li>
+                    <li>Tap <strong>Join</strong>, add a message if you'd like (up to 500 characters), and tap <strong>Send</strong>.</li>
+                </ol>
+                <p>
+                    Your request then waits under <strong>Requested</strong> on the <strong>Home</strong> tab. Tap it if you want to cancel. You're notified when it's accepted or declined, and once it's accepted the Space appears in <strong>My Spaces</strong>. If it's declined, or you cancel it, you can ask again.
+                </p>
+                <p>Instead of <strong>Join</strong>, the page may show why there's nothing to send:</p>
+                <ul>
+                    <li><strong>Pending</strong> — your request is waiting for an answer.</li>
+                    <li><strong>Invitation</strong> — you've already been invited. Tap it to answer the invitation.</li>
+                    <li><strong>Member</strong> — you're already in this Space.</li>
+                    <li><strong>Expired</strong> — your membership here has ended. Ask an Admin or Staff member of the Space to <a data-target="booking-membership" href="#booking-membership">add a period</a>.</li>
+                    <li><strong>Closed</strong> — the Space isn't taking join requests by QR right now.</li>
+                </ul>
+                <h2>Answer a join request</h2>
+                <p>
+                    Admins and Staff are notified of each request. Open it from your notifications, or from <strong>Members → Pending → Join Requests</strong>. You'll see who is asking, when, and their message, with a link to their profile.
+                </p>
+                <ul>
+                    <li><strong>Accept Request</strong> adds them as a <strong>Member</strong> with no end date and no membership plan. To assign a <a data-target="booking-admin-plans" href="#booking-admin-plans">membership plan</a>, set an end date or change their role, tap them in the member list to open <strong>Manage Member</strong>.</li>
+                    <li><strong>Decline</strong> takes effect straight away — there's no confirmation.</li>
+                    <li>An accepted request counts toward your plan's member limit. If the Space is full, you're asked to upgrade before you can accept.</li>
+                    <li>Coaches can show and share the code, but they don't see or answer requests.</li>
+                </ul>
+                <h2>Pause QR joins</h2>
+                <p>
+                    On the QR code page, Admins and Staff can turn off <strong>Accept join requests by QR</strong>. While it's off:
+                </p>
+                <ul>
+                    <li>Every printed poster and shared link stops working — a single poster can't be retired on its own.</li>
+                    <li>Requests already waiting can still be answered.</li>
+                    <li>Current members, expired members and invitations you've already sent aren't affected.</li>
+                </ul>
+                <p>You can turn it back on at any time, and the same code works again. Archiving a Space cancels the requests that were still waiting.</p>
             </article>
 
             <article class="help-article" id="community-manage">
                 <h1>Manage members</h1>
                 <p>
-                    Open <strong>Members</strong> from the Community tab to see everyone in the Space. Anyone can view and search the member list.
+                    Open <strong>Members</strong> from the Community tab to see everyone in the Space. Anyone in the Space can view and search the member list — unless an Admin or Staff member has turned on <strong>Hide member list from members</strong> in <a data-target="space-update" href="#space-update">Space Settings</a>. Then only Admins, Staff and Coaches can open it.
                 </p>
                 <p><a data-target="roles" href="#roles">Staff</a> and Admins can change a member's role and remove members, with a few limits:</p>
                 <ul>
@@ -831,7 +886,7 @@
                     <li>Staff can assign roles up to Staff. Nobody can be made an Admin: that role belongs to the person who created the Space.</li>
                     <li>Staff can't change or remove Admins.</li>
                 </ul>
-                <p>Staff and Admins can also accept or decline join requests from the Members view. For the full breakdown of what each role can do, see <a data-target="roles" href="#roles">Roles &amp; permissions</a>.</p>
+                <p>Staff and Admins can also accept or decline <a data-target="community-qr" href="#community-qr">join requests</a> from the Members view. For the full breakdown of what each role can do, see <a data-target="roles" href="#roles">Roles &amp; permissions</a>.</p>
             </article>
 
             <article class="help-article" id="account-profile">
@@ -903,7 +958,7 @@
                     <li><strong>Workouts</strong> — new workouts and updates.</li>
                     <li><strong>Social</strong> — reactions and comments on your posts and scores.</li>
                     <li><strong>Community</strong> — new posts and announcements.</li>
-                    <li><strong>Memberships</strong> — invitations and approvals, plus everything to do with <a data-target="booking-what" href="#booking-what">booking</a>: waitlist promotions, classes an admin booked you into or removed you from, and classes that cancelled themselves for low enrolment.</li>
+                    <li><strong>Memberships</strong> — invitations, join requests and approvals, plus everything to do with <a data-target="booking-what" href="#booking-what">booking</a>: waitlist promotions, classes an admin booked you into or removed you from, and classes that cancelled themselves for low enrolment.</li>
                 </ul>
                 <p>
                     If notifications are turned off at the system level, an <strong>Enable Notifications</strong> button appears and opens your device's permission prompt — on Android 13 and later that prompt also appears once, shortly after you first sign in. Categories stay disabled until both the system permission and the master switch are on.

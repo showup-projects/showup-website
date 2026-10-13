@@ -264,6 +264,7 @@
                     <a class="help-nav-link" data-target="community-prboard" href="#community-prboard">PR-Board</a>
                     <a class="help-nav-link" data-target="community-media" href="#community-media">Medienbibliothek</a>
                     <a class="help-nav-link" data-target="community-invite" href="#community-invite">Mitglieder einladen</a>
+                    <a class="help-nav-link" data-target="community-qr" href="#community-qr">Per QR-Code beitreten</a>
                     <a class="help-nav-link" data-target="community-manage" href="#community-manage">Mitglieder verwalten</a>
                 </div>
                 <div class="help-nav-group">
@@ -389,9 +390,9 @@
                     <thead><tr><th>Rolle</th><th>Berechtigungen</th></tr></thead>
                     <tbody>
                         <tr><td class="role-name">Admin<span class="role-inherits">Alles, was Staff kann, plus:</span></td><td><ul><li>Den Space archivieren oder löschen</li><li>Session-Typen löschen</li></ul></td></tr>
-                        <tr><td class="role-name">Staff<span class="role-inherits">Alles, was ein Coach kann, plus:</span></td><td><ul><li>Space-Einstellungen und Session-Typen bearbeiten</li><li>Mitglieder verwalten und Rollen vergeben (bis Staff)</li><li>Beitrittsanfragen annehmen oder ablehnen</li><li>Jedes Workout bearbeiten oder löschen</li><li>Jeden Score oder Kommentar löschen</li><li>Beiträge und Medien moderieren</li><li>Buchung aktivieren und Mitgliedschaftspläne verwalten</li><li>Termine löschen und die Buchungen darauf stornieren</li><li>Die Pause jedes Mitglieds im aktuellen Mitgliedschaftszeitraum anlegen, ändern oder entfernen</li><li>Eine Mitgliedschaft verlängern: einen Zeitraum hinzufügen, Bonustage vergeben oder ein genaues Ablaufdatum festlegen</li></ul></td></tr>
-                        <tr><td class="role-name">Coach<span class="role-inherits">Alles, was ein Member kann, plus:</span></td><td><ul><li>Eigene Workouts erstellen und bearbeiten</li><li>Neue Mitglieder einladen</li><li>Eigene Medien in der Bibliothek hinzufügen und verwalten</li><li>Termine erstellen und bearbeiten, ihnen zugewiesen werden, Teilnehmer eintragen und entfernen</li></ul></td></tr>
-                        <tr><td class="role-name">Member<span class="role-inherits">Die Standardrolle:</span></td><td><ul><li>Scores zu Workouts eintragen</li><li>Kommentare und Reaktionen hinzufügen</li><li>Community-Beiträge schreiben</li><li>Community, Mitglieder und Medienbibliothek ansehen</li><li>Kurse buchen, auf Wartelisten gehen, eigene Pausen verwalten</li></ul></td></tr>
+                        <tr><td class="role-name">Staff<span class="role-inherits">Alles, was ein Coach kann, plus:</span></td><td><ul><li>Space-Einstellungen und Session-Typen bearbeiten</li><li>Mitglieder verwalten und Rollen vergeben (bis Staff)</li><li>Beitrittsanfragen annehmen oder ablehnen</li><li>Beitrittsanfragen per QR ein- oder ausschalten</li><li>Jedes Workout bearbeiten oder löschen</li><li>Jeden Score oder Kommentar löschen</li><li>Beiträge und Medien moderieren</li><li>Buchung aktivieren und Mitgliedschaftspläne verwalten</li><li>Termine löschen und die Buchungen darauf stornieren</li><li>Die Pause jedes Mitglieds im aktuellen Mitgliedschaftszeitraum anlegen, ändern oder entfernen</li><li>Eine Mitgliedschaft verlängern: einen Zeitraum hinzufügen, Bonustage vergeben oder ein genaues Ablaufdatum festlegen</li></ul></td></tr>
+                        <tr><td class="role-name">Coach<span class="role-inherits">Alles, was ein Member kann, plus:</span></td><td><ul><li>Eigene Workouts erstellen und bearbeiten</li><li>Neue Mitglieder einladen</li><li>Den QR-Code des Space zeigen und teilen</li><li>Die Mitgliederliste sehen, auch wenn der Space sie vor Mitgliedern verbirgt</li><li>Eigene Medien in der Bibliothek hinzufügen und verwalten</li><li>Termine erstellen und bearbeiten, ihnen zugewiesen werden, Teilnehmer eintragen und entfernen</li></ul></td></tr>
+                        <tr><td class="role-name">Member<span class="role-inherits">Die Standardrolle:</span></td><td><ul><li>Scores zu Workouts eintragen</li><li>Kommentare und Reaktionen hinzufügen</li><li>Community-Beiträge schreiben</li><li>Community, Mitglieder (sofern der Space die Mitgliederliste nicht verbirgt) und Medienbibliothek ansehen</li><li>Kurse buchen, auf Wartelisten gehen, eigene Pausen verwalten</li></ul></td></tr>
                     </tbody>
                 </table>
                 <p>
@@ -815,15 +816,69 @@
                 <ul>
                     <li><a data-target="roles" href="#roles">Coaches</a> und höher können neue Mitglieder einladen.</li>
                     <li>Neue Mitglieder treten standardmäßig als <strong>Member</strong> bei. Wenn deine Rolle es erlaubt, kannst du beim Einladen eine höhere Rolle wählen.</li>
-                    <li>Spaces sind privat – es gibt keine öffentliche Entdeckung – daher ist das Einladen der Hauptweg, wie Leute beitreten.</li>
-                    <li>Wenn dein Space Beitrittsanfragen annimmt, können <a data-target="roles" href="#roles">Staff</a> und Admins sie in der Mitglieder-Ansicht annehmen oder ablehnen.</li>
+                    <li>Spaces sind privat – es gibt keine öffentliche Entdeckung. Leute treten per Einladung bei oder indem sie den QR-Code deines Space scannen und den Beitritt anfragen (siehe <a data-target="community-qr" href="#community-qr">Per QR-Code beitreten</a>).</li>
+                    <li><a data-target="roles" href="#roles">Staff</a> und Admins nehmen jede Beitrittsanfrage in der Mitglieder-Ansicht an oder lehnen sie ab.</li>
                 </ul>
+            </article>
+
+            <article class="help-article" id="community-qr">
+                <h1>Per QR-Code beitreten</h1>
+                <p>
+                    Jeder Space hat seinen eigenen QR-Code. Wer ihn mit der Handykamera scannt, kann den Beitritt anfragen, und ein <a data-target="roles" href="#roles">Admin oder Staff</a> genehmigt jede Anfrage – allein durch das Scannen kommt niemand hinein.
+                </p>
+                <h2>Den QR-Code deines Space zeigen</h2>
+                <p>
+                    Öffne im Community-Tab <strong>Mitglieder</strong> und tippe auf die QR-Code-Schaltfläche neben der Einladen-Schaltfläche. <a data-target="roles" href="#roles">Coaches</a> und höher können ihn öffnen.
+                </p>
+                <ul>
+                    <li><strong>In Fotos speichern</strong> – speichert den Code als Bild, damit du ihn ausdrucken und in deinem Space aufhängen kannst.</li>
+                    <li><strong>QR-Code teilen</strong> – sendet das Bild über das Teilen-Menü deines Handys.</li>
+                    <li><strong>Kopieren</strong> – kopiert den Beitritts-Link, etwa für eine Nachricht oder E-Mail. Auf einem Handy auf den Link zu tippen bewirkt dasselbe wie das Scannen des Codes.</li>
+                </ul>
+                <p>Der Code eines Space ändert sich nie – ein einmal gedrucktes Poster funktioniert also weiter.</p>
+                <h2>Einen Code scannen und beitreten</h2>
+                <ol>
+                    <li>Richte die Handykamera auf den Code und tippe auf den Link, der erscheint. Showup hat keinen eigenen Scanner.</li>
+                    <li>Showup öffnet die Seite des Space. Wenn du die App noch nicht hast, wirst du zum App Store oder zu Google Play geleitet – installiere sie, melde dich an und scanne den Code dann erneut.</li>
+                    <li>Tippe auf <strong>Beitreten</strong>, schreib bei Bedarf eine Nachricht (bis zu 500 Zeichen) und tippe auf <strong>Senden</strong>.</li>
+                </ol>
+                <p>
+                    Deine Anfrage wartet dann im Tab <strong>Start</strong> unter <strong>Angefragt</strong>. Tippe darauf, wenn du sie abbrechen möchtest. Du wirst benachrichtigt, sobald sie angenommen oder abgelehnt wurde, und nach der Annahme erscheint der Space unter <strong>Meine Spaces</strong>. Wurde sie abgelehnt oder hast du sie abgebrochen, kannst du erneut anfragen.
+                </p>
+                <p>Statt <strong>Beitreten</strong> zeigt die Seite manchmal, warum es nichts zu senden gibt:</p>
+                <ul>
+                    <li><strong>Ausstehend</strong> – deine Anfrage wartet auf eine Antwort.</li>
+                    <li><strong>Einladung</strong> – du wurdest bereits eingeladen. Tippe darauf, um die Einladung zu beantworten.</li>
+                    <li><strong>Mitglied</strong> – du bist bereits in diesem Space.</li>
+                    <li><strong>Abgelaufen</strong> – deine Mitgliedschaft hier ist beendet. Bitte einen Admin oder Staff des Space, <a data-target="booking-membership" href="#booking-membership">einen Zeitraum hinzuzufügen</a>.</li>
+                    <li><strong>Geschlossen</strong> – der Space nimmt derzeit keine Beitrittsanfragen per QR an.</li>
+                </ul>
+                <h2>Eine Beitrittsanfrage beantworten</h2>
+                <p>
+                    Admins und Staff werden über jede Anfrage benachrichtigt. Öffne sie aus deinen Benachrichtigungen oder unter <strong>Mitglieder → Ausstehend → Beitrittsanfragen</strong>. Du siehst, wer wann anfragt, die Nachricht und einen Link zum Profil.
+                </p>
+                <ul>
+                    <li><strong>Anfrage annehmen</strong> fügt die Person als <strong>Member</strong> ohne Enddatum und ohne Mitgliedschaftsplan hinzu. Um einen <a data-target="booking-admin-plans" href="#booking-admin-plans">Mitgliedschaftsplan</a> zuzuweisen, ein Enddatum zu setzen oder die Rolle zu ändern, tippe in der Mitgliederliste auf die Person und öffne <strong>Mitglied verwalten</strong>.</li>
+                    <li><strong>Ablehnen</strong> gilt sofort, ohne Rückfrage.</li>
+                    <li>Eine angenommene Anfrage zählt zum Mitgliederlimit deines Plans. Ist der Space voll, wirst du vor dem Annehmen zum Upgrade aufgefordert.</li>
+                    <li>Coaches können den Code zeigen und teilen, sehen und beantworten aber keine Anfragen.</li>
+                </ul>
+                <h2>QR-Beitritte pausieren</h2>
+                <p>
+                    Auf der QR-Code-Seite können Admins und Staff <strong>Beitrittsanfragen per QR annehmen</strong> ausschalten. Solange es aus ist:
+                </p>
+                <ul>
+                    <li>Alle gedruckten Poster und geteilten Links funktionieren nicht mehr – ein einzelnes Poster lässt sich nicht separat stilllegen.</li>
+                    <li>Bereits wartende Anfragen können weiterhin beantwortet werden.</li>
+                    <li>Aktuelle Mitglieder, abgelaufene Mitglieder und schon gesendete Einladungen sind nicht betroffen.</li>
+                </ul>
+                <p>Du kannst es jederzeit wieder einschalten, und derselbe Code funktioniert dann wieder. Wird ein Space archiviert, werden die noch wartenden Anfragen abgebrochen.</p>
             </article>
 
             <article class="help-article" id="community-manage">
                 <h1>Mitglieder verwalten</h1>
                 <p>
-                    Öffne <strong>Mitglieder</strong> im Community-Tab, um alle im Space zu sehen. Jeder kann die Mitgliederliste ansehen und durchsuchen.
+                    Öffne <strong>Mitglieder</strong> im Community-Tab, um alle im Space zu sehen. Jeder im Space kann die Mitgliederliste ansehen und durchsuchen – es sei denn, ein Admin oder Staff hat in den <a data-target="space-update" href="#space-update">Space-Einstellungen</a> <strong>Mitgliederliste vor Mitgliedern verbergen</strong> eingeschaltet. Dann können nur Admins, Staff und Coaches sie öffnen.
                 </p>
                 <p><a data-target="roles" href="#roles">Staff</a> und Admins können die Rolle eines Mitglieds ändern und Mitglieder entfernen, mit ein paar Einschränkungen:</p>
                 <ul>
@@ -831,7 +886,7 @@
                     <li>Staff können Rollen bis Staff vergeben. Zum Admin kann niemand gemacht werden: Diese Rolle gehört der Person, die den Space erstellt hat.</li>
                     <li>Staff können Admins nicht ändern oder entfernen.</li>
                 </ul>
-                <p>Staff und Admins können in der Mitglieder-Ansicht auch Beitrittsanfragen annehmen oder ablehnen. Die vollständige Übersicht, was jede Rolle darf, findest du unter <a data-target="roles" href="#roles">Rollen &amp; Berechtigungen</a>.</p>
+                <p>Staff und Admins können in der Mitglieder-Ansicht auch <a data-target="community-qr" href="#community-qr">Beitrittsanfragen</a> annehmen oder ablehnen. Die vollständige Übersicht, was jede Rolle darf, findest du unter <a data-target="roles" href="#roles">Rollen &amp; Berechtigungen</a>.</p>
             </article>
 
             <article class="help-article" id="account-profile">
@@ -903,7 +958,7 @@
                     <li><strong>Workouts</strong> – neue Workouts und Updates.</li>
                     <li><strong>Soziales</strong> – Reaktionen und Kommentare zu deinen Beiträgen und Scores.</li>
                     <li><strong>Community</strong> – neue Beiträge und Ankündigungen.</li>
-                    <li><strong>Mitgliedschaften</strong> – Einladungen und Genehmigungen sowie alles rund um die <a data-target="booking-what" href="#booking-what">Buchung</a>: das Nachrücken von der Warteliste, Kurse, in die ein Admin dich eingetragen oder aus denen er dich entfernt hat, und Kurse, die sich wegen zu weniger Anmeldungen selbst abgesagt haben.</li>
+                    <li><strong>Mitgliedschaften</strong> – Einladungen, Beitrittsanfragen und Genehmigungen sowie alles rund um die <a data-target="booking-what" href="#booking-what">Buchung</a>: das Nachrücken von der Warteliste, Kurse, in die ein Admin dich eingetragen oder aus denen er dich entfernt hat, und Kurse, die sich wegen zu weniger Anmeldungen selbst abgesagt haben.</li>
                 </ul>
                 <p>
                     Sind Benachrichtigungen auf Systemebene aus, erscheint eine Schaltfläche <strong>Benachrichtigungen aktivieren</strong>, die die Berechtigungsabfrage deines Geräts öffnet – ab Android 13 erscheint diese Abfrage außerdem einmal kurz nach der ersten Anmeldung. Die Kategorien bleiben deaktiviert, bis sowohl die Systemberechtigung als auch der Hauptschalter aktiv sind.
