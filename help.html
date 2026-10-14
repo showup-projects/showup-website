@@ -423,25 +423,43 @@
                 <p>Inside a Space, open the session you want and tap <strong>+</strong> to create a new workout. Creating and editing workouts requires a <a data-target="roles" href="#roles">Coach</a> role or higher. You'll fill in:</p>
                 <h2>Required</h2>
                 <ul>
+                    <li><strong>Scoring</strong> — how members log the workout, picked from five tiles. Nothing is chosen for you (see <em>Scoring</em> below).</li>
                     <li><strong>Content</strong> — the workout description (movements, sets, structure). Up to 1,000 characters.</li>
                     <li><strong>Date</strong> — when the workout is programmed for.</li>
                     <li><strong>Session</strong> — which session in the Space this belongs to.</li>
-                    <li><strong>Scoring method</strong> — pick one: no score, reps, time, weight, or distance.</li>
-                    <li><strong>Ranking</strong> — higher is better (e.g., more reps) or lower is better (e.g., faster time).</li>
                 </ul>
                 <h2>Optional</h2>
                 <ul>
                     <li>Title (up to 30 characters)</li>
                     <li>Coaching notes (up to 2,000 characters)</li>
-                    <li>Movement tags (e.g., "pull-up", "deadlift")</li>
-                    <li>Reps per round (for AMRAP / round-based workouts)</li>
-                    <li>Time cap (for time-based workouts)</li>
-                    <li>Multi-score (allow members to log multiple score attempts)</li>
-                    <li>Variations enabled (Rx / scaled options)</li>
-                    <li>Tiebreaks (up to 8, evaluated in priority order)</li>
                     <li>Media references (up to 10 reference images, videos, or YouTube links, depending on your plan) — uploaded directly, or reused from your <strong>Media Library</strong> (see below)</li>
                     <li>Collaborating Spaces (invite other Spaces — see <a data-target="workout-collab" href="#workout-collab">Collaborative workouts</a>)</li>
                 </ul>
+                <h2>Scoring</h2>
+                <p>The <strong>Scoring</strong> section sits right under the title, above <strong>Content</strong>. Nothing is chosen for you: until you tap one of its five tiles, <strong>Save</strong> stays off and the section says "Scoring must be selected". Pick the tile that matches what members will log:</p>
+                <ul>
+                    <li><strong>For Time</strong> — members log their time. Fastest ranks first.</li>
+                    <li><strong>AMRAP</strong> — members log rounds + reps, or just reps. Most ranks first.</li>
+                    <li><strong>Strength</strong> — members log the weight of each set. Heaviest ranks first.</li>
+                    <li><strong>No Score</strong> — members only mark it done. There's no ranking.</li>
+                    <li><strong>Custom</strong> — you set the <strong>Score Type</strong> (weight, time, reps, or distance) and the <strong>Better Score</strong> (higher or lower is better) yourself. Save stays off until you've chosen a score type.</li>
+                </ul>
+                <p>Depending on the tile, the same card shows a few more settings:</p>
+                <ul>
+                    <li><strong>Has Time Cap</strong> — for For Time, and for a Custom time where lower is better. While it's on, members who hit the cap log rounds + reps instead of a time.</li>
+                    <li><strong>Rx/Scaled Options</strong> — the only setting a No Score workout has, so it sits right in the card.</li>
+                    <li><strong>Options</strong> — on every tile except No Score. It lists what's switched on and opens <strong>Scoring Options</strong>.</li>
+                </ul>
+                <p>The tile you pick fills in sensible settings — For Time takes one score per member, Strength allows several — and <strong>Scoring Options</strong> is where you adjust them:</p>
+                <ul>
+                    <li><strong>Rx/Scaled Options</strong> — members choose Rx or Scaled when they log a score. It's on unless you turn it off.</li>
+                    <li><strong>Allow Multiple Scores</strong> — members can log up to 15 scores, for example one per set. <strong>Final Score</strong> sets what ranks on the leaderboard: the smallest value (<strong>Minimum</strong>), the largest (<strong>Maximum</strong>), or all of them added up (<strong>Sum</strong>).</li>
+                    <li><strong>Reps per Round</strong> — for reps workouts, and for time workouts with a time cap. Set it for exact rep counting at official events; leave it blank for casual tracking, where members enter rounds + extra reps.</li>
+                    <li><strong>Tiebreaks</strong> — up to 8 extra values members enter with their score, checked in order (top first) when scores are tied. Without tiebreaks, tied scores are put in alphabetical order.</li>
+                </ul>
+                <div class="help-callout">
+                    <strong>Note:</strong> scoring can't be changed once the workout is created — only its final score and tiebreaks can (see <a data-target="workout-edit" href="#workout-edit">Edit a Workout</a>). Check it before you save.
+                </div>
                 <h2>About the Media Library</h2>
                 <p>
                     Your Space has a <strong>Media Library</strong> — a place to save <em>reusable references</em> so you don't re-upload the same media for every workout. Each item is one photo, video, or YouTube link with a title (up to 100 characters) and an optional note (up to 500 characters). Save a movement demo once, then attach it to as many workouts as you like. Coaches and above can add and manage media in the library.
@@ -458,15 +476,15 @@
                 </p>
                 <h2>What can't be changed</h2>
                 <p>
-                    Some fields are locked once the workout exists, because changing them would conflict with scores members may have already submitted:
+                    The <strong>Scoring</strong> card is locked once the workout exists, because changing it would conflict with scores members may have already submitted. It shows the workout's tile with the others faded, and the note "Scoring can't be changed after a workout is created." That covers:
                 </p>
                 <ul>
-                    <li><strong>Scoring method</strong> (reps / time / weight / distance) — fixed after creation.</li>
-                    <li><strong>Multi-score</strong> — can't be turned on or off later.</li>
-                    <li><strong>Variations</strong> (Rx / scaled) — locked after creation.</li>
+                    <li>The tile itself (For Time, AMRAP, Strength, No Score, or Custom) — and on a Custom workout, its <strong>Score Type</strong> and <strong>Better Score</strong>.</li>
+                    <li><strong>Has Time Cap</strong>.</li>
+                    <li><strong>Rx/Scaled Options</strong>, <strong>Allow Multiple Scores</strong>, and <strong>Reps per Round</strong>.</li>
                 </ul>
                 <p>
-                    You can still edit the content, title, date, coaching notes, movement tags, ranking, tiebreaks, and media references.
+                    Under <strong>Options</strong> you can still change the <strong>Final Score</strong> of a workout with multiple scores, and its <strong>Tiebreaks</strong>. The content, title, date, session, coaching notes, and media references stay editable too.
                 </p>
             </article>
 
@@ -511,9 +529,10 @@
             <article class="help-article" id="workout-extras">
                 <h1>Workouts: related actions</h1>
                 <h2>Log a score</h2>
-                <p>Open a workout and tap <strong>Add score</strong>. Enter your result and any notes. If the workout has multi-score enabled, you can submit several attempts and pick how they're aggregated (best, worst, or sum).</p>
+                <p>Open a workout and tap <strong>Add My Score</strong> (<strong>Mark as Done</strong> on a No Score workout). Enter your result and any notes, then tap <strong>Save</strong>.</p>
+                <p>On a workout with multiple scores, you can log up to 15 — for example, one per set. Type each score and tap <strong>Add</strong>. You can also add it straight from the keyboard — with <strong>Add</strong> above the number pad on iPhone and iPad, or the ✓ key on Android. The workout's final score decides what ranks (see <a data-target="workout-create" href="#workout-create">Create a Workout</a>). If you tap <strong>Save</strong> while a score is typed in but not added, Showup asks first ("Score Not Added"): <strong>Add and Save</strong>, <strong>Save Without It</strong>, or <strong>Cancel</strong>.</p>
                 <h2>Leaderboard</h2>
-                <p>Every workout has a leaderboard that ranks all submitted scores using the ranking method and any tiebreaks the workout creator set. For collaborative workouts, the leaderboard spans every participating Space.</p>
+                <p>Every workout has a leaderboard that ranks all submitted scores using the ranking method and any tiebreaks the workout creator set. For collaborative workouts, the leaderboard spans every participating Space. A No Score workout's leaderboard lists everyone who marked it done, without ranks.</p>
                 <h2>Comment &amp; react</h2>
                 <p>Leave comments on a workout and react to other members' scores to cheer them on.</p>
             </article>

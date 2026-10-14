@@ -423,25 +423,43 @@
                 <p>Öffne in deinem Space die gewünschte Session und tippe auf <strong>+</strong>, um ein neues Workout zu erstellen. Das Erstellen und Bearbeiten von Workouts erfordert mindestens die Rolle <a data-target="roles" href="#roles">Coach</a>. Du füllst dabei aus:</p>
                 <h2>Erforderlich</h2>
                 <ul>
+                    <li><strong>Bewertung</strong> – wie Mitglieder das Workout eintragen, gewählt aus fünf Kacheln. Nichts ist vorausgewählt (siehe <em>Bewertung</em> unten).</li>
                     <li><strong>Inhalt</strong> – die Workout-Beschreibung (Übungen, Sätze, Struktur). Bis zu 1.000 Zeichen.</li>
                     <li><strong>Datum</strong> – wofür das Workout geplant ist.</li>
                     <li><strong>Session</strong> – welche Session im Space dazugehört.</li>
-                    <li><strong>Bewertungsmethode</strong> – wähle eine: ohne Score, Wiederholungen, Zeit, Gewicht oder Distanz.</li>
-                    <li><strong>Rangfolge</strong> – höher ist besser (z. B. mehr Wiederholungen) oder niedriger ist besser (z. B. schnellere Zeit).</li>
                 </ul>
                 <h2>Optional</h2>
                 <ul>
                     <li>Titel (bis zu 30 Zeichen)</li>
                     <li>Coaching-Hinweise (bis zu 2.000 Zeichen)</li>
-                    <li>Übungs-Tags (z. B. „Pull-up", „Kreuzheben")</li>
-                    <li>Wiederholungen pro Runde (für AMRAP- bzw. rundenbasierte Workouts)</li>
-                    <li>Zeitlimit (für zeitbasierte Workouts)</li>
-                    <li>Multi-Score (Mitglieder dürfen mehrere Versuche eintragen)</li>
-                    <li>Varianten aktiviert (Rx- / Scaled-Optionen)</li>
-                    <li>Tiebreaker (bis zu 8, in Prioritätsreihenfolge ausgewertet)</li>
                     <li>Medienreferenzen (bis zu 10 Referenzbilder, Videos oder YouTube-Links, je nach Tarif) – direkt hochgeladen oder aus deiner <strong>Medienbibliothek</strong> wiederverwendet (siehe unten)</li>
                     <li>Kollaborierende Spaces (andere Spaces einladen – siehe <a data-target="workout-collab" href="#workout-collab">Kollaborative Workouts</a>)</li>
                 </ul>
+                <h2>Bewertung</h2>
+                <p>Der Bereich <strong>Bewertung</strong> steht direkt unter dem Titel, über <strong>Inhalt</strong>. Nichts ist vorausgewählt: Bis du auf eine der fünf Kacheln tippst, bleibt <strong>Speichern</strong> aus und der Bereich zeigt „Bewertung muss ausgewählt werden". Wähle die Kachel, die zu dem passt, was Mitglieder eintragen:</p>
+                <ul>
+                    <li><strong>For Time</strong> – Mitglieder tragen ihre Zeit ein. Die schnellste Zeit liegt vorn.</li>
+                    <li><strong>AMRAP</strong> – Mitglieder tragen Runden + Wiederholungen ein oder nur Wiederholungen. Das höchste Ergebnis liegt vorn.</li>
+                    <li><strong>Kraft</strong> – Mitglieder tragen das Gewicht jedes Satzes ein. Das höchste Gewicht liegt vorn.</li>
+                    <li><strong>Kein Ergebnis</strong> – Mitglieder markieren das Workout nur als erledigt. Es gibt keine Rangfolge.</li>
+                    <li><strong>Benutzerdefiniert</strong> – du legst <strong>Ergebnistyp</strong> (Gewicht, Zeit, Wiederholungen oder Distanz) und <strong>Besseres Ergebnis</strong> (höher oder niedriger ist besser) selbst fest. Speichern bleibt aus, bis du einen Ergebnistyp gewählt hast.</li>
+                </ul>
+                <p>Je nach Kachel zeigt dieselbe Karte noch ein paar Einstellungen:</p>
+                <ul>
+                    <li><strong>Hat Zeitlimit</strong> – bei For Time und bei einem benutzerdefinierten Zeit-Workout, in dem niedriger besser ist. Solange es eingeschaltet ist, tragen Mitglieder, die das Zeitlimit erreichen, Runden + Wiederholungen statt einer Zeit ein.</li>
+                    <li><strong>Rx/Skalierte Optionen</strong> – die einzige Einstellung bei Kein Ergebnis, deshalb steht sie direkt in der Karte.</li>
+                    <li><strong>Optionen</strong> – bei jeder Kachel außer Kein Ergebnis. Die Zeile zeigt, was eingeschaltet ist, und öffnet die <strong>Bewertungsoptionen</strong>.</li>
+                </ul>
+                <p>Die gewählte Kachel füllt sinnvolle Einstellungen vor – For Time nimmt einen Score pro Mitglied, Kraft mehrere –, und in den <strong>Bewertungsoptionen</strong> passt du sie an:</p>
+                <ul>
+                    <li><strong>Rx/Skalierte Optionen</strong> – Mitglieder wählen Rx oder Scaled, wenn sie einen Score eintragen. Standardmäßig eingeschaltet.</li>
+                    <li><strong>Mehrere Ergebnisse erlauben</strong> – Mitglieder können bis zu 15 Scores eintragen, etwa einen pro Satz. Das <strong>Endergebnis</strong> legt fest, was in der Bestenliste zählt: der kleinste Wert (<strong>Minimum</strong>), der größte (<strong>Maximum</strong>) oder alle zusammengerechnet (<strong>Summe</strong>).</li>
+                    <li><strong>Wiederholungen pro Runde</strong> – bei Wiederholungs-Workouts und bei Zeit-Workouts mit Zeitlimit. Trag den Wert für eine genaue Zählung bei offiziellen Events ein; lass das Feld für einfaches Tracking leer, dann tragen Mitglieder Runden + zusätzliche Wiederholungen ein.</li>
+                    <li><strong>Tiebreaks</strong> – bis zu 8 zusätzliche Werte, die Mitglieder mit ihrem Score eintragen und die bei Gleichstand der Reihe nach (von oben) verglichen werden. Ohne Tiebreaks werden gleiche Scores alphabetisch sortiert.</li>
+                </ul>
+                <div class="help-callout">
+                    <strong>Hinweis:</strong> Die Bewertung lässt sich nach dem Erstellen nicht mehr ändern – nur Endergebnis und Tiebreaks (siehe <a data-target="workout-edit" href="#workout-edit">Workout bearbeiten</a>). Prüfe sie vor dem Speichern.
+                </div>
                 <h2>Über die Medienbibliothek</h2>
                 <p>
                     Dein Space hat eine <strong>Medienbibliothek</strong> – einen Ort, um <em>wiederverwendbare Referenzen</em> zu speichern, damit du nicht für jedes Workout dieselben Medien neu hochladen musst. Jedes Element ist ein Foto, Video oder YouTube-Link mit einem Titel (bis zu 100 Zeichen) und einer optionalen Notiz (bis zu 500 Zeichen). Speichere eine Bewegungsdemo einmal und hänge sie an beliebig viele Workouts an. Coaches und höher können Medien in der Bibliothek hinzufügen und verwalten.
@@ -458,15 +476,15 @@
                 </p>
                 <h2>Was nicht geändert werden kann</h2>
                 <p>
-                    Einige Felder sind nach dem Erstellen gesperrt, da ihre Änderung mit bereits eingetragenen Scores in Konflikt geraten würde:
+                    Die Karte <strong>Bewertung</strong> ist gesperrt, sobald das Workout existiert, da Änderungen mit bereits eingetragenen Scores in Konflikt geraten würden. Sie zeigt die Kachel des Workouts, die übrigen abgeblendet, und darunter den Hinweis „Die Bewertung kann nach dem Erstellen eines Workouts nicht mehr geändert werden." Gesperrt sind:
                 </p>
                 <ul>
-                    <li><strong>Bewertungsmethode</strong> (Wiederholungen / Zeit / Gewicht / Distanz) – nach dem Erstellen fest.</li>
-                    <li><strong>Multi-Score</strong> – kann später nicht ein- oder ausgeschaltet werden.</li>
-                    <li><strong>Varianten</strong> (Rx / Scaled) – nach dem Erstellen gesperrt.</li>
+                    <li>Die Kachel selbst (For Time, AMRAP, Kraft, Kein Ergebnis oder Benutzerdefiniert) – bei Benutzerdefiniert auch <strong>Ergebnistyp</strong> und <strong>Besseres Ergebnis</strong>.</li>
+                    <li><strong>Hat Zeitlimit</strong>.</li>
+                    <li><strong>Rx/Skalierte Optionen</strong>, <strong>Mehrere Ergebnisse erlauben</strong> und <strong>Wiederholungen pro Runde</strong>.</li>
                 </ul>
                 <p>
-                    Inhalt, Titel, Datum, Coaching-Hinweise, Übungs-Tags, Rangfolge, Tiebreaker und Medienreferenzen kannst du weiterhin bearbeiten.
+                    Unter <strong>Optionen</strong> kannst du weiterhin das <strong>Endergebnis</strong> eines Workouts mit mehreren Ergebnissen und seine <strong>Tiebreaks</strong> ändern. Inhalt, Titel, Datum, Session, Coaching-Hinweise und Medienreferenzen bleiben ebenfalls bearbeitbar.
                 </p>
             </article>
 
@@ -511,9 +529,10 @@
             <article class="help-article" id="workout-extras">
                 <h1>Workouts: verwandte Aktionen</h1>
                 <h2>Score eintragen</h2>
-                <p>Öffne ein Workout und tippe auf <strong>Score hinzufügen</strong>. Trage dein Ergebnis und etwaige Notizen ein. Wenn Multi-Score aktiviert ist, kannst du mehrere Versuche einreichen und wählen, wie sie zusammengefasst werden (bester, schlechtester oder Summe).</p>
+                <p>Öffne ein Workout und tippe auf <strong>Mein Ergebnis hinzufügen</strong> (bei einem Workout ohne Ergebnis auf <strong>Als erledigt markieren</strong>). Trage dein Ergebnis und etwaige Notizen ein und tippe auf <strong>Speichern</strong>.</p>
+                <p>Bei einem Workout mit mehreren Ergebnissen kannst du bis zu 15 Scores eintragen, etwa einen pro Satz. Gib jeden Score ein und tippe auf <strong>Hinzufügen</strong>. Du kannst ihn auch direkt über die Tastatur hinzufügen – auf iPhone und iPad mit <strong>Hinzufügen</strong> über dem Ziffernblock, unter Android mit der ✓-Taste. Was in der Bestenliste zählt, legt das Endergebnis des Workouts fest (siehe <a data-target="workout-create" href="#workout-create">Workout erstellen</a>). Tippst du auf <strong>Speichern</strong>, während ein eingegebener Score noch nicht hinzugefügt ist, fragt Showup zuerst nach („Ergebnis nicht hinzugefügt"): <strong>Hinzufügen und speichern</strong>, <strong>Ohne speichern</strong> oder <strong>Abbrechen</strong>.</p>
                 <h2>Bestenliste</h2>
-                <p>Jedes Workout hat eine Bestenliste, die alle eingereichten Scores anhand der Bewertungsmethode und der Tiebreaker des Erstellers sortiert. Bei kollaborativen Workouts umfasst die Bestenliste alle teilnehmenden Spaces.</p>
+                <p>Jedes Workout hat eine Bestenliste, die alle eingereichten Scores anhand der Bewertungsmethode und der Tiebreaks des Erstellers sortiert. Bei kollaborativen Workouts umfasst die Bestenliste alle teilnehmenden Spaces. Bei einem Workout ohne Ergebnis listet die Bestenliste alle, die es als erledigt markiert haben, ohne Platzierung auf.</p>
                 <h2>Kommentieren &amp; reagieren</h2>
                 <p>Hinterlasse Kommentare zu einem Workout und reagiere auf die Scores anderer Mitglieder, um sie anzufeuern.</p>
             </article>
