@@ -221,12 +221,14 @@
             <nav id="helpNav">
                 <div class="help-nav-group">
                     <a class="help-nav-link" data-target="welcome" href="#welcome">Welcome</a>
+                    <a class="help-nav-link" data-target="getting-started" href="#getting-started">Getting Started guide</a>
                 </div>
                 <div class="help-nav-group">
                     <div class="help-nav-group-title">Spaces</div>
                     <a class="help-nav-link" data-target="space-what" href="#space-what">What is a Space?</a>
                     <a class="help-nav-link" data-target="space-create" href="#space-create">Create a Space</a>
                     <a class="help-nav-link" data-target="space-update" href="#space-update">Update a Space</a>
+                    <a class="help-nav-link" data-target="space-exercises" href="#space-exercises">Space Exercises</a>
                     <a class="help-nav-link" data-target="space-leave" href="#space-leave">Leave a Space</a>
                     <a class="help-nav-link" data-target="space-archive" href="#space-archive">Archive a Space</a>
                     <a class="help-nav-link" data-target="roles" href="#roles">Roles &amp; permissions</a>
@@ -237,6 +239,7 @@
                     <a class="help-nav-link" data-target="workout-what" href="#workout-what">What is a Workout?</a>
                     <a class="help-nav-link" data-target="workout-create" href="#workout-create">Create a Workout</a>
                     <a class="help-nav-link" data-target="workout-edit" href="#workout-edit">Edit a Workout</a>
+                    <a class="help-nav-link" data-target="workout-percent-pr" href="#workout-percent-pr">% of PR</a>
                     <a class="help-nav-link" data-target="workout-archive" href="#workout-archive">Archive or delete a Workout</a>
                     <a class="help-nav-link" data-target="workout-collab" href="#workout-collab">Collaborative workouts</a>
                     <a class="help-nav-link" data-target="workout-extras" href="#workout-extras">Related actions</a>
@@ -301,6 +304,44 @@
                 </div>
             </article>
 
+            <article class="help-article" id="getting-started">
+                <h1>Getting Started guide</h1>
+                <p>
+                    A new account gets a short guide on the <strong>Home</strong> tab, <strong>Getting Started</strong>: a few steps that fit the way you came into Showup. Each step has a button that opens the screen where it's done, and it's ticked off by itself once you've done it, wherever in the app you do it. The guide is there for an account's first 30 days, for accounts created on or after October 21, 2026.
+                </p>
+                <h2>Your steps</h2>
+                <p>If you <strong>joined a Space</strong> someone else runs — as a Member, Coach or Staff — your guide is <strong>Start today's workout</strong>:</p>
+                <ol>
+                    <li><strong>Join a space</strong> — already done when the guide appears.</li>
+                    <li><strong>See today's workout and log it</strong> — log a score on a workout.</li>
+                    <li><strong>Log your first PR</strong> — add a <a data-target="account-records" href="#account-records">personal record</a>.</li>
+                    <li><strong>Book a class</strong> — only if you can book: the Space has booking on and you hold a <a data-target="booking-membership" href="#booking-membership">membership plan</a>.</li>
+                </ol>
+                <p>If you <strong>run a Space</strong> — you created it, so you're its Admin — your guide is <strong>Start your space</strong>, whatever kind of Space it is:</p>
+                <ol>
+                    <li><strong>Create a space</strong> — already done when the guide appears.</li>
+                    <li><strong>Post your first workout</strong></li>
+                    <li><strong>Log your first score</strong></li>
+                    <li><strong>Create a class schedule</strong> — only if booking is on in a Space you run.</li>
+                </ol>
+                <p>Three optional steps follow: <strong>Bring in members</strong> (with <strong>Open QR</strong> or <strong>Invite by Email</strong>), <strong>Write your first community post</strong> and <strong>Log your first PR</strong>. They're numbered on after the others and marked <strong>Optional step</strong>. They don't count toward "1 of 3 steps done", and you can finish the guide without them — so it works if you train on your own, too.</p>
+                <p>Running any Space puts you on the second guide, even if you've joined other Spaces as well.</p>
+                <h2>How it works</h2>
+                <ul>
+                    <li>The step to do now sits on a card with its button. Some buttons open a screen that highlights what to tap there — tap it, or tap <strong>OK, got it</strong>.</li>
+                    <li>Steps can be done in any order. Once the required steps are done, the first optional step left takes the card.</li>
+                    <li>When the required steps are done, the guide says "Now log every day and build your Showup", and <strong>Close</strong> takes it off Home.</li>
+                </ul>
+                <h2>Close it, and find it again</h2>
+                <ul>
+                    <li><strong>Close</strong> sits at the top of the guide. Before the required steps are done, it takes the guide off Home, with <strong>Undo</strong> for a few seconds.</li>
+                    <li>The guide stays in the <strong>Account</strong> tab as the top row, <strong>Getting Started Guide</strong>: the same steps, each one tap from its screen, and — if you closed it before the required steps were done — <strong>Show on Home Again</strong>.</li>
+                    <li>That row stays while any step is left, optional ones included. Once the required steps are done, it says how many optional steps are left.</li>
+                    <li>The guide and the row go away once every step is done, or when the account's 30 days are up.</li>
+                </ul>
+                <p class="help-callout"><strong>No Space yet?</strong> Every account without a Space, new or not, sees <strong>How would you like to start?</strong> on Home, with <strong>Join a space</strong> (the <a data-target="community-qr" href="#community-qr">QR scanner</a>) and <strong>Create a new space</strong> (see <a data-target="space-create" href="#space-create">Create a Space</a>).</p>
+            </article>
+
             <article class="help-article" id="space-what">
                 <h1>What is a Space?</h1>
                 <p>
@@ -317,13 +358,13 @@
 
             <article class="help-article" id="space-create">
                 <h1>Create a Space</h1>
-                <p>From the <strong>Home</strong> tab, tap <strong>Add New</strong> at the end of your Spaces — or <strong>Create your first Space</strong> if you don't have one yet. The flow walks you through six steps:</p>
+                <p>From the <strong>Home</strong> tab, tap the <strong>+</strong> at the end of the <strong>My Spaces</strong> header and choose <strong>Create a new space</strong> — or, if you don't have a Space yet, tap the <strong>Create a new space</strong> tile on Home. The flow walks you through up to six steps:</p>
                 <ol>
                     <li><strong>Purpose</strong> — choose one of the four types (Just for me, Small group, Gym or Box, Training program).</li>
                     <li><strong>Name</strong> — give your Space a name (up to 30 characters).</li>
                     <li><strong>Sessions</strong> — pick at least one of the suggested session types or add your own (e.g., "Cardio", "Strength", "Monday WOD"). You can add more later.</li>
-                    <li><strong>Booking</strong> — choose whether members can book classes in this Space. You can turn it on later in <a data-target="booking-admin-enable" href="#booking-admin-enable">Space Settings</a>.</li>
-                    <li><strong>Membership plans</strong> — add the plans you'll assign to members, or tap <strong>Do it later</strong>.</li>
+                    <li><strong>Booking</strong> — choose whether members can book classes in this Space. You can turn it on later in <a data-target="booking-admin-enable" href="#booking-admin-enable">Space Settings</a>. If you choose <strong>Just for me</strong>, this step is skipped.</li>
+                    <li><strong>Membership plans</strong> — add the plans you'll assign to members, or tap <strong>Do it later</strong>. If you choose <strong>Just for me</strong>, this step is skipped.</li>
                     <li><strong>Customize</strong> — pick a color and an icon, or upload a logo image.</li>
                 </ol>
                 <div class="help-callout">
@@ -341,6 +382,7 @@
                     <li><a data-target="booking-admin-enable" href="#booking-admin-enable">Booking</a> on or off, and the <a data-target="booking-admin-plans" href="#booking-admin-plans">membership plans</a> you assign to members</li>
                     <li>Member privacy — hide the member list from members</li>
                     <li>Sessions — add new ones, rename or reorder existing ones, or archive ones you no longer use</li>
+                    <li><a data-target="space-exercises" href="#space-exercises">Space Exercises</a> — the Space's own exercises for <a data-target="workout-percent-pr" href="#workout-percent-pr">% of PR</a></li>
                 </ul>
                 <h2>Logo, color, banner, and About</h2>
                 <p>
@@ -356,6 +398,39 @@
                 </p>
                 <div class="help-callout">
                     <strong>Heads-up:</strong> if your Space has more active sessions than your current plan allows, session editing is frozen until you archive a few. Archiving is reversible, so this isn't permanent.
+                </div>
+            </article>
+
+            <article class="help-article" id="space-exercises">
+                <h1>Space Exercises</h1>
+                <p>
+                    A workout can give a load as a <a data-target="workout-percent-pr" href="#workout-percent-pr">% of PR</a> — "80% of your Back Squat 1RM" — and every member sees the weight from their own PR. Showup comes with 20 lifts for this, the <strong>Showup Exercises</strong>, in every Space. <strong>Space Exercises</strong> are a Space's own lifts on top of those: the ones Showup doesn't have, like Box Squat or Pause Bench.
+                </p>
+                <p>
+                    Admins and Staff manage them. Open the <strong>⋯</strong> menu on the Space's card, choose <strong>Space Settings</strong>, and under <strong>Exercises</strong> tap <strong>Space Exercises</strong>. Changes there are saved right away. Coaches don't see this list, but they can pick its exercises when they write a workout.
+                </p>
+                <h2>Add an exercise</h2>
+                <ol>
+                    <li>Tap <strong>Add Exercise</strong> (or <strong>+</strong> at the top).</li>
+                    <li>Enter a <strong>Name</strong> (up to 30 characters) and choose a <strong>Category</strong> — one of the 12 that personal records use.</li>
+                    <li>Tap <strong>Save</strong>.</li>
+                </ol>
+                <ul>
+                    <li>A Space Exercise is always scored by <strong>Weight</strong>, <strong>Higher is Better</strong>: a percentage only works on a lifted weight.</li>
+                    <li>A name and category that match a Showup Exercise are refused, and so is a name the Space already uses.</li>
+                    <li>A Space can have up to 500 Space Exercises.</li>
+                    <li>While writing a workout, Admins and Staff can also add one straight from the exercise search: when nothing matches, tap <strong>Add "…" to Space Exercises</strong>.</li>
+                </ul>
+                <h2>Rename an exercise</h2>
+                <p>
+                    Tap the exercise, change its name or category, and tap <strong>Save</strong>. The same screen shows how many workouts use it. Those workouts follow the new name, but PRs members logged under the old name don't count toward the new one — Showup warns you before you save.
+                </p>
+                <h2>Delete an exercise</h2>
+                <p>
+                    Swipe its row left and tap <strong>Delete</strong>, or open it and tap <strong>Delete Exercise</strong> at the bottom. Showup first checks how many workouts use it and tells you. In those workouts it then shows as <strong>Removed exercise</strong>, and members no longer see a weight for it. Deleting can't be undone, but it never touches anyone's PRs.
+                </p>
+                <div class="help-callout">
+                    <strong>Note:</strong> <a data-target="workout-collab" href="#workout-collab">collaborative workouts</a> can use Showup Exercises only.
                 </div>
             </article>
 
@@ -390,7 +465,7 @@
                     <thead><tr><th>Role</th><th>Can</th></tr></thead>
                     <tbody>
                         <tr><td class="role-name">Admin<span class="role-inherits">Everything Staff can, plus:</span></td><td><ul><li>Archive or delete the Space</li><li>Delete session types</li></ul></td></tr>
-                        <tr><td class="role-name">Staff<span class="role-inherits">Everything a Coach can, plus:</span></td><td><ul><li>Edit Space settings and session types</li><li>Manage members and assign roles (up to Staff)</li><li>Accept or decline join requests</li><li>Turn QR join requests on or off</li><li>Edit or delete any workout</li><li>Delete any score or comment</li><li>Moderate posts and media</li><li>Turn booking on and manage membership plans</li><li>Delete schedules, and cancel the bookings on them</li><li>Create, edit or remove any member's membership hold in the current membership period</li><li>Renew a membership: add a period, grant bonus days, or set an exact expiry</li></ul></td></tr>
+                        <tr><td class="role-name">Staff<span class="role-inherits">Everything a Coach can, plus:</span></td><td><ul><li>Edit Space settings and session types</li><li>Manage members and assign roles (up to Staff)</li><li>Accept or decline join requests</li><li>Turn QR join requests on or off</li><li>Edit or delete any workout</li><li>Delete any score or comment</li><li>Moderate posts and media</li><li>Add, edit and delete Space Exercises</li><li>Turn booking on and manage membership plans</li><li>Delete schedules, and cancel the bookings on them</li><li>Create, edit or remove any member's membership hold in the current membership period</li><li>Renew a membership: add a period, grant bonus days, or set an exact expiry</li></ul></td></tr>
                         <tr><td class="role-name">Coach<span class="role-inherits">Everything a Member can, plus:</span></td><td><ul><li>Create and edit their own workouts</li><li>Invite new members</li><li>Show and share the Space's QR code</li><li>See the member list even when the Space hides it from members</li><li>Add and manage their own media in the library</li><li>Create and edit schedules, be assigned to them, and add or remove participants</li></ul></td></tr>
                         <tr><td class="role-name">Member<span class="role-inherits">The default role:</span></td><td><ul><li>Log scores on workouts</li><li>Add comments and reactions</li><li>Write community posts</li><li>View the community, members (unless the Space hides its member list) and Media Library</li><li>Book classes, join waitlists, and manage their own holds</li></ul></td></tr>
                     </tbody>
@@ -424,7 +499,7 @@
                 <h2>Required</h2>
                 <ul>
                     <li><strong>Scoring</strong> — how members log the workout, picked from five tiles. Nothing is chosen for you (see <em>Scoring</em> below).</li>
-                    <li><strong>Content</strong> — the workout description (movements, sets, structure). Up to 1,000 characters.</li>
+                    <li><strong>Content</strong> — the workout description (movements, sets, structure). Up to 1,000 characters. Type <strong>@</strong> to add a weight worked out from each member's own PR — see <a data-target="workout-percent-pr" href="#workout-percent-pr">% of PR</a>.</li>
                     <li><strong>Date</strong> — when the workout is programmed for.</li>
                     <li><strong>Session</strong> — which session in the Space this belongs to.</li>
                 </ul>
@@ -502,6 +577,45 @@
                 </p>
             </article>
 
+            <article class="help-article" id="workout-percent-pr">
+                <h1>% of PR</h1>
+                <p>
+                    Write a load as a percentage of a personal record — "Back Squat @80% of 1RM" — and every member sees the weight worked out from their own PR, in their own unit: "Back Squat @100kg" for a member whose 1RM is 125 kg, and the weight in pounds for one who uses lb. Anyone who writes workouts (<a data-target="roles" href="#roles">Coach</a> and up) can use it in <strong>Content</strong>.
+                </p>
+                <h2>Add a reference</h2>
+                <ol>
+                    <li>In <strong>Content</strong>, type <strong>@</strong> at the start of a line or after a space — or tap <strong>% of PR</strong> on the bar above the keyboard.</li>
+                    <li><strong>Percentage</strong> — type a number from 1 to 100, or tap a suggestion.</li>
+                    <li><strong>Exercise</strong> — type to search, and pick one. The <strong>Showup Exercises</strong> built into Showup come first, then your Space's own <a data-target="space-exercises" href="#space-exercises">Space Exercises</a>.</li>
+                    <li><strong>Rep Max</strong> — 1RM is picked for you; you can choose up to 20RM.</li>
+                </ol>
+                <p>
+                    At each step, Return takes the highlighted choice. The reference becomes one block in the text, like <strong>Back Squat | @80% | of 1RM</strong>. You can also start with the exercise: type <strong>@squat</strong>, pick it, and the percentage starts at 100%.
+                </p>
+                <ul>
+                    <li>Tap a part of the block to change it (<strong>Change Percentage</strong>, <strong>Change Exercise</strong>, <strong>Change Rep Max</strong>), or touch and hold it for <strong>Remove Reference</strong>. Backspace selects the block first and removes it on the second press.</li>
+                    <li>References work in Content only, not in Coaching Notes.</li>
+                    <li>A reference uses more of Content's 1,000 characters than it shows. When one won't fit, the bar says "Not enough room".</li>
+                    <li>Exercise not there? Admins and Staff can add it on the spot with <strong>Add "…" to Space Exercises</strong>. Coaches see "Ask an admin or staff member to add it."</li>
+                </ul>
+                <h2>What members see</h2>
+                <ul>
+                    <li>The weight from their best PR for that exercise and rep max, in their <a data-target="account-preferences" href="#account-preferences">weight unit</a>, with up to two decimals — on the workout and on its card in the Space.</li>
+                    <li>A heavier lift at more reps counts too: if their 3RM is heavier than their best 1RM, a 1RM reference uses it, the same way their PR history counts rep maxes.</li>
+                    <li>Without a PR for it, they see the percentage in a dashed outline, and the workout shows <strong>See your own weights</strong> with a button for each missing PR. Tap one, log the PR, and the weight fills in.</li>
+                    <li><strong>Show %</strong> switches the workout to percentages, and <strong>Show Weights</strong> switches back. Your device remembers the choice.</li>
+                    <li>Admins, Staff and Coaches also see "Each member sees weights worked out from their own PRs."</li>
+                </ul>
+                <h2>Collaborative workouts</h2>
+                <p>
+                    A <a data-target="workout-collab" href="#workout-collab">collaborative workout</a> can use Showup Exercises only. While Content uses a Space Exercise, the Collaboration section shows <strong>Collaboration unavailable</strong> — replace it with a Showup exercise to add collaborators. If collaborators are already picked, Save stays off until no Space Exercise is left.
+                </p>
+                <h2>If an exercise is renamed or deleted</h2>
+                <p>
+                    Workouts follow a renamed Space Exercise. A deleted one shows as <strong>Removed exercise</strong>, keeping its percentage and rep max but no weight. When you edit the workout, tap <strong>Removed exercise</strong> to pick another exercise. Save stays off for a newly added reference to an exercise this Space doesn't have — one pasted from another Space's workout, for example.
+                </p>
+            </article>
+
             <article class="help-article" id="workout-archive">
                 <h1>Archive or delete a Workout</h1>
                 <p>Showup automatically picks the right action when you remove a workout:</p>
@@ -524,7 +638,7 @@
                     <li>Once accepted, the workout appears in the invitee's Space, and their members can start logging scores on the shared leaderboard.</li>
                 </ol>
                 <div class="help-callout">
-                    <strong>Note:</strong> the number of Spaces you can invite depends on your plan (free plans allow 1). A collaborative workout can't also use Media Library items — pick one approach per workout.
+                    <strong>Note:</strong> the number of Spaces you can invite depends on your plan (free plans allow 1). A collaborative workout can't also use Media Library items — pick one approach per workout. Its <a data-target="workout-percent-pr" href="#workout-percent-pr">% of PR</a> references can use Showup Exercises only.
                 </div>
                 <h2>If a collaborating Space leaves</h2>
                 <p>
@@ -857,7 +971,7 @@
             <article class="help-article" id="community-qr">
                 <h1>Join with a QR code</h1>
                 <p>
-                    Every Space has its own QR code. Anyone who scans it with their phone's camera can ask to join, and an <a data-target="roles" href="#roles">Admin or Staff</a> member approves each request — nobody gets in just by scanning.
+                    Every Space has its own QR code. Anyone who scans it, in Showup or with their phone's camera app, can ask to join, and an <a data-target="roles" href="#roles">Admin or Staff</a> member approves each request — nobody gets in just by scanning.
                 </p>
                 <h2>Show your Space's QR code</h2>
                 <p>
@@ -871,10 +985,20 @@
                 <p>A Space's code never changes, so a poster you've printed keeps working.</p>
                 <h2>Scan a code to join</h2>
                 <ol>
-                    <li>Point your phone's camera at the code and tap the link that appears. Showup has no scanner of its own.</li>
-                    <li>Showup opens on the Space's page. If you don't have the app yet, you're sent to the App Store or Google Play — install it, sign in, then scan the code again.</li>
+                    <li>On the <strong>Home</strong> tab, tap the <strong>+</strong> at the end of the <strong>My Spaces</strong> header and choose <strong>Join a space</strong>. If you don't have a Space yet, tap the <strong>Join a space</strong> tile on Home instead.</li>
+                    <li>The first time, Showup says why it needs the camera. Tap <strong>Continue</strong> and allow access. Nothing the camera sees is saved.</li>
+                    <li>Point the camera at the code. Once it's read, the frame turns green and the Space's page opens by itself.</li>
                     <li>Tap <strong>Join</strong>, add a message if you'd like (up to 500 characters), and tap <strong>Send</strong>.</li>
                 </ol>
+                <p>On the scanner:</p>
+                <ul>
+                    <li><strong>Flashlight</strong> lights up the code in a dim room.</li>
+                    <li><strong>Load QR Code from Photo</strong> reads a code you were sent as an image, like a screenshot in a group chat.</li>
+                    <li>A code that isn't a Showup Space's opens nothing — the scanner says "This isn't a Showup space QR code".</li>
+                </ul>
+                <p>
+                    Camera access off? Tap <strong>Open Settings</strong> to turn it on, or load the code from a photo. Your phone's own camera app works too: point it at the code and tap the link that appears, and Showup opens on the same page. If you don't have the app yet, the link sends you to the App Store or Google Play — install it, sign in, then scan the code again.
+                </p>
                 <p>
                     Your request then waits under <strong>Requested</strong> on the <strong>Home</strong> tab. Tap it if you want to cancel. You're notified when it's accepted or declined, and once it's accepted the Space appears in <strong>My Spaces</strong>. If it's declined, or you cancel it, you can ask again.
                 </p>
@@ -946,6 +1070,7 @@
                 <ul>
                     <li>Tap <strong>+</strong>, then choose a preset movement or create a custom exercise.</li>
                     <li>Enter the value with its unit, the measure type (weight, time, distance, or reps), and the date. For strength lifts you can log rep-maxes — 1RM, 3RM, 5RM, and so on, up to 20RM.</li>
+                    <li>The list also has the <a data-target="space-exercises" href="#space-exercises">Space Exercises</a> of the Spaces you're in, with the Space's name under each. A PR for one fills in your weight in workouts that use it for <a data-target="workout-percent-pr" href="#workout-percent-pr">% of PR</a>. Like custom exercises, these records don't appear on the PR Board, and they stay yours if you leave the Space or the exercise is deleted.</li>
                 </ul>
                 <h2>Edit or remove a record</h2>
                 <ul>
@@ -1113,7 +1238,7 @@
 
             <div class="help-contact-box">
                 <p>Didn't find what you need? <a href="contact.html">Contact us</a>.</p>
-                <p class="help-updated">Last updated: October 11, 2026 · <a href="legal/privacy.html">Privacy Policy</a> · <a href="legal/terms.html">Terms of Service</a></p>
+                <p class="help-updated">Last updated: October 26, 2026 · <a href="legal/privacy.html">Privacy Policy</a> · <a href="legal/terms.html">Terms of Service</a></p>
             </div>
         </main>
     </div>
