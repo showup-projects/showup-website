@@ -130,6 +130,12 @@ PAGES = {
     "legal/privacy.html": ("en", 1),
     "legal/privacy-ko.html": ("ko", 1),
     "legal/privacy-de.html": ("de", 1),
+    # Getting Started pages, built by tools/build_start_pages.py
+    **{
+        f"start/{page}{'' if lang == 'en' else '-' + lang}.html": (lang, 1)
+        for page in ("solo", "group", "gym", "program", "member")
+        for lang in ("en", "ko", "de")
+    },
 }
 
 # Footer rules that used to be copy-pasted into every page's inline <style>.
@@ -151,15 +157,16 @@ def suffix(lang):
     return "" if lang == "en" else "-" + lang
 
 
-def build_footer(lang, depth, i18n):
+def build_footer(lang, depth, i18n, in_legal=False):
     """Return the footer markup for one page.
 
     i18n=True adds the data-i18n attributes index.html's language switcher needs.
+    in_legal=True for pages inside legal/, whose privacy and terms links are siblings.
     """
     s = FOOTER_STRINGS[lang]
     root = "../" * depth
     sfx = suffix(lang)
-    legal = root + "legal/" if depth == 0 else ""
+    legal = "" if in_legal else root + "legal/"
     pad = "    " * depth
 
     def attr(key):
@@ -277,7 +284,8 @@ def sync(path, lang, depth):
     text = re.sub(r"<style>(.*?)</style>", restyle, text, flags=re.S)
 
     # 3. stamp the footer itself
-    block = START + "\n" + build_footer(lang, depth, i18n=(path == "index.html")) + "\n" + "    " * depth + END
+    footer = build_footer(lang, depth, i18n=(path == "index.html"), in_legal=path.startswith("legal/"))
+    block = START + "\n" + footer + "\n" + "    " * depth + END
     if START in text:
         text = re.sub(re.escape(START) + r".*?" + re.escape(END), lambda _: block, text, flags=re.S)
     elif "<footer class=\"footer\">" in text:
