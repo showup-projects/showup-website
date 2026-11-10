@@ -415,7 +415,7 @@
 
     <main class="privacy-content">
         <h1>Datenschutzerklärung</h1>
-        <p class="privacy-updated">Zuletzt aktualisiert: 2. November 2026</p>
+        <p class="privacy-updated">Zuletzt aktualisiert: 10. November 2026</p>
 
         <p>
             Showup („wir“, „unser“ oder „uns“) betreibt die mobile Showup-Anwendung für iOS und Android sowie die Website unter www.showupcounts.com (zusammen der „Dienst“). Diese Datenschutzerklärung erläutert, welche Informationen wir erfassen, wie wir sie verwenden, wer sie sonst noch sehen kann und was Sie dagegen tun können.
@@ -466,6 +466,7 @@
             <li><strong>Push-Benachrichtigungstokens:</strong> eines pro Gerät, damit wir Benachrichtigungen zustellen können</li>
             <li><strong>Nutzungsdaten:</strong> In-App-Ereignisse und Bildschirmaufrufe, die über Google Analytics for Firebase erfasst werden (siehe Abschnitt 4)</li>
             <li><strong>Absturzberichte und Leistungsdiagnosen:</strong> unter iOS und Android über Firebase Crashlytics erfasst und mit Ihrer Kontokennung verknüpft (siehe Abschnitt 4)</li>
+            <li><strong>Daten zur Werbemessung:</strong> über das Meta-SDK, das die Apps für iOS und Android ab Version 1.1.14 enthalten (siehe Abschnitt 4): ein Ereignis bei der Installation der App und bei jedem Öffnen, Ereignisse zu Käufen und Abonnements über den App Store oder Google Play, Geräte- und App-Angaben, eine vom SDK erzeugte Kennung sowie unter Android die Werbekennung des Geräts</li>
             <li><strong>Signale zur Geräteintegrität:</strong> Die App fordert Apples App Attest-Dienst (iOS) bzw. Google Play Integrity (Android) auf zu bestätigen, dass es sich um eine echte, unveränderte Kopie von Showup handelt, und sendet das daraus resultierende Token an Firebase App Check. Dies dient dazu, Missbrauch unserer Server zu unterbinden.</li>
         </ul>
 
@@ -493,6 +494,7 @@
             <li>Missbrauch, Betrug und technische Probleme zu erkennen, zu verhindern und zu beheben, einschließlich der Gerätebestätigung</li>
             <li>Inhaltsmeldungen zu prüfen und unsere Nutzungsbedingungen und Community-Richtlinien durchzusetzen</li>
             <li>Den Dienst durch aggregierte Nutzungsanalysen und Absturzdiagnosen zu überwachen und zu verbessern</li>
+            <li>Zu messen, wie viele Personen die App installieren und öffnen, nachdem sie unsere eigene Werbung für Showup auf Instagram und Facebook gesehen haben (siehe Abschnitt 4)</li>
         </ul>
 
         <h2>3. Wie Ihre Informationen geteilt werden</h2>
@@ -543,6 +545,7 @@
             <li><strong>Google (Google Workspace):</strong> versendet unsere E-Mails — Space-Einladungen, E-Mails zu Support-Anfragen, Benachrichtigungen über Inhaltsmeldungen und die in Abschnitt 2 beschriebenen Service-E-Mails — und verarbeitet daher die betroffenen Adressen und Nachrichteninhalte</li>
             <li><strong>GitHub, Inc. (Vereinigte Staaten):</strong> hostet die Showup-Website (siehe Abschnitt 5)</li>
             <li><strong>YouTube (Google):</strong> Verlinkt ein Space ein YouTube-Video, werden beim Abspielen oder beim Anzeigen des Vorschaubilds Inhalte von den Servern von Google geladen, die Ihre IP-Adresse und Ihren User-Agent erhalten und eigene Kennungen setzen können. Dies unterliegt der Datenschutzerklärung von Google.</li>
+            <li><strong>Meta Platforms, Inc. (Vereinigte Staaten) und deren verbundene Unternehmen:</strong> Messung unserer Werbung auf Instagram und Facebook über das Meta-SDK in der App (siehe Abschnitt 4). Meta nutzt diese Daten, um uns über die Ergebnisse unserer Werbung zu berichten, und nach seiner eigenen Datenschutzerklärung für eigene Zwecke, etwa um Werbung auszuliefern und zu verbessern.</li>
         </ul>
         <p>
             Diese Anbieter verarbeiten Ihre Daten in unserem Auftrag oder, soweit sie eigenständige Verantwortliche sind, nach ihren eigenen Datenschutzerklärungen. Wir verpflichten sie, für Ihre Daten einen Schutz zu gewährleisten, der dem in dieser Richtlinie beschriebenen mindestens gleichwertig ist.
@@ -555,19 +558,20 @@
         <p>Im Falle einer Fusion, Übernahme oder eines Verkaufs von Vermögenswerten können Ihre Informationen als Teil dieser Transaktion übertragen werden. Wir werden Sie benachrichtigen, bevor Ihre Informationen einer anderen Datenschutzrichtlinie unterliegen.</p>
 
         <h3>3.6 Kein Verkauf von Daten</h3>
-        <p>Wir verkaufen, vermieten, handeln oder teilen Ihre personenbezogenen Daten nicht zu Werbezwecken oder für Marketingzwecke Dritter, und wir haben dies nie getan.</p>
+        <p>Wir verkaufen oder vermieten Ihre personenbezogenen Daten nicht, handeln nicht mit ihnen und teilen sie nicht für Marketingzwecke Dritter. Die einzigen Daten, die die App zu Werbezwecken verlassen, sind die in Abschnitt 4 beschriebenen Daten zur Werbemessung; die App sendet sie an Meta, damit wir unsere eigene Werbung messen können. Diese Daten enthalten weder Ihren Namen noch Ihre E-Mail-Adresse noch Ihre Showup-Kontokennung noch irgendetwas, das Sie in Showup eingeben oder aufzeichnen.</p>
 
         <h2>4. Analyse, Diagnose und Werbung</h2>
         <p>
-            Der Dienst enthält keine Werbung von Drittanbietern. Wir verwenden keine Werbe-SDKs, keine Attributions-SDKs und kein app-übergreifendes Tracking, und wir verfolgen Sie nicht über andere Apps oder Websites hinweg. Wir verwenden Apples App Tracking Transparency-Abfrage nicht, weil wir Sie um nichts zu bitten haben.
+            Der Dienst zeigt keine Werbung an, und wir lassen niemanden darin werben. Wir werben jedoch auf Instagram und Facebook für Showup selbst, und ab Version 1.1.14 (November 2026) enthalten die Apps für iOS und Android das Meta-SDK, damit wir diese Werbung messen können. Wir verwenden Apples App Tracking Transparency-Abfrage nicht, sodass das Meta-SDK unter iOS niemals die Werbekennung Ihres Geräts (IDFA) erhält.
         </p>
-        <p>Zwei Diagnosewerkzeuge von Google setzen wir in der App jedoch ein:</p>
+        <p>Die App enthält drei Werkzeuge dieser Art:</p>
         <ul>
-            <li><strong>Google Analytics for Firebase</strong> ist sowohl unter iOS als auch unter Android aktiviert. Es zeichnet die App-Nutzung auf — aufgerufene Bildschirme, Sitzungen und automatisch erfasste Ereignisse — zusammen mit Geräte- und App-Metadaten sowie einer von Google erzeugten App-Instanzkennung. Wir nutzen es in aggregierter Form, um zu verstehen, welche Teile der App genutzt werden. Unter Android deklariert die Analytics-Bibliothek zudem die Berechtigung für die Werbekennung; wir verwenden keine Werbekennung, schalten keine Werbung und erstellen keine Werbeprofile.</li>
+            <li>Das <strong>Meta-SDK</strong> ist sowohl unter iOS als auch unter Android aktiviert. Es sendet bei der Installation der App und bei jedem Öffnen ein Ereignis an Meta, dazu Ereignisse zu Käufen und Abonnements über den App Store oder Google Play; Geräte- und App-Angaben (Gerätemodell, Betriebssystem- und App-Version, Sprache, Zeitzone, Mobilfunkanbieter und Bildschirmgröße); eine Kennung, die das SDK erzeugt und in der App speichert; unter iOS die Angabe, ob Tracking erlaubt ist; und unter Android die Werbekennung des Geräts, sofern Sie diese nicht in Ihren Geräteeinstellungen gelöscht haben. Meta erhält außerdem mit jeder Anfrage Ihre IP-Adresse. Das SDK sendet weder Ihren Namen noch Ihre E-Mail-Adresse noch Ihre Showup-Kontokennung noch irgendetwas, das Sie in Showup eingeben oder aufzeichnen. Meta nutzt diese Daten, um uns mitzuteilen, zu wie vielen Installationen und Öffnungen der App unsere Werbung geführt hat — unter iOS teilweise über Apples SKAdNetwork —, und nach seiner <a href="https://www.facebook.com/privacy/policy/">eigenen Datenschutzerklärung</a> für eigene Zwecke, etwa um Werbung auszuliefern und zu verbessern.</li>
+            <li><strong>Google Analytics for Firebase</strong> ist sowohl unter iOS als auch unter Android aktiviert. Es zeichnet die App-Nutzung auf — aufgerufene Bildschirme, Sitzungen und automatisch erfasste Ereignisse — zusammen mit Geräte- und App-Metadaten sowie einer von Google erzeugten App-Instanzkennung. Wir nutzen es in aggregierter Form, um zu verstehen, welche Teile der App genutzt werden. Unter Android kann es zudem die Werbekennung des Geräts auslesen; wir nutzen sie nicht, um Werbung gezielt auszurichten, und erstellen keine Werbeprofile.</li>
             <li><strong>Firebase Crashlytics</strong> ist sowohl unter iOS als auch unter Android aktiviert. Es zeichnet Abstürze und nicht schwerwiegende Fehler auf, und wir fügen diesen Berichten Ihre Kontokennung bei, damit wir ein von Ihnen gemeldetes Problem untersuchen können.</li>
         </ul>
         <p>
-            Keines der beiden Werkzeuge lässt sich für ein einzelnes Konto deaktivieren. Analysedaten verknüpfen wir nicht mit Ihrem Konto. Absturzberichte enthalten dagegen Ihre Kontokennung: Wenn Sie uns unter der in Abschnitt 14 genannten Adresse darum bitten, löschen wir die mit Ihrem Konto verknüpften Absturzberichte. Wenn Sie diese Verarbeitung nicht wünschen, können Sie sie nur vermeiden, indem Sie die App nicht mehr nutzen.
+            Keines dieser Werkzeuge lässt sich für ein einzelnes Konto deaktivieren. Analysedaten und Daten zur Werbemessung verknüpfen wir nicht mit Ihrem Konto. Absturzberichte enthalten dagegen Ihre Kontokennung: Wenn Sie uns unter der in Abschnitt 14 genannten Adresse darum bitten, löschen wir die mit Ihrem Konto verknüpften Absturzberichte. Unter Android können Sie Ihre Werbekennung in Ihren Geräteeinstellungen löschen oder zurücksetzen (etwa unter Einstellungen &gt; Google &gt; Anzeigen), und in den Werbepräferenzen Ihres Meta-Kontos können Sie verwalten, wie Meta Daten für Werbung nutzt. Ansonsten können Sie diese Verarbeitung nur vermeiden, indem Sie die App nicht mehr nutzen.
         </p>
 
         <h2>5. Die Showup-Website</h2>
@@ -658,7 +662,7 @@
         </p>
         <ul>
             <li><strong>Vertrag:</strong> Erstellung und Betrieb Ihres Kontos, Aufzeichnung Ihrer Fitnessdaten, Betrieb von Spaces und Buchungen sowie Abwicklung Ihres Abonnements</li>
-            <li><strong>Berechtigte Interessen:</strong> den Dienst sicher und frei von Missbrauch zu halten, Gerätebestätigung und Gerätegrenze, Absturzdiagnosen, aggregierte Nutzungsanalysen, Bearbeitung von Support-Anfragen und Inhaltsmeldungen, die Zustellung von Einladungen, um deren Versand Sie uns bitten, sowie der Versand der in Abschnitt 2 beschriebenen Service-E-Mails</li>
+            <li><strong>Berechtigte Interessen:</strong> den Dienst sicher und frei von Missbrauch zu halten, Gerätebestätigung und Gerätegrenze, Absturzdiagnosen, aggregierte Nutzungsanalysen, Messung der Ergebnisse unserer eigenen Werbung (Abschnitt 4), Bearbeitung von Support-Anfragen und Inhaltsmeldungen, die Zustellung von Einladungen, um deren Versand Sie uns bitten, sowie der Versand der in Abschnitt 2 beschriebenen Service-E-Mails</li>
             <li><strong>Einwilligung:</strong> Push-Benachrichtigungen und Zugriff auf Ihre Fotomediathek</li>
             <li><strong>Rechtliche Verpflichtung:</strong> Aufbewahrung von Transaktionsaufzeichnungen und Beantwortung rechtmäßiger Anfragen</li>
         </ul>
@@ -675,7 +679,8 @@
             <li><strong>Löschung:</strong> Löschen Sie Ihr Konto über die Kontoeinstellungen in der App, vorbehaltlich Abschnitt 8</li>
             <li><strong>Benachrichtigungen:</strong> Deaktivieren Sie Push-Benachrichtigungen in der App oder in Ihren Geräteeinstellungen</li>
             <li><strong>E-Mails:</strong> Bitten Sie uns, Ihnen die in Abschnitt 2 beschriebenen Service-E-Mails nicht mehr zu senden</li>
-            <li><strong>Absturzberichte:</strong> Bitten Sie uns, die mit Ihrem Konto verknüpften Absturzberichte zu löschen; die Analyse und die Absturzerfassung selbst lassen sich nicht für ein einzelnes Konto deaktivieren (siehe Abschnitt 4)</li>
+            <li><strong>Absturzberichte:</strong> Bitten Sie uns, die mit Ihrem Konto verknüpften Absturzberichte zu löschen; die Analyse, die Werbemessung und die Absturzerfassung selbst lassen sich nicht für ein einzelnes Konto deaktivieren (siehe Abschnitt 4)</li>
+            <li><strong>Werbekennung:</strong> Löschen Sie unter Android Ihre Werbekennung in Ihren Geräteeinstellungen oder setzen Sie sie zurück; das Meta-SDK und Google Analytics erhalten sie dann nicht mehr (siehe Abschnitt 4)</li>
             <li><strong>Widerruf der Einwilligung:</strong> Widerrufen Sie jede von Ihnen erteilte Einwilligung und beenden Sie die Nutzung des Dienstes jederzeit</li>
         </ul>
 
@@ -690,7 +695,7 @@
 
         <h3>10.3 Rechte für Nutzer in den Vereinigten Staaten</h3>
         <p>
-            Je nach Ihrem Wohnsitzstaat haben Sie möglicherweise das Recht, zu erfahren, welche personenbezogenen Daten wir erfassen, verwenden und offenlegen; eine Kopie davon zu erhalten; sie berichtigen zu lassen; sie löschen zu lassen; gegen eine Entscheidung über Ihr Verlangen Widerspruch einzulegen; und wegen der Ausübung dieser Rechte nicht benachteiligt zu werden. Wir verkaufen oder teilen keine personenbezogenen Daten im Sinne der Definitionen des California Consumer Privacy Act, und wir verwenden oder offenbaren keine sensiblen personenbezogenen Daten zu Zwecken, die eine Widerspruchsmöglichkeit erfordern. Da die Showup-Website weder Werbung noch Analyse ausführt, gibt es nichts, worauf ein Widerspruchssignal wie Global Privacy Control wirken könnte.
+            Je nach Ihrem Wohnsitzstaat haben Sie möglicherweise das Recht, zu erfahren, welche personenbezogenen Daten wir erfassen, verwenden und offenlegen; eine Kopie davon zu erhalten; sie berichtigen zu lassen; sie löschen zu lassen; gegen eine Entscheidung über Ihr Verlangen Widerspruch einzulegen; und wegen der Ausübung dieser Rechte nicht benachteiligt zu werden. Wir verkaufen keine personenbezogenen Daten. Dass das Meta-SDK die Daten zur Werbemessung an Meta sendet (Abschnitt 4), kann im Sinne des California Consumer Privacy Act als „Teilen“ für kontextübergreifende verhaltensbasierte Werbung gelten. Die App hat keinen Schalter, mit dem sich dies für ein einzelnes Konto unterbinden lässt: Unter Android können Sie Ihre Werbekennung löschen, und ansonsten können Sie dies nur vermeiden, indem Sie die App nicht mehr nutzen. Wir verwenden oder offenbaren keine sensiblen personenbezogenen Daten zu Zwecken, die eine Widerspruchsmöglichkeit erfordern. Da die Showup-Website weder Werbung noch Analyse ausführt, gibt es nichts, worauf ein Widerspruchssignal wie Global Privacy Control wirken könnte.
         </p>
 
         <h3>10.4 Rechte für südkoreanische Nutzer (PIPA)</h3>
@@ -698,7 +703,7 @@
             Wenn Sie sich in Südkorea befinden, haben Sie nach dem Personal Information Protection Act das Recht, auf Ihre personenbezogenen Daten zuzugreifen, sie zu berichtigen, sie zu löschen oder ihre Verarbeitung auszusetzen, über ihre Erfassung und Verwendung informiert zu werden und Ihre Einwilligung zu widerrufen. Sie können die Einwilligung in eine nicht erforderliche Erfassung auch verweigern, was jedoch Teile des Dienstes einschränken kann.
         </p>
         <p>
-            Die Kategorien der personenbezogenen Daten, die wir erfassen, die Zwecke und die Aufbewahrungsfristen sind in den Abschnitten 1, 2 und 8 dargelegt. Die Verarbeitung, mit der wir Dritte beauftragen (Auftragsverarbeitung), und die damit verbundenen Übermittlungen personenbezogener Daten außerhalb Koreas sind in den Abschnitten 3.3 und 12 dargelegt. Wenn personenbezogene Daten das Ende ihrer Aufbewahrungsfrist erreichen oder ihr Zweck erfüllt ist, vernichten wir sie unverzüglich: elektronische Dateien werden unwiederbringlich gelöscht, und etwaiges gedrucktes Material wird geschreddert oder verbrannt.
+            Die Kategorien der personenbezogenen Daten, die wir erfassen, die Zwecke und die Aufbewahrungsfristen sind in den Abschnitten 1, 2 und 8 dargelegt. Die Verarbeitung, mit der wir Dritte beauftragen (Auftragsverarbeitung), und die damit verbundenen Übermittlungen personenbezogener Daten außerhalb Koreas sind in den Abschnitten 3.3 und 12 dargelegt. Das Meta-SDK in der App erfasst Verhaltensdaten — Installationen und Öffnungen der App sowie Käufe —, um unsere Werbung zu messen; Abschnitt 4 beschreibt, was es erfasst und wie Sie die Erfassung ablehnen können, und Abschnitt 12 enthält die Einzelheiten zur Übermittlung an Meta. Wenn personenbezogene Daten das Ende ihrer Aufbewahrungsfrist erreichen oder ihr Zweck erfüllt ist, vernichten wir sie unverzüglich: elektronische Dateien werden unwiederbringlich gelöscht, und etwaiges gedrucktes Material wird geschreddert oder verbrannt.
         </p>
         <p>
             <strong>Datenschutzbeauftragter:</strong> Showup — support@showupcounts.com
@@ -717,7 +722,7 @@
 
         <h2>12. Internationale Datenübermittlungen</h2>
         <p>
-            Showup wird aus der Republik Korea betrieben. Wir haben keine Niederlassung in der Europäischen Union. Ihre personenbezogenen Daten werden auf der Infrastruktur von Google Cloud verarbeitet und können in den Regionen verarbeitet werden, in denen Google, Apple, RevenueCat und unsere übrigen Anbieter Einrichtungen betreiben, einschließlich der Vereinigten Staaten.
+            Showup wird aus der Republik Korea betrieben. Wir haben keine Niederlassung in der Europäischen Union. Ihre personenbezogenen Daten werden auf der Infrastruktur von Google Cloud verarbeitet und können in den Regionen verarbeitet werden, in denen Google, Apple, RevenueCat, Meta und unsere übrigen Anbieter Einrichtungen betreiben, einschließlich der Vereinigten Staaten.
         </p>
         <p>
             <strong>Für EWR- und UK-Nutzer:</strong> Übermittlungen personenbezogener Daten in die Republik Korea stützen sich auf den Angemessenheitsbeschluss der Europäischen Kommission für Korea, der am 17. Dezember 2021 erlassen und bei seiner ersten regelmäßigen Überprüfung am 23. Juli 2026 bestätigt wurde und nach dem keine zusätzlichen Garantien erforderlich sind. Aus dem EWR erhaltene personenbezogene Daten werden nach koreanischem Recht behandelt, ergänzt durch die Supplementary Rules der Personal Information Protection Commission. Übermittlungen an Anbieter in den Vereinigten Staaten stützen sich auf das EU–US Data Privacy Framework und dessen UK Extension, sofern der Anbieter zertifiziert ist, und andernfalls auf die Standardvertragsklauseln der Europäischen Kommission.
@@ -760,6 +765,22 @@
         <p>
             Wenn Sie diese Übermittlungen nicht wünschen, löschen Sie Ihr Konto in der App (Abschnitt 8) oder kontaktieren Sie uns unter der in Abschnitt 14 genannten Adresse. Da die Übermittlungen für den Betrieb des Dienstes erforderlich sind, bedeutet eine Ablehnung, dass Sie den Dienst nicht nutzen können.
         </p>
+        <p>
+            Unabhängig davon sendet das Meta-SDK in der App die in Abschnitt 4 beschriebenen Daten zur Werbemessung an Meta:
+        </p>
+        <ul>
+            <li><strong>Meta Platforms, Inc.</strong>
+                <ul>
+                    <li>Kontakt: siehe den Abschnitt zur Kontaktaufnahme in der <a href="https://www.facebook.com/privacy/policy/">Datenschutzerklärung von Meta</a></li>
+                    <li>Land: die Vereinigten Staaten</li>
+                    <li>Übermittelte Daten: Ereignisse zu Installationen und Öffnungen der App sowie zu Käufen; Geräte- und App-Angaben; eine vom Meta-SDK erzeugte Kennung; Ihre IP-Adresse sowie unter Android die Werbekennung</li>
+                    <li>Zwecke: Messung der Ergebnisse unserer Werbung auf Instagram und Facebook sowie eigene Zwecke von Meta nach seiner Datenschutzerklärung</li>
+                    <li>Zeitpunkt und Art der Übermittlung: bei der Installation der App und bei jedem Öffnen, über verschlüsselte Netzwerkverbindungen (HTTPS/TLS)</li>
+                    <li>Aufbewahrung: wie in der Datenschutzerklärung von Meta dargelegt</li>
+                    <li>Ablehnung der Übermittlung: unter Android, indem Sie Ihre Werbekennung in Ihren Geräteeinstellungen löschen oder zurücksetzen; ansonsten, indem Sie die App nicht mehr nutzen</li>
+                </ul>
+            </li>
+        </ul>
 
         <h2>13. Änderungen dieser Richtlinie</h2>
         <p>

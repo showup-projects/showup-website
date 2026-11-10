@@ -413,7 +413,7 @@
 
     <main class="privacy-content">
         <h1>Privacy Policy</h1>
-        <p class="privacy-updated">Last updated: November 2, 2026</p>
+        <p class="privacy-updated">Last updated: November 10, 2026</p>
 
         <p>
             Showup ("we," "our," or "us") operates the Showup mobile application for iOS and Android and the website at www.showupcounts.com (collectively, the "Service"). This Privacy Policy explains what information we collect, how we use it, who else can see it, and what you can do about it.
@@ -464,6 +464,7 @@
             <li><strong>Push notification tokens:</strong> one per device, so we can deliver notifications</li>
             <li><strong>Usage data:</strong> in-app events and screen views collected through Google Analytics for Firebase (see Section 4)</li>
             <li><strong>Crash reports and performance diagnostics:</strong> on iOS and Android, collected through Firebase Crashlytics and linked to your account identifier (see Section 4)</li>
+            <li><strong>Ad-measurement data:</strong> through the Meta SDK, which the iOS and Android apps include from version 1.1.14 (see Section 4): an event when the app is installed and each time it is opened, events for purchases and subscriptions made through the App Store or Google Play, device and app details, an identifier the SDK generates, and on Android the device's advertising ID</li>
             <li><strong>Device integrity signals:</strong> the app asks Apple's App Attest service (iOS) or Google Play Integrity (Android) to attest that it is a genuine, unmodified copy of Showup, and sends the resulting token to Firebase App Check. This is used to block abuse of our servers.</li>
         </ul>
 
@@ -491,6 +492,7 @@
             <li>Detect, prevent, and address abuse, fraud, and technical problems, including device attestation</li>
             <li>Review content reports and enforce our Terms and community guidelines</li>
             <li>Monitor and improve the Service through aggregate usage analytics and crash diagnostics</li>
+            <li>Measure how many people install and open the app after seeing our own ads for Showup on Instagram and Facebook (see Section 4)</li>
         </ul>
 
         <h2>3. How Your Information Is Shared</h2>
@@ -541,6 +543,7 @@
             <li><strong>Google (Google Workspace):</strong> sends our emails — Space invitations, support-request emails, content-report notifications, and the service emails described in Section 2 — and therefore processes the addresses and message contents involved</li>
             <li><strong>GitHub, Inc. (United States):</strong> hosts the Showup website (see Section 5)</li>
             <li><strong>YouTube (Google):</strong> if a Space links a YouTube video, playing it or displaying its thumbnail loads content from Google's servers, which receives your IP address and user agent and may set its own identifiers. This is governed by Google's privacy policy.</li>
+            <li><strong>Meta Platforms, Inc. (United States) and its affiliates:</strong> measuring our ads on Instagram and Facebook through the Meta SDK in the app (see Section 4). Meta uses this data to report the results of our ads to us and, under its own privacy policy, for its own purposes such as delivering and improving ads.</li>
         </ul>
         <p>
             These providers process your data on our behalf or, where they are independent controllers, under their own privacy policies. We require them to provide protection for your data at least equivalent to that described in this policy.
@@ -553,19 +556,20 @@
         <p>In the event of a merger, acquisition, or sale of assets, your information may be transferred as part of that transaction. We will notify you before your information becomes subject to a different privacy policy.</p>
 
         <h3>3.6 No Sale of Data</h3>
-        <p>We do not sell, rent, trade, or share your personal information for advertising or for third-party marketing purposes, and we never have.</p>
+        <p>We do not sell, rent, or trade your personal information, and we do not share it for third-party marketing. The only data that leaves the app for advertising purposes is the ad-measurement data described in Section 4, which the app sends to Meta so that we can measure our own ads. It does not include your name, email address, Showup account identifier, or anything you enter or record in Showup.</p>
 
         <h2>4. Analytics, Diagnostics, and Advertising</h2>
         <p>
-            The Service contains no third-party advertising. We do not use advertising SDKs, attribution SDKs, or cross-app tracking, and we do not track you across other apps or websites. We do not use Apple's App Tracking Transparency prompt because we have nothing to ask you for.
+            The Service shows no ads, and we do not let anyone advertise in it. We do advertise Showup itself on Instagram and Facebook, and from version 1.1.14 (November 2026) the iOS and Android apps include the Meta SDK so that we can measure those ads. We do not use Apple's App Tracking Transparency prompt, so on iOS the Meta SDK never receives your device's advertising identifier (IDFA).
         </p>
-        <p>We do use two Google diagnostic tools inside the app:</p>
+        <p>The app contains three tools of this kind:</p>
         <ul>
-            <li><strong>Google Analytics for Firebase</strong> is enabled on both iOS and Android. It records app usage — screens viewed, sessions, and automatically collected events — along with device and app metadata and a Google-generated app instance identifier. We use it in aggregate to understand which parts of the app are used. On Android, the analytics library also declares the advertising-identifier permission; we do not use an advertising identifier, do not run ads, and do not build advertising profiles.</li>
+            <li><strong>Meta SDK</strong> is enabled on both iOS and Android. When the app is installed and each time it is opened, it sends Meta an event, along with events for purchases and subscriptions made through the App Store or Google Play; device and app details (device model, operating system and app version, language, time zone, mobile carrier, and screen size); an identifier the SDK generates and keeps in the app; on iOS, whether tracking is allowed; and on Android, the device's advertising ID, unless you have deleted it in your device settings. Meta also receives your IP address with each request. The SDK does not send your name, email address, Showup account identifier, or anything you enter or record in Showup. Meta uses this data to tell us how many installs and app openings our ads led to — on iOS partly through Apple's SKAdNetwork — and, under <a href="https://www.facebook.com/privacy/policy/">its own privacy policy</a>, for its own purposes such as delivering and improving ads.</li>
+            <li><strong>Google Analytics for Firebase</strong> is enabled on both iOS and Android. It records app usage — screens viewed, sessions, and automatically collected events — along with device and app metadata and a Google-generated app instance identifier. We use it in aggregate to understand which parts of the app are used. On Android, it can also read the device's advertising ID; we do not use it to target ads, and we do not build advertising profiles.</li>
             <li><strong>Firebase Crashlytics</strong> is enabled on both iOS and Android. It records crashes and non-fatal errors, and we attach your account identifier to those reports so that we can investigate a problem you report to us.</li>
         </ul>
         <p>
-            Neither tool can be turned off for a single account. We do not link analytics data to your account. Crash reports do carry your account identifier: if you ask us at the address in Section 14, we will delete the crash reports linked to your account. If you do not want this processing, the only way to avoid it is to stop using the app.
+            None of these tools can be turned off for a single account. We do not link analytics data or ad-measurement data to your account. Crash reports do carry your account identifier: if you ask us at the address in Section 14, we will delete the crash reports linked to your account. On Android you can delete or reset your advertising ID in your device settings (for example Settings &gt; Google &gt; Ads), and you can manage how Meta uses data for ads in the ad preferences of your Meta account. Otherwise, the only way to avoid this processing is to stop using the app.
         </p>
 
         <h2>5. The Showup Website</h2>
@@ -656,7 +660,7 @@
         </p>
         <ul>
             <li><strong>Contract:</strong> creating and running your account, recording your fitness data, operating Spaces and bookings, and processing your subscription</li>
-            <li><strong>Legitimate Interests:</strong> keeping the Service secure and free of abuse, device attestation and the device limit, crash diagnostics, aggregate usage analytics, handling support requests and content reports, delivering invitations you ask us to send, and sending the service emails described in Section 2</li>
+            <li><strong>Legitimate Interests:</strong> keeping the Service secure and free of abuse, device attestation and the device limit, crash diagnostics, aggregate usage analytics, measuring the results of our own ads (Section 4), handling support requests and content reports, delivering invitations you ask us to send, and sending the service emails described in Section 2</li>
             <li><strong>Consent:</strong> push notifications, and access to your photo library</li>
             <li><strong>Legal Obligation:</strong> retaining transaction records and responding to lawful requests</li>
         </ul>
@@ -673,7 +677,8 @@
             <li><strong>Deletion:</strong> Delete your account from Account settings in the app, subject to Section 8</li>
             <li><strong>Notifications:</strong> Turn off push notifications in the app or in your device settings</li>
             <li><strong>Emails:</strong> Ask us to stop sending you the service emails described in Section 2</li>
-            <li><strong>Crash reports:</strong> Ask us to delete the crash reports linked to your account; analytics and crash reporting themselves cannot be turned off for a single account (see Section 4)</li>
+            <li><strong>Crash reports:</strong> Ask us to delete the crash reports linked to your account; analytics, ad measurement, and crash reporting themselves cannot be turned off for a single account (see Section 4)</li>
+            <li><strong>Advertising ID:</strong> On Android, delete or reset your advertising ID in your device settings; the Meta SDK and Google Analytics then no longer receive it (see Section 4)</li>
             <li><strong>Withdraw Consent:</strong> Withdraw any consent you have given, and stop using the Service at any time</li>
         </ul>
 
@@ -688,7 +693,7 @@
 
         <h3>10.3 Rights for Users in the United States</h3>
         <p>
-            Depending on your state of residence, you may have the right to know what personal information we collect, use, and disclose; to obtain a copy of it; to correct it; to delete it; to appeal a decision we make about your request; and not to be discriminated against for exercising these rights. We do not sell or share personal information as those terms are defined by the California Consumer Privacy Act, and we do not use or disclose sensitive personal information for purposes that require an opt-out. Because the Showup website runs no advertising or analytics, there is nothing for an opt-out preference signal such as Global Privacy Control to act on.
+            Depending on your state of residence, you may have the right to know what personal information we collect, use, and disclose; to obtain a copy of it; to correct it; to delete it; to appeal a decision we make about your request; and not to be discriminated against for exercising these rights. We do not sell personal information. The ad-measurement data the Meta SDK sends to Meta (Section 4) may count as "sharing" for cross-context behavioral advertising under the California Consumer Privacy Act. The app has no switch to stop it for a single account: on Android you can delete your advertising ID, and otherwise the only way to avoid it is to stop using the app. We do not use or disclose sensitive personal information for purposes that require an opt-out. Because the Showup website runs no advertising or analytics, there is nothing for an opt-out preference signal such as Global Privacy Control to act on.
         </p>
 
         <h3>10.4 Rights for South Korean Users (PIPA)</h3>
@@ -696,7 +701,7 @@
             If you are located in South Korea, under the Personal Information Protection Act you have the right to access, correct, delete, or suspend the processing of your personal information, to be informed of its collection and use, and to withdraw your consent. You may also refuse consent to non-essential collection, though this may limit parts of the Service.
         </p>
         <p>
-            Categories of personal information we collect, the purposes, and the retention periods are set out in Sections 1, 2, and 8. Processing we entrust to third parties, and the transfers of personal information outside Korea that this involves, are set out in Sections 3.3 and 12. When personal information reaches the end of its retention period or its purpose is achieved, we destroy it without delay: electronic files are deleted irrecoverably, and any printed material is shredded or incinerated.
+            Categories of personal information we collect, the purposes, and the retention periods are set out in Sections 1, 2, and 8. Processing we entrust to third parties, and the transfers of personal information outside Korea that this involves, are set out in Sections 3.3 and 12. The Meta SDK in the app collects behavioural information — app installs, app openings, and purchases — to measure our ads; Section 4 says what it collects and how to refuse it, and Section 12 gives the details of the transfer to Meta. When personal information reaches the end of its retention period or its purpose is achieved, we destroy it without delay: electronic files are deleted irrecoverably, and any printed material is shredded or incinerated.
         </p>
         <p>
             <strong>Personal Information Protection Officer:</strong> Showup — support@showupcounts.com
@@ -715,7 +720,7 @@
 
         <h2>12. International Data Transfers</h2>
         <p>
-            Showup is operated from the Republic of Korea. We have no establishment in the European Union. Your personal data is processed on Google Cloud infrastructure and may be handled in the regions where Google, Apple, RevenueCat, and our other providers operate facilities, including the United States.
+            Showup is operated from the Republic of Korea. We have no establishment in the European Union. Your personal data is processed on Google Cloud infrastructure and may be handled in the regions where Google, Apple, RevenueCat, Meta, and our other providers operate facilities, including the United States.
         </p>
         <p>
             <strong>For EEA and UK users:</strong> transfers of personal data to the Republic of Korea rely on the European Commission's adequacy decision for Korea, adopted on 17 December 2021 and confirmed on its first periodic review on 23 July 2026, under which no additional safeguards are required. Personal data received from the EEA is handled under Korean law as supplemented by the Personal Information Protection Commission's Supplementary Rules. Transfers to providers in the United States rely on the EU–US Data Privacy Framework and the UK Extension where the provider is certified, and otherwise on the European Commission's Standard Contractual Clauses.
@@ -758,6 +763,22 @@
         <p>
             If you do not want these transfers, delete your account in the app (Section 8) or contact us at the address in Section 14. Because the transfers are necessary to run the Service, refusing them means you cannot use it.
         </p>
+        <p>
+            Separately, the Meta SDK in the app sends Meta the ad-measurement data described in Section 4:
+        </p>
+        <ul>
+            <li><strong>Meta Platforms, Inc.</strong>
+                <ul>
+                    <li>Contact: see "How to contact Meta" in <a href="https://www.facebook.com/privacy/policy/">Meta's privacy policy</a></li>
+                    <li>Country: the United States</li>
+                    <li>Information transferred: install, app-opening, and purchase events; device and app details; an identifier the Meta SDK generates; your IP address; and on Android, the advertising ID</li>
+                    <li>Purposes: measuring the results of our ads on Instagram and Facebook, and Meta's own purposes under its privacy policy</li>
+                    <li>When and how: when the app is installed and each time it is opened, over encrypted network connections (HTTPS/TLS)</li>
+                    <li>Retention: as set out in Meta's privacy policy</li>
+                    <li>How to refuse: on Android, delete or reset your advertising ID in your device settings; otherwise, stop using the app</li>
+                </ul>
+            </li>
+        </ul>
 
         <h2>13. Changes to This Policy</h2>
         <p>
